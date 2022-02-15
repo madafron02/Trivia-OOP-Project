@@ -16,6 +16,7 @@ Add your own name (do not add the names for others!) to the section below.
 | ![](https://secure.gravatar.com/avatar/d896c8cf99a712914da3003bda432393?s=50&d=identicon) | Atanas Kichukov | A.B.Kichukov@student.tudelft.nl |
 | ![](https://secure.gravatar.com/avatar/e82bf009a824344b850664a25b711cef?s=50&d=identicon) | Tim Appelman | T.C.Appelman@student.tudelft.nl |
 | ![](https://secure.gravatar.com/avatar/03fe269b319a72b5978ac6cc7c73cd0e?s=50&d=identicon) | Robert Andrei Boboc | R.A.Boboc-1@student.tudelft.nl |
+| ![](https://secure.gravatar.com/avatar/77f1ecd516417a2022c15ce98d23cd52?s=800&d=identicon) | Khalit Gulamov | K.Gulamov@student.tudelft.nl |
 <!-- Instructions (remove once assignment has been completed -->
 <!-- - Add (only!) your own name to the table above (use Markdown formatting) -->
 <!-- - Mention your *student* email address -->
