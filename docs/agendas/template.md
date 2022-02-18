@@ -60,3 +60,46 @@ In italics, you will find some additional explanations of the agenda points. You
 
 # Closing
 *Now you can start working on the project. Good luck!*
+
+
+# Week 2
+
+Agenda [Week2] 
+
+Location: 	Cubicle
+Datum: 		15/02/2022
+Time: 		16:45
+Attendees:	Robert Andrei Boboc
+        	Oana Madalina Fron
+            Khalit Gulamov
+            Atanas Kichukov
+            Renyi Yang
+            Tim Appelman
+
+Agenda-items 
+
+16:45-16:47		Opening by chair
+
+16:47	-16:50		Check-in
+
+16:50-16:55		Backlog composition and improvements for structuring.
+				(Inform/ brainstorm/ decision making/ discuss)
+
+16:55-17:00		Code of conduct feedback receiving and adding other features as code style
+				(Inform/ decision making/ discuss)
+
+17:00-17:05		Questions about working both on backend and frontend for the app
+				(discuss)
+
+17:05-17:10		Changing roles
+				(discuss)
+
+17:05-17:10	Summary action points – Chairman should summarize about the subject from above and the solutions provided and recap about the assignments for the current week. This should be after all the subjects above were discussed?
+
+
+17:10-17:15		Feedback Round
+
+17:15-17:20		Question Round (If there are any left)
+
+17:23-17:25		Closure
+
