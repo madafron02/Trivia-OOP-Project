@@ -24,12 +24,19 @@ public class MainCtrl {
 
     private Stage primaryStage;
 
-    private QuoteOverviewCtrl overviewCtrl;
-    private Scene overview;
+    //private QuoteOverviewCtrl overviewCtrl;
+    //private Scene overview;
 
-    private AddQuoteCtrl addCtrl;
-    private Scene add;
+    //private AddQuoteCtrl addCtrl;
+    //private Scene add;
 
+    private SplashCtrl splashCtrl;
+    private Scene opening;
+
+    private SingleCtrl singleCtrl;
+    private Scene singleplayer;
+
+    /*
     public void initialize(Stage primaryStage, Pair<QuoteOverviewCtrl, Parent> overview,
             Pair<AddQuoteCtrl, Parent> add) {
         this.primaryStage = primaryStage;
@@ -42,7 +49,29 @@ public class MainCtrl {
         showOverview();
         primaryStage.show();
     }
+    */
 
+    public void initialize_new(Stage primaryStage, Pair<SplashCtrl, Parent> opening, Pair<SingleCtrl, Parent> singleplayer) {
+        this.primaryStage = primaryStage;
+        this.splashCtrl = opening.getKey();
+        this.opening = new Scene(opening.getValue());
+        this.singleplayer = new Scene(singleplayer.getValue());
+
+        showSplash();
+        primaryStage.show();
+    }
+
+    public void showSplash() {
+        primaryStage.setTitle("Splash: Opening");
+        primaryStage.setScene(opening);
+    }
+
+    public void showSingle() {
+        primaryStage.setTitle("Singleplayer Mode");
+        primaryStage.setScene(singleplayer);
+    }
+
+    /*
     public void showOverview() {
         primaryStage.setTitle("Quotes: Overview");
         primaryStage.setScene(overview);
@@ -54,4 +83,5 @@ public class MainCtrl {
         primaryStage.setScene(add);
         add.setOnKeyPressed(e -> addCtrl.keyPressed(e));
     }
+    */
 }
