@@ -1,6 +1,5 @@
 package server.api;
 
-import commons.Activity;
 import commons.Question;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +43,7 @@ public class QuestionController {
         return ResponseEntity.ok(saved);
     }
 
-    private static boolean isNullOrEmpty(List<Activity> activityList) {
+    private static boolean isNullOrEmpty(List<String> activityList) {
         return (activityList == null || activityList.size() == 0);
     }
 }

@@ -11,11 +11,13 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
     private String description;
-    private List<Activity> answers;
 
-    public Question(String description, List<Activity> answers, long id) {
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private List<String> answers;
+
+    public Question(String description, List<String> answers, long id) {
         this.description = description;
         this.answers = answers;
         this.id = id;
@@ -29,11 +31,11 @@ public class Question {
         this.description = description;
     }
 
-    public List<Activity> getAnswers() {
+    public List<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<Activity> answers) {
+    public void setAnswers(List<String> answers) {
         this.answers = answers;
     }
 
