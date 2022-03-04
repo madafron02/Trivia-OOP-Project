@@ -1,6 +1,6 @@
 package client.scenes;
 
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 public class ActivityCtrl {
@@ -38,4 +38,3 @@ public class ActivityCtrl {
     }
 
 }
-
