@@ -4,20 +4,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import java.io.Serializable;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
-public class LeaderBoardEntry implements Serializable {
+public class LeaderBoardEntry{
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "player_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Player player;
     private int point;
 
