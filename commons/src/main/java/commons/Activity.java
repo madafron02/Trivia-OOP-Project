@@ -1,14 +1,14 @@
-package client.scenes;
+package commons;
 
 
 import java.util.Objects;
 
-public class ActivityCtrl {
+public class Activity {
 
     private  int id;
     private String description;
 
-    public ActivityCtrl(int id,String description) {
+    public Activity(int id,String description) {
         this.id = id;
         this.description = description;
     }
@@ -32,8 +32,8 @@ public class ActivityCtrl {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ActivityCtrl)) return false;
-        ActivityCtrl that = (ActivityCtrl) o;
+        if (!(o instanceof Activity)) return false;
+        Activity that = (Activity) o;
         return id == that.id && Objects.equals(description, that.description);
     }
 
