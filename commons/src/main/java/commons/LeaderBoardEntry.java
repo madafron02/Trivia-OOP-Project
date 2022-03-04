@@ -9,15 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import java.io.Serializable;
+
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
-public class LeaderBoardEntry {
+public class LeaderBoardEntry implements Serializable {
     @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "player_id", nullable = false)
-    Player player;
-    int point;
+    private Player player;
+    private int point;
 
     public LeaderBoardEntry(Player player, int point) {
         this.player = player;

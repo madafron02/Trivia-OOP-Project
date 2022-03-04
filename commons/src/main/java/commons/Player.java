@@ -14,8 +14,8 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long id;
-    public String name;
+    private long id;
+    private String name;
 
     public String getName() {
         return name;
