@@ -16,10 +16,12 @@ import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 @Entity
 public class LeaderBoardEntry implements Serializable {
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "player_id", nullable = false)
-    Player player;
-    int point;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Player player;
+    private int point;
 
     public LeaderBoardEntry(Player player, int point) {
         this.player = player;
