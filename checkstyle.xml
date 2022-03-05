@@ -14,6 +14,13 @@
         </module>
         <!-- 5.3 CamelCase -->
         <module name="AbbreviationAsWordInName"/>
+        <module name="ClassTypeParameterName"/>
+        <module name="MethodName"/>
+        <module name="MethodTypeParameterName"/>
+        <module name="InterfaceTypeParameterName"/>
+        <module name="ConstantName"/>
+        <module name="ParameterName"/>
+        <module name="TypeName"/>
         <!-- 4.8.3.2 No C-style array declarations -->
         <module name="ArrayTypeStyle"/>
         <!-- 4.8.4.2 Fall-through: commented -->
@@ -22,8 +29,6 @@
         <module name="MissingSwitchDefault"/>
         <!-- 4.8.6.1 block comment style-->
         <module name="CommentsIndentation"/>
-        <!-- 5.2.2 Class names-->
-        <module name="TypeName"/>
         <!-- 4.8.5 annotations-->
         <module name="AnnotationLocation"/>
         <!-- 50 lines per method-->

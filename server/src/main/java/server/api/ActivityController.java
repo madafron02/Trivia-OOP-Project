@@ -31,7 +31,8 @@ public class ActivityController {
     }
 
     @PutMapping("replace/activity/{id}")
-    public Map<Integer, String>  replaceActivity(@PathVariable int id, @RequestBody String newDescription) {
+    public Map<Integer, String>replaceActivity(@PathVariable int id,
+                                               @RequestBody String newDescription) {
         if (id < 0) throw new IndexOutOfBoundsException();
         mapDescription.put(id,newDescription);
         return mapDescription;

@@ -51,7 +51,8 @@ public class MainCtrl {
     }
     */
 
-    public void initialize_new(Stage primaryStage, Pair<SplashCtrl, Parent> opening, Pair<SingleCtrl, Parent> singleplayer) {
+    public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
+                               Pair<SingleCtrl, Parent> singleplayer) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
