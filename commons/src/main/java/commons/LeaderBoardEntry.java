@@ -4,20 +4,18 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
+import javax.persistence.*;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
-public class LeaderBoardEntry {
+public class LeaderBoardEntry{
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "player_id", nullable = false)
-    Player player;
-    int point;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private Player player;
+    private int point;
 
     public LeaderBoardEntry(Player player, int point) {
         this.player = player;
