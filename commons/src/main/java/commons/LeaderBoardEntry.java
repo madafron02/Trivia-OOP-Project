@@ -23,6 +23,10 @@ public class LeaderBoardEntry{
     }
     public LeaderBoardEntry() {}
 
+    public long getId() {
+        return id;
+    }
+
     public Player getPlayer() {
         return player;
     }
