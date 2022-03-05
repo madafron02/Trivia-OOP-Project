@@ -12,9 +12,9 @@ import java.util.Map;
 
 public class ActivityController {
 
-    public static int id=0;
+    public static int id = 0;
     public String description;
-    public Map<Integer, String> mapDescription = new HashMap<Integer, String>();
+    public Map<Integer, String> mapDescription = new HashMap<>();
 
 
     @GetMapping("/description/{id}")
