@@ -8,6 +8,34 @@
         <module name="UnusedImports" />
     </module>
 
-    <!-- TODO: decide in your team with other checkers to add! -->
+    <!-- 4.13 EmptyBlocks -->
+    <module name="EmptyBlock">
+        <property name="option" value="TEXT"/>
+        <property name="tokens"
+                  value="LITERAL_TRY, LITERAL_FINALLY, LITERAL_IF, LITERAL_ELSE, LITERAL_SWITCH"/>
+    </module>
+    <!-- 5.3 CamelCase -->
+    <module name="AbbreviationAsWordInName"/>
+    <!-- 4.8.3.2 No C-style array declarations -->
+    <module name="ArrayTypeStyle"/>
+    <!-- 4.8.4.2 Fall-through: commented -->
+    <module name="FallThrough"/>
+    <!-- 4.8.4.3 The default case is present-->
+    <module name="MissingSwitchDefault"/>
+    <!-- 4.8.6.1 block comment style-->
+    <module name="CommentsIndentation"/>
+    <!-- 5.2.2 Class names-->
+    <module name="TypeName"/>
+    <!-- 4.8.5 annotations-->
+    <module name="AnnotationLocation"/>
+    <!-- 4.4 column limit:100-->
+    <module name="LineLength">
+        <property name="max" value="100"/>
+    </module>
+    <!-- 50 lines per method-->
+    <module name="MethodLength">
+        <property name="tokens" value="METHOD_DEF"/>
+        <property name="max" value="50"/>
+    </module>
 
 </module>
