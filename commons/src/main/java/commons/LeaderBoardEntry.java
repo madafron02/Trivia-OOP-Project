@@ -26,6 +26,10 @@ public class LeaderBoardEntry implements Serializable {
     }
     public LeaderBoardEntry() {}
 
+    public long getId() {
+        return id;
+    }
+
     public Player getPlayer() {
         return player;
     }
