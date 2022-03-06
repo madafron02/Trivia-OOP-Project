@@ -27,6 +27,28 @@ public class Round {
         this.leaderBoardEntries = leaderBoardEntries;
     }
 
+    public int getTimer() {
+        return this.timer;
+    }
+    public void setTimer(int newTime) {
+        this.timer = newTime;
+    }
+    public Question getQuestion() {
+        return this.question;
+    }
+    public void setQuestion(Question newQuestion) {
+        this.question = newQuestion;
+    }
+    public long getId() {
+        return id;
+    }
+    public List<LeaderBoardEntry> getLeaderBoardEntries() {
+        return this.leaderBoardEntries;
+    }
+    public void setLeaderBoardEntries(List<LeaderBoardEntry> newEntries) {
+        this.leaderBoardEntries = newEntries;
+    }
+
     public String toString() {
         String answer = "This round:\n " + "The question: " + this.question.getDescription() +
                 "\n" + "The players: ";
