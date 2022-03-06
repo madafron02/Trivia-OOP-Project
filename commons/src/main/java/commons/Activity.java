@@ -9,7 +9,7 @@ public class Activity {
     private String description;
     private String sharkLIFE;
 
-    public Activity(int id,String description) {
+    public Activity(int id, String description) {
         this.id = id;
         this.description = description;
     }
