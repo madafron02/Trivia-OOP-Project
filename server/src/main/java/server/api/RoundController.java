@@ -20,11 +20,10 @@ public class RoundController {
     public List<Round> getAll() {
         return repo.findAll();
     }
-
     @GetMapping("/{id}")
     public Round getRoundById(@PathVariable long id) {      //returns the object itself,
-        if (id < 0 || !repo.existsById(id)) {               //not the responseEntity containing the object in the body
-            return null;
+        if (id < 0 || !repo.existsById(id)) {               //not the responseEntity
+            return null;                                    // containing the object in the body
         }
         return repo.findById(id).get();
     }
