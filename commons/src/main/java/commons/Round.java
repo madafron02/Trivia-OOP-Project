@@ -21,7 +21,8 @@ public class Round {
     private List<LeaderBoardEntry> leaderBoardEntries;
 
     public Round(Question question, List<LeaderBoardEntry> leaderBoardEntries) {
-        this.timer = 10;          //time in seconds, can be changed if it is decided to use number other than 10
+        this.timer = 10;
+        //time in seconds, can be changed if it is decided to use number other than 10
         this.question = question;
         this.leaderBoardEntries = leaderBoardEntries;
     }
