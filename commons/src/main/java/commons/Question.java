@@ -52,7 +52,8 @@ public class Question {
         if (this == o) return true;
         if (!(o instanceof Question)) return false;
         Question question = (Question) o;
-        return id == question.id && Objects.equals(description, question.description) && Objects.equals(answers, question.answers);
+        return id == question.id && Objects.equals(description, question.description)
+                && Objects.equals(answers, question.answers);
     }
 
     @Override

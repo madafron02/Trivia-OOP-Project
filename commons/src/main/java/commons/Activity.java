@@ -7,6 +7,7 @@ public class Activity {
 
     private  int id;
     private String description;
+    private String sharkLIFE;
 
     public Activity(int id,String description) {
         this.id = id;
