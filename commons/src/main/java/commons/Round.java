@@ -53,7 +53,7 @@ public class Round {
                 "\n" + "The players: ";
         for (Player p : players) {
             answer += p.getName() + " : ";
-            //answer += p.getPoint() + "\n";
+            answer += p.getPoints() + "\n";
         }
         return answer;
     }
