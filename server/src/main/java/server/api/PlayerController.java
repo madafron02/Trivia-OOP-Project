@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.PlayerRepository;
 
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -37,4 +38,21 @@ public class PlayerController {
         Player saved = repo.save(player);
         return ResponseEntity.ok(saved);
     }
+
+    @GetMapping("/best")
+    public ResponseEntity<Player> getBest(){
+        List<Player> players = repo.findAll();
+        players.sort((o1, o2) -> o2.getPoints() - o1.getPoints());
+        return ResponseEntity.ok(players.get(0));
+    }
+
+    @GetMapping("/top_ten")
+    public List<Player> top(){
+        List<Player> players = repo.findAll();
+        if(players.size()<10) return players;
+
+        players.sort((o1, o2) -> o2.getPoints() - o1.getPoints());
+        return players.subList(0,9);
+    }
+
 }
