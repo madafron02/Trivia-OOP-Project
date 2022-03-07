@@ -20,6 +20,7 @@ public class Player implements Serializable {
 
     public Player(String name) {
         this.name = name;
+        this.points = 0;
     }
 
     public void setPoints(int addition){
@@ -27,15 +28,15 @@ public class Player implements Serializable {
     }
 
     public int getPoints() {
-        return this.points;
+        return points;
     }
 
     public long getId() {
-        return this.id;
+        return id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
