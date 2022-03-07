@@ -18,7 +18,6 @@ public class Round {
     private Question question;
 
     @OneToMany
-    //private List<LeaderBoardEntry> leaderBoardEntries;
     private List<Player> players;
 
     public Round(Question question, List<Player> players) {
