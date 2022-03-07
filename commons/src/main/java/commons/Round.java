@@ -18,12 +18,13 @@ public class Round {
     private Question question;
 
     @OneToMany
-    private List<LeaderBoardEntry> leaderBoardEntries;
+    //private List<LeaderBoardEntry> leaderBoardEntries;
+    private List<Player> players;
 
-    public Round(Question question, List<LeaderBoardEntry> leaderBoardEntries) {
+    public Round(Question question, List<Player> players) {
         this.timer = 10;          //time in seconds, can be changed if it is decided to use number other than 10
         this.question = question;
-        this.leaderBoardEntries = leaderBoardEntries;
+        this.players = players;
     }
 
     public int getTimer() {
@@ -41,19 +42,19 @@ public class Round {
     public long getId() {
         return id;
     }
-    public List<LeaderBoardEntry> getLeaderBoardEntries() {
-        return this.leaderBoardEntries;
+    public List<Player> getPlayers() {
+        return this.players;
     }
-    public void setLeaderBoardEntries(List<LeaderBoardEntry> newEntries) {
-        this.leaderBoardEntries = newEntries;
+    public void setPlayers(List<Player> newPlayers) {
+        this.players = newPlayers;
     }
 
     public String toString() {
         String answer = "This round:\n " + "The question: " + this.question.getDescription() +
                 "\n" + "The players: ";
-        for (LeaderBoardEntry entry : leaderBoardEntries) {
-            answer += entry.getPlayer().getName() + " : ";
-            answer += entry.getPoint() + "\n";
+        for (Player p : players) {
+            answer += p.getName() + " : ";
+            //answer += p.getPoint() + "\n";
         }
         return answer;
     }

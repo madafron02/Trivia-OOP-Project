@@ -13,14 +13,28 @@ public class Player implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+    private int points;
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+    public void setPoints(int addition){
+        this.points+=addition;
+    }
+
+    public int getPoints() {
+        return this.points;
+    }
 
     public long getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
