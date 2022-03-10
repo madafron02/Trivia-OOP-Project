@@ -21,7 +21,8 @@ public class Round {
     private List<Player> players;
 
     public Round(Question question, List<Player> players) {
-        this.timer = 10;          //time in seconds, can be changed if it is decided to use number other than 10
+        //time in seconds, can be changed if it is decided to use number other than 10
+        this.timer = 10;
         this.question = question;
         this.players = players;
     }
@@ -49,7 +50,8 @@ public class Round {
     }
 
     public String toString() {
-        String answer = "This round:\n " + "The question: " + this.question.getDescription() +
+        String answer = "This round:\n " + "The question: " +
+                this.question.getDescription() +
                 "\n" + "The players: ";
         for (Player p : players) {
             answer += p.getName() + " : ";
