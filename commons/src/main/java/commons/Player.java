@@ -8,12 +8,28 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
+
 @Entity
 public class Player implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String name;
+    private int points;
+
+    public Player(String name) {
+        this.name = name;
+        this.points = 0;
+    }
+
+    public void setPoints(int addition){
+        this.points+=addition;
+    }
+
+    public int getPoints() {
+        return points;
+    }
 
     public long getId() {
         return id;
