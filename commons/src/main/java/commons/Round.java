@@ -12,7 +12,7 @@ public class Round {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private int timer;
+    private double timer;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private Question question;
@@ -27,10 +27,10 @@ public class Round {
         this.players = players;
     }
 
-    public int getTimer() {
+    public double getTimer() {
         return this.timer;
     }
-    public void setTimer(int newTime) {
+    public void setTimer(double newTime) {
         this.timer = newTime;
     }
     public Question getQuestion() {
