@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ListView fx:id="playerList" layoutX="26.0" layoutY="48.0" prefHeight="339.0" prefWidth="248.0" />
+      <Label alignment="CENTER" layoutX="85.0" layoutY="16.0" prefHeight="29.0" prefWidth="126.0" text="Waiting room" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="365.0" layoutY="124.0" prefHeight="153.0" prefWidth="158.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Button fx:id="startGame" layoutX="24.0" layoutY="31.0" mnemonicParsing="false" prefHeight="91.0" prefWidth="108.0" style="-fx-background-color: #0B3559;" text="Button" />
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="386.0" layoutY="292.0" prefHeight="23.0" prefWidth="117.0" text="CLICK TO START" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
