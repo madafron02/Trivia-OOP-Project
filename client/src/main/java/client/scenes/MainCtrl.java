@@ -17,6 +17,7 @@ package client.scenes;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -36,6 +37,9 @@ public class MainCtrl {
     private SingleCtrl singleCtrl;
     private Scene singleplayer;
 
+    private MultiChoiceQCtrl multiCtrl;
+    private Scene multiChoice;
+
     /*
     public void initialize(Stage primaryStage, Pair<QuoteOverviewCtrl, Parent> overview,
             Pair<AddQuoteCtrl, Parent> add) {
@@ -52,11 +56,13 @@ public class MainCtrl {
     */
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer) {
+                               Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<MultiChoiceQCtrl, Parent> multiChoice) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
+        this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
 
         showSplash();
         primaryStage.show();
@@ -70,6 +76,12 @@ public class MainCtrl {
     public void showSingle() {
         primaryStage.setTitle("Singleplayer Mode");
         primaryStage.setScene(singleplayer);
+    }
+
+    public void showMultiChoiceQ() {
+        int i = 0;  //temp variable for question count
+        primaryStage.setTitle("Question " + i);
+        primaryStage.setScene(multiChoice);
     }
 
     /*
