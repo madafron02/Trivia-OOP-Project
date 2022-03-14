@@ -49,7 +49,7 @@ public class MainCtrl {
         this.lobby = new Scene(lobbyCtrlParentPair.getValue());
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
 
-        showLobby();
+        showSplash();
         primaryStage.show();
     }
 
