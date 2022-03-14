@@ -1,103 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane cache="true" cacheHint="SCALE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.SplashCtrl">
+
+<AnchorPane focusTraversable="true" styleClass="background" stylesheets="@../../Images/splashBG.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.SplashCtrl">
    <children>
-      <ImageView fitHeight="1200.0" fitWidth="1500.0" nodeOrientation="INHERIT" StackPane.alignment="CENTER">
-         <image>
-            <Image url="@../../Images/bk2222.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="DISAPPEAR" />
-         </cursor>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <VBox alignment="CENTER" StackPane.alignment="CENTER">
+      <StackPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" text="QUIZZZZ!" textAlignment="CENTER" textFill="#8fd1d9">
-               <font>
-                  <Font name="Kailasa Regular" size="96.0" />
-               </font>
+            <VBox alignment="CENTER" cache="true" cacheHint="SCALE" fillWidth="false" StackPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="10.0" text="QUIZZZZ!" textAlignment="CENTER" textFill="#8fd1d9">
+                     <font>
+                        <Font name="Kailasa Regular" size="96.0" />
+                     </font>
+                     <padding>
+                        <Insets left="58.0" />
+                     </padding>
+                  </Label>
+                  <Label alignment="CENTER" text="Energy Challenge" textFill="WHITE">
+                     <font>
+                        <Font name="Kailasa Regular" size="70.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="550.0" />
+               </StackPane.margin>
+               <cursor>
+                  <Cursor fx:constant="V_RESIZE" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="CENTER" cache="true" cacheHint="SCALE" StackPane.alignment="CENTER">
+               <children>
+                  <Label contentDisplay="CENTER" text="QUIZZZZ!" textFill="WHITE">
+                     <font>
+                        <Font name="Kailasa Regular" size="96.0" />
+                     </font>
+                     <padding>
+                        <Insets left="60.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Energy Challenge" textFill="#8fd1d9">
+                     <font>
+                        <Font name="Kailasa Regular" size="70.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <StackPane.margin>
+                  <Insets bottom="550.0" />
+               </StackPane.margin>
+               <cursor>
+                  <Cursor fx:constant="V_RESIZE" />
+               </cursor>
+            </VBox>
+            <HBox alignment="CENTER" cache="true" cacheHint="SCALE" fillHeight="false" spacing="40.0" StackPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="singleplayer" mnemonicParsing="false" onAction="#goToSingle" prefHeight="53.0" prefWidth="139.0" text="Singleplayer" />
+                  <Button fx:id="multiplayer" mnemonicParsing="false" prefHeight="53.0" prefWidth="139.0" text="Multiplayer" />
+                  <Button fx:id="leaderboard" mnemonicParsing="false" prefHeight="53.0" prefWidth="139.0" text="Leaderboard" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
                <padding>
-                  <Insets left="58.0" />
+                  <Insets top="180.0" />
                </padding>
-            </Label>
-            <Label alignment="CENTER" text="Energy Challenge" textFill="WHITE">
-               <font>
-                  <Font name="Kailasa Regular" size="70.0" />
-               </font>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
+               <StackPane.margin>
+                  <Insets top="500.0" />
+               </StackPane.margin>
+            </HBox>
          </children>
-         <StackPane.margin>
-            <Insets bottom="550.0" />
-         </StackPane.margin>
          <cursor>
-            <Cursor fx:constant="V_RESIZE" />
+            <Cursor fx:constant="DEFAULT" />
          </cursor>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </VBox>
-      <VBox alignment="CENTER" StackPane.alignment="CENTER">
-         <children>
-            <Label contentDisplay="CENTER" text="QUIZZZZ!" textFill="WHITE">
-               <font>
-                  <Font name="Kailasa Regular" size="96.0" />
-               </font>
-               <padding>
-                  <Insets left="60.0" />
-               </padding>
-            </Label>
-            <Label text="Energy Challenge" textFill="#8fd1d9">
-               <font>
-                  <Font name="Kailasa Regular" size="70.0" />
-               </font>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-         </children>
-         <StackPane.margin>
-            <Insets bottom="550.0" />
-         </StackPane.margin>
-         <cursor>
-            <Cursor fx:constant="V_RESIZE" />
-         </cursor>
-      </VBox>
-      <HBox alignment="CENTER" spacing="20.0">
-         <children>
-            <Button fx:id="singleplayer" mnemonicParsing="false" onAction="#goToSingle" prefHeight="53.0" prefWidth="139.0" text="Singleplayer" />
-            <Button fx:id="multiplayer" mnemonicParsing="false" prefHeight="53.0" prefWidth="139.0" text="Multiplayer" />
-            <Button fx:id="leaderboard" mnemonicParsing="false" prefHeight="53.0" prefWidth="139.0" text="Leaderboard" />
-         </children>
-         <cursor>
-            <Cursor fx:constant="H_RESIZE" />
-         </cursor>
-         <padding>
-            <Insets top="200.0" />
-         </padding>
-         <StackPane.margin>
-            <Insets top="500.0" />
-         </StackPane.margin>
-      </HBox>
+      </StackPane>
    </children>
-   <cursor>
-      <Cursor fx:constant="V_RESIZE" />
-   </cursor>
-</StackPane>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

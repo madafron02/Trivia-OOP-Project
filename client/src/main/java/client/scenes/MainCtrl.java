@@ -67,6 +67,8 @@ public class MainCtrl {
     public void showSplash() {
         primaryStage.setTitle("Quizzzz!");
         primaryStage.setScene(opening);
+        primaryStage.setMinHeight(900);
+        primaryStage.setMinWidth(1440);
     }
 
     public void showSingle() {
