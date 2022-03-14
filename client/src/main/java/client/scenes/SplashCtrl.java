@@ -3,14 +3,7 @@ package client.scenes;
 import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Path;
-
-import java.io.File;
-import java.net.URL;
-import java.nio.file.Paths;
-import java.util.ResourceBundle;
 
 public class SplashCtrl {
 

@@ -55,13 +55,6 @@ public class MainCtrl {
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                                Pair<SingleCtrl, Parent> singleplayer) {
-
-        //we should use this somehow to make it look good on every resolution
-
-//        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-//        int width = gd.getDisplayMode().getWidth();
-//        int height = gd.getDisplayMode().getHeight();
-
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
