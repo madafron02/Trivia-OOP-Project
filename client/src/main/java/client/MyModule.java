@@ -29,5 +29,6 @@ public class MyModule implements Module {
         //binder.bind(QuoteOverviewCtrl.class).in(Scopes.SINGLETON);
         binder.bind(SplashCtrl.class).in(Scopes.SINGLETON);
         binder.bind(SingleCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(LobbyCtrl.class).in(Scopes.SINGLETON);
     }
 }

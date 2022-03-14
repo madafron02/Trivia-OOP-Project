@@ -36,29 +36,20 @@ public class MainCtrl {
     private SingleCtrl singleCtrl;
     private Scene singleplayer;
 
-    /*
-    public void initialize(Stage primaryStage, Pair<QuoteOverviewCtrl, Parent> overview,
-            Pair<AddQuoteCtrl, Parent> add) {
-        this.primaryStage = primaryStage;
-        this.overviewCtrl = overview.getKey();
-        this.overview = new Scene(overview.getValue());
-
-        this.addCtrl = add.getKey();
-        this.add = new Scene(add.getValue());
-
-        showOverview();
-        primaryStage.show();
-    }
-    */
+    private LobbyCtrl lobbyCtrl;
+    private Scene lobby;
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer) {
+                               Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
+        this.lobby = new Scene(lobbyCtrlParentPair.getValue());
+        this.lobbyCtrl = lobbyCtrlParentPair.getKey();
 
-        showSplash();
+        showLobby();
         primaryStage.show();
     }
 
@@ -71,6 +62,12 @@ public class MainCtrl {
         primaryStage.setTitle("Singleplayer Mode");
         primaryStage.setScene(singleplayer);
     }
+
+    public void showLobby() {
+        primaryStage.setTitle("Waiting room");
+        primaryStage.setScene(lobby);
+    }
+
 
 
     /*
