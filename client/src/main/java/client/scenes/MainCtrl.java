@@ -39,15 +39,21 @@ public class MainCtrl {
     private LobbyCtrl lobbyCtrl;
     private Scene lobby;
 
+    private HelpCtrl helpCtrl;
+    private Scene help;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                                Pair<SingleCtrl, Parent> singleplayer,
-                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair) {
+                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
+                              Pair<HelpCtrl, Parent> helpCtrlParentPair) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
         this.lobby = new Scene(lobbyCtrlParentPair.getValue());
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
+        this.help = new Scene(helpCtrlParentPair.getValue());
+        this.helpCtrl = helpCtrlParentPair.getKey();
 
         showSplash();
         primaryStage.show();
@@ -66,6 +72,11 @@ public class MainCtrl {
     public void showLobby() {
         primaryStage.setTitle("Waiting room");
         primaryStage.setScene(lobby);
+    }
+
+    public void showHelp() {
+        primaryStage.setTitle("Help");
+        primaryStage.setScene(help);
     }
 
 
