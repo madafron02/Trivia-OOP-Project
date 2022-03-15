@@ -42,10 +42,14 @@ public class MainCtrl {
     private HelpCtrl helpCtrl;
     private Scene help;
 
+    private WrongCtrl wrongCtrl;
+    private Scene wrong;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<SingleCtrl, Parent> singleplayer,
                               Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
-                              Pair<HelpCtrl, Parent> helpCtrlParentPair) {
+                              Pair<HelpCtrl, Parent> helpCtrlParentPair,
+                              Pair<WrongCtrl, Parent> wrongCtrlParentPair) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -54,6 +58,8 @@ public class MainCtrl {
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
         this.help = new Scene(helpCtrlParentPair.getValue());
         this.helpCtrl = helpCtrlParentPair.getKey();
+        this.wrong = new Scene(wrongCtrlParentPair.getValue());
+        this.wrongCtrl = wrongCtrlParentPair.getKey();
 
         showSplash();
         primaryStage.show();
@@ -79,7 +85,10 @@ public class MainCtrl {
         primaryStage.setScene(help);
     }
 
-
+    public void showWrong() {
+        primaryStage.setTitle("Wrong answer!");
+        primaryStage.setScene(wrong);
+    }
 
     /*
     public void showOverview() {

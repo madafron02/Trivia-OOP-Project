@@ -31,5 +31,6 @@ public class MyModule implements Module {
         binder.bind(SingleCtrl.class).in(Scopes.SINGLETON);
         binder.bind(LobbyCtrl.class).in(Scopes.SINGLETON);
         binder.bind(HelpCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(WrongCtrl.class).in(Scopes.SINGLETON);
     }
 }

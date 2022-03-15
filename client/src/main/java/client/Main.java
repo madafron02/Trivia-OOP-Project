@@ -46,8 +46,8 @@ public class Main extends Application {
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
         var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
         var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
-
+        var wrong = FXML.load(WrongCtrl.class, "client", "scenes", "Wrong.fxml");
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single, lobby, help);
+        mainCtrl.initializeNew(primaryStage, splash, single, lobby, help, wrong);
     }
 }
