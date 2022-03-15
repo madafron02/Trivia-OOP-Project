@@ -15,6 +15,7 @@
  */
 package client.scenes;
 
+import com.fasterxml.jackson.core.JsonpCharacterEscapes;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -39,6 +40,15 @@ public class MainCtrl {
 
     private MultiChoiceQCtrl multiCtrl;
     private Scene multiChoice;
+
+    private MoreEnergyQCtrl moreECtrl;
+    private Scene moreEnergy;
+
+    private OpenQCtrl openQCtrl;
+    private Scene openQ;
+
+    private NameSelectCtrl nameSelectCtrl;
+    private Scene nameSelect;
 
     /*
     public void initialize(Stage primaryStage, Pair<QuoteOverviewCtrl, Parent> overview,
@@ -82,6 +92,24 @@ public class MainCtrl {
         int i = 0;  //temp variable for question count
         primaryStage.setTitle("Question " + i);
         primaryStage.setScene(multiChoice);
+    }
+
+    public void showMoreEnergyQ(Pair<MoreEnergyQCtrl, Parent> moreEnergyPair) {
+        this.moreEnergy = new Scene(moreEnergyPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Question");
+        primaryStage.setScene(moreEnergy);
+    }
+
+    public void showOpenQ(Pair<OpenQCtrl, Parent> openQPair) {
+        this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Question");
+        primaryStage.setScene(openQ);
+    }
+
+    public void showNameSelect(Pair<NameSelectCtrl, Parent> nameSelectPair) {
+        this.nameSelect = new Scene(nameSelectPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Name Screen");
+        primaryStage.setScene(nameSelect);
     }
 
     /*
