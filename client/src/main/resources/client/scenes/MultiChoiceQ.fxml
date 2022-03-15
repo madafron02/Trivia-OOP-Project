@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
@@ -13,5 +14,9 @@
       <Rectangle fx:id="answerA" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="115.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
       <Rectangle fx:id="answerC" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="335.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
       <Rectangle fx:id="answerB" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="225.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
+      <TextArea blendMode="MULTIPLY" layoutX="115.0" layoutY="95.0" prefHeight="220.0" prefWidth="310.0" />
+      <TextArea blendMode="MULTIPLY" layoutX="115.0" layoutY="320.0" prefHeight="50.0" prefWidth="90.0" />
+      <TextArea blendMode="MULTIPLY" layoutX="335.0" layoutY="319.0" prefHeight="50.0" prefWidth="90.0" />
+      <TextArea blendMode="MULTIPLY" layoutX="225.0" layoutY="320.0" prefHeight="50.0" prefWidth="90.0" />
    </children>
 </AnchorPane>
