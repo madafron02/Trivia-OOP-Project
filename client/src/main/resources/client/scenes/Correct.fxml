@@ -12,7 +12,7 @@
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" text="Correct!" textAlignment="CENTER" textFill="#66b366">
                <font>
-                  <Font size="60.0" />
+                  <Font name="Kailasa Regular" size="60.0" />
                </font>
                <opaqueInsets>
                   <Insets />
@@ -23,23 +23,23 @@
             </Label>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="147.0" text="+100" textFill="#66b366">
                <font>
-                  <Font size="60.0" />
+                  <Font name="Kailasa Regular" size="60.0" />
                </font>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="395.0" text="Total points: 1878" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="429.0" text="Total points: 1878" textAlignment="CENTER">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Kailasa Regular" size="50.0" />
                </font>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="325.0" text="You are on fire!" textAlignment="CENTER" textFill="RED">
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="374.0" text="You are on fire!" textAlignment="CENTER" textFill="RED">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Kailasa Regular" size="50.0" />
                </font>
                <VBox.margin>
                   <Insets />
