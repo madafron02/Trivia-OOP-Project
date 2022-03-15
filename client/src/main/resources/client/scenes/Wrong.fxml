@@ -11,27 +11,27 @@
          <children>
             <Label text="Wrong!" textFill="RED">
                <font>
-                  <Font size="60.0" />
+                  <Font name="Kailasa Regular" size="60.0" />
                </font>
             </Label>
             <Label text="Oh no, your streak is lost!" textFill="ORANGE">
                <font>
-                  <Font size="32.0" />
+                  <Font name="Kailasa Regular" size="32.0" />
                </font>
             </Label>
             <Label text="Total points: 1939" textFill="ORANGE">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Kailasa Regular" size="50.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" prefHeight="63.0" prefWidth="470.0" text="The right answer was: " textAlignment="CENTER" textFill="ORANGE">
+            <Label contentDisplay="CENTER" prefHeight="84.0" prefWidth="527.0" text="The right answer was: " textAlignment="CENTER" textFill="ORANGE">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Kailasa Regular" size="50.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="10.0" layoutY="185.0" prefHeight="63.0" prefWidth="129.0" text="blabla" textAlignment="CENTER" textFill="ORANGE">
+            <Label contentDisplay="CENTER" layoutX="10.0" layoutY="185.0" prefHeight="84.0" prefWidth="143.0" text="blabla" textAlignment="CENTER" textFill="ORANGE">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Kailasa Regular" size="50.0" />
                </font>
             </Label>
          </children>
