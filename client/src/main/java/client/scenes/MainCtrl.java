@@ -68,7 +68,7 @@ public class MainCtrl {
         this.leaderboardCtrl = leaderboardPair.getKey();
 
 
-        showLeadearboard();
+        showSplash();
         primaryStage.show();
     }
 
