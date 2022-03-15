@@ -48,8 +48,10 @@ public class Main extends Application {
         var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
         var igLeaderboard = FXML.load(IngameLeaderboardCtrl.class,
                 "client", "scenes", "IngameLeaderboard.fxml");
+        var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
+                "client", "scenes", "AllTimeLeaderboard.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single, lobby, help, igLeaderboard);
+        mainCtrl.initializeNew(primaryStage, splash, single, lobby, help, igLeaderboard, leaderboard);
     }
 }
