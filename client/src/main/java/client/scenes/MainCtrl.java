@@ -42,10 +42,14 @@ public class MainCtrl {
     private HelpCtrl helpCtrl;
     private Scene help;
 
+    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private Scene igLeaderboard;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                                Pair<SingleCtrl, Parent> singleplayer,
                               Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
-                              Pair<HelpCtrl, Parent> helpCtrlParentPair) {
+                              Pair<HelpCtrl, Parent> helpCtrlParentPair,
+                              Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -54,6 +58,9 @@ public class MainCtrl {
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
         this.help = new Scene(helpCtrlParentPair.getValue());
         this.helpCtrl = helpCtrlParentPair.getKey();
+        this.igLeaderboard = new Scene(igLeaderboardPair.getValue());
+        this.igLeaderboardCtrl = igLeaderboardPair.getKey();
+
 
         showSplash();
         primaryStage.show();
@@ -77,6 +84,11 @@ public class MainCtrl {
     public void showHelp() {
         primaryStage.setTitle("Help");
         primaryStage.setScene(help);
+    }
+
+    public void showIgLeaderboard() {
+        primaryStage.setTitle("In-game leaderboard");
+        primaryStage.setScene(igLeaderboard);
     }
 
 
