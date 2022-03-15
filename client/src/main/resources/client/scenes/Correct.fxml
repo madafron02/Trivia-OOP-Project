@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #91BAD6;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.CorrectCtrl">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="200.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label contentDisplay="CENTER" text="Correct!" textAlignment="CENTER" textFill="#66b366">
+               <font>
+                  <Font size="96.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="118.0" prefWidth="231.0" text="+100" textFill="#66b366">
+               <font>
+                  <Font size="96.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="290.0" />
+               </VBox.margin>
+            </Label>
+            <Label contentDisplay="CENTER" prefHeight="118.0" prefWidth="747.0" text="Total points: 1878" textAlignment="CENTER">
+               <font>
+                  <Font size="96.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="70.0" />
+               </VBox.margin>
+            </Label>
+            <Label contentDisplay="CENTER" prefHeight="118.0" prefWidth="619.0" text="You are on fire!" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="96.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="140.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="300.0" right="300.0" top="100.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

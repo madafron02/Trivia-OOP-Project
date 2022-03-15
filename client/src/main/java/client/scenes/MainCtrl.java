@@ -39,15 +39,21 @@ public class MainCtrl {
     private LobbyCtrl lobbyCtrl;
     private Scene lobby;
 
+    private CorrectCtrl correctCtrl;
+    private Scene correct;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer,
-                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair) {
+                              Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
+                              Pair<CorrectCtrl, Parent> correctCtrlParentPair) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
         this.lobby = new Scene(lobbyCtrlParentPair.getValue());
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
+        this.correctCtrl = correctCtrlParentPair.getKey();
+        this.correct = new Scene(correctCtrlParentPair.getValue());
 
         showSplash();
         primaryStage.show();
@@ -68,6 +74,10 @@ public class MainCtrl {
         primaryStage.setScene(lobby);
     }
 
+    public void showCorrect() {
+        primaryStage.setTitle("Correct Answer!");
+        primaryStage.setScene(correct);
+    }
 
 
     /*
