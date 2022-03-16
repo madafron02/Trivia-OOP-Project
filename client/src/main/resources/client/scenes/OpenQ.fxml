@@ -12,7 +12,7 @@
         <Rectangle fx:id="chatContainer" arcHeight="5.0" arcWidth="5.0" fill="#8fd1d9" height="235.0" layoutX="460.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
         <Rectangle fx:id="questionTextContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="220.0" layoutX="115.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
         <Rectangle fx:id="answerA" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="36.0" layoutX="115.0" layoutY="327.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="115.0" layoutY="95.0" prefHeight="220.0" prefWidth="310.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="115.0" layoutY="325.0" prefHeight="39.0" prefWidth="310.0" />
+      <TextArea fx:id="questions" blendMode="MULTIPLY" layoutX="115.0" layoutY="95.0" prefHeight="220.0" prefWidth="310.0" />
+      <TextArea fx:id="answer" blendMode="MULTIPLY" layoutX="115.0" layoutY="325.0" prefHeight="39.0" prefWidth="310.0" />
     </children>
 </AnchorPane>

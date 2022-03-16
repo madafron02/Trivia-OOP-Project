@@ -15,10 +15,10 @@
         <Rectangle fx:id="answerA" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
         <Rectangle fx:id="answerC" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
         <Rectangle fx:id="answerB" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="305.0" layoutY="99.0" prefHeight="75.0" prefWidth="110.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="305.0" layoutY="290.0" prefHeight="75.0" prefWidth="110.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="305.0" layoutY="192.0" prefHeight="75.0" prefWidth="110.0" />
-      <TextArea blendMode="MULTIPLY" layoutX="130.0" layoutY="202.0" prefHeight="60.0" prefWidth="140.0" text="What costs more energy" wrapText="true">
+      <TextArea fx:id="answerA" blendMode="MULTIPLY" layoutX="305.0" layoutY="99.0" prefHeight="75.0" prefWidth="110.0" />
+      <TextArea fx:id="answerC" blendMode="MULTIPLY" layoutX="305.0" layoutY="290.0" prefHeight="75.0" prefWidth="110.0" />
+      <TextArea fx:id="answerB" blendMode="MULTIPLY" layoutX="305.0" layoutY="192.0" prefHeight="75.0" prefWidth="110.0" />
+      <TextArea fx:id="question" blendMode="MULTIPLY" layoutX="130.0" layoutY="202.0" prefHeight="60.0" prefWidth="140.0" text="What costs more energy" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
