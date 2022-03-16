@@ -45,6 +45,9 @@ public class MainCtrl {
     private HelpCtrl helpCtrl;
     private Scene help;
 
+    private WrongCtrl wrongCtrl;
+    private Scene wrong;
+
     private  IngameLeaderboardCtrl igLeaderboardCtrl;
     private Scene igLeaderboard;
 
@@ -57,7 +60,8 @@ public class MainCtrl {
                               Pair<HelpCtrl, Parent> helpCtrlParentPair,
                               Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair,
                               Pair<AllTimeLeaderboardCtrl, Parent> leaderboardPair,
-                              Pair<CorrectCtrl, Parent> correctCtrlParentPair) {
+                              Pair<CorrectCtrl, Parent> correctCtrlParentPair,
+                              Pair<WrongCtrl, Parent> wrongCtrlParentPair) {
 
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
@@ -69,6 +73,8 @@ public class MainCtrl {
         this.correct = new Scene(correctCtrlParentPair.getValue());
         this.help = new Scene(helpCtrlParentPair.getValue());
         this.helpCtrl = helpCtrlParentPair.getKey();
+        this.wrong = new Scene(wrongCtrlParentPair.getValue());
+        this.wrongCtrl = wrongCtrlParentPair.getKey();
         this.igLeaderboard = new Scene(igLeaderboardPair.getValue());
         this.igLeaderboardCtrl = igLeaderboardPair.getKey();
         this.leaderboard = new Scene(leaderboardPair.getValue());
@@ -79,7 +85,7 @@ public class MainCtrl {
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Splash: Openin");
+        primaryStage.setTitle("Splash");
         primaryStage.setScene(opening);
     }
 
@@ -101,6 +107,11 @@ public class MainCtrl {
     public void showHelp() {
         primaryStage.setTitle("Help");
         primaryStage.setScene(help);
+    }
+
+    public void showWrong() {
+        primaryStage.setTitle("Wrong answer!");
+        primaryStage.setScene(wrong);
     }
 
     public void showIgLeaderboard() {

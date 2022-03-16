@@ -47,6 +47,7 @@ public class Main extends Application {
         var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
         var correct = FXML.load(CorrectCtrl.class, "client", "scenes", "Correct.fxml");
         var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
+        var wrong = FXML.load(WrongCtrl.class, "client", "scenes", "Wrong.fxml");
         var igLeaderboard = FXML.load(IngameLeaderboardCtrl.class,
                 "client", "scenes", "IngameLeaderboard.fxml");
         var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
@@ -54,6 +55,6 @@ public class Main extends Application {
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
         mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
-                help, igLeaderboard, leaderboard, correct);
+                help, igLeaderboard, leaderboard, correct, wrong);
     }
 }
