@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.HelpCtrl">
    <children>
       <Pane layoutX="15.0" layoutY="29.0" prefHeight="305.0" prefWidth="569.0" style="-fx-background-color: #ffffff;">
          <children>
@@ -85,7 +85,7 @@
             </Pane>
          </children>
       </Pane>
-      <Button fx:id="goBackFromHelp" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="103.0" text="Got it!">
+      <Button fx:id="goBackFromHelp" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBackFromHelp" prefHeight="37.0" prefWidth="103.0" text="Got it!">
          <font>
             <Font size="15.0" />
          </font>
