@@ -15,7 +15,6 @@
  */
 package client.scenes;
 
-import com.fasterxml.jackson.core.JsonpCharacterEscapes;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
