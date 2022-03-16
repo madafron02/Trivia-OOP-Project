@@ -44,7 +44,7 @@ public class Main extends Application {
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
-
+        splash.getValue().getStylesheets().add("Images/splashBG.css");
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
         mainCtrl.initializeNew(primaryStage, splash, single);
     }
