@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.AllTimeLeaderboardCtrl">
    <children>
       <Label alignment="CENTER" layoutX="187.0" layoutY="36.0" prefHeight="40.0" prefWidth="226.0" text="Leaderboard" textFill="WHITE">
          <font>
@@ -22,11 +21,10 @@
                 <TableColumn prefWidth="183.0" text="Player name" />
                 <TableColumn minWidth="0.0" prefWidth="111.0" text="Score" />
                   <TableColumn prefWidth="57.0" text="Place" />
-                  <TableColumn prefWidth="103.0" text="Column X" />
               </columns>
             </TableView>
          </children>
       </AnchorPane>
-      <Button fx:id="backFromLeaderboard" layoutX="515.0" layoutY="346.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="71.0" text="Go back" />
+      <Button fx:id="backFromLeaderboard" layoutX="515.0" layoutY="346.0" mnemonicParsing="false" onAction="#goBack" prefHeight="40.0" prefWidth="71.0" text="Go back" />
    </children>
 </AnchorPane>
