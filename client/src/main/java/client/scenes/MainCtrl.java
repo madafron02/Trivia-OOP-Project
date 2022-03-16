@@ -42,10 +42,23 @@ public class MainCtrl {
     private CorrectCtrl correctCtrl;
     private Scene correct;
 
+    private HelpCtrl helpCtrl;
+    private Scene help;
+
+    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private Scene igLeaderboard;
+
+    private AllTimeLeaderboardCtrl leaderboardCtrl;
+    private Scene leaderboard;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                               Pair<SingleCtrl, Parent> singleplayer,
                               Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
+                              Pair<HelpCtrl, Parent> helpCtrlParentPair,
+                              Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair,
+                              Pair<AllTimeLeaderboardCtrl, Parent> leaderboardPair,
                               Pair<CorrectCtrl, Parent> correctCtrlParentPair) {
+
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -54,13 +67,19 @@ public class MainCtrl {
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
         this.correctCtrl = correctCtrlParentPair.getKey();
         this.correct = new Scene(correctCtrlParentPair.getValue());
+        this.help = new Scene(helpCtrlParentPair.getValue());
+        this.helpCtrl = helpCtrlParentPair.getKey();
+        this.igLeaderboard = new Scene(igLeaderboardPair.getValue());
+        this.igLeaderboardCtrl = igLeaderboardPair.getKey();
+        this.leaderboard = new Scene(leaderboardPair.getValue());
+        this.leaderboardCtrl = leaderboardPair.getKey();
 
         showSplash();
         primaryStage.show();
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Splash: Opening");
+        primaryStage.setTitle("Splash: Openin");
         primaryStage.setScene(opening);
     }
 
@@ -79,6 +98,20 @@ public class MainCtrl {
         primaryStage.setScene(correct);
     }
 
+    public void showHelp() {
+        primaryStage.setTitle("Help");
+        primaryStage.setScene(help);
+    }
+
+    public void showIgLeaderboard() {
+        primaryStage.setTitle("In-game leaderboard");
+        primaryStage.setScene(igLeaderboard);
+    }
+
+    public void showLeadearboard() {
+        primaryStage.setTitle("All-time leaderboard");
+        primaryStage.setScene(leaderboard);
+    }
 
     /*
     public void showOverview() {

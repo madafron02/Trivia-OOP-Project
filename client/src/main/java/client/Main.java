@@ -46,8 +46,14 @@ public class Main extends Application {
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
         var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
         var correct = FXML.load(CorrectCtrl.class, "client", "scenes", "Correct.fxml");
+        var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
+        var igLeaderboard = FXML.load(IngameLeaderboardCtrl.class,
+                "client", "scenes", "IngameLeaderboard.fxml");
+        var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
+                "client", "scenes", "AllTimeLeaderboard.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single, lobby, correct);
+        mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
+                help, igLeaderboard, leaderboard, correct);
     }
 }

@@ -31,6 +31,6 @@ public class SplashCtrl {
     }
 
     public void goToLeader() {
-        mainCtrl.showSplash();
+        mainCtrl.showLeadearboard();
     }
 }
