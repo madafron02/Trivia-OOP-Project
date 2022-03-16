@@ -73,7 +73,7 @@ public class MainCtrl {
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Splash: Opening");
+        primaryStage.setTitle("Splash: Opening1");
         primaryStage.setScene(opening);
     }
 
