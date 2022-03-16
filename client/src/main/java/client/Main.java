@@ -44,8 +44,10 @@ public class Main extends Application {
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
+        var multiChoice =
+                FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single);
+        mainCtrl.initializeNew(primaryStage, splash, single, multiChoice);
     }
 }
