@@ -12,7 +12,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #011826;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.WinnersCtrl">
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -77,7 +76,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" prefHeight="105.0" prefWidth="257.0" text="Back to menu">
+            <Button fx:id="backToMenu" mnemonicParsing="false" onAction="#goToSplash" prefHeight="105.0" prefWidth="257.0" text="Back to menu">
                <font>
                   <Font size="30.0" />
                </font>
