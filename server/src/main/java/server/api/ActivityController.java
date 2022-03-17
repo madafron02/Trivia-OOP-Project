@@ -1,10 +1,9 @@
 package server.api;
 
+import commons.Activity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-
-import java.util.Map;
+import server.database.ActivityRepository;
 
 @RestController
 
@@ -12,37 +11,31 @@ import java.util.Map;
 
 public class ActivityController {
 
-    public static int id = 0;
-    public String description;
-    public Map<Integer, String> mapDescription = new HashMap<>();
-
+    ActivityRepository repo;
 
     @GetMapping("/description/{id}")
-    public String getDescription(@PathVariable int id) {
-        return mapDescription.get(id);
+    public String getDescription(@PathVariable long id) {
+        return repo.findById(id).get().getTitle();
     }
 
 
     @PostMapping("/activity/post")
-    public Map<Integer, String>  addActivity(@RequestBody String addDescription) {
-        id++;
-        mapDescription.put(id,addDescription);
-        return mapDescription;
-    }
-
-    @PutMapping("replace/activity/{id}")
-    public Map<Integer, String>replaceActivity(@PathVariable int id,
-                                               @RequestBody String newDescription) {
-        if (id < 0) throw new IndexOutOfBoundsException();
-        mapDescription.put(id,newDescription);
-        return mapDescription;
+    public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
+        if(newActivity.getTitle() == null || newActivity.getTitle().isEmpty()
+        || newActivity.getConsumption()<=0 || newActivity.getSource().isEmpty()
+        || newActivity.getSource() == null){
+            return ResponseEntity.badRequest().build();
+        }
+        Activity saved = repo.save(newActivity);
+        return ResponseEntity.ok(saved);
     }
 
     @DeleteMapping("/delete/activity/{id}")
-    public Map<Integer, String> deleteActivity(@PathVariable int id) {
-        if (id < 0) throw new IndexOutOfBoundsException();
-        mapDescription.remove(id);
-        return mapDescription;
+    public ResponseEntity<Activity> deleteActivity(@PathVariable long id) {
+        if (id < 0) return ResponseEntity.badRequest().build();
+        Activity deleted = repo.findById(id).get();
+        repo.deleteById(id);
+        return ResponseEntity.ok(deleted);
     }
 
 }

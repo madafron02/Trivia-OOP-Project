@@ -1,41 +1,60 @@
 package commons;
 
 
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Activity {
 
-    private  int id;
-    private String description;
-    private String sharkLIFE;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    public Activity(int id, String description) {
-        this.id = id;
-        this.description = description;
+    private String title;
+    private double consumption;
+    private String source;
+
+    public Activity(String title, double consumption, String source) {
+        this.title = title;
+        this.consumption = consumption;
+        this.source = source;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getTitle() {
+        return title;
     }
 
-    public String getChoices() {
-        return description;
+    public double getConsumption() {
+        return consumption;
     }
 
-    public void setChoices(String description) {
-        this.description = description;
+    public String getSource() {
+        return source;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Activity)) return false;
+        Activity activity = (Activity) o;
+        return Double.compare(activity.getConsumption(), getConsumption()) == 0
+                && getTitle().equals(activity.getTitle())
+                && getSource().equals(activity.getSource());
+    }
+
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Activity)) return false;
         Activity that = (Activity) o;
         return id == that.id && Objects.equals(description, that.description);
-    }
+    }*/
 
 }
