@@ -21,6 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.awt.*;
+
 public class MainCtrl {
 
     private Stage primaryStage;
@@ -78,8 +80,10 @@ public class MainCtrl {
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Splash: Opening");
+        primaryStage.setTitle("Quizzzz!");
         primaryStage.setScene(opening);
+        primaryStage.setMinHeight(900);
+        primaryStage.setMinWidth(1440);
     }
 
     public void showSingle() {
