@@ -58,6 +58,7 @@ public class Main extends Application {
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
         var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "nameSelect.fxml");
+        nameSelect.getValue().getStylesheets().add("Images/selectName.css");
         mainCtrl.initializeNew(primaryStage, splash, single, multiChoice,nameSelect);
         mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
                 help, igLeaderboard, leaderboard, correct, wrong, winners,

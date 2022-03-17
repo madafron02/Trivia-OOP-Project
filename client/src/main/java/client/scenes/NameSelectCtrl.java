@@ -5,10 +5,7 @@ import com.google.inject.Inject;
 import commons.Player;
 import jakarta.ws.rs.WebApplicationException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 
 public class NameSelectCtrl {
@@ -17,7 +14,7 @@ public class NameSelectCtrl {
     private final MainCtrl mainCtrl;
 
     @FXML
-    private TextArea nameInput;
+    private TextField nameInput;
     @FXML
     private Label nameCheck;
     @FXML

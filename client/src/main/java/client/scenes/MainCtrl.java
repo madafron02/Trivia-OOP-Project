@@ -101,7 +101,7 @@ public class MainCtrl {
         this.winnersCtrl = winnersPair.getKey();
         this.winners = new Scene(winnersPair.getValue());
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
-        this.nameSelect = new Scene(nameSelect.getValue(),Color.web("#011826"));
+        this.nameSelect = new Scene(nameSelect.getValue());
         this.nameSelectCtrl = nameSelect.getKey();
         showSplash();
         primaryStage.show();
