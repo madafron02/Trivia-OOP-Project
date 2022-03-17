@@ -35,5 +35,6 @@ public class MyModule implements Module {
         binder.bind(WrongCtrl.class).in(Scopes.SINGLETON);
         binder.bind(IngameLeaderboardCtrl.class).in(Scopes.SINGLETON);
         binder.bind(AllTimeLeaderboardCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(WinnersCtrl.class).in(Scopes.SINGLETON);
     }
 }
