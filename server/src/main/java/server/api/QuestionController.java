@@ -19,12 +19,12 @@ public class QuestionController {
         this.repo = repo;
     }
 
-    @GetMapping("/api/question")
+    @GetMapping(path = {"/",""})
     public List<Question> getAll() {
         return repo.findAll();
     }
 
-    @GetMapping("/api/question/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Question> getById(@PathVariable("id") long id) {
         if (id < 0 || !repo.existsById(id)) {
             return ResponseEntity.badRequest().build();
@@ -32,7 +32,7 @@ public class QuestionController {
         return ResponseEntity.ok(repo.getById(id));
     }
 
-    @PostMapping("/api/question/new")
+    @PostMapping("/new")
     public ResponseEntity<Question> add(@RequestBody Question question) {
 
         if (question.getDescription() == null || isNullOrEmpty(question.getAnswers())) {
