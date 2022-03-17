@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Objects;
 
 @Entity
 public class Activity {
@@ -15,12 +14,12 @@ public class Activity {
     private long id;
 
     private String title;
-    private double consumption_in_wh;
+    private double consumption;
     private String source;
 
-    public Activity(String title, double consumption_in_wh, String source) {
+    public Activity(String title, double consumption, String source) {
         this.title = title;
-        this.consumption_in_wh = consumption_in_wh;
+        this.consumption = consumption;
         this.source = source;
     }
 
@@ -32,8 +31,8 @@ public class Activity {
         return title;
     }
 
-    public double getConsumption_in_wh() {
-        return consumption_in_wh;
+    public double getConsumption() {
+        return consumption;
     }
 
     public String getSource() {
@@ -45,7 +44,9 @@ public class Activity {
         if (this == o) return true;
         if (!(o instanceof Activity)) return false;
         Activity activity = (Activity) o;
-        return Double.compare(activity.getConsumption_in_wh(), getConsumption_in_wh()) == 0 && getTitle().equals(activity.getTitle()) && getSource().equals(activity.getSource());
+        return Double.compare(activity.getConsumption(), getConsumption()) == 0
+                && getTitle().equals(activity.getTitle())
+                && getSource().equals(activity.getSource());
     }
 
     /*@Override

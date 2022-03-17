@@ -22,7 +22,7 @@ public class ActivityController {
     @PostMapping("/activity/post")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
         if(newActivity.getTitle() == null || newActivity.getTitle().isEmpty()
-        || newActivity.getConsumption_in_wh()<=0 || newActivity.getSource().isEmpty()
+        || newActivity.getConsumption()<=0 || newActivity.getSource().isEmpty()
         || newActivity.getSource() == null){
             return ResponseEntity.badRequest().build();
         }
