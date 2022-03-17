@@ -17,8 +17,11 @@ package client.scenes;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+
+
 
 public class MainCtrl {
 
@@ -36,6 +39,17 @@ public class MainCtrl {
     private SingleCtrl singleCtrl;
     private Scene singleplayer;
 
+    private MultiChoiceQCtrl multiCtrl;
+    private Scene multiChoice;
+
+    private MoreEnergyQCtrl moreECtrl;
+    private Scene moreEnergy;
+
+    private OpenQCtrl openQCtrl;
+    private Scene openQ;
+
+    private NameSelectCtrl nameSelectCtrl;
+    private Scene nameSelect;
     private LobbyCtrl lobbyCtrl;
     private Scene lobby;
 
@@ -65,8 +79,8 @@ public class MainCtrl {
                               Pair<AllTimeLeaderboardCtrl, Parent> leaderboardPair,
                               Pair<CorrectCtrl, Parent> correctCtrlParentPair,
                               Pair<WrongCtrl, Parent> wrongCtrlParentPair,
-                              Pair<WinnersCtrl, Parent> winnersPair) {
-
+                              Pair<WinnersCtrl, Parent> winnersPair,
+                              Pair<MultiChoiceQCtrl, Parent> multiChoice) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -85,19 +99,46 @@ public class MainCtrl {
         this.leaderboardCtrl = leaderboardPair.getKey();
         this.winnersCtrl = winnersPair.getKey();
         this.winners = new Scene(winnersPair.getValue());
+        this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
 
         showSplash();
         primaryStage.show();
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Splash");
+        primaryStage.setTitle("Menu");
         primaryStage.setScene(opening);
+        primaryStage.setMinHeight(900);
+        primaryStage.setMinWidth(1440);
     }
 
     public void showSingle() {
         primaryStage.setTitle("Singleplayer Mode");
         primaryStage.setScene(singleplayer);
+    }
+
+    public void showMultiChoiceQ() {
+        int i = 0;  //temp variable for question count
+        primaryStage.setTitle("Question " + i);
+        primaryStage.setScene(multiChoice);
+    }
+
+    public void showMoreEnergyQ(Pair<MoreEnergyQCtrl, Parent> moreEnergyPair) {
+        this.moreEnergy = new Scene(moreEnergyPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Question");
+        primaryStage.setScene(moreEnergy);
+    }
+
+    public void showOpenQ(Pair<OpenQCtrl, Parent> openQPair) {
+        this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Question");
+        primaryStage.setScene(openQ);
+    }
+
+    public void showNameSelect(Pair<NameSelectCtrl, Parent> nameSelectPair) {
+        this.nameSelect = new Scene(nameSelectPair.getValue(), Color.web("#011826"));
+        primaryStage.setTitle("Name Screen");
+        primaryStage.setScene(nameSelect);
     }
 
     public void showLobby() {

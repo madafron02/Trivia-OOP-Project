@@ -53,9 +53,12 @@ public class Main extends Application {
         var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
                 "client", "scenes", "AllTimeLeaderboard.fxml");
         var winners = FXML.load(WinnersCtrl.class, "client", "scenes", "Winners.fxml");
+        var multiChoice =
+                FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
         mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
-                help, igLeaderboard, leaderboard, correct, wrong, winners);
+                help, igLeaderboard, leaderboard, correct, wrong, winners,
+                multiChoice);
     }
 }

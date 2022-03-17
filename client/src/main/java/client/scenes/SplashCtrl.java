@@ -3,6 +3,7 @@ package client.scenes;
 import com.google.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 
 public class SplashCtrl {
 
@@ -22,12 +23,15 @@ public class SplashCtrl {
     @FXML
     private Button leaderboard;
 
+    @FXML
+    private ImageView imageView;
+
     public void goToSingle() {
         mainCtrl.showSingle();
     }
 
-    public void goToMulti() {
-        mainCtrl.showSplash();
+    public void goToMultiPlayer() {
+        mainCtrl.showSingle();
     }
 
     public void goToLeader() {
