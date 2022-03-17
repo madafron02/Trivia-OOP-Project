@@ -43,6 +43,8 @@ public class Main extends Application {
         //var add = FXML.load(AddQuoteCtrl.class, "client", "scenes", "AddQuote.fxml");
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
+        splash.getValue().getStylesheets().add("Images/splashBG.css");
+
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
