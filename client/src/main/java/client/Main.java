@@ -57,8 +57,10 @@ public class Main extends Application {
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
+        var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "nameSelect.fxml");
+        mainCtrl.initializeNew(primaryStage, splash, single, multiChoice,nameSelect);
         mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
-                multiChoice);
+                multiChoice，nameSelect);
     }
 }
