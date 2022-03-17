@@ -75,7 +75,7 @@ public class MainCtrl {
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
-        this.nameSelect = new Scene(nameSelect.getValue(),Color.web("#011826"));
+        this.nameSelect = new Scene(nameSelect.getValue());
         this.nameSelectCtrl = nameSelect.getKey();
         showSplash();
         primaryStage.show();
