@@ -1,32 +1,33 @@
 package commons;
 
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Activity {
 
-    private  int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String description;
-    private String sharkLIFE;
 
-    public Activity(int id, String description) {
-        this.id = id;
+    public Activity(String description) {
         this.description = description;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getChoices() {
+    public String getDescription() {
         return description;
     }
 
-    public void setChoices(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
