@@ -1,15 +1,16 @@
 package client.scenes;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MultiChoiceQCtrl {
     @FXML
-    private TextField answerA;
+    private TextArea answerA;
     @FXML
-    private TextField answerB;
+    private TextArea answerB;
     @FXML
-    private TextField answerC;
+    private TextArea answerC;
     @FXML
-    private TextField question;
+    private TextArea question;
 }
