@@ -5,8 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.ActivityRepository;
 
-import java.util.Map;
-
 @RestController
 
 @RequestMapping("/activity")
@@ -17,13 +15,15 @@ public class ActivityController {
 
     @GetMapping("/description/{id}")
     public String getDescription(@PathVariable long id) {
-        return repo.findById(id).get().getDescription();
+        return repo.findById(id).get().getTitle();
     }
 
 
     @PostMapping("/activity/post")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
-        if(newActivity.getDescription().isBlank() || newActivity.getDescription().isEmpty()){
+        if(newActivity.getTitle() == null || newActivity.getTitle().isEmpty()
+        || newActivity.getConsumption_in_wh()<=0 || newActivity.getSource().isEmpty()
+        || newActivity.getSource() == null){
             return ResponseEntity.badRequest().build();
         }
         Activity saved = repo.save(newActivity);
