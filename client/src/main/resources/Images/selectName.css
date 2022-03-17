@@ -1,0 +1,15 @@
+.background {
+    -fx-background-color: #011826;
+}
+.check{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 40;
+}
+.how_to_play{
+    -fx-background-radius: 40;
+    -fx-background-color: #FFFFFF;
+}
+.play{
+    -fx-background-radius: 20;
+    -fx-background-color: #FFFFFF;
+}
