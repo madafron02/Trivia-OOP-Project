@@ -67,14 +67,16 @@ public class MainCtrl {
     */
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer,
-                              Pair<MultiChoiceQCtrl, Parent> multiChoice) {
+                              Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<MultiChoiceQCtrl, Parent> multiChoice,
+                              Pair<NameSelectCtrl, Parent> nameSelect) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
         this.singleplayer = new Scene(singleplayer.getValue());
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
-
+        this.nameSelect = new Scene(nameSelect.getValue(),Color.web("#011826"));
+        this.nameSelectCtrl = nameSelect.getKey();
         showSplash();
         primaryStage.show();
     }
@@ -109,8 +111,7 @@ public class MainCtrl {
         primaryStage.setScene(openQ);
     }
 
-    public void showNameSelect(Pair<NameSelectCtrl, Parent> nameSelectPair) {
-        this.nameSelect = new Scene(nameSelectPair.getValue(), Color.web("#011826"));
+    public void showNameSelect() {
         primaryStage.setTitle("Name Screen");
         primaryStage.setScene(nameSelect);
     }
