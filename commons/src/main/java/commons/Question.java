@@ -20,7 +20,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(String description, List<String> answers, long id) {
+    public Question(String description, List<String> answers) {
         this.description = description;
         this.answers = answers;
         this.id = id;
