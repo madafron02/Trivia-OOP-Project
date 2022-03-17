@@ -30,8 +30,8 @@ public class SplashCtrl {
         mainCtrl.showSingle();
     }
 
-    public void goToMulti() {
-        mainCtrl.showSplash();
+    public void goToMultiPlayer() {
+        mainCtrl.showSingle();
     }
 
     public void goToLeader() {

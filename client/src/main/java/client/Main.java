@@ -43,9 +43,13 @@ public class Main extends Application {
         //var add = FXML.load(AddQuoteCtrl.class, "client", "scenes", "AddQuote.fxml");
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
-        var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
         splash.getValue().getStylesheets().add("Images/splashBG.css");
+
+        var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
+        var multiChoice =
+                FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
+
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single);
+        mainCtrl.initializeNew(primaryStage, splash, single, multiChoice);
     }
 }
