@@ -16,4 +16,6 @@ public class HelpCtrl {
     public HelpCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
     }
+
+    public void goBackFromHelp() {}
 }

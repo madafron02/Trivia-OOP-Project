@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
 import javax.inject.Inject;
-import java.awt.*;
+import javafx.scene.control.Button;
 
 public class AllTimeLeaderboardCtrl {
     private final ServerUtils server;
@@ -22,5 +22,9 @@ public class AllTimeLeaderboardCtrl {
     private Button backFromLeaderboard;
     @FXML
     private TableView<Player> tableView;
+
+    public void goBack() {
+        mainCtrl.showSplash();
+    }
 
 }
