@@ -11,9 +11,9 @@
       <Rectangle fx:id="questionContainer" arcHeight="5.0" arcWidth="5.0" fill="#8fd1d9" height="300.0" layoutX="100.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="340.0" />
       <Rectangle fx:id="chatContainer" arcHeight="5.0" arcWidth="5.0" fill="#8fd1d9" height="235.0" layoutX="460.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
       <Rectangle fx:id="questionTextContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="220.0" layoutX="115.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-      <Rectangle fx:id="answerA" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="115.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-      <Rectangle fx:id="answerC" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="335.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
-      <Rectangle fx:id="answerB" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="225.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="115.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="335.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="225.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
       <TextArea fx:id="question" blendMode="MULTIPLY" layoutX="115.0" layoutY="95.0" prefHeight="220.0" prefWidth="310.0" />
       <TextArea fx:id="answerA" blendMode="MULTIPLY" layoutX="115.0" layoutY="320.0" prefHeight="50.0" prefWidth="90.0" />
       <TextArea fx:id="answerC" blendMode="MULTIPLY" layoutX="335.0" layoutY="319.0" prefHeight="50.0" prefWidth="90.0" />
