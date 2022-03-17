@@ -54,6 +54,9 @@ public class MainCtrl {
     private AllTimeLeaderboardCtrl leaderboardCtrl;
     private Scene leaderboard;
 
+    private WinnersCtrl winnersCtrl;
+    private Scene winners;
+
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                               Pair<SingleCtrl, Parent> singleplayer,
                               Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
@@ -61,7 +64,8 @@ public class MainCtrl {
                               Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair,
                               Pair<AllTimeLeaderboardCtrl, Parent> leaderboardPair,
                               Pair<CorrectCtrl, Parent> correctCtrlParentPair,
-                              Pair<WrongCtrl, Parent> wrongCtrlParentPair) {
+                              Pair<WrongCtrl, Parent> wrongCtrlParentPair,
+                              Pair<WinnersCtrl, Parent> winnersPair) {
 
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
@@ -79,6 +83,8 @@ public class MainCtrl {
         this.igLeaderboardCtrl = igLeaderboardPair.getKey();
         this.leaderboard = new Scene(leaderboardPair.getValue());
         this.leaderboardCtrl = leaderboardPair.getKey();
+        this.winnersCtrl = winnersPair.getKey();
+        this.winners = new Scene(winnersPair.getValue());
 
         showSplash();
         primaryStage.show();
@@ -122,6 +128,11 @@ public class MainCtrl {
     public void showLeadearboard() {
         primaryStage.setTitle("All-time leaderboard");
         primaryStage.setScene(leaderboard);
+    }
+
+    public void showWinners() {
+        primaryStage.setTitle("Winners");
+        primaryStage.setScene(winners);
     }
 
     /*
