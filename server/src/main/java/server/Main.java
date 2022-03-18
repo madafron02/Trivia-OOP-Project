@@ -19,11 +19,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import java.io.FileNotFoundException;
+
 @SpringBootApplication
 @EntityScan(basePackages = { "commons", "server" })
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         SpringApplication.run(Main.class, args);
+        /*
+        String fileName = "C:\\Users\\razer\\Desktop\\OOPPP\\" +
+                "repository-template\\activities\\activities.json";
+        File file = new File(fileName);
+        ActivityParse activityParse = new ActivityParse();
+        String s = activityParse.fileReader(file).get(1000).toString();
+        System.out.println(s);
+         */
     }
 }
