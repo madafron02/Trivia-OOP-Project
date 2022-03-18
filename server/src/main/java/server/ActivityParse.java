@@ -1,73 +1,51 @@
-package commons;
+package server;
 
-public class Activities {
+import commons.Activities;
 
-    private String id;
-    private String imgPath;
-    private String title;
-    private Long consumption;
-    private String source;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    public Activities(String id, String imgPath, String title, Long consumption, String source) {
-        this.id = id;
-        this.imgPath = imgPath;
-        this.title = title;
-        this.consumption = consumption;
-        this.source = source;
+public class ActivityParse {
+
+    public ActivityParse()  {
     }
 
-
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getImgPath() {
-        return imgPath;
-    }
-
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getConsumption() {
-        return consumption;
-    }
-
-    public void setConsumption(Long consumption) {
-        this.consumption = consumption;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    @Override
-    public String toString() {
-        return
-                "id= " + id + "\n" +
-                "imgPath= " + imgPath + "\n" +
-                "title= " + title + "\n" +
-                "consumption= " + consumption + "\n" +
-                "source= " + source + "\n";
+    public ArrayList<Activities> fileReader() throws FileNotFoundException {
+        File file = new File("C:\\Users\\razer\\Desktop\\OOPPP\\" +
+                "repository-template\\activities\\activities.json");
+        ArrayList<Activities> activities = new ArrayList<>();
+        String s = "";
+        Scanner scanner = new Scanner(file);
+        while (scanner.hasNextLine()){
+            if(scanner.nextLine().equals("    {")){
+             String id = scanner.nextLine();
+             id = id.replace(",", "");
+             id = id.replaceAll("\"", "");
+             id = id.substring(12);
+             String imagePath = scanner.nextLine();
+             imagePath = imagePath.replace(",", "");
+             imagePath = imagePath.replaceAll("\"", "");
+             imagePath = imagePath.substring(20);
+             String title = scanner.nextLine();
+             title = title.replace(",", "");
+             title = title.replaceAll("\"", "");
+             title = title.substring(15);
+             String cons = scanner.nextLine();
+             cons = cons.replaceAll("\"", "");
+             cons = cons.replace("        consumption_in_wh: ", "");
+             cons = cons.replace(",", "");
+             Long consumption = Long.parseLong(cons);
+             String source = scanner.nextLine();
+             source = source.replaceAll("\"", "");
+             source = source.replace(",", "");
+             source = source.substring(16);
+             scanner.nextLine();
+             Activities activity = new Activities(id,imagePath,title,consumption,source);
+             activities.add(activity);
+            }
+        }
+        return activities;
     }
 }
-
