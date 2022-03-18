@@ -29,11 +29,6 @@ public class ActivityController {
         return ResponseEntity.ok(repo.findById(id).get());
     }
 
-    @GetMapping("/description/{id}")
-    public String getDescription(@PathVariable long id) {
-        return repo.findById(id).get().getTitle();
-    }
-
 
     @PostMapping("/post")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
