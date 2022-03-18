@@ -30,12 +30,12 @@ public class NameSelectCtrl {
 
     public void checkName(){
         if(checked){
-            nameCheck.setText("your name is already been checked");
+            nameCheck.setText("Your name has already been checked");
             return;
         }
         String name = nameInput.getText();
         if(name.isEmpty()){
-            nameCheck.setText("please enter a valid name");
+            nameCheck.setText("Please enter a valid name");
             return;
         }
         try {
@@ -47,12 +47,12 @@ public class NameSelectCtrl {
             alert.showAndWait();
             return;
         }
-        nameCheck.setText("your name is saved successfully");
+        nameCheck.setText("Your name is saved successfully!");
         checked = true;
     }
     public void start(){
         if(!checked){
-            nameCheck.setText("please check your name before you start");
+            nameCheck.setText("Please check your name before you start");
             return;
         }
         /*
