@@ -1,9 +1,9 @@
 package client.scenes;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 public class NameSelectCtrl {
     @FXML
-    private TextField nameInput;
+    private TextArea nameInput;
 }

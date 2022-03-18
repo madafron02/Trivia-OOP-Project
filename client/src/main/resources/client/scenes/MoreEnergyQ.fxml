@@ -12,9 +12,9 @@
         <Rectangle fx:id="questionContainer" arcHeight="5.0" arcWidth="5.0" fill="#8fd1d9" height="300.0" layoutX="100.0" layoutY="80.0" stroke="BLACK" strokeType="INSIDE" width="340.0" />
         <Rectangle fx:id="chatContainer" arcHeight="5.0" arcWidth="5.0" fill="#8fd1d9" height="235.0" layoutX="460.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
         <Rectangle fx:id="questionTextContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="60.0" layoutX="130.0" layoutY="201.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
-        <Rectangle fx:id="answerA" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-        <Rectangle fx:id="answerC" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-        <Rectangle fx:id="answerB" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+        <Rectangle fx:id="answerAContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+        <Rectangle fx:id="answerCContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+        <Rectangle fx:id="answerBContainer" arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="75.0" layoutX="305.0" layoutY="193.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
       <TextArea fx:id="answerA" blendMode="MULTIPLY" layoutX="305.0" layoutY="99.0" prefHeight="75.0" prefWidth="110.0" />
       <TextArea fx:id="answerC" blendMode="MULTIPLY" layoutX="305.0" layoutY="290.0" prefHeight="75.0" prefWidth="110.0" />
       <TextArea fx:id="answerB" blendMode="MULTIPLY" layoutX="305.0" layoutY="192.0" prefHeight="75.0" prefWidth="110.0" />
