@@ -17,6 +17,9 @@ public class Activity {
     private double consumption;
     private String source;
 
+    public Activity() {
+    }
+
     public Activity(String title, double consumption, String source) {
         this.title = title;
         this.consumption = consumption;
