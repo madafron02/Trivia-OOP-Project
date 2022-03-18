@@ -74,6 +74,7 @@ public class QuestionAnswerSelector {
                     answerB = activities.getDeyum()
                             .get(random.nextInt(activities.getLow().size()));
                 }while(answerA == answerB);
+                break;
             }
             default:{
                 throw new IndexOutOfBoundsException();
