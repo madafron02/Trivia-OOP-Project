@@ -72,7 +72,7 @@ public class MainCtrl {
     private Scene winners;
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                              Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<NameSelectCtrl, Parent> nameSelectCtrlParentPair,
                               Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
                               Pair<HelpCtrl, Parent> helpCtrlParentPair,
                               Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair,
@@ -84,7 +84,6 @@ public class MainCtrl {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
-        this.singleplayer = new Scene(singleplayer.getValue());
         this.lobby = new Scene(lobbyCtrlParentPair.getValue());
         this.lobbyCtrl = lobbyCtrlParentPair.getKey();
         this.correctCtrl = correctCtrlParentPair.getKey();
@@ -100,6 +99,8 @@ public class MainCtrl {
         this.winnersCtrl = winnersPair.getKey();
         this.winners = new Scene(winnersPair.getValue());
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
+        this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
+        this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
 
         showSplash();
         primaryStage.show();
@@ -112,10 +113,10 @@ public class MainCtrl {
         primaryStage.setMinWidth(1440);
     }
 
-    public void showSingle() {
-        primaryStage.setTitle("Singleplayer Mode");
-        primaryStage.setScene(singleplayer);
-    }
+//    public void showSingle() {
+//        primaryStage.setTitle("Singleplayer Mode");
+//        primaryStage.setScene(singleplayer);
+//    }
 
     public void showMultiChoiceQ() {
         int i = 0;  //temp variable for question count
@@ -135,8 +136,7 @@ public class MainCtrl {
         primaryStage.setScene(openQ);
     }
 
-    public void showNameSelect(Pair<NameSelectCtrl, Parent> nameSelectPair) {
-        this.nameSelect = new Scene(nameSelectPair.getValue(), Color.web("#011826"));
+    public void showNameSelect() {
         primaryStage.setTitle("Name Screen");
         primaryStage.setScene(nameSelect);
     }

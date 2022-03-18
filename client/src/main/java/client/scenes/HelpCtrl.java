@@ -10,12 +10,14 @@ public class HelpCtrl {
     private final MainCtrl mainCtrl;
 
     @FXML
-    private Button startGame;
+    private Button goBack;
 
     @Inject
-    public HelpCtrl(ServerUtils server, MainCtrl mainCtrl) {
+    public HelpCtrl(MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
     }
 
-    public void goBackFromHelp() {}
+    public void goBackFromHelp() {
+        mainCtrl.showNameSelect();
+    }
 }

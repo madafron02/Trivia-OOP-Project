@@ -54,4 +54,9 @@ public class PlayerController {
         return players.subList(0,9);
     }
 
+//    @GetMapping("/last")
+//    public Player last(){
+//        return repo.findAll().get(repo.findAll().size() - 1);
+//    }
+
 }
