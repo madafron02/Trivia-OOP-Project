@@ -20,6 +20,9 @@ public class Round {
     @OneToMany
     private List<Player> players;
 
+    public Round() {
+    }
+
     public Round(Question question, List<Player> players) {
         //time in seconds, can be changed if it is decided to use number other than 10
         this.timer = 10;

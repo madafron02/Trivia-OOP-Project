@@ -17,7 +17,10 @@ public class Question {
     @ElementCollection(targetClass=String.class)
     private List<String> answers;
 
-    public Question(String description, List<String> answers, long id) {
+    public Question() {
+    }
+
+    public Question(String description, List<String> answers) {
         this.description = description;
         this.answers = answers;
         this.id = id;

@@ -17,7 +17,10 @@ public class Player implements Serializable {
 
     private String name;
     private int points;
-    public Player(){}
+
+    public Player() {
+    }
+
     public Player(String name) {
         this.name = name;
         this.points = 0;

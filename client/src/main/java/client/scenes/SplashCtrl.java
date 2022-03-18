@@ -37,6 +37,6 @@ public class SplashCtrl {
     public void goToNameSelect(){mainCtrl.showNameSelect();}
 
     public void goToLeader() {
-        mainCtrl.showSplash();
+        mainCtrl.showLeadearboard();
     }
 }

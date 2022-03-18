@@ -1,11 +1,12 @@
 package client.scenes;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
+
 
 public class OpenQCtrl {
     @FXML
-    private TextField question;
+    private TextArea questions;
     @FXML
-    private TextField answer;
+    private TextArea answer;
 }
