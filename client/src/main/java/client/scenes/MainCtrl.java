@@ -80,7 +80,7 @@ public class MainCtrl {
                               Pair<CorrectCtrl, Parent> correctCtrlParentPair,
                               Pair<WrongCtrl, Parent> wrongCtrlParentPair,
                               Pair<WinnersCtrl, Parent> winnersPair,
-                              Pair<MultiChoiceQCtrl, Parent> multiChoice) {
+                              Pair<MultiChoiceQCtrl, Parent> multiChoice,
                               Pair<NameSelectCtrl, Parent> nameSelect) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
