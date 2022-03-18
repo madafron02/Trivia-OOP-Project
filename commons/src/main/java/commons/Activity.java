@@ -17,6 +17,8 @@ public class Activity {
     private double consumption;
     private String source;
 
+    private String powerLevel; //between 1-3 based on consumption
+
     public Activity() {
     }
 
@@ -24,6 +26,13 @@ public class Activity {
         this.title = title;
         this.consumption = consumption;
         this.source = source;
+    }
+
+    public void setPowerLevel(){
+        if(consumption<1000) powerLevel = "low";
+        else if(consumption<10000) powerLevel = "mid";
+        else if(consumption<=40000) powerLevel = "high";
+        else powerLevel = "deyum";
     }
 
     public long getId() {
@@ -41,6 +50,11 @@ public class Activity {
     public String getSource() {
         return source;
     }
+
+    public String getPowerLevel() {
+        return powerLevel;
+    }
+
 
     @Override
     public boolean equals(Object o) {
