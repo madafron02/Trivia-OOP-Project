@@ -43,13 +43,22 @@ public class Main extends Application {
         //var add = FXML.load(AddQuoteCtrl.class, "client", "scenes", "AddQuote.fxml");
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
-        splash.getValue().getStylesheets().add("Images/splashBG.css");
-
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
+        var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
+        var correct = FXML.load(CorrectCtrl.class, "client", "scenes", "Correct.fxml");
+        var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
+        var wrong = FXML.load(WrongCtrl.class, "client", "scenes", "Wrong.fxml");
+        var igLeaderboard = FXML.load(IngameLeaderboardCtrl.class,
+                "client", "scenes", "IngameLeaderboard.fxml");
+        var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
+                "client", "scenes", "AllTimeLeaderboard.fxml");
+        var winners = FXML.load(WinnersCtrl.class, "client", "scenes", "Winners.fxml");
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single, multiChoice);
+        mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
+                help, igLeaderboard, leaderboard, correct, wrong, winners,
+                multiChoice);
     }
 }
