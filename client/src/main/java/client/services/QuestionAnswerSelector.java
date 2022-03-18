@@ -47,6 +47,7 @@ public class QuestionAnswerSelector {
                     answerB = activities.getLow()
                             .get(random.nextInt(activities.getLow().size()));
                 }while(answerA == answerB);
+                break;
             }
             case 2: {
                 answerA = activities.getMid()
@@ -73,6 +74,9 @@ public class QuestionAnswerSelector {
                     answerB = activities.getDeyum()
                             .get(random.nextInt(activities.getLow().size()));
                 }while(answerA == answerB);
+            }
+            default:{
+                throw new IndexOutOfBoundsException();
             }
         }
     }
