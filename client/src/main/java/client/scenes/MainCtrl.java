@@ -113,11 +113,6 @@ public class MainCtrl {
         primaryStage.setMinWidth(1440);
     }
 
-//    public void showSingle() {
-//        primaryStage.setTitle("Singleplayer Mode");
-//        primaryStage.setScene(singleplayer);
-//    }
-
     public void showMultiChoiceQ() {
         int i = 0;  //temp variable for question count
         primaryStage.setTitle("Question " + i);

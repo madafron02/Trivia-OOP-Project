@@ -1,6 +1,5 @@
 package client.scenes;
 
-import client.utils.ServerUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 

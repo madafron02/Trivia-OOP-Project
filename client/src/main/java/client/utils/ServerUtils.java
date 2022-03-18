@@ -69,14 +69,6 @@ public class ServerUtils {
                 .post(Entity.entity(player, APPLICATION_JSON), Player.class);
     }
 
-//    public Player getLastPlayer() {
-//        return ClientBuilder.newClient(new ClientConfig()) //
-//                .target(SERVER).path("api/player/last") //
-//                .request(APPLICATION_JSON) //
-//                .accept(APPLICATION_JSON) //
-//                .get(new GenericType<Player>() {});
-//    }
-
     public List<Player> getPlayers() {
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/player/") //
