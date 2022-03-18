@@ -74,9 +74,6 @@ public class QuestionAnswerSelector {
                             .get(random.nextInt(activities.getLow().size()));
                 }while(answerA == answerB);
             }
-            default: {
-                throw new IndexOutOfBoundsException();
-            }
         }
     }
 }

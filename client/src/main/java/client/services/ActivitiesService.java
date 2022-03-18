@@ -56,10 +56,18 @@ public class ActivitiesService {
                 .accept(APPLICATION_JSON)
                 .get(new GenericType<List<Activity>>() {});
         activities.forEach(x -> x.setPowerLevel());
-        low = activities.stream().filter(x -> x.getPowerLevel().equals("low")).collect(Collectors.toList());
-        mid = activities.stream().filter(x -> x.getPowerLevel().equals("mid")).collect(Collectors.toList());
-        high = activities.stream().filter(x -> x.getPowerLevel().equals("high")).collect(Collectors.toList());
-        deyum = activities.stream().filter(x -> x.getPowerLevel().equals("deyum")).collect(Collectors.toList());
+        low = activities.stream()
+                .filter(x -> x.getPowerLevel()
+                        .equals("low")).collect(Collectors.toList());
+        mid = activities.stream()
+                .filter(x -> x.getPowerLevel()
+                        .equals("mid")).collect(Collectors.toList());
+        high = activities.stream()
+                .filter(x -> x.getPowerLevel()
+                        .equals("high")).collect(Collectors.toList());
+        deyum = activities.stream()
+                .filter(x -> x.getPowerLevel()
+                        .equals("deyum")).collect(Collectors.toList());
     }
 
     /**
