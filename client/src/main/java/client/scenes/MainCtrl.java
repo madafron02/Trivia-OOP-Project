@@ -131,6 +131,10 @@ public class MainCtrl {
         primaryStage.setScene(lobby);
     }
 
+    public LobbyCtrl getLobby() {
+        return lobbyCtrl;
+    }
+
     public void showCorrect() {
         primaryStage.setTitle("Correct Answer!");
         primaryStage.setScene(correct);

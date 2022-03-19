@@ -10,7 +10,7 @@ import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LobbyCtrl implements Initializable {
+public class LobbyCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
 
@@ -26,18 +26,8 @@ public class LobbyCtrl implements Initializable {
         this.server = server;
     }
 
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        int index = server.getPlayers().size() - 1;
+    public void addToList() {
         playerList.getItems().add(server.getPlayers()
-                .get(index).getName());
+                .get(server.getPlayers().size() - 1).getName());
     }
 }

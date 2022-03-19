@@ -5,6 +5,7 @@ import com.google.inject.Inject;
 import commons.Player;
 import jakarta.ws.rs.WebApplicationException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 
@@ -47,9 +48,6 @@ public class NameSelectCtrl {
             return;
         }
         nameCheck.setText("Your name is saved successfully!");
-
-        addPlayer();
-        addPlayer();
         checked = true;
     }
 
@@ -63,6 +61,18 @@ public class NameSelectCtrl {
             nameCheck.setText("Please check your name before you start");
             return;
         }
+        try {
+            addPlayer();
+        } catch (WebApplicationException e) {
+            var alert = new Alert(Alert.AlertType.ERROR);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
+        LobbyCtrl lobbyCtrl = mainCtrl.getLobby();
+        lobbyCtrl.addToList();
+
         mainCtrl.showLobby();
     }
 
