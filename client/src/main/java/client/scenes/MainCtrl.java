@@ -88,12 +88,17 @@ public class MainCtrl {
         this.leaderboardCtrl = leaderboardPair.getKey();
         this.winnersCtrl = winnersPair.getKey();
         this.winners = new Scene(winnersPair.getValue());
+        this.multiCtrl = multiChoice.getKey();
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
 
         showSplash();
         primaryStage.show();
+    }
+
+    public MultiChoiceQCtrl getMultiChoiceQCtrl() {
+        return multiCtrl;
     }
 
     public void showSplash() {
@@ -104,8 +109,7 @@ public class MainCtrl {
     }
 
     public void showMultiChoiceQ() {
-        int i = 0;  //temp variable for question count
-        primaryStage.setTitle("Question " + i);
+        primaryStage.setTitle("Questions");
         primaryStage.setScene(multiChoice);
     }
 

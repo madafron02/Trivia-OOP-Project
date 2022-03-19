@@ -30,4 +30,10 @@ public class LobbyCtrl {
         playerList.getItems().add(server.getPlayers()
                 .get(server.getPlayers().size() - 1).getName());
     }
+
+    public void startRounds() throws InterruptedException {
+        MultiChoiceQCtrl multiChoiceQCtrl = mainCtrl.getMultiChoiceQCtrl();
+        multiChoiceQCtrl.setFirst();
+        mainCtrl.showMultiChoiceQ();
+    }
 }
