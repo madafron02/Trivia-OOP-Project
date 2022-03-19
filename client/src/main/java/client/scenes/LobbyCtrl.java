@@ -2,13 +2,10 @@ package client.scenes;
 
 import client.utils.ServerUtils;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
 import javax.inject.Inject;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class LobbyCtrl {
     private final ServerUtils server;
