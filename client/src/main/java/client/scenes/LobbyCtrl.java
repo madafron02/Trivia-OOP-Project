@@ -36,7 +36,8 @@ public class LobbyCtrl implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        int index = server.getPlayers().size() - 1;
         playerList.getItems().add(server.getPlayers()
-                .get(server.getPlayers().size() - 1).getName());
+                .get(index).getName());
     }
 }

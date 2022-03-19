@@ -46,29 +46,23 @@ public class NameSelectCtrl {
             nameCheck.setText("Please enter a valid name");
             return;
         }
-        try {
-            server.addPlayer(new Player(name));
-        } catch (WebApplicationException e) {
-            var alert = new Alert(Alert.AlertType.ERROR);
-            alert.initModality(Modality.APPLICATION_MODAL);
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-            return;
-        }
         nameCheck.setText("Your name is saved successfully!");
+
+        addPlayer();
+        addPlayer();
         checked = true;
     }
 
-    public void start(){
+    public void addPlayer() {
+        Player player = new Player(nameInput.getText());
+        server.addPlayer(player);
+    }
+
+    public void goToLobby(){
         if(!checked){
             nameCheck.setText("Please check your name before you start");
             return;
         }
-        goToLobby();
-        checked = false;
-    }
-
-    public void goToLobby() {
         mainCtrl.showLobby();
     }
 
