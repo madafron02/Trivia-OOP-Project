@@ -33,7 +33,9 @@ public class LobbyCtrl {
 
     public void startRounds() throws InterruptedException {
         MultiChoiceQCtrl multiChoiceQCtrl = mainCtrl.getMultiChoiceQCtrl();
-        multiChoiceQCtrl.setFirst();
+
         mainCtrl.showMultiChoiceQ();
+        multiChoiceQCtrl.setFirst();
+        //multiChoiceQCtrl.goToNext();
     }
 }

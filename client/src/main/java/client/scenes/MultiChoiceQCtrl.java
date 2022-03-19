@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
 import javax.inject.Inject;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 public class MultiChoiceQCtrl {
     private final ServerUtils server;
@@ -29,22 +31,21 @@ public class MultiChoiceQCtrl {
     private TextArea questionText;
 
     @Inject
-    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl) throws InterruptedException {
+    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
         this.server = server;
     }
 
-    public void setFirst() throws InterruptedException {
+    public void setFirst() {
         questionText.setText("Which takes more energy?" + " first");
         answerA.setText("First activity");
         answerB.setText("Second activity");
         answerC.setText("Third activity");
 
-        Thread.sleep(3000);
         currentRound++;
     }
 
-    public void goToNext() throws InterruptedException {
+    public void goToNext() {
         if(currentRound > totalRounds) {
             mainCtrl.showWinners();
         } else {
@@ -62,7 +63,6 @@ public class MultiChoiceQCtrl {
             //display correct/wrong answer screen after each round
             //add good timer
 
-            Thread.sleep(3000);
             currentRound++;
             goToNext();
         }
