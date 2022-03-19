@@ -85,7 +85,7 @@
             </Pane>
          </children>
       </Pane>
-      <Button fx:id="goBack" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBackFromHelp" prefHeight="37.0" prefWidth="103.0" text="Got it!">
+      <Button fx:id="goBackFromHelp" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBackFromHelp" prefHeight="37.0" prefWidth="103.0" text="Got it!">
          <font>
             <Font size="15.0" />
          </font>

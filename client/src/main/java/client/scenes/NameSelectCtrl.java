@@ -3,52 +3,76 @@ package client.scenes;
 import client.utils.ServerUtils;
 import com.google.inject.Inject;
 import commons.Player;
+import jakarta.ws.rs.WebApplicationException;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
 
 public class NameSelectCtrl {
 
-    private final MainCtrl mainCtrl;
     private final ServerUtils server;
-
-    @Inject
-    public NameSelectCtrl(MainCtrl mainCtrl, ServerUtils server) {
-        this.mainCtrl = mainCtrl;
-        this.server = server;
-    }
+    private final MainCtrl mainCtrl;
 
     @FXML
-    private TextArea nameInput;
+    private TextField nameInput;
+
+    @FXML
+    private Label nameCheck;
+
+    @FXML
+    private Button checkButton;
+    private static boolean checked = false;
 
     @FXML
     private Button toHelp;
 
     @FXML
-    private Button checkSave;
-
-    @FXML
     private Button toLobby;
 
-    public void goToLobby() {
-        if(checkSaveName()) {
-            addPlayer();
-            mainCtrl.showLobby();
+    @Inject
+    public NameSelectCtrl(ServerUtils server, MainCtrl mainCtrl) {
+        this.mainCtrl = mainCtrl;
+        this.server = server;
+
+    }
+
+    public void checkName(){
+        if(checked){
+            nameCheck.setText("Your name has already been checked");
+            return;
         }
+        String name = nameInput.getText();
+        if(name.isEmpty()){
+            nameCheck.setText("Please enter a valid name");
+            return;
+        }
+        try {
+            server.addPlayer(new Player(name));
+        } catch (WebApplicationException e) {
+            var alert = new Alert(Alert.AlertType.ERROR);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            return;
+        }
+        nameCheck.setText("Your name is saved successfully!");
+        checked = true;
+    }
+
+    public void start(){
+        if(!checked){
+            nameCheck.setText("Please check your name before you start");
+            return;
+        }
+        goToLobby();
+        checked = false;
+    }
+
+    public void goToLobby() {
+        mainCtrl.showLobby();
     }
 
     public void goToHelp() {
         mainCtrl.showHelp();
-    }
-
-    public void addPlayer() {
-        Player player = new Player(nameInput.getText());
-        server.addPlayer(player);
-    }
-
-    public Boolean checkSaveName() {
-        // change when we do multiplayer:
-        // check if someone already took this name
-        return true;
     }
 }

@@ -21,23 +21,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-
-
 public class MainCtrl {
 
     private Stage primaryStage;
 
-    //private QuoteOverviewCtrl overviewCtrl;
-    //private Scene overview;
-
-    //private AddQuoteCtrl addCtrl;
-    //private Scene add;
-
     private SplashCtrl splashCtrl;
     private Scene opening;
-
-    private SingleCtrl singleCtrl;
-    private Scene singleplayer;
 
     private MultiChoiceQCtrl multiCtrl;
     private Scene multiChoice;
@@ -50,6 +39,7 @@ public class MainCtrl {
 
     private NameSelectCtrl nameSelectCtrl;
     private Scene nameSelect;
+
     private LobbyCtrl lobbyCtrl;
     private Scene lobby;
 
@@ -107,7 +97,7 @@ public class MainCtrl {
     }
 
     public void showSplash() {
-        primaryStage.setTitle("Menu");
+        primaryStage.setTitle("Quizzzz!");
         primaryStage.setScene(opening);
         primaryStage.setMinHeight(900);
         primaryStage.setMinWidth(1440);
@@ -170,18 +160,4 @@ public class MainCtrl {
         primaryStage.setTitle("Winners");
         primaryStage.setScene(winners);
     }
-
-    /*
-    public void showOverview() {
-        primaryStage.setTitle("Quotes: Overview");
-        primaryStage.setScene(overview);
-        overviewCtrl.refresh();
-    }
-
-    public void showAdd() {
-        primaryStage.setTitle("Quotes: Adding Quote");
-        primaryStage.setScene(add);
-        add.setOnKeyPressed(e -> addCtrl.keyPressed(e));
-    }
-    */
 }
