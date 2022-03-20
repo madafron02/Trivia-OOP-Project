@@ -15,15 +15,20 @@ import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 public class ActivityUtil {
 
     private static final String SERVER = "http://localhost:8080/";
-    private List<Activity> activities;
+
+    /**
+     * the List of activities in client might be useful for single player,
+     * but for now we can just send requests to server
+     */
+    //private List<Activity> activities;
 
     /** TODO make it so you can choose how many answers you want
      *  retrieves answers from the server
      * @return a List of answers
      */
-    public List<Activity> getAnswers(){
+    public List<Activity> getAnswers(Long gameId){
         return ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("/api/activity/answers") //
+                .target(SERVER).path("/api/activity/answers/" + gameId) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(new GenericType<List<Activity>>() {});
@@ -36,7 +41,7 @@ public class ActivityUtil {
      */
     public Activity addActivity(Activity activity){
         activity.setPowerLevel();
-        activities.add(activity);
+        //activities.add(activity);
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("/api/activity/post") //
                 .request(APPLICATION_JSON) //
@@ -44,9 +49,9 @@ public class ActivityUtil {
                 .post(Entity.entity(activity, APPLICATION_JSON), Activity.class);
     }
 
-    public Optional<Activity> getByID(long id){
+    /*public Optional<Activity> getByID(long id){
         return activities.stream().filter(x -> x.getId() == id).findFirst();
-    }
+    }*/
 
     /**
      *  retrieves an activity from the repository, not the List
@@ -67,7 +72,8 @@ public class ActivityUtil {
      * @return the deleted Activity
      */
     public Activity deleteByID(long id){
-        activities = activities.stream().filter(x -> x.getId() != id).collect(Collectors.toList());
+        //activities = activities.stream().filter(x -> x.getId() != id)
+        //        .collect(Collectors.toList());
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("/api/activity/delete/" + id) //
                 .request(APPLICATION_JSON) //

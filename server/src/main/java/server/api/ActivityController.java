@@ -17,9 +17,9 @@ public class ActivityController {
     private final ActivityRepository repo;
     private final QuestionAnswerSelector answers;
 
-    public ActivityController(ActivityRepository repo) {
+    public ActivityController(ActivityRepository repo, QuestionAnswerSelector qaSelect) {
         this.repo = repo;
-        this.answers = new QuestionAnswerSelector();
+        this.answers = qaSelect;
     }
 
     @GetMapping(path = {"", "/"})
@@ -32,9 +32,9 @@ public class ActivityController {
         return ResponseEntity.ok(repo.findById(id).get());
     }
 
-    @GetMapping("/answers")
-    public ResponseEntity<List<Activity>> getAnswers(){
-        return ResponseEntity.ok(answers.getAnswers());
+    @GetMapping("/answers/{gameId}")
+    public ResponseEntity<List<Activity>> getAnswers(@PathVariable Long gameId){
+        return ResponseEntity.ok(answers.getAnswers(gameId));
     }
 
     @PostMapping("/post")
