@@ -1,9 +1,6 @@
 package commons;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +9,9 @@ import java.util.Objects;
 public class Activity {
 
     @Id
-    @JoinColumn(name = "id", nullable = false)
-
-    private String id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+    private String activityName;
     private String imgPath;
     private String title;
     private Long consumption;
@@ -23,21 +20,11 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(String id, String imgPath, String title, Long consumption) {
-        this.id = id;
+    public Activity(String activityName, String imgPath, String title, Long consumption) {
+        this.activityName = activityName;
         this.imgPath = imgPath;
         this.title = title;
         this.consumption = consumption;
-    }
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getImgPath() {
@@ -64,7 +51,17 @@ public class Activity {
         this.consumption = consumption;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
 
     @Override
     public boolean equals(Object o) {

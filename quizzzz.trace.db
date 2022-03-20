@@ -267,3 +267,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:/Users/madal
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 61 more
+2022-03-20 19:14:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "SOURCE VARCHAR(255)": "'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiav6-G1qL2AhUpuaQKHX-_D1AQFnoECAYQAQ&u... (316)"; SQL statement:
+insert into activity (activity_name, consumption, img_path, source, title, id) values (?, ?, ?, ?, ?, ?) [22001-200]
