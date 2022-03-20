@@ -33,7 +33,6 @@ public class MultiChoiceQCtrl {
     private final double start = 10;
     private IntegerProperty currentTime = new SimpleIntegerProperty((int)start);
     private Timeline timeline;
-    //de pus si label
 
     @FXML
     private TextArea answerA;
