@@ -8,20 +8,16 @@ import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.util.Duration;
-import javassist.Loader;
 
 import javax.inject.Inject;
-import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 public class MultiChoiceQCtrl {
     private final ServerUtils server;
