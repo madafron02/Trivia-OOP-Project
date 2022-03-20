@@ -97,7 +97,7 @@ public class MainCtrl {
         primaryStage.show();
     }
 
-    public MultiChoiceQCtrl getMultiChoiceQCtrl() {
+    public MultiChoiceQCtrl getMultiCtrl() {
         return multiCtrl;
     }
 
@@ -108,8 +108,10 @@ public class MainCtrl {
         primaryStage.setMinWidth(1440);
     }
 
-    public void showMultiChoiceQ() {
-        primaryStage.setTitle("Questions");
+    public void showMultiChoiceQ(int qNumber) {
+        primaryStage.setTitle("Question " + qNumber);
+        multiCtrl.setQuestion();
+        multiCtrl.setTimer();
         primaryStage.setScene(multiChoice);
     }
 

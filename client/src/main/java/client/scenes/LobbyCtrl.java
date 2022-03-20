@@ -28,11 +28,9 @@ public class LobbyCtrl {
                 .get(server.getPlayers().size() - 1).getName());
     }
 
-    public void startRounds() throws InterruptedException {
-        MultiChoiceQCtrl multiChoiceQCtrl = mainCtrl.getMultiChoiceQCtrl();
-
-        mainCtrl.showMultiChoiceQ();
-        multiChoiceQCtrl.setFirst();
-        //multiChoiceQCtrl.goToNext();
+    public void startRounds() {
+       mainCtrl.showMultiChoiceQ(1);
+       MultiChoiceQCtrl multiChoiceQCtrl = mainCtrl.getMultiCtrl();
+       multiChoiceQCtrl.fillProgressBar();
     }
 }
