@@ -4,6 +4,7 @@ import commons.Activity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.ActivityRepository;
+import server.services.QuestionAnswerSelector;
 
 import java.util.List;
 
@@ -14,9 +15,11 @@ import java.util.List;
 public class ActivityController {
 
     private final ActivityRepository repo;
+    private final QuestionAnswerSelector answers;
 
     public ActivityController(ActivityRepository repo) {
         this.repo = repo;
+        this.answers = new QuestionAnswerSelector();
     }
 
     @GetMapping(path = {"", "/"})
@@ -29,6 +32,10 @@ public class ActivityController {
         return ResponseEntity.ok(repo.findById(id).get());
     }
 
+    @GetMapping("/answers")
+    public ResponseEntity<List<Activity>> getAnswers(){
+        return ResponseEntity.ok(answers.getAnswers());
+    }
 
     @PostMapping("/post")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
@@ -37,6 +44,7 @@ public class ActivityController {
         || newActivity.getSource() == null){
             return ResponseEntity.badRequest().build();
         }
+        newActivity.setPowerLevel();
         Activity saved = repo.save(newActivity);
         return ResponseEntity.ok(saved);
     }
