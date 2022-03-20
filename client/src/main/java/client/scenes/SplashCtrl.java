@@ -27,11 +27,11 @@ public class SplashCtrl {
     private ImageView imageView;
 
     public void goToSingle() {
-        mainCtrl.showSingle();
+        mainCtrl.showNameSelect();
     }
 
     public void goToMultiPlayer() {
-        mainCtrl.showSingle();
+        mainCtrl.showNameSelect();
     }
 
     public void goToNameSelect(){mainCtrl.showNameSelect();}

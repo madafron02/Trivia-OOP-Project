@@ -15,11 +15,19 @@ public class NameSelectCtrl {
 
     @FXML
     private TextField nameInput;
+
     @FXML
     private Label nameCheck;
+
     @FXML
     private Button checkButton;
     private static boolean checked = false;
+
+    @FXML
+    private Button toHelp;
+
+    @FXML
+    private Button toLobby;
 
     @Inject
     public NameSelectCtrl(ServerUtils server, MainCtrl mainCtrl) {
@@ -30,16 +38,30 @@ public class NameSelectCtrl {
 
     public void checkName(){
         if(checked){
-            nameCheck.setText("your name is already been checked");
+            nameCheck.setText("Your name has already been checked");
             return;
         }
         String name = nameInput.getText();
         if(name.isEmpty()){
-            nameCheck.setText("please enter a valid name");
+            nameCheck.setText("Please enter a valid name");
+            return;
+        }
+        nameCheck.setText("Your name is saved successfully!");
+        checked = true;
+    }
+
+    public void addPlayer() {
+        Player player = new Player(nameInput.getText());
+        server.addPlayer(player);
+    }
+
+    public void goToLobby(){
+        if(!checked){
+            nameCheck.setText("Please check your name before you start");
             return;
         }
         try {
-            server.addPlayer(new Player(name));
+            addPlayer();
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);
@@ -47,17 +69,13 @@ public class NameSelectCtrl {
             alert.showAndWait();
             return;
         }
-        nameCheck.setText("your name is saved successfully");
-        checked = true;
+        LobbyCtrl lobbyCtrl = mainCtrl.getLobby();
+        lobbyCtrl.addToList();
+
+        mainCtrl.showLobby();
     }
-    public void start(){
-        if(!checked){
-            nameCheck.setText("please check your name before you start");
-            return;
-        }
-        /*
-        further code should be added inorder to navigate to another page
-         */
-        checked = false;
+
+    public void goToHelp() {
+        mainCtrl.showHelp();
     }
 }
