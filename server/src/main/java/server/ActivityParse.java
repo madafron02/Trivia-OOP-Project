@@ -12,8 +12,7 @@ public class ActivityParse {
     }
 
     public ArrayList<Activity> getActivities() throws FileNotFoundException {
-        File file = new File("C:\\Users\\razer\\Desktop\\OOPPP\\" +
-                "repository-template\\activities\\activities.json");
+        File file = new File("C:\\Users\\Yang Renyi\\Desktop\\repository-template\\activities\\activities.json");
         ArrayList<Activity> activities = new ArrayList<>();
         String s = "";
         Scanner scanner = new Scanner(file);
