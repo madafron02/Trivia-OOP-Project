@@ -41,7 +41,6 @@ public class Main extends Application {
         //var overview = FXML.load(QuoteOverviewCtrl.class,
         // "client", "scenes", "QuoteOverview.fxml");
         //var add = FXML.load(AddQuoteCtrl.class, "client", "scenes", "AddQuote.fxml");
-
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
         var single = FXML.load(SingleCtrl.class, "client", "scenes", "Single.fxml");
         var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
@@ -57,8 +56,10 @@ public class Main extends Application {
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
 
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-        mainCtrl.initializeNew(primaryStage, splash, single, lobby, 
-                help, igLeaderboard, leaderboard, correct, wrong, winners,
-                multiChoice);
+        var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "nameSelect.fxml");
+        nameSelect.getValue().getStylesheets().add("Images/selectName.css");
+        mainCtrl.initializeNew(primaryStage, splash, single, lobby,
+        help, igLeaderboard, leaderboard, correct, wrong, winners,
+        multiChoice,nameSelect);
     }
 }
