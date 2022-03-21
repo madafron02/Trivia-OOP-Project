@@ -3,8 +3,6 @@ package server.api;
 import commons.Activity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import server.database.ActivityRepository;
-import server.services.QuestionAnswerSelector;
 
 import java.util.List;
 
