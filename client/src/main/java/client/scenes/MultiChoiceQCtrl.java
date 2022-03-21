@@ -114,7 +114,7 @@ public class MultiChoiceQCtrl {
     }
 
     public void setQuestion() {
-        if(currentRoundNumber > totalRounds) {
+        if(currentRoundNumber >= totalRounds) {
             mainCtrl.showWinners();
         } else {
             //question = qaSelector.getQuestion();
