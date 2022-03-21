@@ -29,8 +29,7 @@ public class LobbyCtrl {
     }
 
     public void startRounds() {
-       mainCtrl.showMultiChoiceQ(1);
-       MultiChoiceQCtrl multiChoiceQCtrl = mainCtrl.getMultiCtrl();
-       multiChoiceQCtrl.fillProgressBar();
+       mainCtrl.showMultiChoiceQ(server.getPlayers()
+               .get(server.getPlayers().size() - 1));
     }
 }

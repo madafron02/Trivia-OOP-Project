@@ -1,34 +1,37 @@
 package client.scenes;
 
+import client.services.QuestionAnswerSelector;
 import client.utils.ServerUtils;
+import commons.Player;
+import commons.Question;
 import commons.Round;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
-import javafx.util.Duration;
+
 
 import javax.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MultiChoiceQCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
+    private final QuestionAnswerSelector qaSelector;
 
-    private int currentRound = 1;
+    private int currentRoundNumber = 0;
     private int totalRounds = 20;
+    private Player player;
+    private Question question;
+    private Round round;
     private List<Round> roundList = new ArrayList<>();
-    private final double start = 10;
-    private IntegerProperty currentTime = new SimpleIntegerProperty((int)start);
-    private Timeline timeline;
+    private Timer timer = new Timer();
+    private final int start = 15;
+    private final double diff = 1.0 / 15.0;
 
     @FXML
     private TextArea answerA;
@@ -44,70 +47,85 @@ public class MultiChoiceQCtrl {
     private Label progressLabel;
 
     @Inject
-    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl) {
+    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl,
+                            QuestionAnswerSelector qaSelector) {
         this.mainCtrl = mainCtrl;
         this.server = server;
+        this.qaSelector = qaSelector;
     }
 
-    public void fillProgressBar() {
-        int counter = 0;
-
-        while(counter <= 10) {
-
-            progressBar.setProgress(counter);
-            try {
-                Thread.sleep(1000);
-            } catch(InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            counter += 1;
-        }
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
     }
 
+    public void setCurrentRoundNumber(int currentRound) {
+        this.currentRoundNumber = currentRound;
+    }
 
+    public Player getPlayer() {
+        return player;
+    }
 
-    public void setQuestion() {
-        questionText.setText("Which takes more energy?" + " first");
-        answerA.setText("First activity");
-        answerB.setText("Second activity");
-        answerC.setText("Third activity");
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
-        currentRound++;
+    public void setUpRound() {
+        progressLabel.setText("16");
+        progressBar.setProgress(1);
+        currentRoundNumber++;
+        timer = new Timer();
+        mainCtrl.getPrimaryStage().setTitle("Round " + currentRoundNumber);
+        questionText.setText(question.getDescription());
+        answerA.setText(question.getAnswers().get(0));
+        answerB.setText(question.getAnswers().get(1));
+        answerC.setText(question.getAnswers().get(2));
     }
 
     public void setTimer(){
-        progressBar.progressProperty().bind(Bindings.divide(currentTime, start));
-        progressLabel.textProperty().bind(currentTime.asString());
-        currentTime.set((int)start);
-        timeline = new Timeline();
-        timeline.getKeyFrames().add(
-                new KeyFrame(Duration.seconds(start + 1),
-                        new KeyValue(currentTime, 0)));
-        timeline.playFromStart();
+        TimerTask timerTask = new TimerTask() {
+            Boolean readyForNext = false;
+
+            @Override
+            public void run() {
+                javafx.application.Platform.runLater(() -> {
+                    if(progressBar.getProgress() <= 0.1) {
+                        if(readyForNext == true) {
+                            timer.cancel();
+                            setQuestion();
+                        } else {
+                            //mainCtrl.showCorrect();
+                            //we will have separate cases here
+                            //for correct/wrong
+                            readyForNext = true;
+                        }
+                    }
+                    progressLabel.setText(String.valueOf(Integer
+                            .parseInt(progressLabel.getText()) - 1));
+                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
+                });
+            }
+        };
+
+        timer.schedule(timerTask, 0, 1000);
     }
 
-    public void goToNext() {
-        if(currentRound > totalRounds) {
+    public void setQuestion() {
+        if(currentRoundNumber > totalRounds) {
             mainCtrl.showWinners();
         } else {
-            questionText.setText("Which takes more energy? " + currentRound);
-            answerA.setText("First activity");
-            answerB.setText("Second activity");
-            answerC.setText("Third activity");
+            //question = qaSelector.getQuestion();
+            //will generate new question with "random" answers
 
-            //answerA.setText(roundList.get(currentRound).getQuestion().getAnswers().get(0));
-            //answerB.setText(roundList.get(currentRound).getQuestion().getAnswers().get(1));
-            //answerC.setText(roundList.get(currentRound).getQuestion().getAnswers().get(2));
+            List<String> activities = new ArrayList<>();
+            activities.add("this");
+            activities.add("that");
+            activities.add("the other");
+            question = new Question("Which takes more energy?",
+                    activities);
 
-            //answer text areas must be changed to buttons
-            //set of comments above will be right after generating the question + answer list
-            //display correct/wrong answer screen after each round
-            //add good timer
-
-            currentRound++;
-            goToNext();
+            setUpRound();
+            setTimer();
         }
     }
-
 }
