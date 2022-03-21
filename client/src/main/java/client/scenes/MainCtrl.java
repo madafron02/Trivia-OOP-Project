@@ -106,6 +106,10 @@ public class MainCtrl {
         return primaryStage;
     }
 
+    public void primarySetSceneOnly() {
+        primaryStage.setScene(multiChoice);
+    }
+
     public void showSplash() {
         primaryStage.setTitle("Quizzzz!");
         primaryStage.setScene(opening);

@@ -92,9 +92,12 @@ public class MultiChoiceQCtrl {
                     if(progressBar.getProgress() <= 0.1) {
                         if(readyForNext == true) {
                             timer.cancel();
+                            mainCtrl.primarySetSceneOnly();
                             setQuestion();
                         } else {
-                            //mainCtrl.showCorrect();
+                            mainCtrl.showCorrect();
+                            progressLabel.setText("5");
+                            progressBar.setProgress(0.3);
                             //we will have separate cases here
                             //for correct/wrong
                             readyForNext = true;
