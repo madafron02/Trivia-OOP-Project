@@ -21,23 +21,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.awt.*;
-
 public class MainCtrl {
 
     private Stage primaryStage;
 
-    //private QuoteOverviewCtrl overviewCtrl;
-    //private Scene overview;
-
-    //private AddQuoteCtrl addCtrl;
-    //private Scene add;
-
     private SplashCtrl splashCtrl;
     private Scene opening;
-
-    private SingleCtrl singleCtrl;
-    private Scene singleplayer;
 
     private MultiChoiceQCtrl multiCtrl;
     private Scene multiChoice;
@@ -51,32 +40,65 @@ public class MainCtrl {
     private NameSelectCtrl nameSelectCtrl;
     private Scene nameSelect;
 
-    /*
-    public void initialize(Stage primaryStage, Pair<QuoteOverviewCtrl, Parent> overview,
-            Pair<AddQuoteCtrl, Parent> add) {
-        this.primaryStage = primaryStage;
-        this.overviewCtrl = overview.getKey();
-        this.overview = new Scene(overview.getValue());
+    private LobbyCtrl lobbyCtrl;
+    private Scene lobby;
 
-        this.addCtrl = add.getKey();
-        this.add = new Scene(add.getValue());
+    private CorrectCtrl correctCtrl;
+    private Scene correct;
 
-        showOverview();
-        primaryStage.show();
-    }
-    */
+    private HelpCtrl helpCtrl;
+    private Scene help;
+
+    private WrongCtrl wrongCtrl;
+    private Scene wrong;
+
+    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private Scene igLeaderboard;
+
+    private AllTimeLeaderboardCtrl leaderboardCtrl;
+    private Scene leaderboard;
+
+    private WinnersCtrl winnersCtrl;
+    private Scene winners;
 
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
-                               Pair<SingleCtrl, Parent> singleplayer,
+                              Pair<NameSelectCtrl, Parent> nameSelectCtrlParentPair,
+                              Pair<LobbyCtrl, Parent> lobbyCtrlParentPair,
+                              Pair<HelpCtrl, Parent> helpCtrlParentPair,
+                              Pair<IngameLeaderboardCtrl, Parent> igLeaderboardPair,
+                              Pair<AllTimeLeaderboardCtrl, Parent> leaderboardPair,
+                              Pair<CorrectCtrl, Parent> correctCtrlParentPair,
+                              Pair<WrongCtrl, Parent> wrongCtrlParentPair,
+                              Pair<WinnersCtrl, Parent> winnersPair,
                               Pair<MultiChoiceQCtrl, Parent> multiChoice) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
-        this.singleplayer = new Scene(singleplayer.getValue());
+        this.lobby = new Scene(lobbyCtrlParentPair.getValue());
+        this.lobbyCtrl = lobbyCtrlParentPair.getKey();
+        this.correctCtrl = correctCtrlParentPair.getKey();
+        this.correct = new Scene(correctCtrlParentPair.getValue());
+        this.help = new Scene(helpCtrlParentPair.getValue());
+        this.helpCtrl = helpCtrlParentPair.getKey();
+        this.wrong = new Scene(wrongCtrlParentPair.getValue());
+        this.wrongCtrl = wrongCtrlParentPair.getKey();
+        this.igLeaderboard = new Scene(igLeaderboardPair.getValue());
+        this.igLeaderboardCtrl = igLeaderboardPair.getKey();
+        this.leaderboard = new Scene(leaderboardPair.getValue());
+        this.leaderboardCtrl = leaderboardPair.getKey();
+        this.winnersCtrl = winnersPair.getKey();
+        this.winners = new Scene(winnersPair.getValue());
+        this.multiCtrl = multiChoice.getKey();
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
+        this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
+        this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
 
         showSplash();
         primaryStage.show();
+    }
+
+    public MultiChoiceQCtrl getMultiChoiceQCtrl() {
+        return multiCtrl;
     }
 
     public void showSplash() {
@@ -86,14 +108,8 @@ public class MainCtrl {
         primaryStage.setMinWidth(1440);
     }
 
-    public void showSingle() {
-        primaryStage.setTitle("Singleplayer Mode");
-        primaryStage.setScene(singleplayer);
-    }
-
     public void showMultiChoiceQ() {
-        int i = 0;  //temp variable for question count
-        primaryStage.setTitle("Question " + i);
+        primaryStage.setTitle("Questions");
         primaryStage.setScene(multiChoice);
     }
 
@@ -109,23 +125,47 @@ public class MainCtrl {
         primaryStage.setScene(openQ);
     }
 
-    public void showNameSelect(Pair<NameSelectCtrl, Parent> nameSelectPair) {
-        this.nameSelect = new Scene(nameSelectPair.getValue(), Color.web("#011826"));
+    public void showNameSelect() {
         primaryStage.setTitle("Name Screen");
         primaryStage.setScene(nameSelect);
     }
 
-    /*
-    public void showOverview() {
-        primaryStage.setTitle("Quotes: Overview");
-        primaryStage.setScene(overview);
-        overviewCtrl.refresh();
+    public void showLobby() {
+        primaryStage.setTitle("Waiting room");
+        primaryStage.setScene(lobby);
     }
 
-    public void showAdd() {
-        primaryStage.setTitle("Quotes: Adding Quote");
-        primaryStage.setScene(add);
-        add.setOnKeyPressed(e -> addCtrl.keyPressed(e));
+    public LobbyCtrl getLobby() {
+        return lobbyCtrl;
     }
-    */
+
+    public void showCorrect() {
+        primaryStage.setTitle("Correct Answer!");
+        primaryStage.setScene(correct);
+    }
+
+    public void showHelp() {
+        primaryStage.setTitle("Help");
+        primaryStage.setScene(help);
+    }
+
+    public void showWrong() {
+        primaryStage.setTitle("Wrong answer!");
+        primaryStage.setScene(wrong);
+    }
+
+    public void showIgLeaderboard() {
+        primaryStage.setTitle("In-game leaderboard");
+        primaryStage.setScene(igLeaderboard);
+    }
+
+    public void showLeadearboard() {
+        primaryStage.setTitle("All-time leaderboard");
+        primaryStage.setScene(leaderboard);
+    }
+
+    public void showWinners() {
+        primaryStage.setTitle("Winners");
+        primaryStage.setScene(winners);
+    }
 }

@@ -25,10 +25,15 @@ public class MyModule implements Module {
     @Override
     public void configure(Binder binder) {
         binder.bind(MainCtrl.class).in(Scopes.SINGLETON);
-        //binder.bind(AddQuoteCtrl.class).in(Scopes.SINGLETON);
-        //binder.bind(QuoteOverviewCtrl.class).in(Scopes.SINGLETON);
         binder.bind(SplashCtrl.class).in(Scopes.SINGLETON);
-        binder.bind(SingleCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(LobbyCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(CorrectCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(HelpCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(WrongCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(IngameLeaderboardCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(AllTimeLeaderboardCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(WinnersCtrl.class).in(Scopes.SINGLETON);
         binder.bind(MultiChoiceQCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(NameSelectCtrl.class).in(Scopes.SINGLETON);
     }
 }
