@@ -15,6 +15,7 @@
  */
 package client.scenes;
 
+import commons.Player;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -97,8 +98,16 @@ public class MainCtrl {
         primaryStage.show();
     }
 
-    public MultiChoiceQCtrl getMultiChoiceQCtrl() {
+    public MultiChoiceQCtrl getMultiCtrl() {
         return multiCtrl;
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void primarySetSceneOnly() {
+        primaryStage.setScene(multiChoice);
     }
 
     public void showSplash() {
@@ -108,9 +117,13 @@ public class MainCtrl {
         primaryStage.setMinWidth(1440);
     }
 
-    public void showMultiChoiceQ() {
+    public void showMultiChoiceQ(Player player) {
         primaryStage.setTitle("Questions");
         primaryStage.setScene(multiChoice);
+
+        multiCtrl.setPlayer(player);
+        multiCtrl.setQuestion();
+        multiCtrl.setCurrentRoundNumber(1);
     }
 
     public void showMoreEnergyQ(Pair<MoreEnergyQCtrl, Parent> moreEnergyPair) {
