@@ -39,5 +39,6 @@ out/
 
 ### VS Code ###
 .vscode/
+activities/
 
 .DS_Store
