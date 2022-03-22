@@ -1,6 +1,4 @@
 package client.scenes;
-
-import client.services.QuestionAnswerSelector;
 import client.utils.ServerUtils;
 import commons.Player;
 import commons.Question;
@@ -21,7 +19,6 @@ import java.util.TimerTask;
 public class MultiChoiceQCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
-    private final QuestionAnswerSelector qaSelector;
 
     private int currentRoundNumber = 0;
     private int totalRounds = 20;
@@ -47,11 +44,9 @@ public class MultiChoiceQCtrl {
     private Label progressLabel;
 
     @Inject
-    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl,
-                            QuestionAnswerSelector qaSelector) {
+    public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
         this.server = server;
-        this.qaSelector = qaSelector;
     }
 
     public int getCurrentRoundNumber() {
