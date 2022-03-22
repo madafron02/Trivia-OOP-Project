@@ -1606,7 +1606,7 @@
         "id": "56-Lightning_Strike",
         "image_path": "56/Lightning_Strike.jpeg",
         "title": "1 hour long lightning strike",
-        "consumption_in_wh": 5000,
+        "consumption_in_wh": 500000000000000,
         "source": "https://en.wikipedia.org/wiki/Harvesting_lightning_energy#:~:text=A%20single%20bolt%20of%20lightning%20carries%20a%20relatively,the%20energy%20stored%20in%2038%20gallons%20of%20gasoline%29."
     },
     {
@@ -1963,7 +1963,7 @@
         "id": "17-NS",
         "image_path": "17/NS.jpg",
         "title": "The NS having trains ride for a day",
-        "consumption_in_wh": 3300000,
+        "consumption_in_wh": 3300000000,
         "source": "https://www.ns.nl/over-ns/duurzaamheid/fossielvrij/groene-energie-voor-trein-bus-en-station.html"
     },
     {
@@ -3021,7 +3021,7 @@
         "image_path": "28/pasta.jpg",
         "title": "Cooking pasta",
         "consumption_in_wh": 1,
-        "source": "https://www.researchgate.net/publication/333682379_Is_Pasta_Cooking_Quality_Affected_by_the_Power_Rating_Water-to-Pasta_Ratio_and_Mixing_Degree"
+        "source": "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiav6-G1qL2AhUpuaQKHX-_D1AQFnoECAYQAQ&url=https%3A%2F%2Fwww.researchgate.net%2Fpublication%2F333682379_Is_Pasta_Cooking_Quality_Affected_by_the_Power_Rating_Water-to-Pasta_Ratio_and_Mixing_Degree&usg=AOvVaw1OZ-psnpsrRlTOAW7YBE2L"
     },
     {
         "id": "28-BodyFat",
@@ -3398,7 +3398,7 @@
         "id": "46-cern-lhc",
         "image_path": "46/cern-lhc.jpg",
         "title": "Operating CERN's Large Hadron Collider for an year",
-        "consumption_in_wh": 600000,
+        "consumption_in_wh": 6000000000,
         "source": "https://home.cern/resources/faqs/facts-and-figures-about-lhc"
     },
     {
@@ -3860,7 +3860,7 @@
         "id": "55-antimatter",
         "image_path": "55/antimatter.jpeg",
         "title": "Energy to make 1 nanogram of antimatter",
-        "consumption_in_wh": 2500000,
+        "consumption_in_wh": 25000000000,
         "source": "https://www.directenergy.com/learning-center/what-uses-most-electricity-in-my-home"
     },
     {
@@ -3953,6 +3953,13 @@
         "title": "Average energy consumed by an electric heater",
         "consumption_in_wh": 1000,
         "source": "https://en.wikipedia.org/wiki/Kilowatt-hour#:~:text=of%20one%20year.-,Examples,hours%20uses%20one%20kilowatt%2Dhour"
+    },
+    {
+        "id": "55-movie",
+        "image_path": "55/movie.jpeg",
+        "title": "Energy consumed for watching an average length movie in the theater",
+        "consumption_in_wh": 360,
+        "source": "https://slate.com/technology/2011/06/is-it-more-earth-friendly-to-see-movies-in-a-theater-or-on-dvd.html#:~:text=Let's%20take%20the%20average%20and,kwh%20to%20display%20the%20film.&text=DVD%20players%20consume%20an%20average,0.07%20kwh%20during%20the%20film"
     },
     {
         "id": "55-online_meeting",
@@ -4319,6 +4326,13 @@
         "source": "https://digiconomist.net/bitcoin-energy-consumption/"
     },
     {
+        "id": "73-world-energy",
+        "image_path": "73/world-energy.jpeg",
+        "title": "World energy production in 2018",
+        "consumption_in_wh": 167000000000000000,
+        "source": "https://en.wikipedia.org/wiki/World_energy_supply_and_consumption"
+    },
+    {
         "id": "73-toaster",
         "image_path": "73/toaster.jpeg",
         "title": "Toast 2 slices of bread",
@@ -4427,7 +4441,7 @@
         "id": "57-heating",
         "image_path": "57/heating.png",
         "title": "Heating a house for a year",
-        "consumption_in_wh": 1000,
+        "consumption_in_wh": 10000000,
         "source": "https://www.ovoenergy.com/guides/energy-guides/how-much-heating-energy-do-you-use"
     },
     {
@@ -4497,7 +4511,7 @@
         "id": "57-windturbine",
         "image_path": "57/windturbine.png",
         "title": "Average energy output of wind turbine energy plants in UK during Storm Eunice.",
-        "consumption_in_wh": 1140000,
+        "consumption_in_wh": 11480000000,
         "source": "https://www.dailymail.co.uk/news/article-10528581/Power-prices-plunge-Storm-Eunice-causes-highest-output-wind-turbines.html"
     },
     {
@@ -4723,6 +4737,13 @@
         "title": "Producing one pound of chicken",
         "consumption_in_wh": 4400,
         "source": "https://askwonder.com/research/energy-in-btus-expended-used-produce-1-pound-beef-chicken-pork-retail-k5gwibwm3#:~:text=According%20the%20Oil%20Drum%2C%20it,product%201%20pound%20of%20beef."
+    },
+    {
+        "id": "30-streetLight",
+        "image_path": "30/streetLight.jpg",
+        "title": "Running a typical streetligt for one hour",
+        "consumption_in_wh": 250,
+        "source": "https://hypertextbook.com/facts/2004/MarinaAvetisyan.shtml#:~:text=%22The%20lamps%20used%20in%20streetlights,road%20or%20a%20town%20centre.%22&text=%22It%20is%20generally%20assumed%20that,streetlight%20is%20about%2080%20watts.%22&text=Outdoor%20Lighting%20Handbook."
     },
     {
         "id": "30-coffee",
@@ -4959,7 +4980,7 @@
         "id": "77-airplane",
         "image_path": "77/airplane.png",
         "title": "Flying from the Netherlands to Cameroon",
-        "consumption_in_wh": 50000,
+        "consumption_in_wh": 500000000,
         "source": "https://www.quora.com/How-many-kilowatt-hours-of-energy-does-an-airliner-use-on-a-trans-Atlantic-crossing#:~:text=Answer%3A%20As%20another%20good%20answer,total%20weight%20of%204%2C332%2C000kg."
     },
     {
@@ -5021,7 +5042,7 @@
     {
         "id": "70-12900k",
         "image_path": "70/12900k.png",
-        "title": "Energy consumed by your Intel - i9 12900k for 100 hours of gaming.",
+        "title": "Energy consumed by your [Intel - i9 12900k] for 100 hours of gaming.",
         "consumption_in_wh": 24100,
         "source": "https://ark.intel.com/content/www/us/en/ark/products/134599/intel-core-i912900k-processor-30m-cache-up-to-5-20-ghz.html"
     },
@@ -5035,14 +5056,14 @@
     {
         "id": "70-12100",
         "image_path": "70/12100.png",
-        "title": "Energy consumed by your Intel - i3 12100 for 100 hours of gaming.",
+        "title": "Energy consumed by your [Intel - i3 12100] for 100 hours of gaming.",
         "consumption_in_wh": 8900,
         "source": "https://www.intel.com/content/www/us/en/products/sku/134584/intel-core-i312100-processor-12m-cache-up-to-4-30-ghz/specifications.html"
     },
     {
         "id": "70-12700k",
         "image_path": "70/12700k.png",
-        "title": "Energy consumed by your Intel - i7 12700k for 100 hours of gaming.",
+        "title": "Energy consumed by your [Intel - i7 12700k] for 100 hours of gaming.",
         "consumption_in_wh": 19000,
         "source": "https://ark.intel.com/content/www/us/en/ark/products/134594/intel-core-i712700k-processor-25m-cache-up-to-5-00-ghz.html"
     },
@@ -5112,7 +5133,7 @@
     {
         "id": "70-12600k",
         "image_path": "70/12600k.png",
-        "title": "Energy consumed by your Intel - i5 12600k for 100 hours of gaming.",
+        "title": "Energy consumed by your [Intel - i5 12600k] for 100 hours of gaming.",
         "consumption_in_wh": 15000,
         "source": "https://ark.intel.com/content/www/us/en/ark/products/134589/intel-core-i512600k-processor-20m-cache-up-to-4-90-ghz.html"
     },
@@ -5603,7 +5624,7 @@
         "id": "67-annual_bitcoin",
         "image_path": "67/annual_bitcoin.png",
         "title": "Annual bitcoin energy consumption",
-        "consumption_in_wh": 910000,
+        "consumption_in_wh": 91000000000000,
         "source": "https://www.businessinsider.com/bitcoin-mining-electricity-usage-more-than-google-2021-9?international=true&r=US&IR=T#:~:text=Bitcoin%20mining%20consumes%20around%2091%20terawatt%2Dhours%20of%20electricity%20annually."
     },
     {
@@ -5633,6 +5654,13 @@
         "title": "Bitcoin transaction energy cost",
         "consumption_in_wh": 2264930,
         "source": "https://www.statista.com/statistics/881541/bitcoin-energy-consumption-transaction-comparison-visa/"
+    },
+    {
+        "id": "67-cardano",
+        "image_path": "67/cardano.png",
+        "title": "Cardano transaction energy cost",
+        "consumption_in_wh": 500,
+        "source": "https://finance.yahoo.com/news/one-solana-transaction-uses-little-114956337.html?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAKcKcPaNCYKk7KT7tPANExfzbgDOaD7I_4dkL4NBN5kIy3nX0SZT6N28jNQJfQEkbm2jtFcPIAq1ZJ7rB6MbpsBkmFBEfHR6djD2_7JlH06efcXaBR4O62lrTRlBJHDjkCZgHTe29dPJ1cXkAZH6-2xrL2MTvv68QgxyZ1H4Npy5#:~:text=Cardano%20(ADA)%20is%20an%20interesting,1%2C800%2C000%20Joules%20(0.5KwH)."
     },
     {
         "id": "67-google_search",
@@ -5827,7 +5855,7 @@
         "id": "52-gas",
         "image_path": "52/gas.jpg",
         "title": "Gas energy in the UK for 2021",
-        "consumption_in_wh": 1230000,
+        "consumption_in_wh": 123000000000000,
         "source": "https://ourworldindata.org/grapher/gas-electricity-per-capita"
     },
     {
@@ -5848,7 +5876,7 @@
         "id": "52-subway",
         "image_path": "52/subway.jpg",
         "title": "Powering up the New York City subway for a year",
-        "consumption_in_wh": 18000,
+        "consumption_in_wh": 1800000000000,
         "source": "https://www.nycsubway.org/wiki/Subway_FAQ:_Facts_and_Figures"
     },
     {
@@ -5862,15 +5890,22 @@
         "id": "52-windmill",
         "image_path": "52/windmill.jpg",
         "title": "Energy production of a windmill per year",
-        "consumption_in_wh": 61000000,
+        "consumption_in_wh": 610000000000,
         "source": "https://www.ewea.org/wind-energy-basics/faq"
     },
     {
         "id": "52-wine",
         "image_path": "52/wine.jpg",
         "title": "Production of wine per year in california",
-        "consumption_in_wh": 5120000,
+        "consumption_in_wh": 51200000000,
         "source": "http://www.designlife-cycle.com/wine-bottle"
+    },
+    {
+        "id": "52-wind",
+        "image_path": "52/wind.jpeg",
+        "title": "Wind Energy used worldwide in 2018",
+        "consumption_in_wh": 3257000000,
+        "source": "https://ourworldindata.org/energy-production-consumption"
     },
     {
         "id": "52-smartphone",
@@ -5918,14 +5953,14 @@
         "id": "52-solar",
         "image_path": "52/solar.jpg",
         "title": "Solar energy generated in the year 2020",
-        "consumption_in_wh": 8440000,
+        "consumption_in_wh": 844000000000000,
         "source": "https://www.researchgate.net/publication/259388709_ENERGY_AUDIT_IN_SNACK_PROCESSING_LINE"
     },
     {
         "id": "52-eiffel",
         "image_path": "52/eiffel.png",
         "title": "Lighting up the Eiffel Tower for a year",
-        "consumption_in_wh": 780000,
+        "consumption_in_wh": 7800000000,
         "source": "https://cleantechnica.com/2014/10/13/eiffel-tower-now-greener-ever/#:~:text=The%20monument%20consumes%207.8%20million,705%2C000%20kWh%20annually%20for%20HVAC."
     },
     {
@@ -5948,6 +5983,559 @@
         "title": "Completing Bitcoin transaction",
         "consumption_in_wh": 2300000,
         "source": "https://digiconomist.net/bitcoin-energy-consumption"
+    },
+    {
+        "id": "60-Belarus_2020",
+        "image_path": "60/Belarus_2020.png",
+        "title": "Supplying Belarus with enough electricity to last the whole 2020",
+        "consumption_in_wh": 35935503182012,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Greece_2021",
+        "image_path": "60/Greece_2021.png",
+        "title": "Supplying Greece with enough electricity to last the whole 2021",
+        "consumption_in_wh": 53619997663063,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Spain_per_capita_2021",
+        "image_path": "60/Spain_per_capita_2021.png",
+        "title": "Supplying a person in Spain with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5824554,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-South_Korea_per_capita_2020",
+        "image_path": "60/South_Korea_per_capita_2020.png",
+        "title": "Supplying a person in South Korea with enough electricity to last the whole 2020",
+        "consumption_in_wh": 10458397,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Sweden_2021",
+        "image_path": "60/Sweden_2021.png",
+        "title": "Supplying Sweden with enough electricity to last the whole 2021",
+        "consumption_in_wh": 173109998100921,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-tesla",
+        "image_path": "60/tesla.jpg",
+        "title": "Driving 100km in a Tesla",
+        "consumption_in_wh": 19620,
+        "source": "https://www.tesla.com/en_EU/support/european-union-energy-label"
+    },
+    {
+        "id": "60-Malta_per_capita_2021",
+        "image_path": "60/Malta_per_capita_2021.png",
+        "title": "Supplying a person in Malta with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5555681,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Portugal_2021",
+        "image_path": "60/Portugal_2021.png",
+        "title": "Supplying Portugal with enough electricity to last the whole 2021",
+        "consumption_in_wh": 49190001676249,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Italy_per_capita_2021",
+        "image_path": "60/Italy_per_capita_2021.png",
+        "title": "Supplying a person in Italy with enough electricity to last the whole 2021",
+        "consumption_in_wh": 4686961,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Slovenia_per_capita_2021",
+        "image_path": "60/Slovenia_per_capita_2021.png",
+        "title": "Supplying a person in Slovenia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 7485365,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Luxembourg_per_capita_2021",
+        "image_path": "60/Luxembourg_per_capita_2021.png",
+        "title": "Supplying a person in Luxembourg with enough electricity to last the whole 2021",
+        "consumption_in_wh": 2189618,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Ukraine_per_capita_2020",
+        "image_path": "60/Ukraine_per_capita_2020.png",
+        "title": "Supplying a person in Ukraine with enough electricity to last the whole 2020",
+        "consumption_in_wh": 3052488,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Denmark_per_capita_2021",
+        "image_path": "60/Denmark_per_capita_2021.png",
+        "title": "Supplying a person in Denmark with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5767806,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-United_States_2020",
+        "image_path": "60/United_States_2020.png",
+        "title": "Supplying United States with enough electricity to last the whole 2020",
+        "consumption_in_wh": 4049846514277936,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-New_Zealand_per_capita_2020",
+        "image_path": "60/New_Zealand_per_capita_2020.png",
+        "title": "Supplying a person in New Zealand with enough electricity to last the whole 2020",
+        "consumption_in_wh": 8879464,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-New_Zealand_2020",
+        "image_path": "60/New_Zealand_2020.png",
+        "title": "Supplying New Zealand with enough electricity to last the whole 2020",
+        "consumption_in_wh": 42818844323112,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-elevator",
+        "image_path": "60/elevator.jpg",
+        "title": "Going up 10 floors with an elevator",
+        "consumption_in_wh": 20,
+        "source": "https://www.quora.com/How-much-electricity-does-an-elevator-use-per-floor-What-is-this-energy-usage-comparable-to"
+    },
+    {
+        "id": "60-Russia_per_capita_2020",
+        "image_path": "60/Russia_per_capita_2020.png",
+        "title": "Supplying a person in Russia with enough electricity to last the whole 2020",
+        "consumption_in_wh": 7025920,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Belarus_per_capita_2020",
+        "image_path": "60/Belarus_per_capita_2020.png",
+        "title": "Supplying a person in Belarus with enough electricity to last the whole 2020",
+        "consumption_in_wh": 3802972,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-United_Kingdom_2021",
+        "image_path": "60/United_Kingdom_2021.png",
+        "title": "Supplying United Kingdom with enough electricity to last the whole 2021",
+        "consumption_in_wh": 305500004641570,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Poland_per_capita_2021",
+        "image_path": "60/Poland_per_capita_2021.png",
+        "title": "Supplying a person in Poland with enough electricity to last the whole 2021",
+        "consumption_in_wh": 4687144,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Slovenia_2021",
+        "image_path": "60/Slovenia_2021.png",
+        "title": "Supplying Slovenia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 15560000388895,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-led_lightbulb",
+        "image_path": "60/led_lightbulb.jpg",
+        "title": "Powering an LED lightbulb in 8 hours",
+        "consumption_in_wh": 96,
+        "source": "https://www.huttonpowerandlight.com/blog/2019/october/led-vs-incandescent-lighting-a-cost-comparison/"
+    },
+    {
+        "id": "60-Spain_2021",
+        "image_path": "60/Spain_2021.png",
+        "title": "Supplying Spain with enough electricity to last the whole 2021",
+        "consumption_in_wh": 272270005710894,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Portugal_per_capita_2021",
+        "image_path": "60/Portugal_per_capita_2021.png",
+        "title": "Supplying a person in Portugal with enough electricity to last the whole 2021",
+        "consumption_in_wh": 4837763,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-hair_dryer",
+        "image_path": "60/hair_dryer.jpg",
+        "title": "Running a hair dryer for 15 minutes",
+        "consumption_in_wh": 469,
+        "source": "https://ecocostsavings.com/hair-dryer-wattage/"
+    },
+    {
+        "id": "60-Luxembourg_2021",
+        "image_path": "60/Luxembourg_2021.png",
+        "title": "Supplying Luxembourg with enough electricity to last the whole 2021",
+        "consumption_in_wh": 1390000161052,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-dishwasher",
+        "image_path": "60/dishwasher.jpg",
+        "title": "Running a dishwasher",
+        "consumption_in_wh": 3600,
+        "source": "https://blog.arcadia.com/electricity-costs-10-key-household-products/"
+    },
+    {
+        "id": "60-Australia_per_capita_2020",
+        "image_path": "60/Australia_per_capita_2020.png",
+        "title": "Supplying a person in Australia with enough electricity to last the whole 2020",
+        "consumption_in_wh": 9856829,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Turkey_2021",
+        "image_path": "60/Turkey_2021.png",
+        "title": "Supplying Turkey with enough electricity to last the whole 2021",
+        "consumption_in_wh": 330490019104704,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-bitcoin",
+        "image_path": "60/bitcoin.jpg",
+        "title": "Making one Bitcoin transaction (as of February 2022)",
+        "consumption_in_wh": 2207770,
+        "source": "https://digiconomist.net/bitcoin-energy-consumption"
+    },
+    {
+        "id": "60-netherlands",
+        "image_path": "60/netherlands.jpg",
+        "title": "Supplying one person in the Netherlands with electricity for a year",
+        "consumption_in_wh": 6238120,
+        "source": "https://www.worlddata.info/europe/netherlands/energy-consumption.php"
+    },
+    {
+        "id": "60-Japan_per_capita_2020",
+        "image_path": "60/Japan_per_capita_2020.png",
+        "title": "Supplying a person in Japan with enough electricity to last the whole 2020",
+        "consumption_in_wh": 7446253,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-World_2020",
+        "image_path": "60/World_2020.jpg",
+        "title": "Supplying World with enough electricity to last the whole 2020",
+        "consumption_in_wh": 25849917935905596,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-France_2021",
+        "image_path": "60/France_2021.png",
+        "title": "Supplying France with enough electricity to last the whole 2021",
+        "consumption_in_wh": 551399977617963,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Japan_2020",
+        "image_path": "60/Japan_2020.png",
+        "title": "Supplying Japan with enough electricity to last the whole 2020",
+        "consumption_in_wh": 941775704811873,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-microwave",
+        "image_path": "60/microwave.jpg",
+        "title": "Running a microwave for 1 minute",
+        "consumption_in_wh": 20,
+        "source": "https://blog.arcadia.com/electricity-costs-10-key-household-products/"
+    },
+    {
+        "id": "60-Italy_2021",
+        "image_path": "60/Italy_2021.png",
+        "title": "Supplying Italy with enough electricity to last the whole 2021",
+        "consumption_in_wh": 282939982245631,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Malta_2021",
+        "image_path": "60/Malta_2021.png",
+        "title": "Supplying Malta with enough electricity to last the whole 2021",
+        "consumption_in_wh": 2459999989990,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Czechia_per_capita_2021",
+        "image_path": "60/Czechia_per_capita_2021.png",
+        "title": "Supplying a person in Czechia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 7863265,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Denmark_2021",
+        "image_path": "60/Denmark_2021.png",
+        "title": "Supplying Denmark with enough electricity to last the whole 2021",
+        "consumption_in_wh": 33529998155412,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Australia_2020",
+        "image_path": "60/Australia_2020.png",
+        "title": "Supplying Australia with enough electricity to last the whole 2020",
+        "consumption_in_wh": 251347966537349,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Germany_2021",
+        "image_path": "60/Germany_2021.png",
+        "title": "Supplying Germany with enough electricity to last the whole 2021",
+        "consumption_in_wh": 581399975959969,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-brain",
+        "image_path": "60/brain.jpg",
+        "title": "Supplying human brain with enough energy for one day",
+        "consumption_in_wh": 523,
+        "source": "https://www.sciencefocus.com/the-human-body/how-much-energy-does-thinking-use/"
+    },
+    {
+        "id": "60-Estonia_per_capita_2021",
+        "image_path": "60/Estonia_per_capita_2021.png",
+        "title": "Supplying a person in Estonia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5674667,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Russia_2020",
+        "image_path": "60/Russia_2020.png",
+        "title": "Supplying Russia with enough electricity to last the whole 2020",
+        "consumption_in_wh": 1025323841203200,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Romania_per_capita_2021",
+        "image_path": "60/Romania_per_capita_2021.png",
+        "title": "Supplying a person in Romania with enough electricity to last the whole 2021",
+        "consumption_in_wh": 3068836,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Norway_per_capita_2021",
+        "image_path": "60/Norway_per_capita_2021.png",
+        "title": "Supplying a person in Norway with enough electricity to last the whole 2021",
+        "consumption_in_wh": 27213702,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Norway_2021",
+        "image_path": "60/Norway_2021.png",
+        "title": "Supplying Norway with enough electricity to last the whole 2021",
+        "consumption_in_wh": 148739998848558,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Ireland_2021",
+        "image_path": "60/Ireland_2021.png",
+        "title": "Supplying Ireland with enough electricity to last the whole 2021",
+        "consumption_in_wh": 29879998784711,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Canada_per_capita_2020",
+        "image_path": "60/Canada_per_capita_2020.png",
+        "title": "Supplying a person in Canada with enough electricity to last the whole 2020",
+        "consumption_in_wh": 16647592,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-coffee_maker",
+        "image_path": "60/coffee_maker.jpg",
+        "title": "Running a coffee maker",
+        "consumption_in_wh": 133,
+        "source": "https://blog.arcadia.com/electricity-costs-10-key-household-products/"
+    },
+    {
+        "id": "60-China_per_capita_2020",
+        "image_path": "60/China_per_capita_2020.png",
+        "title": "Supplying a person in China with enough electricity to last the whole 2020",
+        "consumption_in_wh": 5296721,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Poland_2021",
+        "image_path": "60/Poland_2021.png",
+        "title": "Supplying Poland with enough electricity to last the whole 2021",
+        "consumption_in_wh": 177159981768000,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Turkey_per_capita_2021",
+        "image_path": "60/Turkey_per_capita_2021.png",
+        "title": "Supplying a person in Turkey with enough electricity to last the whole 2021",
+        "consumption_in_wh": 3886164,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Sweden_per_capita_2021",
+        "image_path": "60/Sweden_per_capita_2021.png",
+        "title": "Supplying a person in Sweden with enough electricity to last the whole 2021",
+        "consumption_in_wh": 17038119,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Ireland_per_capita_2021",
+        "image_path": "60/Ireland_per_capita_2021.png",
+        "title": "Supplying a person in Ireland with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5996503,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Netherlands_per_capita_2021",
+        "image_path": "60/Netherlands_per_capita_2021.png",
+        "title": "Supplying a person in Netherlands with enough electricity to last the whole 2021",
+        "consumption_in_wh": 7033677,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-United_States_per_capita_2020",
+        "image_path": "60/United_States_per_capita_2020.png",
+        "title": "Supplying a person in United States with enough electricity to last the whole 2020",
+        "consumption_in_wh": 12235088,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Croatia_2021",
+        "image_path": "60/Croatia_2021.png",
+        "title": "Supplying Croatia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 14769998306596,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-3d_printer",
+        "image_path": "60/3d_printer.jpg",
+        "title": "Running a 3D printer for 10 hours",
+        "consumption_in_wh": 700,
+        "source": "https://3dprinterly.com/how-much-electric-power-does-a-3d-printer-use/"
+    },
+    {
+        "id": "60-ac",
+        "image_path": "60/ac.jpg",
+        "title": "Running A/C for one hour during a warm month",
+        "consumption_in_wh": 3500,
+        "source": "https://americanhomewater.com/how-much-power-does-an-air-conditioner-use/"
+    },
+    {
+        "id": "60-Canada_2020",
+        "image_path": "60/Canada_2020.png",
+        "title": "Supplying Canada with enough electricity to last the whole 2020",
+        "consumption_in_wh": 628316030935944,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-World_per_capita_2020",
+        "image_path": "60/World_per_capita_2020.jpg",
+        "title": "Supplying a person in World with enough electricity to last the whole 2020",
+        "consumption_in_wh": 3319861,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-google_search",
+        "image_path": "60/google_search.jpg",
+        "title": "Making 10 Google searches",
+        "consumption_in_wh": 3,
+        "source": "https://fullfact.org/environment/google-search/"
+    },
+    {
+        "id": "60-airplane",
+        "image_path": "60/airplane.jpg",
+        "title": "Flying from Amsterdam to London",
+        "consumption_in_wh": 30476111,
+        "source": "https://pastebin.com/KpDsXjHy"
+    },
+    {
+        "id": "60-South_Korea_2020",
+        "image_path": "60/South_Korea_2020.png",
+        "title": "Supplying South Korea with enough electricity to last the whole 2020",
+        "consumption_in_wh": 536193469679651,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-France_per_capita_2021",
+        "image_path": "60/France_per_capita_2021.png",
+        "title": "Supplying a person in France with enough electricity to last the whole 2021",
+        "consumption_in_wh": 8427819,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-China_2020",
+        "image_path": "60/China_2020.png",
+        "title": "Supplying China with enough electricity to last the whole 2020",
+        "consumption_in_wh": 7623696459545054,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Romania_2021",
+        "image_path": "60/Romania_2021.png",
+        "title": "Supplying Romania with enough electricity to last the whole 2021",
+        "consumption_in_wh": 58699995313392,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Estonia_2021",
+        "image_path": "60/Estonia_2021.png",
+        "title": "Supplying Estonia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 7520000612396,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-United_Kingdom_per_capita_2021",
+        "image_path": "60/United_Kingdom_per_capita_2021.png",
+        "title": "Supplying a person in United Kingdom with enough electricity to last the whole 2021",
+        "consumption_in_wh": 4479005,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Greece_per_capita_2021",
+        "image_path": "60/Greece_per_capita_2021.png",
+        "title": "Supplying a person in Greece with enough electricity to last the whole 2021",
+        "consumption_in_wh": 5170312,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Germany_per_capita_2021",
+        "image_path": "60/Germany_per_capita_2021.png",
+        "title": "Supplying a person in Germany with enough electricity to last the whole 2021",
+        "consumption_in_wh": 6929639,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Ukraine_2020",
+        "image_path": "60/Ukraine_2020.png",
+        "title": "Supplying Ukraine with enough electricity to last the whole 2020",
+        "consumption_in_wh": 133496774542392,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Croatia_per_capita_2021",
+        "image_path": "60/Croatia_per_capita_2021.png",
+        "title": "Supplying a person in Croatia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 3618628,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Netherlands_2021",
+        "image_path": "60/Netherlands_2021.png",
+        "title": "Supplying Netherlands with enough electricity to last the whole 2021",
+        "consumption_in_wh": 120789996286638,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-Czechia_2021",
+        "image_path": "60/Czechia_2021.png",
+        "title": "Supplying Czechia with enough electricity to last the whole 2021",
+        "consumption_in_wh": 84330002245545,
+        "source": "https://github.com/owid/energy-data"
+    },
+    {
+        "id": "60-incandescent_lightbulb",
+        "image_path": "60/incandescent_lightbulb.jpg",
+        "title": "Powering an incandescent lightbulb in 8 hours",
+        "consumption_in_wh": 480,
+        "source": "https://www.huttonpowerandlight.com/blog/2019/october/led-vs-incandescent-lighting-a-cost-comparison/"
     },
     {
         "id": "74-Bus_100km",
@@ -6650,6 +7238,13 @@
         "source": "https://www.thehomehacksdiy.com/how-much-power-watts-does-a-monitor-use/#:~:text=Typically%20desktop%20monitors%20consume%20between,around%200.01%20cents%20per%20day."
     },
     {
+        "id": "69-electric_car",
+        "image_path": "69/electric_car.png",
+        "title": "Driving 1km in an electric car",
+        "consumption_in_wh": 155,
+        "source": "https://ev-database.org/compare/efficiency-electric-vehicle-most-efficient#sort:path~type~order=.efficiency~number~asc|range-slider-range:prev~next=0~1200|range-slider-acceleration:prev~next=2~23|range-slider-topspeed:prev~next=110~450|range-slider-battery:prev~next=10~200|range-slider-towweight:prev~next=0~2500|range-slider-fastcharge:prev~next=0~1500|paging:currentPage=0|paging:number=9"
+    },
+    {
         "id": "69-e-bike",
         "image_path": "69/e-bike.png",
         "title": "Cycling 100km on an e-bike",
@@ -7255,7 +7850,7 @@
         "id": "39-bitcoin-mining",
         "image_path": "39/bitcoin-mining.jpeg",
         "title": "Bitcoin mining consumes annually",
-        "consumption_in_wh": 910000,
+        "consumption_in_wh": 91000000000000,
         "source": "https://www.businessinsider.com/bitcoin-mining-electricity-usage-more-than-google-2021-9?international=true&r=US&IR=T#:~:text=Bitcoin%20mining%20consumes%20around%2091,from%20just%20five%20years%20ago."
     },
     {
@@ -7430,7 +8025,7 @@
         "id": "65-oilrig",
         "image_path": "65/oilrig.jpg",
         "title": "Yearly power consumption of all offshore oil and gas platforms",
-        "consumption_in_wh": 160000,
+        "consumption_in_wh": 16000000000000,
         "source": "https://www.greentechmedia.com/articles/read/oil-and-gas-companies-can-power-offshore-platforms-with-renewables#:~:text=Offshore%20oil%20and%20gas%20platforms,opportunity%20for%20wind%20and%20solar."
     },
     {
@@ -7493,7 +8088,7 @@
         "id": "65-cern",
         "image_path": "65/cern.jpg",
         "title": "Running CERN for an entire year",
-        "consumption_in_wh": 130000,
+        "consumption_in_wh": 1300000000,
         "source": "https://home.cern/science/engineering/powering-cern"
     },
     {
@@ -7549,7 +8144,7 @@
         "id": "65-china",
         "image_path": "65/china.jpg",
         "title": "Yearly power consumption in China",
-        "consumption_in_wh": 83128000,
+        "consumption_in_wh": 8312800000000000,
         "source": "https://en.wikipedia.org/wiki/List_of_countries_by_electricity_consumption"
     },
     {
@@ -8081,7 +8676,7 @@
         "id": "40-wind",
         "image_path": "40/wind.jpg",
         "title": "Energy produced by wind turbines annually.",
-        "consumption_in_wh": 600000,
+        "consumption_in_wh": 6000000000,
         "source": "https://www.ewea.org/wind-energy-basics/faq/"
     },
     {
@@ -8132,6 +8727,13 @@
         "title": "Driving an electric bus for 1 kilometre",
         "consumption_in_wh": 1400,
         "source": "https://www.sustainable-bus.com/news/electric-bus-range-focus-on-electricity-consumption-a-sum-up/#:~:text=Power%20consumption%20on%20buses%20with,2.35%20on%20electrically%20heated%20ones."
+    },
+    {
+        "id": "40-heater",
+        "image_path": "40/heater.jpg",
+        "title": "Using a budget portable heater for 8 hours",
+        "consumption_in_wh": 12000,
+        "source": "https://www.bol.com/nl/nl/p/tristar-ka-5911-convector-kachel-elektrische-kachel-1500-watt-overhittingsbeveiliging/9200000008135746/?Referrer=ADVNLGOO002029-G-126922176850-S-494083989574-9200000008135746&gclid=Cj0KCQiA64GRBhCZARIsAHOLriKWKuBK_4JJfsCGb9p5Lu9vHXb9y7qxDV6UhIIqlUezHjWBjA5wdLwaAuLbEALw_wcB"
     },
     {
         "id": "40-kettle",
@@ -8830,7 +9432,7 @@
         "id": "50-cementfactory",
         "image_path": "50/cementfactory.png",
         "title": "Producing cement in a factory for a day",
-        "consumption_in_wh": 65000,
+        "consumption_in_wh": 650000000,
         "source": "https://www.quora.com/How-much-electricity-does-a-factory-use"
     },
     {
@@ -9527,6 +10129,13 @@
         "source": "https://en.wikipedia.org/wiki/List_of_countries_by_electricity_consumption"
     },
     {
+        "id": "58-winecooler",
+        "image_path": "58/winecooler.png",
+        "title": "Using a 30-bottle wine cooler for 1 hour.",
+        "consumption_in_wh": 90,
+        "source": "https://www.coolblue.nl/product/825533/haier-ws30ga.html?cmt=c_a%2Ccid_8856327779%2Caid_94778463488%2Ctid_pla-302787624862%2Cgn_g%2Cd_c&utm_source=google&utm_medium=cpc&utm_content=shopping&gclid=Cj0KCQiA64GRBhCZARIsAHOLriJL2-JjsfNj2bh4_M0WvlcwofhNc_mQY8Tx2fsVDynHUV-sjiIfhmcaAq5OEALw_wcB"
+    },
+    {
         "id": "58-stove",
         "image_path": "58/stove.png",
         "title": "Stove for an hour",
@@ -9539,6 +10148,13 @@
         "title": "Charging a smartphone battery",
         "consumption_in_wh": 12,
         "source": "https://www.nytimes.com/2016/12/26/business/lithium-ion-battery-airline-safety.html#:~:text=A%20battery%20in%20a%20smartphone,and%20only%20under%20certain%20conditions"
+    },
+    {
+        "id": "58-speaker",
+        "image_path": "58/speaker.png",
+        "title": "Small bluetooth speaker for 1 hour",
+        "consumption_in_wh": 4,
+        "source": "https://www.dell.com/en-us/shop/jbl-go-3-speaker-for-portable-use-wireless-bluetooth-42-watt-black/apd/ab341154/audio#:~:text=Speakers-,JBL%20Go%203%20%2D%20Speaker%20%2D%20for%20portable%20use%20%2D%20wireless%20%2D,Bluetooth%20%2D%204.2%2Dwatt%20%2D%20black"
     },
     {
         "id": "58-electric_car",
@@ -9677,14 +10293,14 @@
         "id": "13-despacito",
         "image_path": "13/despacito.jpg",
         "title": "Streaming Despacito on YouTube 7 billion times",
-        "consumption_in_wh": 9000,
+        "consumption_in_wh": 900000000000,
         "source": "https://www.iea.org/commentaries/the-carbon-footprint-of-streaming-video-fact-checking-the-headlines"
     },
     {
         "id": "13-lhc",
         "image_path": "13/lhc.jpg",
         "title": "Powering the Large Hadron Collider for 1 hour",
-        "consumption_in_wh": 20000,
+        "consumption_in_wh": 200000000,
         "source": "https://home.cern/science/engineering/powering-cern"
     },
     {
@@ -11004,6 +11620,13 @@
         "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2732256/"
     },
     {
+        "id": "41-street-light",
+        "image_path": "41/street-light.jpg",
+        "title": "A street light working for 1 hour",
+        "consumption_in_wh": 80,
+        "source": "https://hypertextbook.com/facts/2004/MarinaAvetisyan.shtml#:~:text=%22The%20lamps%20used%20in%20streetlights,road%20or%20a%20town%20centre.%22&text=%22It%20is%20generally%20assumed%20that,streetlight%20is%20about%2080%20watts.%22&text=Outdoor%20Lighting%20Handbook."
+    },
+    {
         "id": "41-refrigerator",
         "image_path": "41/refrigerator.jpeg",
         "title": "A modern refrigerator working for 1 hour",
@@ -11014,7 +11637,7 @@
         "id": "41-plane",
         "image_path": "41/plane.jpeg",
         "title": "Energy used for trans-Atlantic crossing by plane",
-        "consumption_in_wh": 49000,
+        "consumption_in_wh": 490000000,
         "source": "https://www.quora.com/How-many-kilowatt-hours-of-energy-does-an-airliner-use-on-a-trans-Atlantic-crossing"
     },
     {
