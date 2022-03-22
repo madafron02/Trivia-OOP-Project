@@ -3,16 +3,11 @@ package commons;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.List;
 
 public class Game {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
 
+    private long id;
     private List<Round> rounds;
     private List<Player> players;
 
@@ -20,6 +15,7 @@ public class Game {
     }
 
     public Game(List<Round> rounds, List<Player> players) {
+        id = 0;
         this.rounds = rounds;
         this.players = players;
     }
@@ -34,6 +30,10 @@ public class Game {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setPlayers(List<Player> players) {
