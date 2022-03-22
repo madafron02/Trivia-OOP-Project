@@ -31,9 +31,11 @@ public class ActivityController {
 
     /*
     private final ActivityRepository repo;
+    private final QuestionAnswerSelector answers;
 
-    public ActivityController(ActivityRepository repo) {
+    public ActivityController(ActivityRepository repo, QuestionAnswerSelector qaSelect) {
         this.repo = repo;
+        this.answers = qaSelect;
     }
 
     @GetMapping(path = {"", "/"})
@@ -46,11 +48,10 @@ public class ActivityController {
         return ResponseEntity.ok(repo.findById(id).get());
     }
 
-    @GetMapping("/description/{id}")
-    public String getDescription(@PathVariable String id) {
-        return repo.findById(id).get().getTitle();
+    @GetMapping("/answers/{gameId}")
+    public ResponseEntity<List<Activity>> getAnswers(@PathVariable Long gameId){
+        return ResponseEntity.ok(answers.getAnswers(gameId));
     }
-
 
     @PostMapping("/post")
     public ResponseEntity<Activity> addActivity(@RequestBody Activity newActivity) {
@@ -59,6 +60,7 @@ public class ActivityController {
         || newActivity.getSource() == null){
             return ResponseEntity.badRequest().build();
         }
+        newActivity.setPowerLevel();
         Activity saved = repo.save(newActivity);
         return ResponseEntity.ok(saved);
     }
