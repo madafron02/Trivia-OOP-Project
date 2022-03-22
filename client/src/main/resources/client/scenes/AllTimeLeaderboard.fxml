@@ -18,9 +18,9 @@
          <children>
             <TableView fx:id="tableView" layoutX="9.0" layoutY="10.0" prefHeight="303.0" prefWidth="368.0">
               <columns>
-                <TableColumn prefWidth="183.0" text="Player name" />
-                <TableColumn minWidth="0.0" prefWidth="111.0" text="Score" />
-                  <TableColumn prefWidth="57.0" text="Place" />
+                <TableColumn fx:id="playerName" prefWidth="183.0" text="Player name" />
+                <TableColumn fx:id="score" minWidth="0.0" prefWidth="111.0" text="Score" />
+                  <TableColumn fx:id="place" prefWidth="57.0" text="Place" />
               </columns>
             </TableView>
          </children>
