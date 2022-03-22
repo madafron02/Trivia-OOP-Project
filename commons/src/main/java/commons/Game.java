@@ -3,47 +3,61 @@ package commons;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Game entity for the database containing the list of players in the game.
+ * Will be used in the future to keep track of parallel games and use the players from
+ * each of them to sort and put to the corresponding in-game leaderboard/winners screen
+ */
+@Entity
+@Table(name = "Games")
 public class Game {
-
-    private long id;
-    private List<Round> rounds;
-    private List<Player> players;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;                    //probably will add the list of rounds as an attribute in the future
+    private List<Player> players;       //but for now it is not needed
 
     public Game() {
     }
 
-    public Game(List<Round> rounds, List<Player> players) {
-        id = 0;
-        this.rounds = rounds;
+    /**
+     * Constructor for a game
+     * @param players
+     */
+    public Game(List<Player> players) {
         this.players = players;
     }
 
+    /**
+     * A getter for the game.
+     * @return the list of players playing this particular game
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
-    public List<Round> getRounds() {
-        return rounds;
-    }
-
+    /**
+     * A getter for the game.
+     * @return the unique id of this game
+     */
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
+    /**
+     * A setter for this game allowing changing the player list
+     * @param players (list of this game's players)
+     */
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
 
-    public void setRounds(List<Round> rounds) {
-        this.rounds = rounds;
-    }
-
+    /**
+     * Converts a game to list players in a human-readable format
+     * @return the string representing this game
+     */
     public String toString() {
         String answer = "Game id: " + this.id + "\nPlayers:";
         for (Player player : players) {
@@ -52,11 +66,20 @@ public class Game {
         return answer;
     }
 
+    /**
+     * Hashing method for this game
+     * @return the hash int of this game object
+     */
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
+    /**
+     *
+     * @param obj (any object to compare to this game)
+     * @return whether the object is equal to this game
+     */
     @Override
     public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
