@@ -18,12 +18,15 @@ public class Player implements Serializable {
     private String name;
     private int points;
 
+    private long gameId;
+
     public Player() {
     }
 
     public Player(String name) {
         this.name = name;
         this.points = 0;
+        this.gameId = 0;
     }
 
     public void setPoints(int addition){
@@ -44,6 +47,14 @@ public class Player implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setGameId(long gameId) {
+        this.gameId = gameId;
+    }
+
+    public long getGameId() {
+        return gameId;
     }
 
     @Override
