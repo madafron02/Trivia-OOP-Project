@@ -34,9 +34,9 @@ public class AllTimeLeaderboardCtrl {
     private TableColumn<Player, Integer> place = new TableColumn<>();
 
     /**
-     * Constructor
+     * Constructor injection for the all-time leaderboard
      * @param server - serverUtils object with methods to add/get players to/from the server
-     * @param mainCtrl - main control class injection
+     * @param mainCtrl - main control class
      */
     @Inject
     public AllTimeLeaderboardCtrl(ServerUtils server, MainCtrl mainCtrl) {
