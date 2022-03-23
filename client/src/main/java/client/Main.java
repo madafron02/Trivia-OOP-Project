@@ -39,8 +39,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         var splash = FXML.load(SplashCtrl.class, "client", "scenes", "Splash.fxml");
-        splash.getValue().getStylesheets().add("Images/splashBG.css");
-
         var lobby = FXML.load(LobbyCtrl.class, "client", "scenes", "Lobby.fxml");
         var correct = FXML.load(CorrectCtrl.class, "client", "scenes", "Correct.fxml");
         var help = FXML.load(HelpCtrl.class, "client", "scenes", "Help.fxml");
@@ -53,10 +51,7 @@ public class Main extends Application {
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
-
         var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "NameSelect.fxml");
-        nameSelect.getValue().getStylesheets().add("Images/selectName.css");
-
         mainCtrl.initializeNew(primaryStage, splash, nameSelect, lobby,
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
                 multiChoice);

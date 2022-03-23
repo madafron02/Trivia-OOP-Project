@@ -53,7 +53,7 @@ public class MainCtrl {
     private WrongCtrl wrongCtrl;
     private Scene wrong;
 
-    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private IngameLeaderboardCtrl igLeaderboardCtrl;
     private Scene igLeaderboard;
 
     private AllTimeLeaderboardCtrl leaderboardCtrl;
@@ -93,7 +93,6 @@ public class MainCtrl {
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
-
         showSplash();
         primaryStage.show();
     }
