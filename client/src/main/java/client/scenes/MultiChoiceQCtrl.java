@@ -110,7 +110,7 @@ public class MultiChoiceQCtrl {
 
     public void setQuestion() {
         if(currentRoundNumber >= totalRounds) {
-            mainCtrl.showWinners();
+            mainCtrl.showLeadearboard();
         } else {
             //question = qaSelector.getQuestion();
             //will generate new question with "random" answers

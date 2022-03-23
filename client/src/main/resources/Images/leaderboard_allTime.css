@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+
+.background {
+    -fx-background-color: #011826;
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+.button {
+    -fx-background-radius: 20;
+    -fx-position: fixed;
+}
+.font {
+    -fx-font-family: 'Electrolize', sans-serif;
+}
+/*
+rounding up the columns' header, setting color
+ */
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(to bottom, #1dbbdc44, #93f9d844);
+    -fx-background-radius: 15px 15px 0px 0px;
+    -fx-background-insets: 0 11px 0 0;
+    -fx-padding: 0 0 5px 0;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+/*
+making the region in the upper-right corner transparent
+ */
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+/*
+making the whole table have blueviolet color
+ */
+.table-view {
+    -fx-background-radius: 15px 15px 0px 0px;
+    -fx-background-color: blueviolet;
+    -fx-font-size: 35;
+}
+/*
+making the region between scroll bars in bottom-right corner transparent
+ */
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+.table-view .table-column {
+    -fx-alignment: CENTER;
+}
+/*
+adding green-ish shade to the odd rows, and something like gradient with insets
+ */
+.table-row-cell:odd{
+    -fx-background-color: #93f9b811;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+/*
+adding more light shade to the even rows, and something like gradient with insets
+ */
+.table-row-cell:even{
+    -fx-background-color: #1dbbcc11;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+/*
+highlight when mouse is over the row
+ */
+.table-row-cell:hover {
+    -fx-background-color: #F5AFFC11;
+    -fx-text-background-color: gold;
+}
+/*
+making scroll bars and surrounding space transparent
+ */
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}
+/*
+making buttons around scroll bars transparent
+ */
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-opacity: 0;
+    -fx-padding: 3;
+}
+/*
+setting the gradient color to both vertical and horizontal scrollbars
+ */
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  linear-gradient(to bottom, #1dbbcc44, #93f9b844);
+}
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  linear-gradient(to right, #1dbbcc44, #93f9b844);
+}
+

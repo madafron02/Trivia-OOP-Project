@@ -14,7 +14,7 @@
             <Font size="80.0" />
          </font>
       </Button>
-      <Button fx:id="checkButton" alignment="CENTER" layoutX="1069.0" layoutY="192.00000000000006" mnemonicParsing="false" onAction="#checkName" prefHeight="119.0" prefWidth="307.0" styleClass="check" text="CHECK" textFill="#8fd1d9" AnchorPane.bottomAnchor="588.8" AnchorPane.leftAnchor="1069.0" AnchorPane.rightAnchor="63.799999999999955" AnchorPane.topAnchor="192.00000000000006">
+      <Button fx:id="checkButton" alignment="CENTER" layoutX="1070.0" layoutY="205.0" mnemonicParsing="false" onAction="#checkName" prefHeight="119.0" prefWidth="307.0" styleClass="check" text="CHECK" textFill="#8fd1d9" AnchorPane.bottomAnchor="575.8" AnchorPane.leftAnchor="1070.0" AnchorPane.rightAnchor="62.799999999999955" AnchorPane.topAnchor="205.0">
          <font>
             <Font size="60.0" />
          </font>
@@ -37,5 +37,10 @@
             <Font size="70.0" />
          </font>
       </TextField>
+      <Button fx:id="goBack" contentDisplay="CENTER" layoutX="1230.0" layoutY="787.0" mnemonicParsing="false" onAction="#goBack" prefHeight="57.0" prefWidth="153.0" styleClass="play" text="GO BACK" textFill="#8fd1d9" AnchorPane.rightAnchor="62.799999999999955">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
