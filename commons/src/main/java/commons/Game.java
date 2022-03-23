@@ -11,20 +11,24 @@ import java.util.List;
  * Will be used in the future to keep track of parallel games and use the players from
  * each of them to sort and put to the corresponding in-game leaderboard/winners screen
  */
+
+
 @Entity
-@Table(name = "Games")
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;                    //probably will add the list of rounds as an attribute in the future
-    private List<Player> players;       //but for now it is not needed
+    private long id;          //probably will add the list of rounds as an attribute in the future
+
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private List<Player> players;
 
     public Game() {
     }
 
     /**
      * Constructor for a game
-     * @param players
+     * @param players list of players for this game
      */
     public Game(List<Player> players) {
         this.players = players;
