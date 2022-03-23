@@ -2,6 +2,7 @@ package client.scenes;
 
 import client.utils.ServerUtils;
 import commons.Player;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
 
+/**
+ * Controller for the leaderboard
+ */
 public class AllTimeLeaderboardCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
@@ -27,7 +31,7 @@ public class AllTimeLeaderboardCtrl {
     @FXML
     private TableColumn<Player, Integer> score = new TableColumn<>();
     @FXML
-    private TableColumn<Player, String> place = new TableColumn<>();
+    private TableColumn<Player, Integer> place = new TableColumn<>();
 
     @Inject
     public AllTimeLeaderboardCtrl(ServerUtils server, MainCtrl mainCtrl) {
@@ -38,8 +42,12 @@ public class AllTimeLeaderboardCtrl {
     public void initialize() {
         List<Player> players = this.server.getPlayers();
         players.sort((o1, o2) -> o2.getPoints() - o1.getPoints());
+        for (Player player : players) {
+            player.setPlace(players.indexOf(player) + 1);
+        }
         playerName.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
         score.setCellValueFactory(new PropertyValueFactory<Player, Integer>("points"));
+        place.setCellValueFactory(new PropertyValueFactory<Player, Integer>("place"));
         ObservableList<Player> observableList = FXCollections.observableList(players);
         tableView.setItems(observableList);
     }

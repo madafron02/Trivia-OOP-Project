@@ -19,6 +19,7 @@ public class Player implements Serializable {
     private int points;
 
     private long gameId;
+    private int place;
 
     public Player() {
     }
@@ -26,7 +27,15 @@ public class Player implements Serializable {
     public Player(String name) {
         this.name = name;
         this.points = 0;
-        this.gameId = 0;
+        this.place = 0;
+    }
+
+    public int getPlace() {
+        return place;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
     }
 
     public void setPoints(int addition){
