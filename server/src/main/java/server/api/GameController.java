@@ -37,4 +37,13 @@ public class GameController {
         Game saved = repo.save(game);
         return ResponseEntity.ok(saved);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Game> deleteGameById(@PathVariable long id){
+        if (id < 0 || !repo.existsById(id)) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(repo.delete(repo.getById()));
+    }
+
 }
