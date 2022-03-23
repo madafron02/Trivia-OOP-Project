@@ -43,7 +43,7 @@ public class GameController {
         if (id < 0 || !repo.existsById(id)) {
             return ResponseEntity.badRequest().build();
         }
-        Game deleted = repo.findById(id).get());
+        Game deleted = repo.findById(id).get();
         repo.delete(deleted);
         return ResponseEntity.ok(deleted);
     }
