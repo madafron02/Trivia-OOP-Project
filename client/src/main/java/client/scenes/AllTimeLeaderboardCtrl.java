@@ -6,12 +6,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import javax.inject.Inject;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Font;
 
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class AllTimeLeaderboardCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
 
+    @FXML
+    private Label leaderboardLabel;
     @FXML
     private Button backFromLeaderboard;
     @FXML
@@ -57,8 +61,9 @@ public class AllTimeLeaderboardCtrl {
         for (Player player : players) {
             player.setPlace(players.indexOf(player) + 1);
         }
-        playerName.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
-        place.setCellValueFactory(new PropertyValueFactory<Player, Integer>("place"));
+        this.playerName.setCellValueFactory(new PropertyValueFactory<Player, String>("name"));
+        this.place.setCellValueFactory(new PropertyValueFactory<Player, Integer>("place"));
+        this.score.setCellValueFactory(new PropertyValueFactory<Player, Integer>("points"));
         ObservableList<Player> observableList = FXCollections.observableList(players);
         tableView.setItems(observableList);
     }

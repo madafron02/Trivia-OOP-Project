@@ -8,20 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #00080d;" styleClass="background" stylesheets="@../../Images/leadearboard_allTime.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.AllTimeLeaderboardCtrl">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #00080d;" styleClass="background" stylesheets="@../../Images/leaderboard_allTime.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.AllTimeLeaderboardCtrl">
    <children>
-      <Label alignment="CENTER" layoutX="418.0" layoutY="85.0" prefHeight="79.0" prefWidth="510.0" styleClass="fixed" text="Leaderboard" textFill="WHITE">
+      <Label fx:id="leaderboardLabel" alignment="CENTER" layoutX="418.0" layoutY="85.0" prefHeight="79.0" prefWidth="510.0" text="Leaderboard" textFill="WHITE">
          <font>
             <Font size="64.0" />
          </font>
+         <styleClass>
+            <String fx:value="fixed" />
+            <String fx:value="font" />
+         </styleClass>
       </Label>
-      <AnchorPane layoutX="107.0" layoutY="180.0" prefHeight="630.0" prefWidth="1104.0" style="-fx-background-color: #8fd1d9;" styleClass="fixed" stylesheets="@../../Images/leadearboard_allTime.css">
+      <AnchorPane layoutX="107.0" layoutY="180.0" prefHeight="630.0" prefWidth="1104.0" style="-fx-background-color: #8fd1d9;" styleClass="fixed" stylesheets="@../../Images/leaderboard_allTime.css">
          <children>
-            <TableView fx:id="tableView" layoutX="24.0" layoutY="28.0" prefHeight="578.0" prefWidth="1053.0" styleClass="fixed">
+            <TableView id="wholeTable" fx:id="tableView" layoutX="24.0" layoutY="28.0" prefHeight="578.0" prefWidth="1053.0">
               <columns>
-                <TableColumn fx:id="playerName" prefWidth="653.64013671875" text="Player name" />
-                <TableColumn fx:id="score" minWidth="0.0" prefWidth="209.35986328125" text="Score" />
-                  <TableColumn fx:id="place" prefWidth="167.69708251953125" text="Place" />
+                <TableColumn id="playerColumn" fx:id="playerName" prefWidth="653.64013671875" text="Player name" />
+                <TableColumn id="scoreColumn" fx:id="score" minWidth="0.0" prefWidth="209.35986328125" text="Score" />
+                  <TableColumn id="placeColumn" fx:id="place" prefWidth="176.0826416015625" text="Place" />
               </columns>
             </TableView>
          </children>
@@ -30,7 +34,11 @@
          <styleClass>
             <String fx:value="fixed" />
             <String fx:value="button-round" />
+            <String fx:value="font" />
          </styleClass>
+         <font>
+            <Font size="35.0" />
+         </font>
       </Button>
    </children>
 </AnchorPane>
