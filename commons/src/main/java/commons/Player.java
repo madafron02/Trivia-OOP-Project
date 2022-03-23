@@ -18,12 +18,23 @@ public class Player implements Serializable {
     private String name;
     private int points;
 
+    private int place;          //place in the leaderboard
+
     public Player() {
     }
 
     public Player(String name) {
         this.name = name;
         this.points = 0;
+        this.place = 0;
+    }
+
+    public int getPlace() {
+        return place;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
     }
 
     public void setPoints(int addition){
