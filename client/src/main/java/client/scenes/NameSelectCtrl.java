@@ -29,6 +29,9 @@ public class NameSelectCtrl {
     @FXML
     private Button toLobby;
 
+    @FXML
+    private Button goBack;
+
     @Inject
     public NameSelectCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
@@ -77,5 +80,9 @@ public class NameSelectCtrl {
 
     public void goToHelp() {
         mainCtrl.showHelp();
+    }
+
+    public void goBack() {
+        mainCtrl.showSplash();
     }
 }

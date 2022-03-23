@@ -52,6 +52,8 @@ public class Main extends Application {
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
         var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "NameSelect.fxml");
+        nameSelect.getValue().getStylesheets().add("Images/selectName.css");
+        leaderboard.getValue().getStylesheets().add("Images/leaderboard_allTime.css");
         mainCtrl.initializeNew(primaryStage, splash, nameSelect, lobby,
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
                 multiChoice);
