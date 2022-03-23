@@ -18,8 +18,7 @@ public class Player implements Serializable {
     private String name;
     private int points;
 
-    private long gameId;
-    private int place;
+    private int place;          //place in the leaderboard
 
     public Player() {
     }
@@ -56,14 +55,6 @@ public class Player implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setGameId(long gameId) {
-        this.gameId = gameId;
-    }
-
-    public long getGameId() {
-        return gameId;
     }
 
     @Override
