@@ -56,7 +56,7 @@ public class ServerUtils {
 
     public void addPlayerToCurrentGame(Player player) {
         ClientBuilder.newClient(new ClientConfig()) //
-            .target(SERVER).path("api/game/addToCurrentGame") //
+            .target(SERVER).path("api/games/addToCurrentGame") //
             .request(APPLICATION_JSON) //
             .accept(APPLICATION_JSON) //
             .post(Entity.entity(player, APPLICATION_JSON), Player.class);
@@ -64,7 +64,7 @@ public class ServerUtils {
 
     public void setStatus(Boolean status){
         ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("api/game/status") //
+                .target(SERVER).path("api/games/status") //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .post(Entity.entity(status, APPLICATION_JSON), Boolean.class);
@@ -72,7 +72,7 @@ public class ServerUtils {
 
     public boolean getStatus(){
         return ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("api/game/status") //
+                .target(SERVER).path("api/games/status") //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(Boolean.class);

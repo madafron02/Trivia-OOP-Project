@@ -61,7 +61,7 @@ public class NameSelectCtrl {
                     }
                 }
                 if(!flag){
-                    nameInput.setText("this name is already taken");
+                    nameCheck.setText("this name is already taken");
                     return;
                 }
                 server.addPlayerToCurrentGame(thisplayer);

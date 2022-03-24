@@ -32,13 +32,17 @@ public class LobbyCtrl {
         TimerTask refreshTask = new TimerTask() {
             @Override
             public void run() {
-                refresh();
+                javafx.application.Platform.runLater(()->{
+                    refresh();
+                });
             }
         };
         TimerTask startTask = new TimerTask() {
             @Override
             public void run() {
-                startRounds();
+                javafx.application.Platform.runLater(()->{
+                    startRounds();
+                });
             }
         };
         timer.schedule(refreshTask,0,1000);
@@ -53,6 +57,9 @@ public class LobbyCtrl {
         playerList.setItems(FXCollections.observableList(names));
     }
     public void startRounds() {
-       if(server.getStatus())mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
+        if(server.getStatus()){
+            timer.cancel();
+            mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
+        }
     }
 }

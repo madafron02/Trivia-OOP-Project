@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import server.database.GameRepository;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -15,10 +16,20 @@ public class GameController {
     GameRepository repo;
     Game currentGame;
     boolean currentStatus;
+    int numberOfReady;
     public GameController(GameRepository repo) {
         currentGame = new Game();
+        currentGame.setPlayers(new ArrayList<>());
         currentStatus = false;
+        numberOfReady = 0;
         this.repo = repo;
+    }
+    public void clear(){
+        repo.save(currentGame);
+        currentGame = new Game();
+        currentGame.setPlayers(new ArrayList<>());
+        currentStatus = false;
+        numberOfReady = 0;
     }
     @GetMapping("/currentGame")
     public ResponseEntity<Game>getCurrentGame(){
@@ -62,7 +73,10 @@ public class GameController {
     }
     @GetMapping("/status")
     public ResponseEntity<Boolean>getCurrentStatus(){
-        return ResponseEntity.ok(currentStatus);
+        boolean tmp = currentStatus;
+        if(currentStatus == true)numberOfReady++;
+        if(numberOfReady == currentGame.getPlayers().size())clear();
+        return ResponseEntity.ok(tmp);
     }
     @PostMapping("/status")
     public void setCurrentStatus(@RequestBody boolean s){
