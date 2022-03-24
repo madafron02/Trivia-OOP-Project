@@ -30,6 +30,7 @@ class ActivityControllerTest {
     @Test
     void save() {
         Activity t2 = new Activity("t2","t2","t2", 2L);
+        System.out.println(t2);
         assertEquals(t2,sut.save(t2).getBody());
     }
 }
