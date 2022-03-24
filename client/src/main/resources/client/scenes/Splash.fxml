@@ -72,7 +72,7 @@
             <HBox alignment="CENTER" cache="true" cacheHint="SCALE" fillHeight="false" spacing="40.0" StackPane.alignment="CENTER">
                <children>
                   <Button fx:id="singleplayer" mnemonicParsing="false" onAction="#goToNameSelect" prefHeight="53.0" prefWidth="139.0" text="Singleplayer" />
-                  <Button fx:id="multiplayer" mnemonicParsing="false" prefHeight="53.0" prefWidth="139.0" text="Multiplayer" />
+                  <Button fx:id="multiplayer" mnemonicParsing="false" onAction="#goToMultiPlayer" prefHeight="53.0" prefWidth="139.0" text="Multiplayer" />
                   <Button fx:id="leaderboard" mnemonicParsing="false" onAction="#goToLeader" prefHeight="53.0" prefWidth="139.0" text="Leaderboard" />
                </children>
                <cursor>
