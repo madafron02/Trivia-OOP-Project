@@ -5,17 +5,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.GameRepository;
 
+import javax.swing.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/games")
 public class GameController {
     GameRepository repo;
-
+    Game currentGame;
     public GameController(GameRepository repo) {
+        currentGame = new Game();
         this.repo = repo;
     }
-
+    @GetMapping("/currentGame")
+    public ResponseEntity<Game>getCurrentGame(){
+        return ResponseEntity.ok(currentGame);
+    }
     @GetMapping(path = {"", "/"})
     public List<Game> getAll() {
         return repo.findAll();

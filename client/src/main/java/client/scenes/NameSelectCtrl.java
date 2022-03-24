@@ -57,13 +57,15 @@ public class NameSelectCtrl {
         Player player = new Player(nameInput.getText());
         server.addPlayer(player);
     }
-
     public void goToLobby(){
         if(!checked){
             nameCheck.setText("Please check your name before you start");
             return;
         }
         try {
+            if(!mainCtrl.isSingleMode()){
+
+            }
             addPlayer();
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
