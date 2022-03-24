@@ -1,0 +1,13 @@
+.questionTitle {
+    -fx-background-color: #1b418c;
+    -fx-color-label-visible: white;
+    -fx-text-fill: white;
+    -fx-text-color: white;
+}
+
+.background {
+    -fx-background-image: url('bk2222.png');
+    -fx-background-size: 100% auto;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
