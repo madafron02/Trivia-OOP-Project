@@ -1,6 +1,7 @@
 package server.api;
 
 import commons.Game;
+import commons.Player;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.GameRepository;
@@ -42,7 +43,12 @@ public class GameController {
         Game saved = repo.save(game);
         return ResponseEntity.ok(saved);
     }
-
+    @PostMapping("/addToCurrentGame")
+    public void addToCurrentGame(@RequestBody Player player){
+        List<Player>players = currentGame.getPlayers();
+        players.add(player);
+        currentGame.setPlayers(players);
+    }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Game> deleteGameById(@PathVariable long id){
         if (id < 0 || !repo.existsById(id)) {

@@ -18,6 +18,7 @@ package client.utils;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import java.util.List;
 
+import commons.Game;
 import commons.Player;
 import jakarta.ws.rs.core.GenericType;
 import org.glassfish.jersey.client.ClientConfig;
@@ -43,5 +44,21 @@ public class ServerUtils {
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(new GenericType<List<Player>>() {});
+    }
+
+    public Game getGame() {
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/currentGame") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Game.class);
+    }
+
+    public void addPlayerToCurrentGame(Player player) {
+        ClientBuilder.newClient(new ClientConfig()) //
+            .target(SERVER).path("api/game/addToCurrentGame") //
+            .request(APPLICATION_JSON) //
+            .accept(APPLICATION_JSON) //
+            .post(Entity.entity(player, APPLICATION_JSON), Player.class);
     }
 }

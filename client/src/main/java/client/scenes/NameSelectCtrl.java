@@ -2,6 +2,7 @@ package client.scenes;
 
 import client.utils.ServerUtils;
 import com.google.inject.Inject;
+import commons.Game;
 import commons.Player;
 import jakarta.ws.rs.WebApplicationException;
 import javafx.fxml.FXML;
@@ -12,7 +13,7 @@ public class NameSelectCtrl {
 
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
-
+    private Player player;
     @FXML
     private TextField nameInput;
 
@@ -49,24 +50,25 @@ public class NameSelectCtrl {
             nameCheck.setText("Please enter a valid name");
             return;
         }
-        nameCheck.setText("Your name is saved successfully!");
-        checked = true;
-    }
-
-    public void addPlayer() {
-        Player player = new Player(nameInput.getText());
-        server.addPlayer(player);
-    }
-    public void goToLobby(){
-        if(!checked){
-            nameCheck.setText("Please check your name before you start");
-            return;
-        }
         try {
+            Player thisplayer = new Player(nameInput.getText());
             if(!mainCtrl.isSingleMode()){
-
+                Game currentGame = server.getGame();
+                boolean flag = true;
+                for(Player player: currentGame.getPlayers()) {
+                    if (player.getName().equals(thisplayer.getName())) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if(!flag){
+                    nameInput.setText("this name is already taken");
+                    return;
+                }
+                server.addPlayerToCurrentGame(thisplayer);
             }
-            addPlayer();
+            player = thisplayer;
+            server.addPlayer(thisplayer);
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);
@@ -74,10 +76,17 @@ public class NameSelectCtrl {
             alert.showAndWait();
             return;
         }
-        LobbyCtrl lobbyCtrl = mainCtrl.getLobby();
-        lobbyCtrl.addToList();
+        nameCheck.setText("Your name is saved successfully!");
+        checked = true;
+    }
 
-        mainCtrl.showLobby();
+    public void goToLobby(){
+        if(!checked){
+            nameCheck.setText("Please check your name before you start");
+            return;
+        }
+        if(mainCtrl.isSingleMode())mainCtrl.showMultiChoiceQ(player);
+        else mainCtrl.showLobby();
     }
 
     public void goToHelp() {
