@@ -13,7 +13,6 @@ public class NameSelectCtrl {
 
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
-    private Player player;
     @FXML
     private TextField nameInput;
 
@@ -67,7 +66,7 @@ public class NameSelectCtrl {
                 }
                 server.addPlayerToCurrentGame(thisplayer);
             }
-            player = thisplayer;
+            mainCtrl.setPlayer(thisplayer);
             server.addPlayer(thisplayer);
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
@@ -85,7 +84,7 @@ public class NameSelectCtrl {
             nameCheck.setText("Please check your name before you start");
             return;
         }
-        if(mainCtrl.isSingleMode())mainCtrl.showMultiChoiceQ(player);
+        if(mainCtrl.isSingleMode())mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
         else mainCtrl.showLobby();
     }
 

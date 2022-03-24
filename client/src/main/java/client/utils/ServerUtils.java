@@ -61,4 +61,20 @@ public class ServerUtils {
             .accept(APPLICATION_JSON) //
             .post(Entity.entity(player, APPLICATION_JSON), Player.class);
     }
+
+    public void setStatus(Boolean status){
+        ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/game/status") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(status, APPLICATION_JSON), Boolean.class);
+    }
+
+    public boolean getStatus(){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/game/status") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Boolean.class);
+    }
 }

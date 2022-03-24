@@ -24,6 +24,7 @@ import javafx.util.Pair;
 
 public class MainCtrl {
     private boolean isSingleMode;
+    private Player player;
     private Stage primaryStage;
 
     private SplashCtrl splashCtrl;
@@ -188,5 +189,13 @@ public class MainCtrl {
     public void showWinners() {
         primaryStage.setTitle("Winners");
         primaryStage.setScene(winners);
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

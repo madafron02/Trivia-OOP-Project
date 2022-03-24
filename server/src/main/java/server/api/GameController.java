@@ -14,8 +14,10 @@ import java.util.List;
 public class GameController {
     GameRepository repo;
     Game currentGame;
+    boolean currentStatus;
     public GameController(GameRepository repo) {
         currentGame = new Game();
+        currentStatus = false;
         this.repo = repo;
     }
     @GetMapping("/currentGame")
@@ -58,5 +60,12 @@ public class GameController {
         repo.delete(deleted);
         return ResponseEntity.ok(deleted);
     }
-
+    @GetMapping("/status")
+    public ResponseEntity<Boolean>getCurrentStatus(){
+        return ResponseEntity.ok(currentStatus);
+    }
+    @PostMapping("/status")
+    public void setCurrentStatus(@RequestBody boolean s){
+        currentStatus = s;
+    }
 }
