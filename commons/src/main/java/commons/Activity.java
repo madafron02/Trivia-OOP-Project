@@ -26,6 +26,7 @@ public class Activity implements Reachable{
         this.imgPath = imgPath;
         this.title = title;
         this.consumption = consumption;
+        setPowerLevel();
     }
 
     public void setPowerLevel(){
