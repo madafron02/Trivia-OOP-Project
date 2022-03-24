@@ -63,16 +63,15 @@ public class QuestionAnswerSelector {
             default:{
                 answers = repo.findAll();
             }
-            int answA = random.nextInt(answers.size());
-            int answB = random.nextInt(answers.size());
-            if(answA == answB){
-                while (answA == answB){
-                    answB = random.nextInt(answers.size());
-                }
-            }
-            gameAnswers.put(gameId, List.of(answers.get(answA), answers.get(answB)));
         }
-
+        int answA = random.nextInt(answers.size());
+        int answB = random.nextInt(answers.size());
+        if(answA == answB){
+            while (answA == answB){
+                answB = random.nextInt(answers.size());
+            }
+        }
+        gameAnswers.put(gameId, List.of(answers.get(answA), answers.get(answB)));
     }
 
     /**
