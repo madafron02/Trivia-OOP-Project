@@ -119,9 +119,9 @@ public class MultiChoiceQCtrl {
             activities.add("this");
             activities.add("that");
             activities.add("the other");
-            question = new Question("Which takes more energy?",
-                    activities);
-
+            question = new Question();
+            question.setType(Question.QuestionType.MORE_ENERGY);
+            server.requireQuestion(question);
             setUpRound();
             setTimer();
         }
