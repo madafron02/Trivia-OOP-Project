@@ -32,6 +32,11 @@ public class NameSelectCtrl {
     @FXML
     private Button goBack;
 
+    /**
+     * create the nameselect controller
+     * @param server an instance that can send http request to the server
+     * @param mainCtrl main controller
+     */
     @Inject
     public NameSelectCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
@@ -39,6 +44,14 @@ public class NameSelectCtrl {
 
     }
 
+    /**
+     * check if the name is valid
+     * a palyer connot check again when its name checked successfully
+     * the input is invalid if it is null
+     * the input is invalid for the mutiplayer mode
+     * if someone with the same name exists in the current round
+     * if the name is valid, send it to the server and save it in the main controller
+     */
     public void checkName(){
         if(checked){
             nameCheck.setText("Your name has already been checked");
@@ -79,6 +92,11 @@ public class NameSelectCtrl {
         checked = true;
     }
 
+    /**
+     * if the player haven't check his name, do nothing
+     * for the single player mode, travel to the game page
+     * for the mutiplayer mode, travel to the lobby
+     */
     public void goToLobby(){
         if(!checked){
             nameCheck.setText("Please check your name before you start");
@@ -88,10 +106,16 @@ public class NameSelectCtrl {
         else mainCtrl.showLobby();
     }
 
+    /**
+     * show the help page
+     */
     public void goToHelp() {
         mainCtrl.showHelp();
     }
 
+    /**
+     * go back to the splash page
+     */
     public void goBack() {
         mainCtrl.showSplash();
     }
