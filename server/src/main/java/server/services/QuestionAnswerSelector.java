@@ -83,15 +83,23 @@ public class QuestionAnswerSelector {
 
     public List<Activity> getActivities(int capacity){
         List<Activity>activities = repo.findAll();
-        List<Activity>tmp = activities.stream().filter(a->a.getConsumption()>300)
+        List<Activity>tmp = activities.stream().filter(a->a.getConsumption()>600)
                 .collect(Collectors.toList());
         double upper = tmp.get(random.nextInt(tmp.size())).getConsumption();
         activities = activities.stream().
-                filter(p -> p.getConsumption()<=upper && p.getConsumption()>upper-300).toList();
+                filter(p -> p.getConsumption()<=upper && p.getConsumption()>upper-600).toList();
         List<Activity> finalList  = new ArrayList<>();
         while(finalList.size()<capacity){
             Activity cur = activities.get(random.nextInt(activities.size()));
-            if(!finalList.contains(cur))finalList.add(cur);
+            boolean flag = true;
+            for (int i = 0; i < finalList.size(); i++) {
+                if(finalList.get(i).getConsumption() == cur.getConsumption()){
+                    flag = false;
+                    break;
+                }
+            }
+
+            if(!finalList.contains(cur)&&flag)finalList.add(cur);
         }
         return finalList;
     }
@@ -113,6 +121,7 @@ public class QuestionAnswerSelector {
 
     public Question getEnergyGuessQuestion() {
         List<Activity> finalList = getActivities(3);
+        System.out.println(finalList);
         Question q = new Question();
         int correctAnswer = random.nextInt(3);
         q.setType(Question.QuestionType.ENERGY_GUESS);
@@ -121,6 +130,7 @@ public class QuestionAnswerSelector {
                 .collect(Collectors.toList()));
         q.setDescriptionImagePath(finalList.get(correctAnswer).getImgPath());
         q.setDescription(finalList.get(correctAnswer).getTitle());
+        System.out.println(q);
         return q;
     }
 

@@ -71,7 +71,7 @@ public class MultiChoiceQCtrl {
         currentRoundNumber++;
         timer = new Timer();
         mainCtrl.getPrimaryStage().setTitle("Round " + currentRoundNumber);
-        questionText.setText(question.getDescription());
+        questionText.setText("how much energy does it take?");
         answerA.setText(question.getAnswers().get(0));
         answerB.setText(question.getAnswers().get(1));
         answerC.setText(question.getAnswers().get(2));
@@ -120,8 +120,8 @@ public class MultiChoiceQCtrl {
             activities.add("that");
             activities.add("the other");
             question = new Question();
-            question.setType(Question.QuestionType.MORE_ENERGY);
-            server.requireQuestion(question);
+            question.setType(Question.QuestionType.ENERGY_GUESS);
+            question = server.requireQuestion(question);
             setUpRound();
             setTimer();
         }
