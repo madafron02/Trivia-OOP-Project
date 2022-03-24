@@ -10,7 +10,7 @@ import java.io.Serializable;
 import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
-public class Player implements Serializable {
+public class Player implements Serializable,Reachable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -45,9 +45,6 @@ public class Player implements Serializable {
         return points;
     }
 
-    public long getId() {
-        return id;
-    }
 
     public String getName() {
         return name;
@@ -72,4 +69,8 @@ public class Player implements Serializable {
         return ToStringBuilder.reflectionToString(this, MULTI_LINE_STYLE);
     }
 
+    @Override
+    public long getId() {
+        return id;
+    }
 }

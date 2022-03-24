@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "activity")
 
-public class Activity {
+public class Activity implements Reachable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -35,9 +35,6 @@ public class Activity {
         else powerLevel = "deyum";
     }
 
-    public long getId() {
-        return id;
-    }
 
     public String getImgPath() {
         return imgPath;
@@ -102,5 +99,10 @@ public class Activity {
                         "imgPath= " + imgPath + "\n" +
                         "title= " + title + "\n" +
                         "consumption= " + consumption + "\n";
+    }
+
+    @Override
+    public long getId() {
+        return id;
     }
 }
