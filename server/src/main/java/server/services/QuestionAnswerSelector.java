@@ -40,7 +40,7 @@ public class QuestionAnswerSelector {
 
         setSeparated();
         setAnswersCount();
-        
+
         List<List<Activity>> answersSet = List.of();
         for(int i=0; i<20; i++) {
             List<Activity> questionAnswers = List.of();
@@ -76,56 +76,61 @@ public class QuestionAnswerSelector {
         separated = List.of(lowList, midList, highList, deyumList);
     }
 
+    /**
+     * pre-assigns the answer count for each question for a whole game
+     */
     public void setAnswersCount(){
         answersCount = List.of();
         for(int i = 0; i < 20; i++){
-            answersCount.add(Integer.valueOf(random.nextInt(4)));
+            answersCount.add(Integer.valueOf(random.nextInt(3)+1));
         }
     }
-//    public void setGameAnswers(Long gameId, int count){
-//        if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
-//        List<Activity> copyActivList;
-//        switch(random.nextInt(4)+1){
-//            case 1:{
-//                copyActivList = List.copyOf(repo.findAll().stream()
-//                        .filter(x -> x.getPowerLevel().equals("low"))
-//                        .collect(Collectors.toList()));
-//                break;
-//            }
-//            case 2:{
-//                copyActivList = List.copyOf(repo.findAll().stream()
-//                        .filter(x -> x.getPowerLevel().equals("mid"))
-//                        .collect(Collectors.toList()));
-//                break;
-//            }
-//            case 3:{
-//                copyActivList = List.copyOf(repo.findAll().stream()
-//                        .filter(x -> x.getPowerLevel().equals("high"))
-//                        .collect(Collectors.toList()));
-//                break;
-//            }
-//            case 4:{
-//                copyActivList = List.copyOf(repo.findAll().stream()
-//                        .filter(x -> x.getPowerLevel().equals("deyum"))
-//                        .collect(Collectors.toList()));
-//                break;
-//            }
-//            default:{
-//                copyActivList = List.copyOf(repo.findAll());
-//            }
-//        }
-//        List<List<Activity>> answersSet = List.of();
-//        for(int i=0; i<20 && copyActivList.size()>=count; i++) {
-//            List<Activity> questionAnswers = List.of();
-//            for(int h=0; h<count; h++){
-//                Activity tempActiv = copyActivList
-//                        .remove(random.nextInt(copyActivList.size() - 1));
-//                questionAnswers.add(tempActiv);
-//            }
-//            answersSet.add(questionAnswers);
-//        }
-//        gameAnswers.put(gameId, answersSet);
-//    }
+    /*
+    public void setGameAnswers(Long gameId, int count){
+        if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
+        List<Activity> copyActivList;
+        switch(random.nextInt(4)+1){
+            case 1:{
+                copyActivList = List.copyOf(repo.findAll().stream()
+                        .filter(x -> x.getPowerLevel().equals("low"))
+                        .collect(Collectors.toList()));
+                break;
+            }
+            case 2:{
+                copyActivList = List.copyOf(repo.findAll().stream()
+                        .filter(x -> x.getPowerLevel().equals("mid"))
+                        .collect(Collectors.toList()));
+                break;
+            }
+            case 3:{
+                copyActivList = List.copyOf(repo.findAll().stream()
+                        .filter(x -> x.getPowerLevel().equals("high"))
+                        .collect(Collectors.toList()));
+                break;
+            }
+            case 4:{
+                copyActivList = List.copyOf(repo.findAll().stream()
+                        .filter(x -> x.getPowerLevel().equals("deyum"))
+                        .collect(Collectors.toList()));
+                break;
+            }
+            default:{
+                copyActivList = List.copyOf(repo.findAll());
+            }
+        }
+        List<List<Activity>> answersSet = List.of();
+        for(int i=0; i<20 && copyActivList.size()>=count; i++) {
+            List<Activity> questionAnswers = List.of();
+            for(int h=0; h<count; h++){
+                Activity tempActiv = copyActivList
+                        .remove(random.nextInt(copyActivList.size() - 1));
+                questionAnswers.add(tempActiv);
+            }
+            answersSet.add(questionAnswers);
+        }
+        gameAnswers.put(gameId, answersSet);
+    }
+     */
 
     /**
      * TODO add a checker if the answers are empty
