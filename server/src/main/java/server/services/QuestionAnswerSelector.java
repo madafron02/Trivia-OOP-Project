@@ -21,7 +21,7 @@ public class QuestionAnswerSelector {
         this.repo = repo;
         gameAnswers = new HashMap<>();
         random = new Random();
-        this.separated = List.of();
+        separated = new ArrayList<>(4);
     }
 
     /**
@@ -39,9 +39,9 @@ public class QuestionAnswerSelector {
 
         setSeparated();
 
-        List<List<Activity>> answersSet = List.of();
+        List<List<Activity>> answersSet = new ArrayList<>(20);
         for(int i=0; i<20; i++) {
-            List<Activity> questionAnswers = List.of();
+            List<Activity> questionAnswers = new ArrayList<>(4);
             List<Activity> activitiesInUse = separated.get(random.nextInt(4));
             for(int h=0; h < 4 && activitiesInUse.size() >= 4; h++){
                 Activity tempActivity = activitiesInUse
@@ -59,19 +59,22 @@ public class QuestionAnswerSelector {
      * for ease of use
      */
     public void setSeparated(){
-        List<Activity> lowList = List.copyOf(repo.findAll().stream()
+        List<Activity> lowList = repo.findAll().stream()
                 .filter(x -> x.getPowerLevel().equals("low"))
-                .collect(Collectors.toList()));
-        List<Activity> midList = List.copyOf(repo.findAll().stream()
+                .collect(Collectors.toList());
+        List<Activity> midList = repo.findAll().stream()
                 .filter(x -> x.getPowerLevel().equals("mid"))
-                .collect(Collectors.toList()));
-        List<Activity> highList = List.copyOf(repo.findAll().stream()
+                .collect(Collectors.toList());
+        List<Activity> highList = repo.findAll().stream()
                 .filter(x -> x.getPowerLevel().equals("low"))
-                .collect(Collectors.toList()));
-        List<Activity> deyumList = List.copyOf(repo.findAll().stream()
+                .collect(Collectors.toList());
+        List<Activity> deyumList = repo.findAll().stream()
                 .filter(x -> x.getPowerLevel().equals("low"))
-                .collect(Collectors.toList()));
-        separated = List.of(lowList, midList, highList, deyumList);
+                .collect(Collectors.toList());
+        separated.add(lowList);
+        separated.add(midList);
+        separated.add(highList);
+        separated.add(deyumList);
     }
 
     /*
