@@ -45,7 +45,8 @@ public class QuestionAnswerSelector {
         for(int i=0; i<20; i++) {
             List<Activity> questionAnswers = List.of();
             List<Activity> activitiesInUse = separated.get(random.nextInt(4));
-            for(int h=0; h< answersCount.get(i) && activitiesInUse.size() >= answersCount.get(i); h++){
+            for(int h=0; h< answersCount.get(i)
+                    && activitiesInUse.size() >= answersCount.get(i); h++){
                 Activity tempActivity = activitiesInUse
                         .remove(random.nextInt(activitiesInUse.size() - 1));
                 questionAnswers.add(tempActivity);
