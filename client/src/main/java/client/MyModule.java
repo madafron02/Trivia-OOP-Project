@@ -35,5 +35,6 @@ public class MyModule implements Module {
         binder.bind(WinnersCtrl.class).in(Scopes.SINGLETON);
         binder.bind(MultiChoiceQCtrl.class).in(Scopes.SINGLETON);
         binder.bind(NameSelectCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(MoreEnergyQCtrl.class).in(Scopes.SINGLETON);
     }
 }
