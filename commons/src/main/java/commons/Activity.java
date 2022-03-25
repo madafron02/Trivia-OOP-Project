@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "activity")
 
-public class Activity {
+public class Activity implements Reachable{
 
     /**
      * Activity attributes declaration with auto generated primary key
@@ -44,6 +44,7 @@ public class Activity {
         this.imgPath = imgPath;
         this.title = title;
         this.consumption = consumption;
+        setPowerLevel();
     }
 
 
@@ -197,5 +198,10 @@ public class Activity {
                         "imgPath= " + imgPath + "\n" +
                         "title= " + title + "\n" +
                         "consumption= " + consumption + "\n";
+    }
+
+    @Override
+    public long getId() {
+        return id;
     }
 }

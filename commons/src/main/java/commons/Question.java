@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Question {
+public class Question implements Reachable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +42,7 @@ public class Question {
         this.answers = answers;
     }
 
+    @Override
     public long getId() {
         return id;
     }

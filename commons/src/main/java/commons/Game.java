@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @Entity
-public class Game {
+public class Game implements Reachable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;          //probably will add the list of rounds as an attribute in the future
@@ -42,13 +42,7 @@ public class Game {
         return players;
     }
 
-    /**
-     * A getter for the game.
-     * @return the unique id of this game
-     */
-    public long getId() {
-        return id;
-    }
+
 
     /**
      * A setter for this game allowing changing the player list
@@ -89,5 +83,12 @@ public class Game {
         return EqualsBuilder.reflectionEquals(this, obj);
     }
 
-
+    /**
+     * A getter for the game.
+     * @return the unique id of this game
+     */
+    @Override
+    public long getId() {
+        return id;
+    }
 }
