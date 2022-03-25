@@ -14,6 +14,7 @@ public class QuestionAnswerSelector {
     private final Random random;
     private final ActivityRepository repo;
 
+    private List<Integer> answersCount;
     private List<List<Activity>> separated;
 
 
@@ -22,6 +23,7 @@ public class QuestionAnswerSelector {
         gameAnswers = new HashMap<>();
         random = new Random();
         this.separated = List.of();
+        this.answersCount = List.of();
     }
 
     /**
@@ -33,15 +35,17 @@ public class QuestionAnswerSelector {
      * of Lists of activities
      *
      */
-    public void setGameAnswers(Long gameId, List<Integer> count){
+    public void setGameAnswers(Long gameId){
         if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
+
         setSeparated();
+        setAnswersCount();
+        
         List<List<Activity>> answersSet = List.of();
         for(int i=0; i<20; i++) {
-            Integer currentCount = count.get(i);
             List<Activity> questionAnswers = List.of();
             List<Activity> activitiesInUse = separated.get(random.nextInt(4));
-            for(int h=0; h<currentCount && activitiesInUse.size()>=currentCount; h++){
+            for(int h=0; h< answersCount.get(i) && activitiesInUse.size() >= answersCount.get(i); h++){
                 Activity tempActivity = activitiesInUse
                         .remove(random.nextInt(activitiesInUse.size() - 1));
                 questionAnswers.add(tempActivity);
@@ -70,6 +74,13 @@ public class QuestionAnswerSelector {
                 .filter(x -> x.getPowerLevel().equals("low"))
                 .collect(Collectors.toList()));
         separated = List.of(lowList, midList, highList, deyumList);
+    }
+
+    public void setAnswersCount(){
+        answersCount = List.of();
+        for(int i = 0; i < 20; i++){
+            answersCount.add(Integer.valueOf(random.nextInt(4)));
+        }
     }
 //    public void setGameAnswers(Long gameId, int count){
 //        if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
