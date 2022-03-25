@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "activity")
 
-public class Activity implements Reachable{
+public class Activity {
 
     /**
      * Activity attributes declaration with auto generated primary key
@@ -18,7 +18,7 @@ public class Activity implements Reachable{
     private String activityName;
     private String imgPath;
     private String title;
-    private Long consumption;
+    private long consumption;
 
 
     private String powerLevel; //between 1-3 based on consumption
@@ -39,12 +39,11 @@ public class Activity implements Reachable{
      * @param consumption represents the energy consumption of the Activity
      */
 
-    public Activity(String activityName, String imgPath, String title, Long consumption) {
+    public Activity(String activityName, String imgPath, String title, long consumption) {
         this.activityName = activityName;
         this.imgPath = imgPath;
         this.title = title;
         this.consumption = consumption;
-        setPowerLevel();
     }
 
 
@@ -55,12 +54,19 @@ public class Activity implements Reachable{
 
     public void setPowerLevel(){
         if(consumption<1000) powerLevel = "low";
-        else if(consumption<7500) powerLevel = "mid";
-        else if(consumption<=15000) powerLevel = "high";
+        else if(consumption<10000) powerLevel = "mid";
+        else if(consumption<=40000) powerLevel = "high";
         else powerLevel = "deyum";
     }
 
+    /**
+     * Getter for the id parameter
+     * @return the id
+     */
 
+    public long getId() {
+        return id;
+    }
 
     /**
      * Getter for image path
@@ -112,7 +118,7 @@ public class Activity implements Reachable{
      * @param consumption consumption of the activity
      */
 
-    public void setConsumption(Long consumption) {
+    public void setConsumption(long consumption) {
         this.consumption = consumption;
     }
 
@@ -191,10 +197,5 @@ public class Activity implements Reachable{
                         "imgPath= " + imgPath + "\n" +
                         "title= " + title + "\n" +
                         "consumption= " + consumption + "\n";
-    }
-
-    @Override
-    public long getId() {
-        return id;
     }
 }
