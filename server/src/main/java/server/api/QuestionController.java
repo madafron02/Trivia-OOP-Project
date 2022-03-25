@@ -39,28 +39,26 @@ public class QuestionController {
         return ResponseEntity.ok(questionRepository.getById(id));
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<Question> newQuestion(@RequestBody Question question) {
-        switch (question.getType()){
-            case MORE_ENERGY:
-                question = questionAnswerSelector.getMoreEnergyQuestion();
-                break;
-            case ENERGY_GUESS:
-                question = questionAnswerSelector.getEnergyGuessQuestion();
-                break;
-            case COMPARISON:
-                question = questionAnswerSelector.getComparisonQuestion();
-                break;
-            case OPEN:
-                question = questionAnswerSelector.getOpenQuestion();
-                break;
-            default:
-        }
-        Question saved = questionRepository.save(question);
-        return ResponseEntity.ok(saved);
+    /**
+     * take the gameId and roundNumber from http request, return the corresponding question
+     * @param gameId indicates the game
+     * @param roundNumber indicates the round
+     * @return the matched question(if there is any)
+     */
+    @GetMapping("/{gameId}/{roundNumber}")
+    public ResponseEntity<Question> getQuestion(@PathVariable("gameId") long gameId,
+                                                @PathVariable("roundNumber") int roundNumber) {
+        var res = questionAnswerSelector.getQuestion(gameId,roundNumber);
+        if(res == null)return ResponseEntity.badRequest().build();
+        return ResponseEntity.ok(res);
     }
 
-    private static boolean isNullOrEmpty(List<String> activityList) {
-        return (activityList == null || activityList.size() == 0);
+    /**
+     * preprocess all the questions for a certain game
+     * @param gameId indicates the game
+     */
+    @GetMapping("/{gameId}")
+    public void setQuestion(@PathVariable("gameId") long gameId) {
+        questionAnswerSelector.setGameQuestions(gameId);
     }
 }

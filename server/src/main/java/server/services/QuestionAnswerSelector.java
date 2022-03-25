@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class QuestionAnswerSelector {
 
     private final HashMap<Long, List<List<Activity>>> gameAnswers;
+    private final HashMap<Long, List<Question>>gameQuestions;
     private final Random random;
     private final ActivityRepository repo;
 
@@ -21,6 +22,7 @@ public class QuestionAnswerSelector {
     public QuestionAnswerSelector(ActivityRepository repo){
         this.repo = repo;
         gameAnswers = new HashMap<>();
+        gameQuestions = new HashMap<>();
         random = new Random();
         separated = new ArrayList<>(4);
     }
@@ -37,9 +39,7 @@ public class QuestionAnswerSelector {
      */
     public void setGameAnswers(Long gameId){
         if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
-
         setSeparated();
-
         List<List<Activity>> answersSet = new ArrayList<>(20);
         for(int i=0; i<20; i++) {
             List<Activity> questionAnswers = new ArrayList<>(4);
@@ -133,46 +133,70 @@ public class QuestionAnswerSelector {
         return gameAnswers.get(gameId);
     }
 
-    public List<Activity> getActivities(int capacity){
-        List<Activity>activities = repo.findAll();
-        List<Activity>tmp = activities.stream().filter(a->a.getConsumption()>600)
-                .collect(Collectors.toList());
-        double upper = tmp.get(random.nextInt(tmp.size())).getConsumption();
-        activities = activities.stream().
-                filter(p -> p.getConsumption()<=upper && p.getConsumption()>upper-600).toList();
-        List<Activity> finalList  = new ArrayList<>();
-        while(finalList.size()<capacity){
-            Activity cur = activities.get(random.nextInt(activities.size()));
-            boolean flag = true;
-            for (int i = 0; i < finalList.size(); i++) {
-                if(finalList.get(i).getConsumption() == cur.getConsumption()){
-                    flag = false;
-                    break;
-                }
+    /**
+     * call this method when game start,it will generate 20 questions of different question types
+     * now only generate more energy questions, if let the type be random chosen it can generate
+     * all time questions
+     * @param gameId id of the game which will contains those questions
+     */
+    public void setGameQuestions(Long gameId){
+        if(gameQuestions.containsKey(gameId))return;
+        setGameAnswers(gameId);
+        List<Question>currentQuestions = new ArrayList<>();
+        for(int round = 0;round<20;round++){
+            //Question.QuestionType type = Question.QuestionType.values()[random.nextInt(4)];
+            Question.QuestionType type = Question.QuestionType.MORE_ENERGY;
+            switch (type){
+                case OPEN -> currentQuestions.add(getOpenQuestion(gameId,round));
+                case COMPARISON -> currentQuestions.add(getComparisonQuestion(gameId,round));
+                case ENERGY_GUESS -> currentQuestions.add(getEnergyGuessQuestion(gameId,round));
+                case MORE_ENERGY -> currentQuestions.add(getMoreEnergyQuestion(gameId,round));
+                default -> {}
             }
-
-            if(!finalList.contains(cur)&&flag)finalList.add(cur);
         }
-        return finalList;
+        gameQuestions.put(gameId,currentQuestions);
     }
-    public Question getMoreEnergyQuestion() {
-        List<Activity> finalList = getActivities(3);
+
+    /**
+     * generate the more energy question base on the answer list
+     * the answers(choices) are 3 different activities(string)
+     * ImgPaths is the path of image of the 3 activities
+     * this question dont have a description
+     * the correct answer indicates which choice has the least energy consumption
+     * it can only be 1, 2 or 3
+     * @param gameId indicates which game the question belongs to
+     * @param roundNumber indicates the position of the question on the question list
+     * @return a question with all the required field setted
+     */
+    public Question getMoreEnergyQuestion(long gameId,int roundNumber) {
+        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
         Question q = new Question();
         q.setType(Question.QuestionType.MORE_ENERGY);
         q.setImgPaths(finalList.stream().map(p->p.getImgPath()).collect(Collectors.toList()));
         q.setAnswers(finalList.stream().map(p->p.getTitle()).collect(Collectors.toList()));
-        if(finalList.get(0).getConsumption()>finalList.get(1).getConsumption()
-                && finalList.get(0).getConsumption()>finalList.get(2).getConsumption())
+        if(finalList.get(0).getConsumption()<finalList.get(1).getConsumption()
+                && finalList.get(0).getConsumption()<finalList.get(2).getConsumption())
             q.setCorrectAnswer(String.valueOf(1));
-        else if(finalList.get(1).getConsumption()>finalList.get(0).getConsumption()
-                && finalList.get(1).getConsumption()>finalList.get(2).getConsumption())
+        else if(finalList.get(1).getConsumption()<finalList.get(0).getConsumption()
+                && finalList.get(1).getConsumption()<finalList.get(2).getConsumption())
             q.setCorrectAnswer(String.valueOf(2));
         else q.setCorrectAnswer(String.valueOf(3));
         return q;
     }
 
-    public Question getEnergyGuessQuestion() {
-        List<Activity> finalList = getActivities(3);
+    /**
+     * generate the energy guess question base on the answer list
+     * the answers are 3 different integers which indicates the guesses of energy consumption
+     * description means the name the activity which the player is going to guess
+     * DescriptionImagePath means the image of activity which the player is going to guess
+     * the correct answer indicates the consumption of the activity
+     * it can only be 1, 2 or 3
+     * @param gameId indicates which game the question belongs to
+     * @param roundNumber indicates the position of the question on the question list
+     * @return a question with all the required field setted
+     */
+    public Question getEnergyGuessQuestion(long gameId,int roundNumber) {
+        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
         System.out.println(finalList);
         Question q = new Question();
         int correctAnswer = random.nextInt(3);
@@ -185,9 +209,20 @@ public class QuestionAnswerSelector {
         System.out.println(q);
         return q;
     }
-
-    public Question getComparisonQuestion() {
-        List<Activity>finalList = getActivities(4);
+    /**
+     * generate the comparison question base on the answer list
+     * for example lets say the question format is
+     * "instead A, I will have B,C or D"
+     * description and DescriptionImagePath indicate A
+     * answers and imgpaths indicate B,C and D
+     * the correct answer indicates which one in B,C,D
+     * has energy consumption less than A it can only be 1, 2 or 3
+     * @param gameId indicates which game the question belongs to
+     * @param roundNumber indicates the position of the question on the question list
+     * @return a question with all the required field setted
+     */
+    public Question getComparisonQuestion(long gameId,int roundNumber) {
+        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
         List<Activity> copyed = List.copyOf(finalList);
         copyed.sort(new Comparator<Activity>() {
             @Override
@@ -209,15 +244,34 @@ public class QuestionAnswerSelector {
         q.setAnswers(finalList.stream().map(p->p.getTitle()).collect(Collectors.toList()));
         return q;
     }
-
-    public Question getOpenQuestion() {
-        List<Activity>activities = repo.findAll();
-        Activity activity = activities.get(random.nextInt(activities.size()));
+    /**
+     * generate the open question base on the answer list
+     * for example lets say the question format is
+     * "guess the energy consumption of A"
+     * description and DescriptionImagePath indicate A
+     * the correct answer an integer which is the energy consumption of A
+     * @param gameId indicates which game the question belongs to
+     * @param roundNumber indicates the position of the question on the question list
+     * @return a question with all the required field setted
+     */
+    public Question getOpenQuestion(long gameId,int roundNumber) {
+        Activity activity = gameAnswers.get(gameId).get(roundNumber).get(0);
         Question q = new Question();
         q.setType(Question.QuestionType.OPEN);
         q.setDescriptionImagePath(activity.getImgPath());
         q.setDescription(activity.getTitle());
         q.setCorrectAnswer(String.valueOf(activity.getConsumption()));
         return q;
+    }
+
+    /**
+     * get question of a certain round in a certain game
+     * @param gameId the certain game
+     * @param roundNumber the certain round
+     * @return the question that the round is supposed to have
+     */
+    public Question getQuestion(long gameId,int roundNumber){
+        if(!gameQuestions.containsKey(gameId))return null;
+        return gameQuestions.get(gameId).get(roundNumber);
     }
 }
