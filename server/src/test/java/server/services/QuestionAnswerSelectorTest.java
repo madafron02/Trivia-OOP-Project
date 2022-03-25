@@ -47,14 +47,14 @@ class QuestionAnswerSelectorTest {
     }
     @Test
     void setAnswers() {
-        sut.setAnswers(gameid);
-        System.out.println(sut.getAnswers(gameid));
-        assertEquals(sut.getAnswers(gameid).size(),2);
+        sut.setGameAnswers(gameid, List.of(3, 2));
+        System.out.println(sut.getGameAnswers(gameid));
+        assertEquals(sut.getGameAnswers(gameid).size(),2);
     }
 
     @Test
     void getAnswers() {
-        sut.setAnswers(gameid);
-        assertEquals(sut.getAnswers(gameid).size(),2);
+        sut.setGameAnswers(gameid, List.of(3, 4, 3));
+        assertEquals(sut.getGameAnswers(gameid).size(),3);
     }
 }

@@ -49,8 +49,8 @@ public class ActivityController {
     }
 
     @GetMapping("/answers/{gameId}")
-    public ResponseEntity<List<Activity>> getAnswers(@PathVariable Long gameId){
-        return ResponseEntity.ok(answers.getAnswers(gameId));
+    public ResponseEntity<List<List<Activity>>> getAnswers(@PathVariable Long gameId){
+        return ResponseEntity.ok(answers.getGameAnswers(gameId));
     }
 
     @PostMapping("/post")
