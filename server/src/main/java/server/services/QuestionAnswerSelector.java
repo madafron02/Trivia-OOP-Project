@@ -14,7 +14,6 @@ public class QuestionAnswerSelector {
     private final Random random;
     private final ActivityRepository repo;
 
-    private List<Integer> answersCount;
     private List<List<Activity>> separated;
 
 
@@ -23,12 +22,12 @@ public class QuestionAnswerSelector {
         gameAnswers = new HashMap<>();
         random = new Random();
         this.separated = List.of();
-        this.answersCount = List.of();
     }
 
     /**
      * TODO respond if there are not enough activities of that power level
      * TODO call this when a game begins
+     * TODO possibly add a List of answer sizes for each question
      *
      * based on gameID and a List of Integers depending on what amount
      * of activities there should be for each question returns a List
@@ -39,14 +38,12 @@ public class QuestionAnswerSelector {
         if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
 
         setSeparated();
-        setAnswersCount();
 
         List<List<Activity>> answersSet = List.of();
         for(int i=0; i<20; i++) {
             List<Activity> questionAnswers = List.of();
             List<Activity> activitiesInUse = separated.get(random.nextInt(4));
-            for(int h=0; h< answersCount.get(i)
-                    && activitiesInUse.size() >= answersCount.get(i); h++){
+            for(int h=0; h < 4 && activitiesInUse.size() >= 4; h++){
                 Activity tempActivity = activitiesInUse
                         .remove(random.nextInt(activitiesInUse.size() - 1));
                 questionAnswers.add(tempActivity);
@@ -77,15 +74,6 @@ public class QuestionAnswerSelector {
         separated = List.of(lowList, midList, highList, deyumList);
     }
 
-    /**
-     * pre-assigns the answer count for each question for a whole game
-     */
-    public void setAnswersCount(){
-        answersCount = List.of();
-        for(int i = 0; i < 20; i++){
-            answersCount.add(Integer.valueOf(random.nextInt(3)+1));
-        }
-    }
     /*
     public void setGameAnswers(Long gameId, int count){
         if(!gameAnswers.containsKey(gameId)) gameAnswers.put(gameId, new LinkedList<>());
