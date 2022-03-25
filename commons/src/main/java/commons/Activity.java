@@ -60,14 +60,7 @@ public class Activity implements Reachable{
         else powerLevel = "deyum";
     }
 
-    /**
-     * Getter for the id parameter
-     * @return the id
-     */
 
-    public long getId() {
-        return id;
-    }
 
     /**
      * Getter for image path
