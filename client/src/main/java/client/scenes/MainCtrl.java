@@ -53,7 +53,7 @@ public class MainCtrl {
     private WrongCtrl wrongCtrl;
     private Scene wrong;
 
-    private IngameLeaderboardCtrl igLeaderboardCtrl;
+    private  IngameLeaderboardCtrl igLeaderboardCtrl;
     private Scene igLeaderboard;
 
     private AllTimeLeaderboardCtrl leaderboardCtrl;
@@ -71,7 +71,8 @@ public class MainCtrl {
                               Pair<CorrectCtrl, Parent> correctCtrlParentPair,
                               Pair<WrongCtrl, Parent> wrongCtrlParentPair,
                               Pair<WinnersCtrl, Parent> winnersPair,
-                              Pair<MultiChoiceQCtrl, Parent> multiChoice) {
+                              Pair<MultiChoiceQCtrl, Parent> multiChoice,
+                              Pair<MoreEnergyQCtrl, Parent> moreEnergy) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -89,10 +90,13 @@ public class MainCtrl {
         this.leaderboardCtrl = leaderboardPair.getKey();
         this.winnersCtrl = winnersPair.getKey();
         this.winners = new Scene(winnersPair.getValue());
+        this.moreEnergy = new Scene(moreEnergy.getValue());
+        this.moreECtrl = moreEnergy.getKey();
         this.multiCtrl = multiChoice.getKey();
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
+
         showSplash();
         primaryStage.show();
     }
@@ -106,7 +110,7 @@ public class MainCtrl {
     }
 
     public void primarySetSceneOnly() {
-        primaryStage.setScene(multiChoice);
+        primaryStage.setScene(moreEnergy);
     }
 
     public void showSplash() {
@@ -119,19 +123,20 @@ public class MainCtrl {
     public void showMultiChoiceQ(Player player) {
         primaryStage.setTitle("Questions");
         primaryStage.setScene(multiChoice);
-
         multiCtrl.setPlayer(player);
         multiCtrl.setQuestion();
         multiCtrl.setCurrentRoundNumber(1);
     }
 
-    public void showMoreEnergyQ(Pair<MoreEnergyQCtrl, Parent> moreEnergyPair) {
-        this.moreEnergy = new Scene(moreEnergyPair.getValue(), Color.web("#011826"));
+    public void showMoreEnergyQ( Player player) {
         primaryStage.setTitle("Question");
         primaryStage.setScene(moreEnergy);
+        moreECtrl.setPlayer(player);
+        moreECtrl.setQuestion();
+        moreECtrl.setCurrentRoundNumber(1);
     }
 
-    public void showOpenQ(Pair<OpenQCtrl, Parent> openQPair) {
+    public void showEnergyQ(Pair<OpenQCtrl, Parent> openQPair) {
         this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
         primaryStage.setTitle("Question");
         primaryStage.setScene(openQ);
@@ -169,6 +174,11 @@ public class MainCtrl {
     public void showIgLeaderboard() {
         primaryStage.setTitle("In-game leaderboard");
         primaryStage.setScene(igLeaderboard);
+    }
+
+    public void showWhatIsMoreExpensive() {
+        primaryStage.setTitle("What is more expensive");
+        primaryStage.setScene(moreEnergy);
     }
 
     public void showLeadearboard() {
