@@ -21,7 +21,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="147.0" text="+100" textFill="#66b366">
+            <Label fx:id="pointsGained"  alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="147.0" text="+100" textFill="#66b366">
                <font>
                   <Font name="Kailasa Regular" size="60.0" />
                </font>
@@ -29,7 +29,7 @@
                   <Insets />
                </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="429.0" text="Total points: 1878" textAlignment="CENTER">
+            <Label fx:id="totalPoints"  alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" prefHeight="118.0" prefWidth="429.0" text="Total points: 1878" textAlignment="CENTER">
                <font>
                   <Font name="Kailasa Regular" size="50.0" />
                </font>
