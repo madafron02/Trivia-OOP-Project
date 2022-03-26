@@ -2,7 +2,6 @@ package server.api;
 import commons.Question;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import server.database.ActivityRepository;
 import server.database.QuestionRepository;
 import server.services.QuestionAnswerSelector;
 
@@ -50,6 +49,9 @@ public class QuestionController {
         return ResponseEntity.ok(res);
     }
 
+    public Question add(Question question) {
+        return questionRepository.save(question);
+    }
     /**
      * preprocess all the questions for a certain game
      * @param gameId indicates the game

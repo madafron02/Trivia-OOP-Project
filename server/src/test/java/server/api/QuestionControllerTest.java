@@ -19,6 +19,7 @@ class QuestionControllerTest {
         QuestionTestRepository Qrepo = new QuestionTestRepository();
         ActivityTestRepository Arepo = new ActivityTestRepository();
         List<Activity>activityList = new ArrayList<>();
+        test = new ArrayList<>();
         for(int i=1;i<=100;i++){
             String s = "test" + i;
             Activity tmp = new Activity(s,s,s, (long) (i));
@@ -56,19 +57,37 @@ class QuestionControllerTest {
     }
     @Test
     void getAll() {
-        assertEquals(test,sut.getAll());
+        assertEquals(test.subList(0,10),sut.getAll());
     }
-
+    @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
     @Test
     void getById() {
-        for(int i=0;i<20;i++){
-            assertEquals(test.get(i),sut.getById(i));
+        for(int i=0;i<10;i++){
+            assertEquals(test.get(i),sut.getById(i).getBody());
         }
     }
 
     @Test
     void add() {
         Question q = sut.getQuestion(0,10).getBody();
-        assertEquals(q,sut.add(q).getBody());
+        assertEquals(q,sut.add(q));
+    }
+
+    @Test
+    void getQuestion() {
+        for(int i=0;i<20;i++){
+            assertNotNull(sut.getQuestion(0,i));
+        }
+    }
+
+    @Test
+    void setQuestion() {
+        sut.setQuestion(0);
+        for(int i=0;i<20;i++){
+            assertNotNull(sut.getQuestion(0,i));
+        }
     }
 }

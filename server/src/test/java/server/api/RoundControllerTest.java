@@ -21,7 +21,8 @@ class RoundControllerTest {
         answers.add("a1");
         answers.add("a2");
         answers.add("a3");
-        Question q = new Question("q1",answers);
+        Question q = new Question();
+        q.setAnswers(answers);
         List<Player>p = new ArrayList<>();
         p.add(new Player("p1"));
         test = new Round(q,p);
@@ -46,10 +47,15 @@ class RoundControllerTest {
         answers.add("b1");
         answers.add("b2");
         answers.add("b3");
-        Question q = new Question("q2",answers);
+        Question q = new Question();
+        q.setAnswers(answers);
         List<Player>p = new ArrayList<>();
         p.add(new Player("p1"));
         Round test2 = new Round(q,p);
         assertEquals("The round has been saved",sut.addRound(test2).getBody());
+    }
+    @Test
+    void testConstructor(){
+        assertNotNull(sut);
     }
 }
