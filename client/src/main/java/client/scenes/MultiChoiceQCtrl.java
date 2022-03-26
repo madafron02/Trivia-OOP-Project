@@ -122,6 +122,8 @@ public class MultiChoiceQCtrl {
             //question = new Question();
             //question.setType(Question.QuestionType.ENERGY_GUESS);
             //question = server.requireQuestion(question);
+            question = server.requireQuestion(mainCtrl.getGame().getId()
+                    ,currentRoundNumber);
             setUpRound();
             setTimer();
         }

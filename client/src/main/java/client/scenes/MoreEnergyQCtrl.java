@@ -126,8 +126,7 @@ public class MoreEnergyQCtrl {
             //      activities);
 
 
-            Question question = server.requireQuestion(mainCtrl.getGame().getId()
-                    ,currentRoundNumber-1);
+
             setUpRound();
             setTimer();
         }

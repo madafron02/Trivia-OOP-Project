@@ -41,7 +41,7 @@ public class QuestionController {
      * @param roundNumber indicates the round
      * @return the matched question(if there is any)
      */
-    @GetMapping("/{gameId}/{roundNumber}")
+    @GetMapping("/getQ/{gameId}/{roundNumber}")
     public ResponseEntity<Question> getQuestion(@PathVariable("gameId") long gameId,
                                                 @PathVariable("roundNumber") int roundNumber) {
         var res = questionAnswerSelector.getQuestion(gameId,roundNumber);
@@ -56,7 +56,7 @@ public class QuestionController {
      * preprocess all the questions for a certain game
      * @param gameId indicates the game
      */
-    @GetMapping("/{gameId}")
+    @GetMapping("/setQ/{gameId}")
     public void setQuestion(@PathVariable("gameId") long gameId) {
         questionAnswerSelector.setGameQuestions(gameId);
     }

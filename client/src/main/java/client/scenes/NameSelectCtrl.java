@@ -109,7 +109,7 @@ public class NameSelectCtrl {
             game.setPlayers(List.of(mainCtrl.getPlayer()));
             server.setQuestion(game.getId());
             mainCtrl.setGame(game);
-            mainCtrl.showMoreEnergyQ(mainCtrl.getPlayer());
+            mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
         }
         else mainCtrl.showLobby();
     }

@@ -27,6 +27,8 @@ import org.glassfish.jersey.client.ClientConfig;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 
+import javax.xml.bind.SchemaOutputResolver;
+
 public class ServerUtils {
 
     private static final String SERVER = "http://localhost:8080/";
@@ -62,8 +64,9 @@ public class ServerUtils {
      * @return roundId indicates the round number
      */
     public Question requireQuestion(long gameId,int roundId) {
+        System.out.println("api/question/getQ" + gameId + "/" + roundId);
         return ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("api/question" + gameId + "/" + roundId) //
+                .target(SERVER).path("api/question/getQ/" + gameId + "/" + roundId) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(Question.class);
@@ -75,9 +78,10 @@ public class ServerUtils {
      */
     public void setQuestion(long gameId){
         ClientBuilder.newClient(new ClientConfig()) //
-            .target(SERVER).path("api/question/" + gameId) //
+            .target(SERVER).path("api/question/setQ/" + gameId) //
             .request(APPLICATION_JSON) //
-            .accept(APPLICATION_JSON); //
+            .accept(APPLICATION_JSON) //
+            .get();
     }
     /**
      * get the current game (only in mutiplayer mode)
