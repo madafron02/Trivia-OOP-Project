@@ -23,7 +23,8 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class MainCtrl {
-
+    private boolean isSingleMode;
+    private Player player;
     private Stage primaryStage;
 
     private SplashCtrl splashCtrl;
@@ -99,6 +100,7 @@ public class MainCtrl {
 
         showSplash();
         primaryStage.show();
+        this.isSingleMode = true;
     }
 
     public MultiChoiceQCtrl getMultiCtrl() {
@@ -140,6 +142,14 @@ public class MainCtrl {
         this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
         primaryStage.setTitle("Question");
         primaryStage.setScene(openQ);
+    }
+
+    public boolean isSingleMode() {
+        return isSingleMode;
+    }
+
+    public void setSingleMode(boolean type) {
+        isSingleMode = type;
     }
 
     public void showNameSelect() {
@@ -189,5 +199,13 @@ public class MainCtrl {
     public void showWinners() {
         primaryStage.setTitle("Winners");
         primaryStage.setScene(winners);
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }
