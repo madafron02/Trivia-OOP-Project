@@ -73,7 +73,10 @@ class GameControllerTest {
         assertEquals(players,sut.getCurrentGame().getBody().getPlayers());
     }
 
-
+    @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
     @Test
     void getCurrentStatus() {
         sut.setCurrentStatus(false);

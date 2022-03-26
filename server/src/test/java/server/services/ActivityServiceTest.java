@@ -40,6 +40,10 @@ class ActivityServiceTest {
                 a.getTitle() == b.getTitle() &&
                 a.getImgPath() == b.getImgPath();
     }
+    @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
     //TODO:the program throws FILENOTFOUND exception when trying to call ParseJson here
     // no idea what's the cause so still have to fix the io exception problem
     /*
