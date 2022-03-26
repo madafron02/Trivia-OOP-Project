@@ -49,4 +49,40 @@ class GameControllerTest {
         sut.deleteGameById(test.getId());
         assertTrue(sut.getAll().isEmpty());
     }
+
+    @Test
+    void clear() {
+        sut.addToCurrentGame(new Player("t3"));
+        sut.clear();
+        assertTrue(sut.getCurrentGame().getBody().getPlayers().isEmpty());
+    }
+
+    @Test
+    void getCurrentGame() {
+        sut.addToCurrentGame(test.getPlayers().get(0));
+        sut.addToCurrentGame(test.getPlayers().get(1));
+        assertEquals(sut.getCurrentGame().getBody().getPlayers(),test.getPlayers());
+    }
+
+    @Test
+    void addToCurrentGame() {
+        List<Player>players = new ArrayList<>();
+        Player t3 = new Player("t3");
+        players.add(t3);
+        sut.addToCurrentGame(t3);
+        assertEquals(players,sut.getCurrentGame().getBody().getPlayers());
+    }
+
+
+    @Test
+    void getCurrentStatus() {
+        sut.setCurrentStatus(false);
+        assertFalse(sut.getCurrentStatus().getBody());
+    }
+
+    @Test
+    void setCurrentStatus() {
+        sut.setCurrentStatus(false);
+        assertFalse(sut.getCurrentStatus().getBody());
+    }
 }

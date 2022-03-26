@@ -18,6 +18,7 @@ package client.utils;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import java.util.List;
 
+import commons.Game;
 import commons.Player;
 import jakarta.ws.rs.core.GenericType;
 import org.glassfish.jersey.client.ClientConfig;
@@ -29,6 +30,11 @@ public class ServerUtils {
 
     private static final String SERVER = "http://localhost:8080/";
 
+    /**
+     * save a player in the player repository
+     * @param player the player that needs to be saved
+     * @return the saved player
+     */
     public Player addPlayer(Player player) {
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/player/add") //
@@ -37,11 +43,63 @@ public class ServerUtils {
                 .post(Entity.entity(player, APPLICATION_JSON), Player.class);
     }
 
+    /**
+     * get all players in the repository
+     * @return all players in the repository
+     */
     public List<Player> getPlayers() {
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/player/") //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(new GenericType<List<Player>>() {});
+    }
+
+    /**
+     * get the current game (only in mutiplayer mode)
+     * @return the current game instance
+     */
+    public Game getGame() {
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/currentGame") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Game.class);
+    }
+
+    /**
+     * add a player to the current game (only called in mutiplayer mode)
+     * @param player the player that needs to be added
+     */
+    public void addPlayerToCurrentGame(Player player) {
+        ClientBuilder.newClient(new ClientConfig()) //
+            .target(SERVER).path("api/games/addToCurrentGame") //
+            .request(APPLICATION_JSON) //
+            .accept(APPLICATION_JSON) //
+            .post(Entity.entity(player, APPLICATION_JSON), Player.class);
+    }
+
+    /**
+     * tell the server the current client click the start button(only called in mutiplayer mode)
+     * @param status can only be true
+     */
+    public void setStatus(Boolean status){
+        ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/status") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(status, APPLICATION_JSON), Boolean.class);
+    }
+
+    /**
+     * ask the server whether its time to travel to the game page(only called in mutiplayer mode)
+     * @return if its time to travel to the game page.
+     */
+    public boolean getStatus(){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/status") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Boolean.class);
     }
 }

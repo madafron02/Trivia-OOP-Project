@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Round {
+public class Round implements Reachable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
