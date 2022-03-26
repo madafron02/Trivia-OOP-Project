@@ -115,13 +115,13 @@ public class MultiChoiceQCtrl {
             //question = qaSelector.getQuestion();
             //will generate new question with "random" answers
 
-            List<String> activities = new ArrayList<>();
-            activities.add("this");
-            activities.add("that");
-            activities.add("the other");
-            question = new Question();
-            question.setType(Question.QuestionType.ENERGY_GUESS);
-            question = server.requireQuestion(question);
+            //List<String> activities = new ArrayList<>();
+            //activities.add("this");
+            //activities.add("that");
+            //activities.add("the other");
+            //question = new Question();
+            //question.setType(Question.QuestionType.ENERGY_GUESS);
+            //question = server.requireQuestion(question);
             setUpRound();
             setTimer();
         }

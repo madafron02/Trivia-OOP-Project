@@ -56,14 +56,29 @@ public class ServerUtils {
                 .get(new GenericType<List<Player>>() {});
     }
 
-    public Question requireQuestion(Question question) {
+    /**
+     * require a question according to certain gameId and roundId
+     * @param gameId indicates the game
+     * @return roundId indicates the round number
+     */
+    public Question requireQuestion(long gameId,int roundId) {
         return ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("api/question/new") //
+                .target(SERVER).path("api/question" + gameId + "/" + roundId) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
-                .post(Entity.entity(question, APPLICATION_JSON), Question.class);
+                .get(Question.class);
     }
 
+    /**
+     * ask the server to generate the questions for a certain game
+     * @param gameId indicate the game
+     */
+    public void setQuestion(long gameId){
+        ClientBuilder.newClient(new ClientConfig()) //
+            .target(SERVER).path("api/question/" + gameId) //
+            .request(APPLICATION_JSON) //
+            .accept(APPLICATION_JSON); //
+    }
     /**
      * get the current game (only in mutiplayer mode)
      * @return the current game instance

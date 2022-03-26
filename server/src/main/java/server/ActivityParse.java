@@ -23,9 +23,7 @@ public class ActivityParse {
 
     public ArrayList<Activity> getActivities() throws FileNotFoundException {
         //Here you have to insert your local path to the json file
-        File file = new File("C:\\Users\\razer\\Desktop\\OOPPDB" +
-                "\\repository-template-main (1)" +
-                "\\repository-template-main\\activities\\activities.json");
+        File file = new File("activities\\activities.json");
         //Creating an ArrayList of activities
         ArrayList<Activity> activities = new ArrayList<>();
         //Creating the scanner for reading the information in the file

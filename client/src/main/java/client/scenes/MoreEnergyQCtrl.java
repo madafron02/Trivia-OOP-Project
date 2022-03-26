@@ -118,15 +118,16 @@ public class MoreEnergyQCtrl {
              * TO DO grab random activity names and random images for the answer
              */
 
-            List<String> activities = new ArrayList<>();
-            activities.add("1");
-            activities.add("2");
-            activities.add("3");
-            question = new Question("Which takes more energy?",
-                    activities);
+            //List<String> activities = new ArrayList<>();
+            //activities.add("1");
+            //activities.add("2");
+            //activities.add("3");
+            //question = new Question("Which takes more energy?",
+            //      activities);
 
 
-
+            Question question = server.requireQuestion(mainCtrl.getGame().getId()
+                    ,currentRoundNumber-1);
             setUpRound();
             setTimer();
         }
