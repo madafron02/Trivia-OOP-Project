@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Question {
+public class Question implements Reachable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

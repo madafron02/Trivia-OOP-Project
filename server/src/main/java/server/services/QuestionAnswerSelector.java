@@ -18,6 +18,9 @@ public class QuestionAnswerSelector {
 
     private List<List<Activity>> separated;
 
+    public List<List<Activity>> getSeparated() {
+        return separated;
+    }
 
     public QuestionAnswerSelector(ActivityRepository repo){
         this.repo = repo;
@@ -67,10 +70,10 @@ public class QuestionAnswerSelector {
                 .filter(x -> x.getPowerLevel().equals("mid"))
                 .collect(Collectors.toList());
         List<Activity> highList = repo.findAll().stream()
-                .filter(x -> x.getPowerLevel().equals("low"))
+                .filter(x -> x.getPowerLevel().equals("high"))
                 .collect(Collectors.toList());
         List<Activity> deyumList = repo.findAll().stream()
-                .filter(x -> x.getPowerLevel().equals("low"))
+                .filter(x -> x.getPowerLevel().equals("deyum"))
                 .collect(Collectors.toList());
         separated.add(lowList);
         separated.add(midList);
@@ -169,7 +172,7 @@ public class QuestionAnswerSelector {
      * @return a question with all the required field setted
      */
     public Question getMoreEnergyQuestion(long gameId,int roundNumber) {
-        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
+        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber).subList(0,3);
         Question q = new Question();
         q.setType(Question.QuestionType.MORE_ENERGY);
         q.setImgPaths(finalList.stream().map(p->p.getImgPath()).collect(Collectors.toList()));
@@ -196,8 +199,7 @@ public class QuestionAnswerSelector {
      * @return a question with all the required field setted
      */
     public Question getEnergyGuessQuestion(long gameId,int roundNumber) {
-        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
-        System.out.println(finalList);
+        List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber).subList(0,3);
         Question q = new Question();
         int correctAnswer = random.nextInt(3);
         q.setType(Question.QuestionType.ENERGY_GUESS);
@@ -206,7 +208,6 @@ public class QuestionAnswerSelector {
                 .collect(Collectors.toList()));
         q.setDescriptionImagePath(finalList.get(correctAnswer).getImgPath());
         q.setDescription(finalList.get(correctAnswer).getTitle());
-        System.out.println(q);
         return q;
     }
     /**
@@ -223,25 +224,33 @@ public class QuestionAnswerSelector {
      */
     public Question getComparisonQuestion(long gameId,int roundNumber) {
         List<Activity> finalList =  gameAnswers.get(gameId).get(roundNumber);
-        List<Activity> copyed = List.copyOf(finalList);
-        copyed.sort(new Comparator<Activity>() {
+        Question q = new Question();
+        q.setImgPaths(finalList.stream().map(p->p.getImgPath()).collect(Collectors.toList()));
+        q.setAnswers(finalList.stream().map(p->p.getTitle()).collect(Collectors.toList()));
+        finalList.sort(new Comparator<Activity>() {
             @Override
             public int compare(Activity o1, Activity o2) {
                 if(o1.getConsumption()>o2.getConsumption())return 1;
                 else return -1;
             }
         });
-        Activity finalTitle = copyed.get(1);
-        finalList.remove(finalTitle);
-        Question q = new Question();
-        q.setDescriptionImagePath(finalTitle.getImgPath());
-        q.setDescription(finalTitle.getTitle());
+        q.setDescriptionImagePath(finalList.get(1).getImgPath());
+        q.setDescription(finalList.get(1).getTitle());
         q.setType(Question.QuestionType.COMPARISON);
-        if(copyed.get(0) == finalList.get(0))q.setCorrectAnswer(String.valueOf(1));
-        else if(copyed.get(0) == finalList.get(1))q.setCorrectAnswer(String.valueOf(2));
-        else if(copyed.get(0) == finalList.get(2))q.setCorrectAnswer(String.valueOf(3));
-        q.setImgPaths(finalList.stream().map(p->p.getImgPath()).collect(Collectors.toList()));
-        q.setAnswers(finalList.stream().map(p->p.getTitle()).collect(Collectors.toList()));
+        for(int i=0;i<4;i++){
+            if(q.getAnswers().get(i).equals(q.getDescription())){
+                q.getAnswers().remove(i);
+                q.getImgPaths().remove(i);
+                break;
+            }
+        }
+        String t = finalList.get(0).getTitle();
+        for(int i=0;i<3;i++) {
+            if(q.getAnswers().get(i).equals(t)){
+                q.setCorrectAnswer(String.valueOf(i+1));
+                break;
+            }
+        }
         return q;
     }
     /**

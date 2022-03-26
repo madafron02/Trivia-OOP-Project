@@ -15,14 +15,11 @@ import java.util.List;
 public class QuestionController {
 
     private final QuestionRepository questionRepository;
-    private final ActivityRepository activityRepository;
     private QuestionAnswerSelector questionAnswerSelector;
 
     public QuestionController(QuestionRepository questionRepository,
-                              ActivityRepository activityRepository,
                               QuestionAnswerSelector questionAnswerSelector) {
         this.questionRepository = questionRepository;
-        this.activityRepository = activityRepository;
         this.questionAnswerSelector = questionAnswerSelector;
     }
 
