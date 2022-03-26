@@ -27,7 +27,6 @@ import org.glassfish.jersey.client.ClientConfig;
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 
-import javax.xml.bind.SchemaOutputResolver;
 
 public class ServerUtils {
 
