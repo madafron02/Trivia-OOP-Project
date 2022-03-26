@@ -53,7 +53,6 @@ class QuestionAnswerSelectorTest {
     @Test
     void setAnswers() {
         sut.setGameAnswers(gameid);
-        System.out.println(sut.getGameAnswers(gameid));
         assertEquals(sut.getGameAnswers(gameid).size(),20);
     }
 
@@ -124,7 +123,7 @@ class QuestionAnswerSelectorTest {
 
     @Test
     void getQuestion() {
-        sut.setGameAnswers(gameid);
+        sut.setGameQuestions(gameid);
         for(int i=0;i<20;i++){
             assertNotNull(sut.getQuestion(gameid,i));
         }
