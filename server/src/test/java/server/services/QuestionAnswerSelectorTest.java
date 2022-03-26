@@ -47,6 +47,10 @@ class QuestionAnswerSelectorTest {
         sut = new QuestionAnswerSelector(repo);
     }
     @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
+    @Test
     void setAnswers() {
         sut.setGameAnswers(gameid);
         System.out.println(sut.getGameAnswers(gameid));
