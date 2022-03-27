@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javax.inject.Inject;
@@ -21,19 +20,14 @@ public class MoreEnergyQCtrl {
 
     private int currentRoundNumber = 0;
     private int totalRounds = 20;
+    private int score = 0;
     private Player player;
     private Question question;
+    private Boolean isCorrect;
     private Game game;
     private Timer countdown = new Timer();
     private final double diff = 1.0 / 15.0;
 
-
-    @FXML
-    private Label answerTitleA;
-    @FXML
-    private Label answerTitleB;
-    @FXML
-    private Label answerTitleC;
     @FXML
     private Button choice1;
     @FXML
@@ -79,14 +73,18 @@ public class MoreEnergyQCtrl {
         progressLabel.setText("16");
         progressBar.setProgress(1);
         currentRoundNumber++;
+        isCorrect = false;
         countdown = new Timer();
         game = mainCtrl.getGame();
         question = server.requireQuestion(game.getId(), currentRoundNumber);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
-        answerTitleA.setText(question.getAnswers().get(0));
-        answerTitleB.setText(question.getAnswers().get(1));
-        answerTitleC.setText(question.getAnswers().get(2));
+        choice1.setText(question.getAnswers().get(0));
+        choice2.setText(question.getAnswers().get(1));
+        choice3.setText(question.getAnswers().get(2));
+        //image1.setImage(new Image(question.getImgPaths().get(0)));
+        //image2.setImage(new Image(question.getImgPaths().get(1)));
+        //image3.setImage(new Image(question.getImgPaths().get(2)));
     }
 
     public void setTimer(){
@@ -102,11 +100,16 @@ public class MoreEnergyQCtrl {
                             mainCtrl.primarySetSceneOnly();
                             setQuestion();
                         } else {
-                            mainCtrl.showCorrect();
+                            if(isCorrect) {
+                                mainCtrl.showCorrect();
+                            } else {
+                                String correct = question.getAnswers().get(
+                                        Integer.parseInt(question.getCorrectAnswer()) - 1);
+                                mainCtrl.getWrong().setCorrectAnswer(correct);
+                                mainCtrl.showWrong();
+                            }
                             progressLabel.setText("5");
                             progressBar.setProgress(0.3);
-                            //we will have separate cases here
-                            //for correct/wrong
                             readyForNext = true;
                         }
                     }
@@ -124,8 +127,58 @@ public class MoreEnergyQCtrl {
         if(currentRoundNumber >= totalRounds) {
             mainCtrl.showWinners();
         } else {
+            choice1.setDisable(false);
+            choice2.setDisable(false);
+            choice3.setDisable(false);
+            choice1.setStyle("-fx-text-fill: black;");
+            choice2.setStyle("-fx-text-fill: black;");
+            choice3.setStyle("-fx-text-fill: black;");
             setUpRound();
             setTimer();
+        }
+    }
+
+    public String selectRightAnswer(Question question) {
+        String answer = question.getCorrectAnswer();
+        return answer;
+    }
+
+    public void checkFirst() {
+        choice1.setDisable(true);
+        choice2.setDisable(true);
+        choice3.setDisable(true);
+        choice1.setStyle("-fx-text-fill: blue;");
+
+        String correct = selectRightAnswer(question);
+
+        if(correct.equals(String.valueOf(1))){
+            isCorrect = true;
+        }
+    }
+
+    public void checkSecond() {
+        choice1.setDisable(true);
+        choice2.setDisable(true);
+        choice3.setDisable(true);
+        choice2.setStyle("-fx-text-fill: blue;");
+
+        String correct = selectRightAnswer(question);
+
+        if(correct.equals(String.valueOf(2))){
+            isCorrect = true;
+        }
+    }
+
+    public void checkThird() {
+        choice1.setDisable(true);
+        choice2.setDisable(true);
+        choice3.setDisable(true);
+        choice3.setStyle("-fx-text-fill: blue;");
+
+        String correct = selectRightAnswer(question);
+
+        if(correct.equals(String.valueOf(3))){
+            isCorrect = true;
         }
     }
 }

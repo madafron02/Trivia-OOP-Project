@@ -121,6 +121,10 @@ public class MainCtrl {
         primaryStage.setScene(moreEnergy);
     }
 
+    public WrongCtrl getWrong() {
+        return wrongCtrl;
+    }
+
     public void showSplash() {
         primaryStage.setTitle("Quizzzz!");
         primaryStage.setScene(opening);
