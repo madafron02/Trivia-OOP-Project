@@ -5,9 +5,11 @@ import commons.Game;
 import commons.Player;
 import commons.Question;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import javax.inject.Inject;
 import java.util.Timer;
@@ -27,13 +29,25 @@ public class MoreEnergyQCtrl {
 
 
     @FXML
-    private TextField answerTitleA;
+    private Label answerTitleA;
     @FXML
-    private TextField answerTitleB;
+    private Label answerTitleB;
     @FXML
-    private TextField answerTitleC;
+    private Label answerTitleC;
     @FXML
-    private TextField roundNumber;
+    private Button choice1;
+    @FXML
+    private Button choice2;
+    @FXML
+    private Button choice3;
+    @FXML
+    private ImageView image1;
+    @FXML
+    private ImageView image2;
+    @FXML
+    private ImageView image3;
+    @FXML
+    private Label roundNumber;
     @FXML
     private ProgressBar progressBar;
     @FXML
