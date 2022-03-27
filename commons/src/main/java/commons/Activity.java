@@ -190,7 +190,8 @@ public class Activity implements Reachable{
                 "id= " + id + "\n" +
                         "imgPath= " + imgPath + "\n" +
                         "title= " + title + "\n" +
-                        "consumption= " + consumption + "\n";
+                        "consumption= " + consumption + "\n" +
+                        "powerLevel=" + powerLevel + "\n";
     }
 
     @Override

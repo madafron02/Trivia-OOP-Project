@@ -1,8 +1,10 @@
 package server.api;
 
+import commons.Activity;
 import commons.Question;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import server.services.QuestionAnswerSelector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,37 +13,81 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class QuestionControllerTest {
     private QuestionController sut;
-    private Question test;
+    private List<Question> test;
     @BeforeEach
     public void init(){
-        QuestionTestRepository repo = new QuestionTestRepository();
-        List<String> answers = new ArrayList<>();
-        answers.add("a1");
-        answers.add("a2");
-        answers.add("a3");
-        test = new Question("q1",answers);
-        repo.save(test);
-        sut = new QuestionController(repo);
+        QuestionTestRepository Qrepo = new QuestionTestRepository();
+        ActivityTestRepository Arepo = new ActivityTestRepository();
+        List<Activity>activityList = new ArrayList<>();
+        test = new ArrayList<>();
+        for(int i=1;i<=100;i++){
+            String s = "test" + i;
+            Activity tmp = new Activity(s,s,s, (long) (i));
+            tmp.setId(i);
+            activityList.add(tmp);
+        }
+        for(int i=101;i<=200;i++){
+            String s = "test" + i;
+            Activity tmp = new Activity(s,s,s, (long) (1000+i));
+            tmp.setId(i);
+            activityList.add(tmp);
+        }
+        for(int i=201;i<=300;i++){
+            String s = "test" + i;
+            Activity tmp = new Activity(s,s,s, (long) (7500+i));
+            tmp.setId(i);
+            activityList.add(tmp);
+        }
+        for(int i=301;i<=400;i++){
+            String s = "test" + i;
+            Activity tmp = new Activity(s,s,s, (long) (15000+i));
+            tmp.setId(i);
+            activityList.add(tmp);
+        }
+        Arepo.saveAll(activityList);
+        QuestionAnswerSelector QAselector = new QuestionAnswerSelector(Arepo);
+        QAselector.setGameQuestions(0L);
+        for(int i=0;i<10;i++){
+            Question q = QAselector.getQuestion(0,i);
+            q.setId(i);
+            test.add(q);
+        }
+        Qrepo.saveAll(test);
+        sut = new QuestionController(Qrepo,QAselector);
     }
     @Test
     void getAll() {
-        List<Question> t = new ArrayList<>();
-        t.add(test);
-        assertEquals(t,sut.getAll());
+        assertEquals(test.subList(0,10),sut.getAll());
     }
-
+    @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
     @Test
     void getById() {
-        assertEquals(test,sut.getById(test.getId()).getBody());
+        for(int i=0;i<10;i++){
+            assertEquals(test.get(i),sut.getById(i).getBody());
+        }
     }
 
     @Test
     void add() {
-        List<String> answers = new ArrayList<>();
-        answers.add("b1");
-        answers.add("b2");
-        answers.add("b3");
-        Question test2 = new Question("q2",answers);
-        assertEquals(test2,sut.add(test2).getBody());
+        Question q = sut.getQuestion(0,10).getBody();
+        assertEquals(q,sut.add(q));
+    }
+
+    @Test
+    void getQuestion() {
+        for(int i=0;i<20;i++){
+            assertNotNull(sut.getQuestion(0,i));
+        }
+    }
+
+    @Test
+    void setQuestion() {
+        sut.setQuestion(0);
+        for(int i=0;i<20;i++){
+            assertNotNull(sut.getQuestion(0,i));
+        }
     }
 }

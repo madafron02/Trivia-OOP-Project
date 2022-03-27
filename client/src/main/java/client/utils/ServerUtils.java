@@ -20,11 +20,13 @@ import java.util.List;
 
 import commons.Game;
 import commons.Player;
+import commons.Question;
 import jakarta.ws.rs.core.GenericType;
 import org.glassfish.jersey.client.ClientConfig;
 
 import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
+
 
 public class ServerUtils {
 
@@ -55,6 +57,31 @@ public class ServerUtils {
                 .get(new GenericType<List<Player>>() {});
     }
 
+    /**
+     * require a question according to certain gameId and roundId
+     * @param gameId indicates the game
+     * @return roundId indicates the round number
+     */
+    public Question requireQuestion(long gameId,int roundId) {
+        System.out.println("api/question/getQ" + gameId + "/" + roundId);
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/question/getQ/" + gameId + "/" + roundId) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Question.class);
+    }
+
+    /**
+     * ask the server to generate the questions for a certain game
+     * @param gameId indicate the game
+     */
+    public void setQuestion(long gameId){
+        ClientBuilder.newClient(new ClientConfig()) //
+            .target(SERVER).path("api/question/setQ/" + gameId) //
+            .request(APPLICATION_JSON) //
+            .accept(APPLICATION_JSON) //
+            .get();
+    }
     /**
      * get the current game (only in mutiplayer mode)
      * @return the current game instance
