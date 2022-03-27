@@ -70,11 +70,11 @@ public class MoreEnergyQCtrl {
         progressBar.setProgress(1);
         currentRoundNumber++;
         countdown = new Timer();
-        mainCtrl.getPrimaryStage().setTitle("Round " + currentRoundNumber);
-        roundNumber.setText(String.valueOf("Question: " + currentRoundNumber));
-        answerTitleA.setText(question.getAnswers().get(0));
-        answerTitleB.setText(question.getAnswers().get(1));
-        answerTitleC.setText(question.getAnswers().get(2));
+        mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
+        roundNumber.setText("Question: " + currentRoundNumber);
+        //answerTitleA.setText(question.getAnswers().get(0));
+        //answerTitleB.setText(question.getAnswers().get(1));
+        //answerTitleC.setText(question.getAnswers().get(2));
     }
 
     public void setTimer(){

@@ -113,6 +113,10 @@ public class MainCtrl {
         return primaryStage;
     }
 
+    public void setPrimaryStageTitle(String newTitle) {
+        primaryStage.setTitle(newTitle);
+    }
+
     public void primarySetSceneOnly() {
         primaryStage.setScene(moreEnergy);
     }
@@ -132,12 +136,12 @@ public class MainCtrl {
         multiCtrl.setCurrentRoundNumber(0);
     }
 
-    public void showMoreEnergyQ( Player player) {
-        primaryStage.setTitle("Question");
+    public void showMoreEnergyQ(Player player) {
+        primaryStage.setTitle("Questions");
         primaryStage.setScene(moreEnergy);
         moreECtrl.setPlayer(player);
         moreECtrl.setQuestion();
-        moreECtrl.setCurrentRoundNumber(0);
+        // moreECtrl.setCurrentRoundNumber(0);
     }
 
     public void showEnergyQ(Pair<OpenQCtrl, Parent> openQPair) {
