@@ -15,6 +15,7 @@ public class NameSelectCtrl {
 
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
+
     @FXML
     private TextField nameInput;
 
@@ -108,6 +109,7 @@ public class NameSelectCtrl {
             Game game = new Game();
             game.setPlayers(List.of(mainCtrl.getPlayer()));
             server.setQuestion(game.getId());
+
             mainCtrl.setGame(game);
             mainCtrl.getLobby().start();
             mainCtrl.getLobby().startRounds();

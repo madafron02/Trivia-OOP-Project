@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.stream.Collectors;
 
 public class LobbyCtrl {
@@ -83,8 +82,8 @@ public class LobbyCtrl {
      */
     public void startRounds() {
         if(server.getStatus()){
-        timer.cancel();
-        mainCtrl.showMoreEnergyQ(mainCtrl.getPlayer());
+            timer.cancel();
+            mainCtrl.showMoreEnergyQ(mainCtrl.getPlayer());
         }
     }
 }

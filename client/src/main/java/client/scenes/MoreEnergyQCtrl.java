@@ -1,17 +1,15 @@
 package client.scenes;
 
 import client.utils.ServerUtils;
+import commons.Game;
 import commons.Player;
 import commons.Question;
-import commons.Round;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,10 +21,8 @@ public class MoreEnergyQCtrl {
     private int totalRounds = 20;
     private Player player;
     private Question question;
-    private Round round;
-    private List<Round> roundList = new ArrayList<>();
+    private Game game;
     private Timer countdown = new Timer();
-    private final int start = 15;
     private final double diff = 1.0 / 15.0;
 
 
@@ -70,11 +66,13 @@ public class MoreEnergyQCtrl {
         progressBar.setProgress(1);
         currentRoundNumber++;
         countdown = new Timer();
+        game = mainCtrl.getGame();
+        question = server.requireQuestion(game.getId(), currentRoundNumber);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
-        //answerTitleA.setText(question.getAnswers().get(0));
-        //answerTitleB.setText(question.getAnswers().get(1));
-        //answerTitleC.setText(question.getAnswers().get(2));
+        answerTitleA.setText(question.getAnswers().get(0));
+        answerTitleB.setText(question.getAnswers().get(1));
+        answerTitleC.setText(question.getAnswers().get(2));
     }
 
     public void setTimer(){
@@ -112,21 +110,6 @@ public class MoreEnergyQCtrl {
         if(currentRoundNumber >= totalRounds) {
             mainCtrl.showWinners();
         } else {
-
-
-            /**
-             * TO DO grab random activity names and random images for the answer
-             */
-
-            //List<String> activities = new ArrayList<>();
-            //activities.add("1");
-            //activities.add("2");
-            //activities.add("3");
-            //question = new Question("Which takes more energy?",
-            //      activities);
-
-
-
             setUpRound();
             setTimer();
         }
