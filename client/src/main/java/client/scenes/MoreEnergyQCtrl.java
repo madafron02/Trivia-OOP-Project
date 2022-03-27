@@ -144,6 +144,7 @@ public class MoreEnergyQCtrl {
      */
     public void setQuestion() {
         if(currentRoundNumber >= totalRounds) {
+            mainCtrl.getWinners().setFirstPoints(player.getPoints());
             mainCtrl.showWinners();
         } else {
             choice1.setDisable(false);

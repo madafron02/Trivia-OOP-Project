@@ -145,6 +145,10 @@ public class MainCtrl {
         return correctCtrl;
     }
 
+    public WinnersCtrl getWinners() {
+        return winnersCtrl;
+    }
+
     /**
      * Shows the splash screen
      */
