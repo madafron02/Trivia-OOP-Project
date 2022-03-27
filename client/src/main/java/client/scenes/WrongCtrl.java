@@ -16,6 +16,10 @@ public class WrongCtrl {
         this.mainCtrl = mainCtrl;
     }
 
+    /**
+     * Sets the correct answer with the given string
+     * @param correct
+     */
     public void setCorrectAnswer(String correct) {
         correctAnswer.setText(correct);
     }

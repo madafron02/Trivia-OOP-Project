@@ -69,6 +69,11 @@ public class MoreEnergyQCtrl {
         this.player = player;
     }
 
+    /**
+     * Resets the time progress properties to their starting state at the beginning of each round,
+     * increases the round number, eliminates the "correct" state from last round,
+     * fetches the next question with answers and sets the title of the window
+     */
     public void setUpRound() {
         progressLabel.setText("16");
         progressBar.setProgress(1);
@@ -87,6 +92,13 @@ public class MoreEnergyQCtrl {
         //image3.setImage(new Image(question.getImgPaths().get(2)));
     }
 
+    /**
+     * Starts the timer for each round helped by a timer task with a 1 second period after which
+     * the progress bar and the label over it update.
+     * If the state of the progress bar approaches 0, it checks which screen to show (correct/wrong)
+     * and raises a flag to indicate that the next round must be set up after 5 seconds (so the player
+     * has time to observe what he has done).
+     */
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
             Boolean readyForNext = false;
@@ -123,6 +135,11 @@ public class MoreEnergyQCtrl {
         countdown.schedule(timerTask, 0, 1000);
     }
 
+    /**
+     * If the player has reached the last round, it shows the winner screen, otherwise
+     * it enables back the buttons for the next round, resets the text colour of the choices
+     * and calls the methods for the setup.
+     */
     public void setQuestion() {
         if(currentRoundNumber >= totalRounds) {
             mainCtrl.showWinners();
@@ -138,11 +155,21 @@ public class MoreEnergyQCtrl {
         }
     }
 
+    /**
+     * Fetches the correct answer for a specific question
+     * @param question the current question
+     * @return the right answer for that question
+     */
     public String selectRightAnswer(Question question) {
         String answer = question.getCorrectAnswer();
         return answer;
     }
 
+    /**
+     * If the player presses the first button it colours the text in blue,
+     * it checks if that represents the right answer, raises a flag for that
+     * and disables all buttons until the end of the round.
+     */
     public void checkFirst() {
         choice1.setDisable(true);
         choice2.setDisable(true);
@@ -156,6 +183,11 @@ public class MoreEnergyQCtrl {
         }
     }
 
+    /**
+     * If the player presses the second button it colours the text in blue,
+     * it checks if that represents the right answer, raises a flag for that
+     * and disables all buttons until the end of the round.
+     */
     public void checkSecond() {
         choice1.setDisable(true);
         choice2.setDisable(true);
@@ -169,6 +201,11 @@ public class MoreEnergyQCtrl {
         }
     }
 
+    /**
+     * If the player presses the third button it colours the text in blue,
+     * it checks if that represents the right answer, raises a flag for that
+     * and disables all buttons until the end of the round.
+     */
     public void checkThird() {
         choice1.setDisable(true);
         choice2.setDisable(true);
