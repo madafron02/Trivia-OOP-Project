@@ -141,6 +141,10 @@ public class MainCtrl {
         return wrongCtrl;
     }
 
+    public CorrectCtrl getCorrect() {
+        return correctCtrl;
+    }
+
     /**
      * Shows the splash screen
      */

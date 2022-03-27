@@ -19,7 +19,12 @@
                   <Font name="Kailasa Regular" size="32.0" />
                </font>
             </Label>
-            <Label text="Total points: 1939" textFill="ORANGE">
+            <Label text="Total points:" textFill="ORANGE">
+               <font>
+                  <Font name="Kailasa Regular" size="50.0" />
+               </font>
+            </Label>
+            <Label fx:id="score" alignment="CENTER" contentDisplay="CENTER" prefHeight="84.0" prefWidth="297.0" textFill="ORANGE">
                <font>
                   <Font name="Kailasa Regular" size="50.0" />
                </font>

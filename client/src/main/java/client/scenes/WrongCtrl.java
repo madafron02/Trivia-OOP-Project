@@ -11,6 +11,9 @@ public class WrongCtrl {
     @FXML
     private Label correctAnswer;
 
+    @FXML
+    private Label score;
+
     @Inject
     public WrongCtrl(MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
@@ -22,5 +25,13 @@ public class WrongCtrl {
      */
     public void setCorrectAnswer(String correct) {
         correctAnswer.setText(correct);
+    }
+
+    /**
+     * Shows current score on screen
+     * @param score
+     */
+    public void setScore(int score) {
+        this.score.setText(String.valueOf(score));
     }
 }
