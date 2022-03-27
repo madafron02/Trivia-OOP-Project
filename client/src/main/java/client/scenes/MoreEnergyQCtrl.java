@@ -95,9 +95,9 @@ public class MoreEnergyQCtrl {
     /**
      * Starts the timer for each round helped by a timer task with a 1 second period after which
      * the progress bar and the label over it update.
-     * If the state of the progress bar approaches 0, it checks which screen to show (correct/wrong)
-     * and raises a flag to indicate that the next round must be set up after 5 seconds (so the player
-     * has time to observe what he has done).
+     * If the state of the progress bar approaches 0, it checks which screen to show
+     * (correct/wrong) and raises a flag to indicate that the next round must be set up
+     * after 5 seconds (so the player has time to observe what he has done).
      */
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
