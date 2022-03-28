@@ -16,7 +16,7 @@
       </Label>
       <AnchorPane layoutX="365.0" layoutY="124.0" prefHeight="153.0" prefWidth="158.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Button fx:id="startGame" layoutX="24.0" layoutY="31.0" mnemonicParsing="false" onAction="#start" prefHeight="91.0" prefWidth="108.0" style="-fx-background-color: #0B3559;" text="Go!" textFill="WHITE" />
+            <Button fx:id="startGame" layoutX="24.0" layoutY="31.0" mnemonicParsing="false" onAction="#startRounds" prefHeight="91.0" prefWidth="108.0" style="-fx-background-color: #0B3559;" text="Go!" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Label alignment="CENTER" layoutX="386.0" layoutY="292.0" prefHeight="23.0" prefWidth="117.0" text="CLICK TO START" textFill="WHITE">

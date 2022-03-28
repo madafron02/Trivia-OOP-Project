@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.stream.Collectors;
 
 public class LobbyCtrl {
@@ -38,6 +37,8 @@ public class LobbyCtrl {
      * request for the new status per second
      * refresh the list page and travel to the game page if a player clicks the start button
      */
+
+    /*
     public void initialize(){
         TimerTask refreshTask = new TimerTask() {
             @Override
@@ -58,6 +59,7 @@ public class LobbyCtrl {
         timer.schedule(refreshTask,0,1000);
         timer.schedule(startTask,0,1000);
     }
+    */
 
     /**
      * send the signal to the server which indicate that a new game is going to start
@@ -81,7 +83,7 @@ public class LobbyCtrl {
     public void startRounds() {
         if(server.getStatus()){
             timer.cancel();
-            mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
+            mainCtrl.showMoreEnergyQ(mainCtrl.getPlayer());
         }
     }
 }
