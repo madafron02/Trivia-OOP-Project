@@ -23,6 +23,10 @@ class ActivityControllerTest {
         sut = new ActivityController(service);
     }
     @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
+    @Test
     void getAll() {
         assertEquals(t,sut.getAll());
     }

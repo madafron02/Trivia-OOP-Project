@@ -25,12 +25,12 @@ public class SplashCtrl {
 
     @FXML
     private ImageView imageView;
-
     public void goToSingle() {
         mainCtrl.showNameSelect();
     }
 
     public void goToMultiPlayer() {
+        mainCtrl.setSingleMode(false);
         mainCtrl.showNameSelect();
     }
 

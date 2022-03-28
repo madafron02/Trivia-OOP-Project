@@ -19,6 +19,10 @@ class PlayerControllerTest {
         sut = new PlayerController(repo);
     }
     @Test
+    void testConstructor(){
+        assertNotNull(sut);
+    }
+    @Test
     void getAll() {
         List<Player>players = new ArrayList<>();
         players.add(test);

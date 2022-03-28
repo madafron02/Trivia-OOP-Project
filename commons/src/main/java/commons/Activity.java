@@ -55,8 +55,8 @@ public class Activity implements Reachable{
 
     public void setPowerLevel(){
         if(consumption<1000) powerLevel = "low";
-        else if(consumption<10000) powerLevel = "mid";
-        else if(consumption<=40000) powerLevel = "high";
+        else if(consumption<7500) powerLevel = "mid";
+        else if(consumption<=15000) powerLevel = "high";
         else powerLevel = "deyum";
     }
 
@@ -190,7 +190,8 @@ public class Activity implements Reachable{
                 "id= " + id + "\n" +
                         "imgPath= " + imgPath + "\n" +
                         "title= " + title + "\n" +
-                        "consumption= " + consumption + "\n";
+                        "consumption= " + consumption + "\n" +
+                        "powerLevel=" + powerLevel + "\n";
     }
 
     @Override
