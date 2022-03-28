@@ -18,7 +18,7 @@ public class Activity implements Reachable{
     private String activityName;
     private String imgPath;
     private String title;
-    private Long consumption;
+    private long consumption;
 
 
     private String powerLevel; //between 1-3 based on consumption
@@ -38,8 +38,7 @@ public class Activity implements Reachable{
      * @param title represents the title of the question
      * @param consumption represents the energy consumption of the Activity
      */
-
-    public Activity(String activityName, String imgPath, String title, Long consumption) {
+    public Activity(String activityName, String imgPath, String title,long consumption) {
         this.activityName = activityName;
         this.imgPath = imgPath;
         this.title = title;
@@ -53,13 +52,13 @@ public class Activity implements Reachable{
      */
 
 
+    
     public void setPowerLevel(){
         if(consumption<1000) powerLevel = "low";
         else if(consumption<7500) powerLevel = "mid";
         else if(consumption<=15000) powerLevel = "high";
         else powerLevel = "deyum";
     }
-
 
 
     /**
@@ -112,7 +111,7 @@ public class Activity implements Reachable{
      * @param consumption consumption of the activity
      */
 
-    public void setConsumption(Long consumption) {
+    public void setConsumption(long consumption) {
         this.consumption = consumption;
     }
 
