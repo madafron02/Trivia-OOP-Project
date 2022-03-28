@@ -15,6 +15,7 @@
  */
 package client.scenes;
 
+import commons.Game;
 import commons.Player;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,6 +26,7 @@ import javafx.util.Pair;
 public class MainCtrl {
     private boolean isSingleMode;
     private Player player;
+    private Game game;
     private Stage primaryStage;
 
     private SplashCtrl splashCtrl;
@@ -127,7 +129,7 @@ public class MainCtrl {
         primaryStage.setScene(multiChoice);
         multiCtrl.setPlayer(player);
         multiCtrl.setQuestion();
-        multiCtrl.setCurrentRoundNumber(1);
+        multiCtrl.setCurrentRoundNumber(0);
     }
 
     public void showMoreEnergyQ( Player player) {
@@ -135,7 +137,7 @@ public class MainCtrl {
         primaryStage.setScene(moreEnergy);
         moreECtrl.setPlayer(player);
         moreECtrl.setQuestion();
-        moreECtrl.setCurrentRoundNumber(1);
+        moreECtrl.setCurrentRoundNumber(0);
     }
 
     public void showEnergyQ(Pair<OpenQCtrl, Parent> openQPair) {
@@ -207,5 +209,12 @@ public class MainCtrl {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+    public Game getGame(){
+        return this.game;
     }
 }

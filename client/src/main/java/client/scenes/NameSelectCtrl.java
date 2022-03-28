@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 
+import java.util.List;
+
 public class NameSelectCtrl {
 
     private final ServerUtils server;
@@ -102,7 +104,13 @@ public class NameSelectCtrl {
             nameCheck.setText("Please check your name before you start");
             return;
         }
-        if(mainCtrl.isSingleMode())mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
+        if(mainCtrl.isSingleMode()){
+            Game game = new Game();
+            game.setPlayers(List.of(mainCtrl.getPlayer()));
+            server.setQuestion(game.getId());
+            mainCtrl.setGame(game);
+            mainCtrl.showMultiChoiceQ(mainCtrl.getPlayer());
+        }
         else mainCtrl.showLobby();
     }
 
