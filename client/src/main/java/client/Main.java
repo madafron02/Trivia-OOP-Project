@@ -26,7 +26,6 @@ import client.scenes.*;
 import com.google.inject.Injector;
 
 import javafx.application.Application;
-import javafx.scene.shape.Path;
 import javafx.stage.Stage;
 import javax.sound.sampled.*;
 
@@ -35,7 +34,8 @@ public class Main extends Application {
     private static final Injector INJECTOR = createInjector(new MyModule());
     private static final MyFXML FXML = new MyFXML(INJECTOR);
 
-    public static void main(String[] args) throws URISyntaxException, IOException, UnsupportedAudioFileException, LineUnavailableException {
+    public static void main(String[] args) throws URISyntaxException,
+            IOException, UnsupportedAudioFileException, LineUnavailableException {
         String absolutePath = FileSystems.getDefault()
                 .getPath("src/main/resources/Halloween Lobby Music.wav")
                 .normalize()
