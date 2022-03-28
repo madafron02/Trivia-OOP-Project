@@ -10,6 +10,9 @@ public class CorrectCtrl {
     @FXML
     private Label score;
 
+    @FXML
+    private Label awarded;
+
     @Inject
     public CorrectCtrl(MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
@@ -21,5 +24,9 @@ public class CorrectCtrl {
      */
     public void setScore(int score) {
         this.score.setText(String.valueOf(score));
+    }
+
+    public void setAwarded(int awarded){
+        this.awarded.setText("+" + String.valueOf(awarded));
     }
 }

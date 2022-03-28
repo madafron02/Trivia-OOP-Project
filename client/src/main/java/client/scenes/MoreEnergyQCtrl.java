@@ -81,7 +81,7 @@ public class MoreEnergyQCtrl {
         countdown = new Timer();
         game = mainCtrl.getGame();
         player = game.getPlayers().get(0);
-        question = server.requireQuestion(game.getId(), currentRoundNumber);
+        question = server.requireQuestion(game.getId(), currentRoundNumber - 1);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
         choice1.setText(question.getAnswers().get(0));
@@ -183,7 +183,8 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(1))){
             isCorrect = true;
-            player.setPoints(100);
+            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
+            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
         }
     }
 
@@ -202,7 +203,8 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(2))){
             isCorrect = true;
-            player.setPoints(100);
+            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
+            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
         }
     }
 
@@ -221,7 +223,8 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(3))){
             isCorrect = true;
-            player.setPoints(100);
+            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
+            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
         }
     }
 }
