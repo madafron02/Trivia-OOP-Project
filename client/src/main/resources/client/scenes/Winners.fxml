@@ -45,14 +45,18 @@
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="41.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="270.0">
                      <children>
                         <Label alignment="CENTER" contentDisplay="CENTER" text="Player_1" textFill="WHITE">
                            <font>
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="41.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Label fx:id="firstPoints" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="251.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
@@ -69,7 +73,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="You finished 6th!" textFill="WHITE">
+                  <Label text="You finished first!" textFill="WHITE">
                      <font>
                         <Font size="46.0" />
                      </font>

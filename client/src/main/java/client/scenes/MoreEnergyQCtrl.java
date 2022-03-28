@@ -20,7 +20,6 @@ public class MoreEnergyQCtrl {
 
     private int currentRoundNumber = 0;
     private int totalRounds = 20;
-    private int score = 0;
     private Player player;
     private Question question;
     private Boolean isCorrect;
@@ -81,6 +80,7 @@ public class MoreEnergyQCtrl {
         isCorrect = false;
         countdown = new Timer();
         game = mainCtrl.getGame();
+        player = game.getPlayers().get(0);
         question = server.requireQuestion(game.getId(), currentRoundNumber);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
@@ -113,11 +113,13 @@ public class MoreEnergyQCtrl {
                             setQuestion();
                         } else {
                             if(isCorrect) {
+                                mainCtrl.getCorrect().setScore(player.getPoints());
                                 mainCtrl.showCorrect();
                             } else {
                                 String correct = question.getAnswers().get(
                                         Integer.parseInt(question.getCorrectAnswer()) - 1);
                                 mainCtrl.getWrong().setCorrectAnswer(correct);
+                                mainCtrl.getWrong().setScore(player.getPoints());
                                 mainCtrl.showWrong();
                             }
                             progressLabel.setText("5");
@@ -142,6 +144,7 @@ public class MoreEnergyQCtrl {
      */
     public void setQuestion() {
         if(currentRoundNumber >= totalRounds) {
+            mainCtrl.getWinners().setFirstPoints(player.getPoints());
             mainCtrl.showWinners();
         } else {
             choice1.setDisable(false);
@@ -180,6 +183,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(1))){
             isCorrect = true;
+            player.setPoints(100);
         }
     }
 
@@ -198,6 +202,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(2))){
             isCorrect = true;
+            player.setPoints(100);
         }
     }
 
@@ -216,6 +221,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(3))){
             isCorrect = true;
+            player.setPoints(100);
         }
     }
 }

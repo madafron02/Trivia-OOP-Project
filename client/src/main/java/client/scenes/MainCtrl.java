@@ -141,6 +141,14 @@ public class MainCtrl {
         return wrongCtrl;
     }
 
+    public CorrectCtrl getCorrect() {
+        return correctCtrl;
+    }
+
+    public WinnersCtrl getWinners() {
+        return winnersCtrl;
+    }
+
     /**
      * Shows the splash screen
      */
