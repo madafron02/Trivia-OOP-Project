@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.AdminCtrl">
+   <children>
+      <TableView fx:id="table" layoutX="132.0" layoutY="61.0" prefHeight="277.0" prefWidth="453.0">
+        <columns>
+            <TableColumn fx:id="activID" prefWidth="52.79998779296875" text="ID" />
+            <TableColumn fx:id="activTitle" prefWidth="280.800048828125" text="Title" />
+            <TableColumn fx:id="activConsum" minWidth="0.0" prefWidth="119.199951171875" text="Consumption" />
+        </columns>
+      </TableView>
+      <Button fx:id="addBTN" layoutX="36.0" layoutY="61.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="80.0" text="Add Activity" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="deleteBTN" layoutX="36.0" layoutY="296.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="80.0" text="Delete Activity" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="updateBTN" layoutX="36.0" layoutY="178.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="80.0" text="Update Activity" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="backBTN" layoutX="319.0" layoutY="343.0" mnemonicParsing="false" onAction="#goBack" prefHeight="42.0" prefWidth="80.0" text="Back" />
+   </children>
+</AnchorPane>
