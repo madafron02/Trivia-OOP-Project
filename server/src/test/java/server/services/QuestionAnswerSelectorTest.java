@@ -114,11 +114,12 @@ class QuestionAnswerSelectorTest {
     void getOpenQuestion() {
         sut.setGameAnswers(gameid);
         Question q = sut.getOpenQuestion(0,0);
-        double tmp = Integer.parseInt(q.getDescription().replace("test",""));
+        int tmp = Integer.parseInt(q.getDescription().replace("test",""));
         if(tmp>100&&tmp<=200)tmp+=1000;
         else if(tmp<=300)tmp+=7500;
         else if(tmp<=400)tmp+=15000;
-        assertEquals(tmp,Double.parseDouble(q.getCorrectAnswer()));
+
+        assertEquals(tmp,Integer.parseInt(q.getCorrectAnswer()));
     }
 
     @Test

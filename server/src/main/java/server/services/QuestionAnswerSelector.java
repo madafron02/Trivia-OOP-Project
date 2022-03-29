@@ -269,7 +269,7 @@ public class QuestionAnswerSelector {
         q.setType(Question.QuestionType.OPEN);
         q.setDescriptionImagePath(activity.getImgPath());
         q.setDescription(activity.getTitle());
-        q.setCorrectAnswer(String.valueOf(activity.getConsumption()));
+        q.setCorrectAnswer(String.valueOf((int)activity.getConsumption()));
         return q;
     }
 
