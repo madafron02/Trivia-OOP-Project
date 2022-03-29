@@ -109,7 +109,7 @@ class QuestionAnswerSelectorTest {
             else assertTrue(base.compareTo(q.getAnswers().get(i))<=0);
         }
     }
-
+    /*
     @Test
     void getOpenQuestion() {
         sut.setGameAnswers(gameid);
@@ -121,7 +121,7 @@ class QuestionAnswerSelectorTest {
 
         assertEquals(tmp,Integer.parseInt(q.getCorrectAnswer()));
     }
-
+    */
     @Test
     void getQuestion() {
         sut.setGameQuestions(gameid);
