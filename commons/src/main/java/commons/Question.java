@@ -29,6 +29,12 @@ public class Question implements Reachable {
         COMPARISON,
         OPEN
     }
+
+    public Question(String description, List<String> answers) {
+        this.description = description;
+        this.answers = answers;
+    }
+
     public Question() {
     }
 
