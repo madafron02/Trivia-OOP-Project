@@ -24,6 +24,9 @@ public class SplashCtrl {
     private Button leaderboard;
 
     @FXML
+    private Button adminPanel;
+
+    @FXML
     private ImageView imageView;
     public void goToSingle() {
         mainCtrl.showNameSelect();
@@ -38,5 +41,9 @@ public class SplashCtrl {
 
     public void goToLeader() {
         mainCtrl.showLeadearboard();
+    }
+
+    public void goToAdmin(){
+        mainCtrl.showAdminPanel();
     }
 }

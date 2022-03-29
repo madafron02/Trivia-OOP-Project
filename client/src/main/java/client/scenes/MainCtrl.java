@@ -65,6 +65,9 @@ public class MainCtrl {
     private WinnersCtrl winnersCtrl;
     private Scene winners;
 
+    private AdminCtrl adminCtrl;
+    private Scene adminPanel;
+
     /**
      * Initializes the primary stage, all the controllers and
      * all the scenes used in this game
@@ -80,6 +83,8 @@ public class MainCtrl {
      * @param winnersPair
      * @param multiChoice
      * @param moreEnergy
+     * @param adminPanel
+     *
      */
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                               Pair<NameSelectCtrl, Parent> nameSelectCtrlParentPair,
@@ -91,7 +96,8 @@ public class MainCtrl {
                               Pair<WrongCtrl, Parent> wrongCtrlParentPair,
                               Pair<WinnersCtrl, Parent> winnersPair,
                               Pair<MultiChoiceQCtrl, Parent> multiChoice,
-                              Pair<MoreEnergyQCtrl, Parent> moreEnergy) {
+                              Pair<MoreEnergyQCtrl, Parent> moreEnergy,
+                              Pair<AdminCtrl, Parent> adminPanel) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -115,6 +121,8 @@ public class MainCtrl {
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
+        this.adminPanel = new Scene(adminPanel.getValue());
+        this.adminCtrl = adminPanel.getKey();
 
         showSplash();
         primaryStage.show();
@@ -147,6 +155,11 @@ public class MainCtrl {
 
     public WinnersCtrl getWinners() {
         return winnersCtrl;
+    }
+
+    public void showAdminPanel(){
+        primaryStage.setTitle("AdminPanel");
+        primaryStage.setScene(adminPanel);
     }
 
     /**
