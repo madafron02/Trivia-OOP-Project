@@ -65,6 +65,18 @@ public class ActivityUtil {
     }
 
     /**
+     *  retrieves all activities from the repository
+     * @return a List of Activity
+     */
+    public List<Activity> getAll(){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(new GenericType<List<Activity>>() {});
+    }
+
+    /**
      * Deletes an Activity from the repository and the List
      * @param id
      * @return the deleted Activity
