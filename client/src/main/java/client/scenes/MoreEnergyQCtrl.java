@@ -83,7 +83,7 @@ public class MoreEnergyQCtrl {
         countdown = new Timer();
         game = mainCtrl.getGame();
         player = game.getPlayers().get(0);
-        question = server.requireQuestion(game.getId(), currentRoundNumber);
+        question = server.requireQuestion(game.getId(), currentRoundNumber - 1);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
 
