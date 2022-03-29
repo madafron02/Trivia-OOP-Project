@@ -4,11 +4,14 @@ import client.utils.ServerUtils;
 import commons.Game;
 import commons.Player;
 import commons.Question;
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import javax.inject.Inject;
 import java.util.Timer;
@@ -45,6 +48,22 @@ public class MoreEnergyQCtrl {
     private ProgressBar progressBar;
     @FXML
     private Label progressLabel;
+    @FXML
+    private Button starButton;
+    @FXML
+    private Button dizzyButton;
+    @FXML
+    private Button heartButton;
+    @FXML
+    private Button hundredButton;
+    @FXML
+    private ImageView starEmoji;
+    @FXML
+    private ImageView dizzyEmoji;
+    @FXML
+    private ImageView hundredEmoji;
+    @FXML
+    private ImageView heartEmoji;
 
     @Inject
     public MoreEnergyQCtrl(ServerUtils server, MainCtrl mainCtrl) {
@@ -223,5 +242,100 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             player.setPoints(100);
         }
+    }
+
+    /**
+     * Settings for the animation, makes it last for 1 second
+     * and go back (2 seconds in total) by scaling it 1.3 times
+     * relative to X and Y axis.
+     * @param scale Scaling animation.
+     */
+    public void setScale(ScaleTransition scale) {
+        scale.setDuration(Duration.millis(1000));
+        scale.setToX(1.3);
+        scale.setToY(1.3);
+        scale.setCycleCount(2);
+        scale.setAutoReverse(true);
+    }
+
+    /**
+     * Creates the animation object and depending on the emoji
+     * which was pressed enables this emoji once again only when animation
+     * is finished.
+     * This way animation will go without any unexpected behaviors
+     * and will prevent spamming.
+     * @param emojiType String identifying which emoji was pressed.
+     */
+    public void emojiHandler(String emojiType) {
+        ScaleTransition scale = new ScaleTransition();
+        setScale(scale);
+        Timer timer = new Timer();
+        switch (emojiType) {
+            case "star":
+                scale.setNode(starEmoji);
+                TimerTask taskStar = new TimerTask() {
+                    @Override
+                    public void run() {
+                        starButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskStar, 2001);
+                break;
+            case "heart":
+                scale.setNode(heartEmoji);
+                TimerTask taskHeart = new TimerTask() {
+                    @Override
+                    public void run() {
+                        heartButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskHeart, 2001);
+                break;
+            case "hundred":
+                scale.setNode(hundredEmoji);
+                TimerTask taskHundred = new TimerTask() {
+                    @Override
+                    public void run() {
+                        hundredButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskHundred, 2001);
+                break;
+            case "dizzy":
+                scale.setNode(dizzyEmoji);
+                TimerTask taskDizzy = new TimerTask() {
+                    @Override
+                    public void run() {
+                        dizzyButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskDizzy, 2001);
+                break;
+            default:
+                break;
+        }
+        scale.play();
+    }
+
+    /**
+     * Calls emojiHandler method passing the string depending
+     * on the emoji pressed and disables this emoji until
+     * the animation specified in emojiHandler ends.
+     */
+    public void heartOnClick() {
+        this.heartButton.setDisable(true);
+        emojiHandler("heart");
+    }
+    public void starOnClick() {
+        this.starButton.setDisable(true);
+        emojiHandler("star");
+    }
+    public void hundredOnClick() {
+        this.hundredButton.setDisable(true);
+        emojiHandler("hundred");
+    }
+    public void dizzyOnClick() {
+        this.dizzyButton.setDisable(true);
+        emojiHandler("dizzy");
     }
 }
