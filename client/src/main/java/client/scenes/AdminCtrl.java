@@ -39,7 +39,8 @@ public class AdminCtrl {
         this.activID.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.activTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
         this.activConsum.setCellValueFactory(new PropertyValueFactory<>("consumption"));
-        ObservableList<Activity> observableList = FXCollections.observableList(activityUtil.getAll());
+        ObservableList<Activity> observableList =
+                FXCollections.observableList(activityUtil.getAll());
         table.setItems(observableList);
     }
 
