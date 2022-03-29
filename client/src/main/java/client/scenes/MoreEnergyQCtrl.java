@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.inject.Inject;
@@ -74,6 +75,7 @@ public class MoreEnergyQCtrl {
      * fetches the next question with answers and sets the title of the window
      */
     public void setUpRound() {
+
         progressLabel.setText("16");
         progressBar.setProgress(1);
         currentRoundNumber++;
@@ -81,15 +83,23 @@ public class MoreEnergyQCtrl {
         countdown = new Timer();
         game = mainCtrl.getGame();
         player = game.getPlayers().get(0);
-        question = server.requireQuestion(game.getId(), currentRoundNumber - 1);
+        question = server.requireQuestion(game.getId(), currentRoundNumber);
         mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
         roundNumber.setText("Question: " + currentRoundNumber);
+
+        //Change the text and the image according to the data from the json file
+        
         choice1.setText(question.getAnswers().get(0));
+        Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
+        image1.setImage(img1);
+
         choice2.setText(question.getAnswers().get(1));
+        Image img2 = new Image("activity-bank/" + question.getImgPaths().get(1));
+        image2.setImage(img2);
+
         choice3.setText(question.getAnswers().get(2));
-        //image1.setImage(new Image(question.getImgPaths().get(0)));
-        //image2.setImage(new Image(question.getImgPaths().get(1)));
-        //image3.setImage(new Image(question.getImgPaths().get(2)));
+        Image img3 = new Image("activity-bank/" + question.getImgPaths().get(2));
+        image3.setImage(img3);
     }
 
     /**
@@ -183,8 +193,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(1))){
             isCorrect = true;
-            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
-            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
+            player.setPoints(100);
         }
     }
 
@@ -203,8 +212,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(2))){
             isCorrect = true;
-            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
-            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
+            player.setPoints(100);
         }
     }
 
@@ -223,8 +231,7 @@ public class MoreEnergyQCtrl {
 
         if(correct.equals(String.valueOf(3))){
             isCorrect = true;
-            player.setPoints(Integer.parseInt(progressLabel.getText())*10);
-            mainCtrl.getCorrect().setAwarded(Integer.parseInt(progressLabel.getText())*10);
+            player.setPoints(100);
         }
     }
 }
