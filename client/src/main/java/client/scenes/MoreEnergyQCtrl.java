@@ -90,16 +90,16 @@ public class MoreEnergyQCtrl {
         //Change the text and the image according to the data from the json file
         
         choice1.setText(question.getAnswers().get(0));
-        Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
-        image1.setImage(img1);
+        //Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
+        //image1.setImage(img1);
 
         choice2.setText(question.getAnswers().get(1));
-        Image img2 = new Image("activity-bank/" + question.getImgPaths().get(1));
-        image2.setImage(img2);
+        //Image img2 = new Image("activity-bank/" + question.getImgPaths().get(1));
+        //image2.setImage(img2);
 
         choice3.setText(question.getAnswers().get(2));
-        Image img3 = new Image("activity-bank/" + question.getImgPaths().get(2));
-        image3.setImage(img3);
+        //Image img3 = new Image("activity-bank/" + question.getImgPaths().get(2));
+        //image3.setImage(img3);
     }
 
     /**
