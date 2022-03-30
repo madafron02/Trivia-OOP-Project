@@ -4,18 +4,14 @@ import client.utils.ServerUtils;
 import commons.Game;
 import commons.Player;
 import commons.Question;
-import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.inject.Inject;
