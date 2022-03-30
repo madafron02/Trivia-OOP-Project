@@ -6,14 +6,16 @@ import commons.Player;
 import commons.Question;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,6 +31,15 @@ public class MoreEnergyQCtrl {
     private Game game;
     private Timer countdown = new Timer();
     private final double diff = 1.0 / 15.0;
+
+    private Image starImage =
+            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/starEmoji.png");
+    private Image heartImage =
+            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/heartEmoji.png");
+    private Image hundredImage =
+            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/100emoji.png");
+    private Image dizzyImage =
+            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/dizzyEmoji.png");
 
     @FXML
     private Button choice1;
@@ -64,6 +75,11 @@ public class MoreEnergyQCtrl {
     private ImageView hundredEmoji;
     @FXML
     private ImageView heartEmoji;
+    @FXML
+    private Button leaveTheGame;
+    @FXML
+    private ListView<String> emojiChat = new ListView<>();
+
 
     @Inject
     public MoreEnergyQCtrl(ServerUtils server, MainCtrl mainCtrl) {
@@ -316,6 +332,43 @@ public class MoreEnergyQCtrl {
         }
         scale.play();
     }
+    public void setEmojiInsertion() {
+        this.emojiChat.setCellFactory(listView -> new ListCell<String>() {
+            private final ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(String text, boolean empty) {
+                super.updateItem(text, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                }
+                else {
+                    ImageView imageView = new ImageView();
+                    if (text.contains("heart")) {
+                        imageView.setImage(heartImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else if (text.contains("hundred")) {
+                        imageView.setImage(hundredImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else if (text.contains("dizzy")) {
+                        imageView.setImage(dizzyImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else {
+                        imageView.setImage(starImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    }
+                    String[] split = text.split(" - ");
+                    text = split[0];
+                    setText(text);
+                    setGraphic(imageView);
+                }
+            }
+        });
+    }
 
     /**
      * Calls emojiHandler method passing the string depending
@@ -323,19 +376,52 @@ public class MoreEnergyQCtrl {
      * the animation specified in emojiHandler ends.
      */
     public void heartOnClick() {
+        setEmojiInsertion();
+        ObservableList<String> list = emojiChat.getItems();
+        list.add("Round " + this.currentRoundNumber + ": Player " +
+                this.player.getName() + " - heart");
+        emojiChat.setItems(list);
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.heartButton.setDisable(true);
         emojiHandler("heart");
+
     }
     public void starOnClick() {
+        setEmojiInsertion();
+        ObservableList<String> list = emojiChat.getItems();
+        list.add("Round " + this.currentRoundNumber + ": Player " +
+                this.player.getName() + " - star");
+       // emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
+                //this.player.getName() + " reacted - star");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.starButton.setDisable(true);
         emojiHandler("star");
     }
     public void hundredOnClick() {
+        setEmojiInsertion();
+        //emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
+               // this.player.getName() + " reacted - hundred");
+        ObservableList<String> list = emojiChat.getItems();
+        list.add("Round " + this.currentRoundNumber + ": Player " +
+                this.player.getName() + " - hundred");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.hundredButton.setDisable(true);
         emojiHandler("hundred");
     }
     public void dizzyOnClick() {
+        setEmojiInsertion();
+        //emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
+                //this.player.getName() + " reacted - dizzy");
+        ObservableList<String> list = emojiChat.getItems();
+        list.add("Round " + this.currentRoundNumber + ": Player " +
+                this.player.getName() + " - dizzy");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.dizzyButton.setDisable(true);
         emojiHandler("dizzy");
+    }
+    public void leaveTheGame() {
+        countdown.cancel();
+        countdown.purge();
+        mainCtrl.showSplash();
     }
 }
