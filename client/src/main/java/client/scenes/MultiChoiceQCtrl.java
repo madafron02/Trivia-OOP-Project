@@ -43,6 +43,7 @@ public class MultiChoiceQCtrl {
     @FXML
     private Label progressLabel;
 
+
     @Inject
     public MultiChoiceQCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
