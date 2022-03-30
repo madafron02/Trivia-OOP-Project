@@ -343,6 +343,11 @@ public class MoreEnergyQCtrl {
         }
         scale.play();
     }
+
+    /**
+     * Changes in-build to the listview method updateItem so that besides
+     * the text it also inserts the image when making changes to it.
+     */
     public void setEmojiInsertion() {
         this.emojiChat.setCellFactory(listView -> new ListCell<String>() {
             private final ImageView imageView = new ImageView();
@@ -384,14 +389,13 @@ public class MoreEnergyQCtrl {
     /**
      * Calls emojiHandler method passing the string depending
      * on the emoji pressed and disables this emoji until
-     * the animation specified in emojiHandler ends.
+     * the animation specified in emojiHandler ends. Also puts the focus to the
+     * end of the listView so that the player can always see updated reactions.
      */
     public void heartOnClick() {
         setEmojiInsertion();
-        ObservableList<String> list = emojiChat.getItems();
-        list.add("Round " + this.currentRoundNumber + ": Player " +
-                this.player.getName() + " - heart");
-        emojiChat.setItems(list);
+        emojiChat.getItems().add("Player " +
+                this.player.getName() + " on round " + this.currentRoundNumber + " - heart");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.heartButton.setDisable(true);
         emojiHandler("heart");
@@ -399,37 +403,32 @@ public class MoreEnergyQCtrl {
     }
     public void starOnClick() {
         setEmojiInsertion();
-        ObservableList<String> list = emojiChat.getItems();
-        list.add("Round " + this.currentRoundNumber + ": Player " +
-                this.player.getName() + " - star");
-       // emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
-                //this.player.getName() + " reacted - star");
+        emojiChat.getItems().add("Player " +
+                this.player.getName() + " on round " + this.currentRoundNumber + " - star");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.starButton.setDisable(true);
         emojiHandler("star");
     }
     public void hundredOnClick() {
         setEmojiInsertion();
-        //emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
-               // this.player.getName() + " reacted - hundred");
-        ObservableList<String> list = emojiChat.getItems();
-        list.add("Round " + this.currentRoundNumber + ": Player " +
-                this.player.getName() + " - hundred");
+        emojiChat.getItems().add("Player " +
+                this.player.getName() + " on round " + this.currentRoundNumber + " - hundred");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.hundredButton.setDisable(true);
         emojiHandler("hundred");
     }
     public void dizzyOnClick() {
         setEmojiInsertion();
-        //emojiChat.getItems().add("Round " + this.currentRoundNumber + ": Player " +
-                //this.player.getName() + " reacted - dizzy");
-        ObservableList<String> list = emojiChat.getItems();
-        list.add("Round " + this.currentRoundNumber + ": Player " +
-                this.player.getName() + " - dizzy");
+        emojiChat.getItems().add("Player " +
+                this.player.getName() + " on round " + this.currentRoundNumber + " - dizzy");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.dizzyButton.setDisable(true);
         emojiHandler("dizzy");
     }
+
+    /**
+     * Adds "leave the game" button to the question screen
+     */
     public void leaveTheGame() {
         countdown.cancel();
         countdown.purge();
