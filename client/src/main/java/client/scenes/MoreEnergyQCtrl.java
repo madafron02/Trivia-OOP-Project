@@ -15,6 +15,12 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.inject.Inject;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.FileSystems;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,15 +37,20 @@ public class MoreEnergyQCtrl {
     private Game game;
     private Timer countdown = new Timer();
     private final double diff = 1.0 / 15.0;
+    private String imagePath = FileSystems.getDefault()
+            .getPath("client/src/main/resources/Images")
+            .normalize()
+            .toAbsolutePath()
+            .toString();
 
     private Image starImage =
-            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/starEmoji.png");
+            new Image("file:" + imagePath + "/starEmoji.png");
     private Image heartImage =
-            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/heartEmoji.png");
+            new Image("file:" + imagePath + "/heartEmoji.png");
     private Image hundredImage =
-            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/100emoji.png");
+            new Image("file:" + imagePath + "/100emoji.png");
     private Image dizzyImage =
-            new Image("file:/Users/a123/repository-template/client/src/main/resources/Images/dizzyEmoji.png");
+            new Image("file:" + imagePath + "/dizzyEmoji.png");
 
     @FXML
     private Button choice1;
