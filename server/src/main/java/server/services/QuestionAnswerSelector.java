@@ -148,7 +148,7 @@ public class QuestionAnswerSelector {
         List<Question>currentQuestions = new ArrayList<>();
         for(int round = 0;round<20;round++){
             //Question.QuestionType type = Question.QuestionType.values()[random.nextInt(4)];
-            Question.QuestionType type = Question.QuestionType.MORE_ENERGY;
+            Question.QuestionType type = Question.QuestionType.ENERGY_GUESS;
             switch (type){
                 case OPEN -> currentQuestions.add(getOpenQuestion(gameId,round));
                 case COMPARISON -> currentQuestions.add(getComparisonQuestion(gameId,round));
@@ -203,7 +203,7 @@ public class QuestionAnswerSelector {
         Question q = new Question();
         int correctAnswer = random.nextInt(3);
         q.setType(Question.QuestionType.ENERGY_GUESS);
-        q.setCorrectAnswer(String.valueOf(correctAnswer+1));
+        q.setCorrectAnswer(String.valueOf(correctAnswer + 1));
         q.setAnswers(finalList.stream().map(p->String.valueOf(p.getConsumption()))
                 .collect(Collectors.toList()));
         q.setDescriptionImagePath(finalList.get(correctAnswer).getImgPath());

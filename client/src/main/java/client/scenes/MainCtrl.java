@@ -128,48 +128,156 @@ public class MainCtrl {
         this.isSingleMode = true;
     }
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    public void setPrimaryStageTitle(String newTitle) {
-        primaryStage.setTitle(newTitle);
-    }
-
+    /**
+     * Gets the controller for the "Wrong answer" scene
+     * @return the controller
+     */
     public WrongCtrl getWrong() {
         return wrongCtrl;
     }
 
+    /**
+     * Gets the controller for the "Correct answer" scene
+     * @return the controller
+     */
     public CorrectCtrl getCorrect() {
         return correctCtrl;
     }
 
+    /**
+     * Gets the controller for the "Winners" scene
+     * @return the controller
+     */
     public WinnersCtrl getWinners() {
         return winnersCtrl;
     }
 
+    /**
+     * Gets the controller for the "Multiple choice question" scene
+     * @return the controller
+     */
     public MultiChoiceQCtrl getMultiCtrl() {
         return multiCtrl;
     }
 
+    /**
+     * Gets the controller for the "More energy question" scene
+     * @return the controller
+     */
     public MoreEnergyQCtrl getMoreECtrl() {
         return moreECtrl;
     }
 
+    /**
+     * Gets the controller for the "Open question" scene
+     * @return the controller
+     */
     public OpenQCtrl getOpenQCtrl() {
         return openQCtrl;
     }
 
+    /**
+     * Gets the "Multiple choice question" scene
+     * @return the scene
+     */
     public Scene getMultiChoice() {
         return multiChoice;
     }
 
+    /**
+     * Gets the "More energy question" scene
+     * @return the scene
+     */
     public Scene getMoreEnergy() {
         return moreEnergy;
     }
 
+    /**
+     * Gets the "Open question" scene
+     * @return the scene
+     */
     public Scene getOpenQ() {
         return openQ;
+    }
+
+    /**
+     * Shows if the game type is singleplayer
+     * @return true if it is in singleplayer mode
+     */
+    public boolean isSingleMode() {
+        return isSingleMode;
+    }
+
+    /**
+     * Sets the game type to singleplayer
+     * @param type describes the game type (true = singleplayer, false = multiplayer)
+     */
+    public void setSingleMode(boolean type) {
+        isSingleMode = type;
+    }
+
+    /**
+     * Gets the player that is in the current singleplayer game
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Sets the player inside the current singleplayer game
+     * @param player the player that needs to be added
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
+     * Sets the current game
+     * @param game the game that needs to be set
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    /**
+     * Gets the game currently connected to the main controller
+     * @return the current game
+     */
+    public Game getGame(){
+        return this.game;
+    }
+
+    /**
+     * Gets the current round number
+     * @return an int describing the round number
+     */
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
+    }
+
+    /**
+     * Sets the current round number
+     * @param currentRoundNumber number to be changed
+     */
+    public void setCurrentRoundNumber(int currentRoundNumber) {
+        this.currentRoundNumber = currentRoundNumber;
+    }
+
+    /**
+     * Gets the question that is currently showed to the player
+     * @return the current question
+     */
+    public Question getQuestion() {
+        return question;
+    }
+
+    /**
+     * Sets the question that the player has to see
+     * @param question the question to be shown
+     */
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
     /**
@@ -180,22 +288,6 @@ public class MainCtrl {
         primaryStage.setScene(opening);
         primaryStage.setMinHeight(900);
         primaryStage.setMinWidth(1440);
-    }
-
-    /**
-     * Shows if the game type is singleplayer
-     * @return
-     */
-    public boolean isSingleMode() {
-        return isSingleMode;
-    }
-
-    /**
-     * Sets the game type to singleplayer
-     * @param type
-     */
-    public void setSingleMode(boolean type) {
-        isSingleMode = type;
     }
 
     /**
@@ -214,6 +306,10 @@ public class MainCtrl {
         primaryStage.setScene(lobby);
     }
 
+    /**
+     * Gets the controller for the lobby
+     * @return
+     */
     public LobbyCtrl getLobby() {
         return lobbyCtrl;
     }
@@ -288,36 +384,8 @@ public class MainCtrl {
      *
      */
     public void showOpenQ() {
-        primaryStage.setTitle("Question");
+        primaryStage.setTitle("Questions");
         primaryStage.setScene(openQ);
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-    public Game getGame(){
-        return this.game;
-    }
-
-    public int getCurrentRoundNumber() {
-        return currentRoundNumber;
-    }
-    public void setCurrentRoundNumber(int currentRoundNumber) {
-        this.currentRoundNumber = currentRoundNumber;
-    }
-
-    public Question getQuestion() {
-        return question;
-    }
-    public void setQuestion(Question question) {
-        this.question = question;
     }
 
     /**
@@ -330,15 +398,20 @@ public class MainCtrl {
     }
 
     /**
-     * Resets the time progress properties to their starting state at the beginning of each round,
-     * increases the round number, eliminates the "correct" state from last round,
-     * fetches the next question with answers and sets the title of the window
+     * Sets the round details:
+     * -> the player that is currently playing the game;
+     * -> the next question generated by the "requiresQuestion" from ServerUtils
+     * for this specific game + round;
+     * -> increases the round number;
+     * -> gets the current question type, shows the corresponding scene and calls
+     * the setup method for that specific scene;
+     * -> !!! CURRENTLY shows only "Multiple choice question" type because the
+     * "Open question" is not ready; KEEP SWITCH COMMENTED !!!
      */
     public void setUpRound() {
         player = game.getPlayers().get(0);
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
         currentRoundNumber++;
-        primaryStage.setTitle("Round " + currentRoundNumber);
 //        Question.QuestionType type = question.getType();
 //        switch(type) {
 //            case OPEN -> {
@@ -359,7 +432,7 @@ public class MainCtrl {
 //            default -> {}
 //        }
 
-        showMoreEnergyQ();
-        moreECtrl.setUpMoreEnergy();
+        showMultiChoiceQ();
+        multiCtrl.setUpEnergyGuess();
     }
 }

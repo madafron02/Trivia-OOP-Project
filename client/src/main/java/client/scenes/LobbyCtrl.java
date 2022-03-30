@@ -24,8 +24,8 @@ public class LobbyCtrl {
     private ListView<String> playerList = new ListView<>();
 
     /**
-     * create the lobby instance
-     * @param server an instance that can send http request to the server
+     * Creates the lobby instance
+     * @param server an instance that can send http requests to the server
      * @param mainCtrl the main controller
      */
     @Inject
@@ -64,14 +64,14 @@ public class LobbyCtrl {
     */
 
     /**
-     * send the signal to the server which indicate that a new game is going to start
+     * Sends the signal to the server, which indicates that a new game is going to start.
      */
     public void start(){
         server.setStatus(true);
     }
 
     /**
-     * require for the newest player list and show it in the page
+     * Requires for the newest player list and shows it in the page.
      */
     public void refresh(){
         List<String> names = server.getGame().getPlayers()
@@ -80,7 +80,8 @@ public class LobbyCtrl {
     }
 
     /**
-     * travel to the game page if it is time to start
+     * Ask the main controller to start the game (by setting up the first round)
+     * if it is time to start (indicated by the getStatus method).
      */
     public void startRounds() {
         if(server.getStatus()){
