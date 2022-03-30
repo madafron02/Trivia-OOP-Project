@@ -17,24 +17,24 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="335.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b418c" height="50.0" layoutX="225.0" layoutY="320.0" stroke="BLACK" strokeType="INSIDE" width="90.0" />
       <ProgressBar fx:id="progressBar" layoutX="63.0" layoutY="23.0" prefHeight="35.0" prefWidth="474.0" progress="0.0" />
+      <Button fx:id="choice1" alignment="CENTER" contentDisplay="CENTER" layoutX="115.0" layoutY="320.0" mnemonicParsing="false" onAction="#checkFirst" prefHeight="50.0" prefWidth="90.0" wrapText="true" />
       <Label fx:id="progressLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="255.0" layoutY="24.0" prefHeight="17.0" prefWidth="90.0">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="100.0" prefHeight="50.0" prefWidth="301.0" text="Guess the energy consumption!" textFill="WHITE">
+      <Button layoutX="460.0" layoutY="345.0" mnemonicParsing="false" onAction="#leaveTheGame" prefHeight="33.0" prefWidth="120.0" text="Leave the game" />
+      <Button fx:id="choice3" alignment="CENTER" contentDisplay="CENTER" layoutX="335.0" layoutY="320.0" mnemonicParsing="false" onAction="#checkThird" prefHeight="50.0" prefWidth="90.0" wrapText="true" />
+      <Button fx:id="choice2" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="320.0" mnemonicParsing="false" onAction="#checkSecond" prefHeight="50.0" prefWidth="90.0" wrapText="true" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="107.0" prefHeight="58.0" prefWidth="284.0" text="How much energy does it take?" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="activity" alignment="CENTER" contentDisplay="CENTER" layoutX="128.0" layoutY="155.0" prefHeight="147.0" prefWidth="285.0" textFill="WHITE">
+      <Label fx:id="activity" alignment="CENTER" contentDisplay="CENTER" layoutX="127.0" layoutY="157.0" prefHeight="147.0" prefWidth="284.0" textFill="WHITE" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="choice2" layoutX="225.0" layoutY="320.0" mnemonicParsing="false" onAction="#checkSecond" prefHeight="50.0" prefWidth="90.0" />
-      <Button fx:id="choice3" layoutX="335.0" layoutY="320.0" mnemonicParsing="false" onAction="#checkThird" prefHeight="50.0" prefWidth="90.0" />
-      <Button fx:id="choice1" layoutX="115.0" layoutY="319.0" mnemonicParsing="false" onAction="#checkFirst" prefHeight="50.0" prefWidth="90.0" />
-      <Label fx:id="roundNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="65.0" prefHeight="17.0" prefWidth="165.0" />
    </children>
 </AnchorPane>

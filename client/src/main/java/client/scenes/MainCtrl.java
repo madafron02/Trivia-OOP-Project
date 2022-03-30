@@ -19,10 +19,13 @@ import client.utils.ServerUtils;
 import commons.Game;
 import commons.Player;
 import commons.Question;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 
 public class MainCtrl {
@@ -122,6 +125,14 @@ public class MainCtrl {
         this.openQCtrl = openQ.getKey();
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
 
         showSplash();
         primaryStage.show();
@@ -433,7 +444,7 @@ public class MainCtrl {
             default -> {}
         }
         */
-        showMultiChoiceQ();
-        multiCtrl.setUpEnergyGuess();
+        showMoreEnergyQ();
+        moreECtrl.setUpMoreEnergy();
     }
 }

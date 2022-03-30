@@ -1,9 +1,5 @@
 package client.scenes;
 
-import client.utils.ServerUtils;
-import commons.Game;
-import commons.Player;
-import commons.Question;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -105,19 +101,17 @@ public class MoreEnergyQCtrl {
         roundNumber.setText("Question: " + mainCtrl.getCurrentRoundNumber());
 
         //Change the text and the image according to the data from the json file
-        Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
-        image1.setImage(img1);
 
         choice1.setText(mainCtrl.getQuestion().getAnswers().get(0));
-        //Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
+        //Image img1 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(0));
         //image1.setImage(img1);
 
         choice2.setText(mainCtrl.getQuestion().getAnswers().get(1));
-        //Image img2 = new Image("activity-bank/" + question.getImgPaths().get(1));
+        //Image img2 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(1));
         //image2.setImage(img2);
 
         choice3.setText(mainCtrl.getQuestion().getAnswers().get(2));
-        //Image img3 = new Image("activity-bank/" + question.getImgPaths().get(2));
+        //Image img3 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(2));
         //image3.setImage(img3);
 
         setTimer();
@@ -370,7 +364,8 @@ public class MoreEnergyQCtrl {
     public void heartOnClick() {
         setEmojiInsertion();
         emojiChat.getItems().add("Player " +
-                this.player.getName() + " on round " + this.currentRoundNumber + " - heart");
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - heart");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.heartButton.setDisable(true);
         emojiHandler("heart");
@@ -379,7 +374,8 @@ public class MoreEnergyQCtrl {
     public void starOnClick() {
         setEmojiInsertion();
         emojiChat.getItems().add("Player " +
-                this.player.getName() + " on round " + this.currentRoundNumber + " - star");
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - star");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.starButton.setDisable(true);
         emojiHandler("star");
@@ -387,7 +383,8 @@ public class MoreEnergyQCtrl {
     public void hundredOnClick() {
         setEmojiInsertion();
         emojiChat.getItems().add("Player " +
-                this.player.getName() + " on round " + this.currentRoundNumber + " - hundred");
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - hundred");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.hundredButton.setDisable(true);
         emojiHandler("hundred");
@@ -395,7 +392,8 @@ public class MoreEnergyQCtrl {
     public void dizzyOnClick() {
         setEmojiInsertion();
         emojiChat.getItems().add("Player " +
-                this.player.getName() + " on round " + this.currentRoundNumber + " - dizzy");
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - dizzy");
         emojiChat.scrollTo(emojiChat.getItems().size() - 1);
         this.dizzyButton.setDisable(true);
         emojiHandler("dizzy");

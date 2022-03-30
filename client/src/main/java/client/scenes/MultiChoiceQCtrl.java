@@ -203,4 +203,13 @@ public class MultiChoiceQCtrl {
             mainCtrl.getPlayer().setPoints(100);
         }
     }
+
+    /**
+     * Adds "leave the game" button to the question screen
+     */
+    public void leaveTheGame() {
+        countdown.cancel();
+        countdown.purge();
+        mainCtrl.showSplash();
+    }
 }
