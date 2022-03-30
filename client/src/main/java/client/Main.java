@@ -37,7 +37,7 @@ public class Main extends Application {
     public static void main(String[] args) throws URISyntaxException,
             IOException, UnsupportedAudioFileException, LineUnavailableException {
         String absolutePath = FileSystems.getDefault()
-                .getPath("src/main/resources/Halloween Lobby Music.wav")
+                .getPath("client/src/main/resources/Halloween Lobby Music.wav")
                 .normalize()
                 .toAbsolutePath()
                 .toString();
