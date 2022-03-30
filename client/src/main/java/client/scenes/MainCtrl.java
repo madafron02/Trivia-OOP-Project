@@ -412,26 +412,27 @@ public class MainCtrl {
         player = game.getPlayers().get(0);
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
         currentRoundNumber++;
-//        Question.QuestionType type = question.getType();
-//        switch(type) {
-//            case OPEN -> {
-//                showOpenQ();
-//                openQCtrl.setUpOpen();
-//                break;
-//            }
-//            case COMPARISON, MORE_ENERGY -> {
-//                showMoreEnergyQ();
-//                moreEnergyQCtrl.setUpMoreEnergy();
-//                break;
-//            }
-//            case ENERGY_GUESS -> {
-//                showMultiChoiceQ();
-//                multiChoiceQCtrl.setUpEnergyGuess();
-//                break;
-//            }
-//            default -> {}
-//        }
-
+        /*
+        Question.QuestionType type = question.getType();
+        switch(type) {
+            case OPEN -> {
+                showOpenQ();
+                openQCtrl.setUpOpen();
+                break;
+            }
+            case COMPARISON, MORE_ENERGY -> {
+                showMoreEnergyQ();
+                moreEnergyQCtrl.setUpMoreEnergy();
+                break;
+            }
+            case ENERGY_GUESS -> {
+                showMultiChoiceQ();
+                multiChoiceQCtrl.setUpEnergyGuess();
+                break;
+            }
+            default -> {}
+        }
+        */
         showMultiChoiceQ();
         multiCtrl.setUpEnergyGuess();
     }
