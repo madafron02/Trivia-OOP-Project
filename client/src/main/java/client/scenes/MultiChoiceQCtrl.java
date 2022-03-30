@@ -38,6 +38,7 @@ public class MultiChoiceQCtrl {
     @FXML
     private Label activity;
 
+
     @Inject
     public MultiChoiceQCtrl(MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
