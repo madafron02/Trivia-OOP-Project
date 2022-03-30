@@ -62,7 +62,7 @@ public class ServerUtils {
      * @param gameId indicates the game
      * @return roundId indicates the round number
      */
-    public Question requireQuestion(long gameId,int roundId) {
+    public static Question requireQuestion(long gameId,int roundId) {
         System.out.println("api/question/getQ" + gameId + "/" + roundId);
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/question/getQ/" + gameId + "/" + roundId) //

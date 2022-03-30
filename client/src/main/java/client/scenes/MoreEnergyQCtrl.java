@@ -19,13 +19,8 @@ public class MoreEnergyQCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
 
-    private int currentRoundNumber = 0;
-    private int totalRounds = 20;
-    private Player player;
-    private Question question;
     private Boolean isCorrect;
-    private Game game;
-    private Timer countdown = new Timer();
+    private Timer countdown;
     private final double diff = 1.0 / 15.0;
 
     @FXML
@@ -53,53 +48,55 @@ public class MoreEnergyQCtrl {
         this.server = server;
     }
 
-    public int getCurrentRoundNumber() {
-        return currentRoundNumber;
-    }
-
-    public void setCurrentRoundNumber(int currentRound) {
-        this.currentRoundNumber = currentRound;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
     /**
      * Resets the time progress properties to their starting state at the beginning of each round,
      * increases the round number, eliminates the "correct" state from last round,
      * fetches the next question with answers and sets the title of the window
      */
-    public void setUpRound() {
+    public void setUpMoreEnergy() {
+        setQuestion();
 
         progressLabel.setText("16");
         progressBar.setProgress(1);
-        currentRoundNumber++;
+        mainCtrl.setCurrentRoundNumber(mainCtrl.getCurrentRoundNumber() + 1);
         isCorrect = false;
         countdown = new Timer();
-        game = mainCtrl.getGame();
-        player = game.getPlayers().get(0);
-        question = server.requireQuestion(game.getId(), currentRoundNumber - 1);
-        mainCtrl.setPrimaryStageTitle("Round " + currentRoundNumber);
-        roundNumber.setText("Question: " + currentRoundNumber);
+        roundNumber.setText("Question: " + mainCtrl.getCurrentRoundNumber());
 
         //Change the text and the image according to the data from the json file
-        
-        choice1.setText(question.getAnswers().get(0));
+
+        choice1.setText(mainCtrl.getQuestion().getAnswers().get(0));
         //Image img1 = new Image("activity-bank/" + question.getImgPaths().get(0));
         //image1.setImage(img1);
 
-        choice2.setText(question.getAnswers().get(1));
+        choice2.setText(mainCtrl.getQuestion().getAnswers().get(1));
         //Image img2 = new Image("activity-bank/" + question.getImgPaths().get(1));
         //image2.setImage(img2);
 
-        choice3.setText(question.getAnswers().get(2));
+        choice3.setText(mainCtrl.getQuestion().getAnswers().get(2));
         //Image img3 = new Image("activity-bank/" + question.getImgPaths().get(2));
         //image3.setImage(img3);
+
+        setTimer();
+    }
+
+    /**
+     * If the player has reached the last round, it shows the winner screen, otherwise
+     * it enables back the buttons for the next round, resets the text colour of the choices
+     * and calls the methods for the setup.
+     */
+    public void setQuestion() {
+        if(mainCtrl.getCurrentRoundNumber() >= 20) {
+            //mainCtrl.showWinners();
+            mainCtrl.showLeadearboard();
+        } else {
+            choice1.setDisable(false);
+            choice2.setDisable(false);
+            choice3.setDisable(false);
+            choice1.setStyle("-fx-text-fill: black;");
+            choice2.setStyle("-fx-text-fill: black;");
+            choice3.setStyle("-fx-text-fill: black;");
+        }
     }
 
     /**
@@ -119,17 +116,17 @@ public class MoreEnergyQCtrl {
                     if(progressBar.getProgress() <= 0.1) {
                         if(readyForNext == true) {
                             countdown.cancel();
-                            mainCtrl.primarySetSceneOnly();
-                            setQuestion();
+                            mainCtrl.setUpRound();
                         } else {
                             if(isCorrect) {
-                                mainCtrl.getCorrect().setScore(player.getPoints());
+                                mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showCorrect();
                             } else {
-                                String correct = question.getAnswers().get(
-                                        Integer.parseInt(question.getCorrectAnswer()) - 1);
+                                String correct = mainCtrl.getQuestion().getAnswers().get(
+                                        Integer.parseInt(mainCtrl.getQuestion()
+                                                .getCorrectAnswer()) - 1);
                                 mainCtrl.getWrong().setCorrectAnswer(correct);
-                                mainCtrl.getWrong().setScore(player.getPoints());
+                                mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
                             progressLabel.setText("5");
@@ -148,37 +145,6 @@ public class MoreEnergyQCtrl {
     }
 
     /**
-     * If the player has reached the last round, it shows the winner screen, otherwise
-     * it enables back the buttons for the next round, resets the text colour of the choices
-     * and calls the methods for the setup.
-     */
-    public void setQuestion() {
-        if(currentRoundNumber >= totalRounds) {
-            mainCtrl.getWinners().setFirstPoints(player.getPoints());
-            mainCtrl.showWinners();
-        } else {
-            choice1.setDisable(false);
-            choice2.setDisable(false);
-            choice3.setDisable(false);
-            choice1.setStyle("-fx-text-fill: black;");
-            choice2.setStyle("-fx-text-fill: black;");
-            choice3.setStyle("-fx-text-fill: black;");
-            setUpRound();
-            setTimer();
-        }
-    }
-
-    /**
-     * Fetches the correct answer for a specific question
-     * @param question the current question
-     * @return the right answer for that question
-     */
-    public String selectRightAnswer(Question question) {
-        String answer = question.getCorrectAnswer();
-        return answer;
-    }
-
-    /**
      * If the player presses the first button it colours the text in blue,
      * it checks if that represents the right answer, raises a flag for that
      * and disables all buttons until the end of the round.
@@ -189,11 +155,11 @@ public class MoreEnergyQCtrl {
         choice3.setDisable(true);
         choice1.setStyle("-fx-text-fill: blue;");
 
-        String correct = selectRightAnswer(question);
+        String correct = mainCtrl.selectRightAnswer(mainCtrl.getQuestion());
 
         if(correct.equals(String.valueOf(1))){
             isCorrect = true;
-            player.setPoints(100);
+            mainCtrl.getPlayer().setPoints(100);
         }
     }
 
@@ -208,11 +174,11 @@ public class MoreEnergyQCtrl {
         choice3.setDisable(true);
         choice2.setStyle("-fx-text-fill: blue;");
 
-        String correct = selectRightAnswer(question);
+        String correct = mainCtrl.selectRightAnswer(mainCtrl.getQuestion());
 
         if(correct.equals(String.valueOf(2))){
             isCorrect = true;
-            player.setPoints(100);
+            mainCtrl.getPlayer().setPoints(100);
         }
     }
 
@@ -227,11 +193,11 @@ public class MoreEnergyQCtrl {
         choice3.setDisable(true);
         choice3.setStyle("-fx-text-fill: blue;");
 
-        String correct = selectRightAnswer(question);
+        String correct = mainCtrl.selectRightAnswer(mainCtrl.getQuestion());
 
         if(correct.equals(String.valueOf(3))){
             isCorrect = true;
-            player.setPoints(100);
+            mainCtrl.getPlayer().setPoints(100);
         }
     }
 }

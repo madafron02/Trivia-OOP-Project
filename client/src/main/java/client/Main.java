@@ -67,6 +67,8 @@ public class Main extends Application {
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
         var moreEnergy = FXML.load(MoreEnergyQCtrl.class, "client", "scenes", "MoreEnergyQ.fxml");
+        var openQ = FXML.load(OpenQCtrl.class, "client", "scenes", "OpenQ.fxml");
+
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
 
         var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "NameSelect.fxml");
@@ -74,6 +76,6 @@ public class Main extends Application {
 
         mainCtrl.initializeNew(primaryStage, splash, nameSelect, lobby,
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
-                multiChoice,moreEnergy);
+                multiChoice, moreEnergy, openQ);
     }
 }

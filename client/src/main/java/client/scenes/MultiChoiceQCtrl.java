@@ -24,10 +24,7 @@ public class MultiChoiceQCtrl {
     private int totalRounds = 20;
     private Player player;
     private Question question;
-    private Round round;
-    private List<Round> roundList = new ArrayList<>();
     private Timer timer = new Timer();
-    private final int start = 15;
     private final double diff = 1.0 / 15.0;
 
     @FXML
@@ -77,55 +74,55 @@ public class MultiChoiceQCtrl {
         answerC.setText(question.getAnswers().get(2));
     }
 
-    public void setTimer(){
-        TimerTask timerTask = new TimerTask() {
-            Boolean readyForNext = false;
+//    public void setTimer(){
+//        TimerTask timerTask = new TimerTask() {
+//            Boolean readyForNext = false;
+//
+//            @Override
+//            public void run() {
+//                javafx.application.Platform.runLater(() -> {
+//                    if(progressBar.getProgress() <= 0.1) {
+//                        if(readyForNext == true) {
+//                            timer.cancel();
+//                            mainCtrl.primarySetSceneOnly();
+//                            setQuestion();
+//                        } else {
+//                            mainCtrl.showCorrect();
+//                            progressLabel.setText("5");
+//                            progressBar.setProgress(0.3);
+//                            //we will have separate cases here
+//                            //for correct/wrong
+//                            readyForNext = true;
+//                        }
+//                    }
+//                    progressLabel.setText(String.valueOf(Integer
+//                            .parseInt(progressLabel.getText()) - 1));
+//                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
+//                });
+//            }
+//        };
+//
+//        timer.schedule(timerTask, 0, 1000);
+//    }
 
-            @Override
-            public void run() {
-                javafx.application.Platform.runLater(() -> {
-                    if(progressBar.getProgress() <= 0.1) {
-                        if(readyForNext == true) {
-                            timer.cancel();
-                            mainCtrl.primarySetSceneOnly();
-                            setQuestion();
-                        } else {
-                            mainCtrl.showCorrect();
-                            progressLabel.setText("5");
-                            progressBar.setProgress(0.3);
-                            //we will have separate cases here
-                            //for correct/wrong
-                            readyForNext = true;
-                        }
-                    }
-                    progressLabel.setText(String.valueOf(Integer
-                            .parseInt(progressLabel.getText()) - 1));
-                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
-                });
-            }
-        };
-
-        timer.schedule(timerTask, 0, 1000);
-    }
-
-    public void setQuestion() {
-        if(currentRoundNumber >= totalRounds) {
-            mainCtrl.showLeadearboard();
-        } else {
-            //question = qaSelector.getQuestion();
-            //will generate new question with "random" answers
-
-            //List<String> activities = new ArrayList<>();
-            //activities.add("this");
-            //activities.add("that");
-            //activities.add("the other");
-            //question = new Question();
-            //question.setType(Question.QuestionType.ENERGY_GUESS);
-            //question = server.requireQuestion(question);
-            question = server.requireQuestion(mainCtrl.getGame().getId()
-                    ,currentRoundNumber);
-            setUpRound();
-            setTimer();
-        }
-    }
+//    public void setQuestion() {
+//        if(currentRoundNumber >= totalRounds) {
+//            mainCtrl.showLeadearboard();
+//        } else {
+//            //question = qaSelector.getQuestion();
+//            //will generate new question with "random" answers
+//
+//            //List<String> activities = new ArrayList<>();
+//            //activities.add("this");
+//            //activities.add("that");
+//            //activities.add("the other");
+//            //question = new Question();
+//            //question.setType(Question.QuestionType.ENERGY_GUESS);
+//            //question = server.requireQuestion(question);
+//            question = server.requireQuestion(mainCtrl.getGame().getId()
+//                    ,currentRoundNumber);
+//            setUpRound();
+//            setTimer();
+//        }
+//    }
 }

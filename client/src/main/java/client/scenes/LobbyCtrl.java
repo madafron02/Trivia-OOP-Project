@@ -1,6 +1,7 @@
 package client.scenes;
 
 import client.utils.ServerUtils;
+import commons.Game;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ public class LobbyCtrl {
     private final ServerUtils server;
     private final MainCtrl mainCtrl;
     private Timer timer;
+
     @FXML
     private Button startGame;
 
@@ -83,7 +85,7 @@ public class LobbyCtrl {
     public void startRounds() {
         if(server.getStatus()){
             timer.cancel();
-            mainCtrl.showMoreEnergyQ(mainCtrl.getPlayer());
+            mainCtrl.setUpRound();
         }
     }
 }

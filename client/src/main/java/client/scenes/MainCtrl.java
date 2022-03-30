@@ -15,8 +15,10 @@
  */
 package client.scenes;
 
+import client.utils.ServerUtils;
 import commons.Game;
 import commons.Player;
+import commons.Question;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -28,6 +30,8 @@ public class MainCtrl {
     private Player player;
     private Game game;
     private Stage primaryStage;
+    private int currentRoundNumber = 0;
+    private Question question;
 
     private SplashCtrl splashCtrl;
     private Scene opening;
@@ -56,7 +60,7 @@ public class MainCtrl {
     private WrongCtrl wrongCtrl;
     private Scene wrong;
 
-    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private IngameLeaderboardCtrl igLeaderboardCtrl;
     private Scene igLeaderboard;
 
     private AllTimeLeaderboardCtrl leaderboardCtrl;
@@ -91,7 +95,8 @@ public class MainCtrl {
                               Pair<WrongCtrl, Parent> wrongCtrlParentPair,
                               Pair<WinnersCtrl, Parent> winnersPair,
                               Pair<MultiChoiceQCtrl, Parent> multiChoice,
-                              Pair<MoreEnergyQCtrl, Parent> moreEnergy) {
+                              Pair<MoreEnergyQCtrl, Parent> moreEnergy,
+                              Pair<OpenQCtrl, Parent> openQ) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -113,6 +118,8 @@ public class MainCtrl {
         this.moreECtrl = moreEnergy.getKey();
         this.multiCtrl = multiChoice.getKey();
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
+        this.openQ = new Scene(openQ.getValue());
+        this.openQCtrl = openQ.getKey();
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
 
@@ -121,20 +128,12 @@ public class MainCtrl {
         this.isSingleMode = true;
     }
 
-    public MultiChoiceQCtrl getMultiCtrl() {
-        return multiCtrl;
-    }
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
     public void setPrimaryStageTitle(String newTitle) {
         primaryStage.setTitle(newTitle);
-    }
-
-    public void primarySetSceneOnly() {
-        primaryStage.setScene(moreEnergy);
     }
 
     public WrongCtrl getWrong() {
@@ -149,6 +148,30 @@ public class MainCtrl {
         return winnersCtrl;
     }
 
+    public MultiChoiceQCtrl getMultiCtrl() {
+        return multiCtrl;
+    }
+
+    public MoreEnergyQCtrl getMoreECtrl() {
+        return moreECtrl;
+    }
+
+    public OpenQCtrl getOpenQCtrl() {
+        return openQCtrl;
+    }
+
+    public Scene getMultiChoice() {
+        return multiChoice;
+    }
+
+    public Scene getMoreEnergy() {
+        return moreEnergy;
+    }
+
+    public Scene getOpenQ() {
+        return openQ;
+    }
+
     /**
      * Shows the splash screen
      */
@@ -157,40 +180,6 @@ public class MainCtrl {
         primaryStage.setScene(opening);
         primaryStage.setMinHeight(900);
         primaryStage.setMinWidth(1440);
-    }
-
-    /**
-     * Shows the multiple choice question type screen
-     * @param player
-     */
-    public void showMultiChoiceQ(Player player) {
-        primaryStage.setTitle("Questions");
-        primaryStage.setScene(multiChoice);
-        multiCtrl.setPlayer(player);
-        multiCtrl.setQuestion();
-        multiCtrl.setCurrentRoundNumber(0);
-    }
-
-    /**
-     * Shows the "Which takes more energy?" question type screen
-     * @param player
-     */
-    public void showMoreEnergyQ(Player player) {
-        primaryStage.setTitle("Questions");
-        primaryStage.setScene(moreEnergy);
-        moreECtrl.setPlayer(player);
-        moreECtrl.setQuestion();
-        // moreECtrl.setCurrentRoundNumber(0);
-    }
-
-    /**
-     * Shows the energy estimation type screen
-     * @param openQPair
-     */
-    public void showEnergyQ(Pair<OpenQCtrl, Parent> openQPair) {
-        this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
-        primaryStage.setTitle("Question");
-        primaryStage.setScene(openQ);
     }
 
     /**
@@ -277,10 +266,35 @@ public class MainCtrl {
         primaryStage.setScene(winners);
     }
 
+    /**
+     * Shows the multiple choice question type screen
+     *
+     */
+    public void showMultiChoiceQ() {
+        primaryStage.setTitle("Questions");
+        primaryStage.setScene(multiChoice);
+    }
+
+    /**
+     * Shows the "Which takes more energy?" question type screen
+     */
+    public void showMoreEnergyQ() {
+        primaryStage.setTitle("Questions");
+        primaryStage.setScene(moreEnergy);
+    }
+
+    /**
+     * Shows the energy estimation type screen
+     *
+     */
+    public void showOpenQ() {
+        primaryStage.setTitle("Question");
+        primaryStage.setScene(openQ);
+    }
+
     public Player getPlayer() {
         return player;
     }
-
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -290,5 +304,62 @@ public class MainCtrl {
     }
     public Game getGame(){
         return this.game;
+    }
+
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
+    }
+    public void setCurrentRoundNumber(int currentRoundNumber) {
+        this.currentRoundNumber = currentRoundNumber;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    /**
+     * Fetches the correct answer for a specific question
+     * @return the right answer for that question
+     */
+    public String selectRightAnswer(Question question) {
+        String answer = question.getCorrectAnswer();
+        return answer;
+    }
+
+    /**
+     * Resets the time progress properties to their starting state at the beginning of each round,
+     * increases the round number, eliminates the "correct" state from last round,
+     * fetches the next question with answers and sets the title of the window
+     */
+    public void setUpRound() {
+        player = game.getPlayers().get(0);
+        question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
+        currentRoundNumber++;
+        primaryStage.setTitle("Round " + currentRoundNumber);
+//        Question.QuestionType type = question.getType();
+//        switch(type) {
+//            case OPEN -> {
+//                showOpenQ();
+//                openQCtrl.setUpOpen();
+//                break;
+//            }
+//            case COMPARISON, MORE_ENERGY -> {
+//                showMoreEnergyQ();
+//                moreEnergyQCtrl.setUpMoreEnergy();
+//                break;
+//            }
+//            case ENERGY_GUESS -> {
+//                showMultiChoiceQ();
+//                multiChoiceQCtrl.setUpEnergyGuess();
+//                break;
+//            }
+//            default -> {}
+//        }
+
+        showMoreEnergyQ();
+        moreECtrl.setUpMoreEnergy();
     }
 }
