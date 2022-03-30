@@ -43,13 +43,13 @@ public class MoreEnergyQCtrl {
             .toAbsolutePath()
             .toString();
 
-    private Image starImage =
+    private final Image starImage =
             new Image("file:" + imagePath + "/starEmoji.png");
-    private Image heartImage =
+    private final Image heartImage =
             new Image("file:" + imagePath + "/heartEmoji.png");
-    private Image hundredImage =
+    private final Image hundredImage =
             new Image("file:" + imagePath + "/100emoji.png");
-    private Image dizzyImage =
+    private final Image dizzyImage =
             new Image("file:" + imagePath + "/dizzyEmoji.png");
 
     @FXML
