@@ -23,7 +23,8 @@ public class ActivityParse {
 
     public ArrayList<Activity> getActivities() throws FileNotFoundException {
         //Here you have to insert your local path to the json file
-        File file = new File("/Users/a123/Downloads/activities/activities.json");
+        File file = new File("/Users/madalina.fron/Desktop/OOPP/" +
+                "Group 27/repository-template/activities/activities.json");
         //Creating an ArrayList of activities
         ArrayList<Activity> activities = new ArrayList<>();
         //Creating the scanner for reading the information in the file

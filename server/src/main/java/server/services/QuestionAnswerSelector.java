@@ -203,7 +203,7 @@ public class QuestionAnswerSelector {
         Question q = new Question();
         int correctAnswer = random.nextInt(3);
         q.setType(Question.QuestionType.ENERGY_GUESS);
-        q.setCorrectAnswer(String.valueOf(correctAnswer+1));
+        q.setCorrectAnswer(String.valueOf(correctAnswer + 1));
         q.setAnswers(finalList.stream().map(p->String.valueOf(p.getConsumption()))
                 .collect(Collectors.toList()));
         q.setDescriptionImagePath(finalList.get(correctAnswer).getImgPath());
