@@ -130,4 +130,8 @@ public class NameSelectCtrl {
     public void goBack() {
         mainCtrl.showSplash();
     }
+
+    public ServerUtils getServer() {
+        return server;
+    }
 }

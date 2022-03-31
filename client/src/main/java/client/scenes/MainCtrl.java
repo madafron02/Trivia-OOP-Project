@@ -418,7 +418,12 @@ public class MainCtrl {
      * the setup method for that specific scene;
      */
     public void setUpRound() {
-        if(currentRoundNumber == 20) return;
+        if(currentRoundNumber == 20) {
+            nameSelectCtrl.getServer().updatePlayerScore(player.getId(),
+                    player.getPoints());
+            showLeadearboard();
+            return;
+        }
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
         currentRoundNumber++;
 
