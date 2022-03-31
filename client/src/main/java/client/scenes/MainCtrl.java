@@ -419,8 +419,7 @@ public class MainCtrl {
      */
     public void setUpRound() {
         if(currentRoundNumber == 20) {
-            nameSelectCtrl.getServer().updatePlayerScore(player.getId(),
-                    player.getPoints());
+            ServerUtils.addPlayer(player);
             showLeadearboard();
             return;
         }

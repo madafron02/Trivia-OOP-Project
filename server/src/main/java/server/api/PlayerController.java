@@ -42,24 +42,6 @@ public class PlayerController {
         return ResponseEntity.ok(players.get(0));
     }
 
-    /**
-     * Sets the new score of a player found by a certain id
-     * @param id the id of the player
-     * @param score the new score of the player
-     * @return bad request if a player with that id doesn't exist,
-     * otherwise an 'ok' status
-     */
-    @PostMapping("/{id}/score_update/{score}")
-    public ResponseEntity<Player> updatePlayerScore(@PathVariable("id") long id,
-                                                    @PathVariable("score") double score) {
-        if (id < 0 || !repo.existsById(id)) {
-            return ResponseEntity.badRequest().build();
-        }
-        Player player = repo.findById(id).get();
-        player.setPoints((int)score);
-        return ResponseEntity.ok(player);
-    }
-
     @GetMapping("/top_ten")
     public List<Player> top(){
         List<Player> players = repo.findAll();

@@ -75,15 +75,9 @@ public class OpenQCtrl {
      * it enables back the buttons for the next round and resets the choice text field.
      */
     public void setQuestion() {
-        if(mainCtrl.getCurrentRoundNumber() >= 20) {
-            server.updatePlayerScore(mainCtrl.getPlayer().getId(),
-                    mainCtrl.getPlayer().getPoints());
-            mainCtrl.showLeadearboard();
-        } else {
             saveAnswer.setDisable(false);
             guess.setDisable(false);
             guess.clear();
-        }
     }
 
     /**

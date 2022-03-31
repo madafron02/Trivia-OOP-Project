@@ -125,18 +125,13 @@ public class MoreEnergyQCtrl {
      * it enables back the buttons for the next round and resets the text colour of the choices.
      */
     public void setQuestion() {
-        if(mainCtrl.getCurrentRoundNumber() >= 20) {
-            server.updatePlayerScore(mainCtrl.getPlayer().getId(),
-                    mainCtrl.getPlayer().getPoints());
-            mainCtrl.showLeadearboard();
-        } else {
             choice1.setDisable(false);
             choice2.setDisable(false);
             choice3.setDisable(false);
             choice1.setStyle("-fx-text-fill: black;");
             choice2.setStyle("-fx-text-fill: black;");
             choice3.setStyle("-fx-text-fill: black;");
-        }
+
     }
 
     /**

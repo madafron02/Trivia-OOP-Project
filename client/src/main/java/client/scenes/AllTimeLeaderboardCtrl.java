@@ -70,6 +70,7 @@ public class AllTimeLeaderboardCtrl {
      * Go back button
      */
     public void goBack() {
+
         mainCtrl.showSplash();
     }
 

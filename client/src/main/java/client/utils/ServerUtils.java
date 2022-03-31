@@ -37,7 +37,7 @@ public class ServerUtils {
      * @param player the player that needs to be saved
      * @return the saved player
      */
-    public Player addPlayer(Player player) {
+    public static Player addPlayer(Player player) {
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/player/add") //
                 .request(APPLICATION_JSON) //
@@ -55,19 +55,6 @@ public class ServerUtils {
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(new GenericType<List<Player>>() {});
-    }
-
-    /**
-     * Updates the score of the player specified by the id
-     * @param playerId id of the player
-     * @param score points to be awarded to the player
-     */
-    public void updatePlayerScore(long playerId, int score) {
-        ClientBuilder.newClient(new ClientConfig()) //
-                .target(SERVER).path("api/player/" + playerId + "/score_update/" + score) //
-                .request(APPLICATION_JSON) //
-                .accept(APPLICATION_JSON) //
-                .get();
     }
 
     /**
