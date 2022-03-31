@@ -361,6 +361,7 @@ public class MainCtrl {
      * Shows all-time leaderboard
      */
     public void showLeadearboard() {
+        leaderboardCtrl.initialize();
         primaryStage.setTitle("All-time leaderboard");
         primaryStage.setScene(leaderboard);
     }
@@ -417,6 +418,7 @@ public class MainCtrl {
      * the setup method for that specific scene;
      */
     public void setUpRound() {
+        if(currentRoundNumber == 20) return;
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
         currentRoundNumber++;
 

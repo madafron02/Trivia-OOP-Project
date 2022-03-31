@@ -1,5 +1,6 @@
 package client.scenes;
 
+import client.utils.ServerUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import java.util.TimerTask;
 
 public class OpenQCtrl {
     private final MainCtrl mainCtrl;
+    private final ServerUtils server;
 
     private Boolean isCorrect;
     private Timer countdown;
@@ -37,8 +39,9 @@ public class OpenQCtrl {
     private Button saveAnswer;
 
     @Inject
-    public OpenQCtrl(MainCtrl mainCtrl) {
+    public OpenQCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
+        this.server = server;
     }
 
     /**
@@ -73,7 +76,8 @@ public class OpenQCtrl {
      */
     public void setQuestion() {
         if(mainCtrl.getCurrentRoundNumber() >= 20) {
-            //mainCtrl.showWinners();
+            server.updatePlayerScore(mainCtrl.getPlayer().getId(),
+                    mainCtrl.getPlayer().getPoints());
             mainCtrl.showLeadearboard();
         } else {
             saveAnswer.setDisable(false);
@@ -141,15 +145,19 @@ public class OpenQCtrl {
 
         String exact = mainCtrl.selectRightAnswer(mainCtrl.getQuestion());
         if(guess.getText().equals("")) return;
-        String playerGuess = guess.getText();
-        double playerGuessValue = Double.parseDouble(playerGuess);
+        try{
+            String playerGuess = guess.getText();
+            double playerGuessValue = Double.parseDouble(playerGuess);
 
-        double lowerLimit = 0.8 * Double.parseDouble(exact);
-        double upperLimit = 1.2 * Double.parseDouble(exact);
+            double lowerLimit = 0.8 * Double.parseDouble(exact);
+            double upperLimit = 1.2 * Double.parseDouble(exact);
 
-        if(isBetween(lowerLimit, upperLimit, playerGuessValue)){
-            isCorrect = true;
-            mainCtrl.getPlayer().setPoints(100);
+            if(isBetween(lowerLimit, upperLimit, playerGuessValue)){
+                isCorrect = true;
+                mainCtrl.getPlayer().setPoints(100);
+            }
+        } catch(NumberFormatException e) {
+            System.out.println("The player did not choose a number :(");
         }
     }
 

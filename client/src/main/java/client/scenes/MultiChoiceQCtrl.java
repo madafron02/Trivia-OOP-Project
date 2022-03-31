@@ -1,5 +1,6 @@
 package client.scenes;
 
+import client.utils.ServerUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ import java.util.TimerTask;
 
 public class MultiChoiceQCtrl {
     private final MainCtrl mainCtrl;
+    private final ServerUtils server;
 
     private Boolean isCorrect;
     private Timer countdown;
@@ -40,8 +42,9 @@ public class MultiChoiceQCtrl {
 
 
     @Inject
-    public MultiChoiceQCtrl(MainCtrl mainCtrl) {
+    public MultiChoiceQCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
+        this.server = server;
     }
 
     /**
@@ -87,7 +90,8 @@ public class MultiChoiceQCtrl {
      */
     public void setQuestion() {
         if(mainCtrl.getCurrentRoundNumber() >= 20) {
-            //mainCtrl.showWinners();
+            server.updatePlayerScore(mainCtrl.getPlayer().getId(),
+                    mainCtrl.getPlayer().getPoints());
             mainCtrl.showLeadearboard();
         } else {
             choice1.setDisable(false);

@@ -1,5 +1,6 @@
 package client.scenes;
 
+import client.utils.ServerUtils;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ import java.util.TimerTask;
 
 public class MoreEnergyQCtrl {
     private final MainCtrl mainCtrl;
+    private final ServerUtils server;
 
     private Boolean isCorrect;
     private Timer countdown;
@@ -77,8 +79,9 @@ public class MoreEnergyQCtrl {
 
 
     @Inject
-    public MoreEnergyQCtrl(MainCtrl mainCtrl) {
+    public MoreEnergyQCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
+        this.server = server;
     }
 
     /**
@@ -123,7 +126,8 @@ public class MoreEnergyQCtrl {
      */
     public void setQuestion() {
         if(mainCtrl.getCurrentRoundNumber() >= 20) {
-            //mainCtrl.showWinners();
+            server.updatePlayerScore(mainCtrl.getPlayer().getId(),
+                    mainCtrl.getPlayer().getPoints());
             mainCtrl.showLeadearboard();
         } else {
             choice1.setDisable(false);

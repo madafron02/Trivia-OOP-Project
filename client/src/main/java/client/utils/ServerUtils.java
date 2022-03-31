@@ -58,6 +58,19 @@ public class ServerUtils {
     }
 
     /**
+     * Updates the score of the player specified by the id
+     * @param playerId id of the player
+     * @param score points to be awarded to the player
+     */
+    public void updatePlayerScore(long playerId, int score) {
+        ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/player/" + playerId + "/score_update/" + score) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get();
+    }
+
+    /**
      * require a question according to certain gameId and roundId
      * @param gameId indicates the game
      * @return roundId indicates the round number
