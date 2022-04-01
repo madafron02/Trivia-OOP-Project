@@ -421,7 +421,10 @@ public class MainCtrl {
         if(currentRoundNumber == 20) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
-            showLeadearboard();
+            if(isSingleMode)showLeadearboard();
+            else{
+                showWinners();
+            }
             return;
         }
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);

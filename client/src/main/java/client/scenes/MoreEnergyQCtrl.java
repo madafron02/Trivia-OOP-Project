@@ -1,6 +1,7 @@
 package client.scenes;
 
 import client.utils.ServerUtils;
+import commons.Player;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -169,6 +170,9 @@ public class MoreEnergyQCtrl {
                                 mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
+                            if(!mainCtrl.isSingleMode()){
+                                server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
+                            }
                             progressLabel.setText("5");
                             progressBar.setProgress(0.3);
                             readyForNext = true;
@@ -201,8 +205,16 @@ public class MoreEnergyQCtrl {
             mainCtrl.getPlayer().setPoints(100);
         }
         isSelected = true;
+        mainCtrl.getPlayer().setStatus(Player.statusType.READY);
     }
 
+    /**
+     *
+     */
+    public void markAsChosen(){
+        isSelected = true;
+        mainCtrl.getPlayer().setStatus(Player.statusType.READY);
+    }
     /**
      * If the player presses the second button it colours the text in blue,
      * it checks if that represents the right answer, raises a flag for that,
@@ -213,14 +225,11 @@ public class MoreEnergyQCtrl {
         choice2.setDisable(true);
         choice3.setDisable(true);
         choice2.setStyle("-fx-text-fill: blue;");
-
         String correct = mainCtrl.selectRightAnswer(mainCtrl.getQuestion());
-
         if(correct.equals(String.valueOf(2))){
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
-        isSelected = true;
     }
 
     /**
@@ -240,7 +249,6 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
-        isSelected = true;
     }
 
     /**
