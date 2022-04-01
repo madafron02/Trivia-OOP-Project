@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.GameRepository;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

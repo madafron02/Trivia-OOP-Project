@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,16 +12,14 @@ import java.util.List;
  * Will be used in the future to keep track of parallel games and use the players from
  * each of them to sort and put to the corresponding in-game leaderboard/winners screen
  */
-
-
 @Entity
-public class Game implements Reachable{
+public class Game implements Serializable,Reachable{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;          //probably will add the list of rounds as an attribute in the future
 
     @Column
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass=Player.class)
     private List<Player> players;
 
     public Game() {

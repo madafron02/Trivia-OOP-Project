@@ -420,6 +420,7 @@ public class MainCtrl {
     public void setUpRound() {
         if(currentRoundNumber == 20) {
             ServerUtils.addPlayer(player);
+            currentRoundNumber = 0;
             showLeadearboard();
             return;
         }

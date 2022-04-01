@@ -104,14 +104,16 @@ public class NameSelectCtrl {
             nameCheck.setText("Please check your name before you start");
             return;
         }
+        checked = false;
+        nameCheck.setText("");
+        nameInput.setText("");
         if(mainCtrl.isSingleMode()){
-            Game game = server.getGame();
+            Game game = new Game();
             game.setPlayers(List.of(mainCtrl.getPlayer()));
+            game = server.addGame(game);
             server.setQuestion(game.getId());
-
             mainCtrl.setGame(game);
-            mainCtrl.getLobby().start();
-            mainCtrl.getLobby().startRounds();
+            mainCtrl.setUpRound();
         }
         else mainCtrl.showLobby();
     }

@@ -19,7 +19,7 @@ import java.util.TimerTask;
 public class MoreEnergyQCtrl {
     private final MainCtrl mainCtrl;
     private final ServerUtils server;
-
+    private Boolean isSelected;
     private Boolean isCorrect;
     private Timer countdown;
     private final double diff = 1.0 / 15.0;
@@ -82,6 +82,7 @@ public class MoreEnergyQCtrl {
     public MoreEnergyQCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
         this.server = server;
+        this.isSelected = false;
     }
 
     /**
@@ -151,9 +152,10 @@ public class MoreEnergyQCtrl {
             @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
-                    if(progressBar.getProgress() <= 0.1) {
+                    if(isSelected == true || progressBar.getProgress() <= 0.1) {
                         if(readyForNext == true) {
                             countdown.cancel();
+                            isSelected = false;
                             mainCtrl.setUpRound();
                         } else {
                             if(isCorrect) {
@@ -178,7 +180,6 @@ public class MoreEnergyQCtrl {
                 });
             }
         };
-
         countdown.schedule(timerTask, 0, 1000);
     }
 
@@ -199,6 +200,7 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        isSelected = true;
     }
 
     /**
@@ -218,6 +220,7 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        isSelected = true;
     }
 
     /**
@@ -237,6 +240,7 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        isSelected = true;
     }
 
     /**

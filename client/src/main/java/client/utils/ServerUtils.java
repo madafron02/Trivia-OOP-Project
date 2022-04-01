@@ -46,6 +46,18 @@ public class ServerUtils {
     }
 
     /**
+     * save a game in the game repository (only for single player)
+     * @param game the game thqt needs to be saved
+     * @return the saved game
+     */
+    public Game addGame(Game game){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/add") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(game, APPLICATION_JSON), Game.class);
+    }
+    /**
      * get all players in the repository
      * @return all players in the repository
      */
