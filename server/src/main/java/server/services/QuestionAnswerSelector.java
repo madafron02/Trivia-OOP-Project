@@ -147,8 +147,8 @@ public class QuestionAnswerSelector {
         setGameAnswers(gameId);
         List<Question>currentQuestions = new ArrayList<>();
         for(int round = 0;round<20;round++){
-            //Question.QuestionType type = Question.QuestionType.values()[random.nextInt(4)];
-            Question.QuestionType type = Question.QuestionType.MORE_ENERGY;
+            Question.QuestionType type = Question.QuestionType.values()[random.nextInt(4)];
+            //Question.QuestionType type = Question.QuestionType.MORE_ENERGY;
             switch (type){
                 case OPEN -> currentQuestions.add(getOpenQuestion(gameId,round));
                 case COMPARISON -> currentQuestions.add(getComparisonQuestion(gameId,round));

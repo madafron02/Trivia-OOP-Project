@@ -37,7 +37,7 @@ public class ServerUtils {
      * @param player the player that needs to be saved
      * @return the saved player
      */
-    public Player addPlayer(Player player) {
+    public static Player addPlayer(Player player) {
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/player/add") //
                 .request(APPLICATION_JSON) //
