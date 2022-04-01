@@ -19,8 +19,6 @@ import static com.google.inject.Guice.createInjector;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.FileSystems;
 
 import client.scenes.*;
 import com.google.inject.Injector;
@@ -34,14 +32,18 @@ public class Main extends Application {
     private static final Injector INJECTOR = createInjector(new MyModule());
     private static final MyFXML FXML = new MyFXML(INJECTOR);
 
-    public static void main(String[] args) throws URISyntaxException,
-            IOException, UnsupportedAudioFileException, LineUnavailableException {
+    public static void main(String[] args) throws IOException,
+            UnsupportedAudioFileException, LineUnavailableException {
+        /*
         String absolutePath = FileSystems.getDefault()
-                .getPath("client/src/main/resources/Halloween Lobby Music.wav")
+                .getPath("src/main/resources/Halloween Lobby Music.wav")
                 .normalize()
                 .toAbsolutePath()
                 .toString();
-        File file = new File(absolutePath);
+         */
+
+        // Add your own path here because there are conflicts between mac/windows :(
+        File file = new File("src/main/resources/Halloween Lobby Music.wav");
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
@@ -67,6 +69,8 @@ public class Main extends Application {
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
         var moreEnergy = FXML.load(MoreEnergyQCtrl.class, "client", "scenes", "MoreEnergyQ.fxml");
+        var openQ = FXML.load(OpenQCtrl.class, "client", "scenes", "OpenQ.fxml");
+
         var mainCtrl = INJECTOR.getInstance(MainCtrl.class);
 
         var nameSelect = FXML.load(NameSelectCtrl.class, "client", "scenes", "NameSelect.fxml");
@@ -74,6 +78,6 @@ public class Main extends Application {
 
         mainCtrl.initializeNew(primaryStage, splash, nameSelect, lobby,
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
-                multiChoice,moreEnergy);
+                multiChoice, moreEnergy, openQ);
     }
 }
