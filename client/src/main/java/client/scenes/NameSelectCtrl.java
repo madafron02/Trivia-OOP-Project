@@ -67,7 +67,7 @@ public class NameSelectCtrl {
         }
         try {
             Player thisplayer = new Player(nameInput.getText());
-            if(!mainCtrl.isSingleMode()){
+            if(!mainCtrl.isSingleMode()){//if it's mutiplayer, id is assigned from the server manually
                 Game currentGame = server.getGame();
                 boolean flag = true;
                 for(Player player: currentGame.getPlayers()) {
@@ -80,9 +80,11 @@ public class NameSelectCtrl {
                     nameCheck.setText("this name is already taken");
                     return;
                 }
+                thisplayer.setMulti(true);
+                mainCtrl.setPlayer(server.addPlayer(thisplayer));
                 server.addPlayerToCurrentGame(thisplayer);
             }
-            mainCtrl.setPlayer(server.addPlayer(thisplayer));
+            else mainCtrl.setPlayer(server.addPlayer(thisplayer));//if it's singleplayer, store the player in the repo
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);
@@ -107,6 +109,7 @@ public class NameSelectCtrl {
         checked = false;
         nameCheck.setText("");
         nameInput.setText("");
+        //for the single player we also require a new game but it's only for setting questions
         if(mainCtrl.isSingleMode()){
             Game game = new Game();
             game.setPlayers(List.of(mainCtrl.getPlayer()));

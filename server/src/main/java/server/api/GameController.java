@@ -5,6 +5,7 @@ import commons.Player;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.database.GameRepository;
+import server.services.QuestionAnswerSelector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequestMapping("/api/games")
 public class GameController {
     GameRepository repo;
+    QuestionAnswerSelector questionAnswerSelector;
     Game currentGame;
     boolean currentStatus;
     int numberOfReady;
@@ -21,11 +23,12 @@ public class GameController {
      * initialize the game controller, create a current game instance which contains 0 player
      * @param repo the game repository
      */
-    public GameController(GameRepository repo) {
+    public GameController(GameRepository repo,QuestionAnswerSelector questionAnswerSelector) {
         currentGame = new Game();
         currentGame.setPlayers(new ArrayList<>());
         currentStatus = false;
         numberOfReady = 0;
+        this.questionAnswerSelector = questionAnswerSelector;
         this.repo = repo;
     }
 
@@ -34,7 +37,6 @@ public class GameController {
      * create a current game instance which contains 0 player
      */
     public void clear(){
-        repo.save(currentGame);
         currentGame = new Game();
         currentGame.setPlayers(new ArrayList<>());
         currentStatus = false;
@@ -91,10 +93,12 @@ public class GameController {
      * @param player the player that needs to be added
      */
     @PostMapping("/addToCurrentGame")
-    public void addToCurrentGame(@RequestBody Player player){
+    public Player addToCurrentGame(@RequestBody Player player){
         List<Player>players = currentGame.getPlayers();
         players.add(player);
         currentGame.setPlayers(players);
+        repo.save(currentGame);
+        return player;
     }
 
     /**
@@ -113,11 +117,11 @@ public class GameController {
     }
 
     /**
-     * check if someone click the start button in the lobby
+     * check if someone clicks the start button in the lobby
      * @return true if someone clicks the start button
      */
     @GetMapping("/status")
-    public ResponseEntity<Boolean>getCurrentStatus(){
+    public ResponseEntity<Boolean> getCurrentStatus(){
         boolean tmp = currentStatus;
         if(currentStatus == true)numberOfReady++;
         if(numberOfReady == currentGame.getPlayers().size())clear();

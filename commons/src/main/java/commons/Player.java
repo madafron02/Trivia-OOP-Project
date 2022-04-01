@@ -17,9 +17,9 @@ public class Player implements Serializable,Reachable {
 
     private String name;
     private int points;
-
     private int place;          //place in the leaderboard
-
+    private boolean multi;
+    private boolean aborted;
     public Player() {
     }
 
@@ -27,6 +27,24 @@ public class Player implements Serializable,Reachable {
         this.name = name;
         this.points = 0;
         this.place = 0;
+        this.multi = false;
+        this.aborted = false;
+    }
+
+    public boolean isMulti() {
+        return multi;
+    }
+
+    public void setMulti(boolean multi) {
+        this.multi = multi;
+    }
+
+    public boolean isAborted() {
+        return aborted;
+    }
+
+    public void setAborted(boolean aborted) {
+        this.aborted = aborted;
     }
 
     public int getPlace() {

@@ -110,8 +110,8 @@ public class ServerUtils {
      * add a player to the current game (only called in mutiplayer mode)
      * @param player the player that needs to be added
      */
-    public void addPlayerToCurrentGame(Player player) {
-        ClientBuilder.newClient(new ClientConfig()) //
+    public Player addPlayerToCurrentGame(Player player) {
+        return ClientBuilder.newClient(new ClientConfig()) //
             .target(SERVER).path("api/games/addToCurrentGame") //
             .request(APPLICATION_JSON) //
             .accept(APPLICATION_JSON) //

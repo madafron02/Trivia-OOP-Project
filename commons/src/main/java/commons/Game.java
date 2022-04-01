@@ -18,8 +18,7 @@ public class Game implements Serializable,Reachable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;          //probably will add the list of rounds as an attribute in the future
 
-    @Column
-    @ElementCollection(targetClass=Player.class)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Player> players;
 
     public Game() {
