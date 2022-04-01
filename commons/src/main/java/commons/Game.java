@@ -50,16 +50,12 @@ public class Game implements Serializable,Reachable{
         this.players = players;
     }
 
-    /**
-     * Converts a game to list players in a human-readable format
-     * @return the string representing this game
-     */
+    @Override
     public String toString() {
-        String answer = "Game id: " + this.id + "\nPlayers:";
-        for (Player player : players) {
-            answer += player.getName() + "\n";
-        }
-        return answer;
+        return "Game{" +
+                "id=" + id +
+                ", players=" + players +
+                '}';
     }
 
     /**

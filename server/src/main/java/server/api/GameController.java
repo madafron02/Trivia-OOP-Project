@@ -97,8 +97,7 @@ public class GameController {
         List<Player>players = currentGame.getPlayers();
         players.add(player);
         currentGame.setPlayers(players);
-        repo.save(currentGame);
-        return currentGame;
+        return repo.save(currentGame);
     }
 
     /**
