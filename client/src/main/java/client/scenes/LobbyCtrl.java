@@ -63,7 +63,6 @@ public class LobbyCtrl {
      * Requires for the newest player list and shows it in the page.
      */
     public void refresh(){
-        mainCtrl.setGame(server.getGame());
         List<String> names = server.getGame().getPlayers()
                 .stream().map(p->p.getName()).collect(Collectors.toList());
         playerList.setItems(FXCollections.observableList(names));

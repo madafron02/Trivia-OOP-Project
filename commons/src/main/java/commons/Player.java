@@ -91,7 +91,14 @@ public class Player implements Serializable,Reachable {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, MULTI_LINE_STYLE);
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", points=" + points +
+                ", place=" + place +
+                ", multi=" + multi +
+                ", status=" + status +
+                '}';
     }
 
     @Override

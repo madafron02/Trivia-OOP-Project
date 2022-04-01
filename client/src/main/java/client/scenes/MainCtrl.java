@@ -418,6 +418,7 @@ public class MainCtrl {
      * the setup method for that specific scene;
      */
     public void setUpRound() {
+        resetPlayerState();
         if(currentRoundNumber == 20) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
@@ -448,6 +449,13 @@ public class MainCtrl {
                 break;
             }
             default -> {}
+        }
+    }
+
+    private void resetPlayerState() {
+        if(!isSingleMode){
+            player.setStatus(Player.statusType.NOT_READY);
+            ServerUtils.updatePlayer(game.getId(),player);
         }
     }
 }

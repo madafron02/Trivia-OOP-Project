@@ -81,8 +81,14 @@ public class NameSelectCtrl {
                     return;
                 }
                 thisplayer.setMulti(true);
-                mainCtrl.setPlayer(server.addPlayer(thisplayer));
-                server.addPlayerToCurrentGame(thisplayer);
+                mainCtrl.setGame(server.addPlayerToCurrentGame(thisplayer));
+                for(Player player: mainCtrl.getGame().getPlayers()){
+                    if(player.getName().equals(thisplayer.getName())){
+                        mainCtrl.setPlayer(player);
+                    }
+                }
+                System.out.println(mainCtrl.getPlayer());
+                System.out.println(mainCtrl.getGame());
             }
             else mainCtrl.setPlayer(server.addPlayer(thisplayer));//if it's singleplayer, store the player in the repo
         } catch (WebApplicationException e) {

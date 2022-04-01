@@ -110,12 +110,12 @@ public class ServerUtils {
      * add a player to the current game (only called in mutiplayer mode)
      * @param player the player that needs to be added
      */
-    public Player addPlayerToCurrentGame(Player player) {
+    public Game addPlayerToCurrentGame(Player player) {
         return ClientBuilder.newClient(new ClientConfig()) //
             .target(SERVER).path("api/games/addToCurrentGame") //
             .request(APPLICATION_JSON) //
             .accept(APPLICATION_JSON) //
-            .post(Entity.entity(player, APPLICATION_JSON), Player.class);
+            .post(Entity.entity(player, APPLICATION_JSON), Game.class);
     }
 
     /**
@@ -159,7 +159,7 @@ public class ServerUtils {
      * use the newest player to replace the old player in the current game
      * @return the game contains the newest infomation
      */
-    public Game updatePlayer(long gameId,Player player){
+    public static Game updatePlayer(long gameId,Player player){
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/games/setPlayer/" + gameId) //
                 .request(APPLICATION_JSON) //

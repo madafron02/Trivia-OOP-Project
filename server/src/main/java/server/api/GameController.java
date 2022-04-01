@@ -93,12 +93,12 @@ public class GameController {
      * @param player the player that needs to be added
      */
     @PostMapping("/addToCurrentGame")
-    public Player addToCurrentGame(@RequestBody Player player){
+    public Game addToCurrentGame(@RequestBody Player player){
         List<Player>players = currentGame.getPlayers();
         players.add(player);
         currentGame.setPlayers(players);
         repo.save(currentGame);
-        return player;
+        return currentGame;
     }
 
     /**
@@ -124,7 +124,11 @@ public class GameController {
     public Boolean readyForNextRound(@PathVariable long id){
         Game game = repo.getById(id);
         boolean ans = true;
-        for(Player player: game.getPlayers())if(player.getStatus()!= Player.statusType.READY)ans = false;
+        for(Player player: game.getPlayers()){
+            System.out.println(player);
+            if(player.getStatus()!= Player.statusType.READY)ans = false;
+        }
+        System.out.println(ans);
         return ans;
     }
 
@@ -137,13 +141,16 @@ public class GameController {
     @PostMapping("setPlayer/{id}")
     public Game setPlayer(@PathVariable long id,@RequestBody Player player){
         Game game = repo.getById(id);
+        System.out.println(id);
+        System.out.println(repo.getById(id));
+        System.out.println(player);
         for(Player p: game.getPlayers()){
             if(p.getId() == player.getId()){
                 p.setStatus(player.getStatus());
                 p.setPoints(player.getPoints());
             }
         }
-        return game;
+        return repo.save(game);
     }
 
     /**

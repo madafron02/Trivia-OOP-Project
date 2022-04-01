@@ -153,7 +153,9 @@ public class MoreEnergyQCtrl {
             @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
-                    if(isSelected == true || progressBar.getProgress() <= 0.1) {
+                    if((isSelected == true&& mainCtrl.isSingleMode())
+                            || progressBar.getProgress() <= 0.1||
+                            (!mainCtrl.isSingleMode()&&server.readyForNextRound(mainCtrl.getGame().getId()))) {
                         if(readyForNext == true) {
                             countdown.cancel();
                             isSelected = false;
@@ -170,9 +172,6 @@ public class MoreEnergyQCtrl {
                                 mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
-                            if(!mainCtrl.isSingleMode()){
-                                server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
-                            }
                             progressLabel.setText("5");
                             progressBar.setProgress(0.3);
                             readyForNext = true;
@@ -186,7 +185,17 @@ public class MoreEnergyQCtrl {
         };
         countdown.schedule(timerTask, 0, 1000);
     }
-
+    /**
+     * if mark the current round as selected
+     * if it is mutiplayer mode, also update the status to server
+     */
+    public void markAsChosen(){
+        isSelected = true;
+        if(!mainCtrl.isSingleMode()){
+            mainCtrl.getPlayer().setStatus(Player.statusType.READY);
+            server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
+        }
+    }
     /**
      * If the player presses the first button it colours the text in blue,
      * it checks if that represents the right answer, raises a flag for that,
@@ -204,17 +213,10 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
-        isSelected = true;
-        mainCtrl.getPlayer().setStatus(Player.statusType.READY);
+        markAsChosen();
     }
 
-    /**
-     *
-     */
-    public void markAsChosen(){
-        isSelected = true;
-        mainCtrl.getPlayer().setStatus(Player.statusType.READY);
-    }
+
     /**
      * If the player presses the second button it colours the text in blue,
      * it checks if that represents the right answer, raises a flag for that,
@@ -230,6 +232,7 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        markAsChosen();
     }
 
     /**
@@ -249,6 +252,7 @@ public class MoreEnergyQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        markAsChosen();
     }
 
     /**
