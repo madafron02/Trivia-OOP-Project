@@ -141,4 +141,29 @@ public class ServerUtils {
                 .accept(APPLICATION_JSON) //
                 .get(Boolean.class);
     }
+
+    /**
+     * ask the server if its ready for the next round
+     * @param id the game id
+     * @return true if it's ready for the next round
+     */
+    public Boolean readyForNextRound(long id){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/checkStatus/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Boolean.class);
+    }
+
+    /**
+     * use the newest player to replace the old player in the current game
+     * @return the game contains the newest infomation
+     */
+    public Game updatePlayer(long gameId,Player player){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/setPlayer/" + gameId) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(player, APPLICATION_JSON), Game.class);
+    }
 }

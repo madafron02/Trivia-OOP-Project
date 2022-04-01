@@ -19,7 +19,21 @@ public class Player implements Serializable,Reachable {
     private int points;
     private int place;          //place in the leaderboard
     private boolean multi;
-    private boolean aborted;
+
+    public statusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(statusType status) {
+        this.status = status;
+    }
+
+    public enum statusType {
+        READY,
+        NOT_READY,
+        ABORTED
+    }
+    private statusType status;
     public Player() {
     }
 
@@ -28,7 +42,7 @@ public class Player implements Serializable,Reachable {
         this.points = 0;
         this.place = 0;
         this.multi = false;
-        this.aborted = false;
+        this.status = statusType.NOT_READY;
     }
 
     public boolean isMulti() {
@@ -39,13 +53,6 @@ public class Player implements Serializable,Reachable {
         this.multi = multi;
     }
 
-    public boolean isAborted() {
-        return aborted;
-    }
-
-    public void setAborted(boolean aborted) {
-        this.aborted = aborted;
-    }
 
     public int getPlace() {
         return place;

@@ -117,6 +117,36 @@ public class GameController {
     }
 
     /**
+     * check if the game is ready for the next round
+     * @return true if the game is ready for the next round
+     */
+    @GetMapping("/checkStatus/{id}")
+    public Boolean readyForNextRound(@PathVariable long id){
+        Game game = repo.getById(id);
+        boolean ans = true;
+        for(Player player: game.getPlayers())if(player.getStatus()!= Player.statusType.READY)ans = false;
+        return ans;
+    }
+
+    /**
+     * set status of one player
+     * @param id the id of the game
+     * @param player the player that needs to change status.
+     * @return
+     */
+    @PostMapping("setPlayer/{id}")
+    public Game setPlayer(@PathVariable long id,@RequestBody Player player){
+        Game game = repo.getById(id);
+        for(Player p: game.getPlayers()){
+            if(p.getId() == player.getId()){
+                p.setStatus(player.getStatus());
+                p.setPoints(player.getPoints());
+            }
+        }
+        return game;
+    }
+
+    /**
      * check if someone clicks the start button in the lobby
      * @return true if someone clicks the start button
      */
@@ -137,4 +167,6 @@ public class GameController {
     public void setCurrentStatus(@RequestBody boolean s){
         currentStatus = s;
     }
+
+
 }
