@@ -361,6 +361,7 @@ public class MainCtrl {
      * Shows all-time leaderboard
      */
     public void showLeadearboard() {
+        leaderboardCtrl.initialize();
         primaryStage.setTitle("All-time leaderboard");
         primaryStage.setScene(leaderboard);
     }
@@ -415,13 +416,16 @@ public class MainCtrl {
      * -> increases the round number;
      * -> gets the current question type, shows the corresponding scene and calls
      * the setup method for that specific scene;
-     * -> !!! CURRENTLY shows only "Multiple choice question" type because the
-     * "Open question" is not ready; KEEP SWITCH COMMENTED !!!
      */
     public void setUpRound() {
+        if(currentRoundNumber == 20) {
+            ServerUtils.addPlayer(player);
+            showLeadearboard();
+            return;
+        }
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
         currentRoundNumber++;
-        /*
+
         Question.QuestionType type = question.getType();
         switch(type) {
             case OPEN -> {
@@ -431,18 +435,15 @@ public class MainCtrl {
             }
             case COMPARISON, MORE_ENERGY -> {
                 showMoreEnergyQ();
-                moreEnergyQCtrl.setUpMoreEnergy();
+                moreECtrl.setUpMoreEnergy();
                 break;
             }
             case ENERGY_GUESS -> {
                 showMultiChoiceQ();
-                multiChoiceQCtrl.setUpEnergyGuess();
+                multiCtrl.setUpEnergyGuess();
                 break;
             }
             default -> {}
         }
-        */
-        showMoreEnergyQ();
-        moreECtrl.setUpMoreEnergy();
     }
 }

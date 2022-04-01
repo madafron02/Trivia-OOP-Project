@@ -82,8 +82,7 @@ public class NameSelectCtrl {
                 }
                 server.addPlayerToCurrentGame(thisplayer);
             }
-            mainCtrl.setPlayer(thisplayer);
-            server.addPlayer(thisplayer);
+            mainCtrl.setPlayer(server.addPlayer(thisplayer));
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);
@@ -106,7 +105,7 @@ public class NameSelectCtrl {
             return;
         }
         if(mainCtrl.isSingleMode()){
-            Game game = new Game();
+            Game game = server.getGame();
             game.setPlayers(List.of(mainCtrl.getPlayer()));
             server.setQuestion(game.getId());
 
@@ -129,5 +128,9 @@ public class NameSelectCtrl {
      */
     public void goBack() {
         mainCtrl.showSplash();
+    }
+
+    public ServerUtils getServer() {
+        return server;
     }
 }
