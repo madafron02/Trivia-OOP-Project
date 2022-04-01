@@ -140,9 +140,6 @@ public class GameController {
     @PostMapping("setPlayer/{id}")
     public Game setPlayer(@PathVariable long id,@RequestBody Player player){
         Game game = repo.getById(id);
-        System.out.println(id);
-        System.out.println(repo.getById(id));
-        System.out.println(player);
         for(Player p: game.getPlayers()){
             if(p.getId() == player.getId()){
                 p.setStatus(player.getStatus());

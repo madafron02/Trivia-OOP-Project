@@ -183,7 +183,7 @@ public class MoreEnergyQCtrl {
                 });
             }
         };
-        countdown.schedule(timerTask, 0, 1000);
+        countdown.schedule(timerTask, 0, 100);
     }
     /**
      * if mark the current round as selected
