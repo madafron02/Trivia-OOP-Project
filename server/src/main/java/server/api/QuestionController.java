@@ -45,7 +45,6 @@ public class QuestionController {
     public ResponseEntity<Question> getQuestion(@PathVariable("gameId") long gameId,
                                                 @PathVariable("roundNumber") int roundNumber) {
         Question res = questionAnswerSelector.getQuestion(gameId,roundNumber);
-        while(res == null)questionAnswerSelector.getQuestion(gameId,roundNumber);
         return ResponseEntity.ok(res);
     }
 

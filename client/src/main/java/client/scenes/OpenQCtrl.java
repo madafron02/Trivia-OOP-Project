@@ -142,6 +142,7 @@ public class OpenQCtrl {
      */
     public void markAsChosen(){
         isSelected = true;
+        mainCtrl.resetNoMove();
         if(!mainCtrl.isSingleMode()){
             mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
             server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());

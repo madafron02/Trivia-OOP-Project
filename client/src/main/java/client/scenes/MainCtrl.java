@@ -35,7 +35,7 @@ public class MainCtrl {
     private Stage primaryStage;
     private int currentRoundNumber = 0;
     private Question question;
-
+    private int noMove;
     private SplashCtrl splashCtrl;
     private Scene opening;
 
@@ -427,6 +427,17 @@ public class MainCtrl {
      */
     public void setUpRound() {
         resetPlayerState();
+        if(!isSingleMode){
+            if(noMove >= 2){
+                player.setStatus(Player.StatusType.ABORTED);
+                ServerUtils.updatePlayer(game.getId(),player);
+                showSplash();
+                resetNoMove();
+                setUp();
+                return;
+            }
+            setNoMove();
+        }
         if(currentRoundNumber == 5) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
@@ -438,8 +449,8 @@ public class MainCtrl {
             return;
         }
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
+        while(question==null)question=ServerUtils.requireQuestion(game.getId(),currentRoundNumber);
         currentRoundNumber++;
-
         Question.QuestionType type = question.getType();
         switch(type) {
             case OPEN -> {
@@ -461,16 +472,24 @@ public class MainCtrl {
         }
     }
 
+
     /**
      * if the player has chosen on answer in the previous round, mark as
      * unchosen for a new round to start
      */
     private void resetPlayerState() {
         if(!isSingleMode){
+            //System.out.println(player);
             if(player.getStatus()== Player.StatusType.READY)
                 player.setStatus(Player.StatusType.NOT_READY);
             ServerUtils.updatePlayer(game.getId(),player);
         }
     }
 
+    public void setNoMove() {
+        this.noMove++;
+    }
+    public void resetNoMove(){
+        this.noMove = 0;
+    }
 }

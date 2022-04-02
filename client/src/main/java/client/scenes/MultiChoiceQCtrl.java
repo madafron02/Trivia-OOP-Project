@@ -105,6 +105,7 @@ public class MultiChoiceQCtrl {
      */
     public void markAsChosen(){
         isSelected = true;
+        mainCtrl.resetNoMove();
         if(!mainCtrl.isSingleMode()){
             mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
             server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
@@ -132,21 +133,13 @@ public class MultiChoiceQCtrl {
                                     server.readyForNextRound(mainCtrl.getGame().getId()))) {
                         if (readyForNext == true) {
                             if (progressBar.getProgress() <= 0.01) {
+                                if(!isSelected)mainCtrl.setNoMove();
+                                else mainCtrl.resetNoMove();
                                 countdown.cancel();
                                 isSelected = false;
                                 mainCtrl.setUpRound();
                             }
                         } else {
-                            if(!isSelected&&!mainCtrl.isSingleMode()){
-                                if(mainCtrl.getPlayer().getStatus() == Player.StatusType.NO_ANSWER){
-                                    leaveTheGame();
-                                }
-                                else {
-                                    mainCtrl.getPlayer().setStatus(Player.StatusType.NO_ANSWER);
-                                    server.updatePlayer(mainCtrl.getGame().getId()
-                                            ,mainCtrl.getPlayer());
-                                }
-                            }
                             if (isCorrect) {
                                 mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showCorrect();
