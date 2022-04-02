@@ -9,8 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 
-import java.util.List;
-
 public class NameSelectCtrl {
 
     private final ServerUtils server;
@@ -67,7 +65,7 @@ public class NameSelectCtrl {
         }
         try {
             Player thisplayer = new Player(nameInput.getText());
-            if(!mainCtrl.isSingleMode()){//if it's mutiplayer, id is assigned from the server manually
+            if(!mainCtrl.isSingleMode()){
                 Game currentGame = server.getGame();
                 boolean flag = true;
                 for(Player player: currentGame.getPlayers()) {
@@ -88,7 +86,7 @@ public class NameSelectCtrl {
                     }
                 }
             }
-            else mainCtrl.setPlayer(server.addPlayer(thisplayer));//if it's singleplayer, store the player in the repo
+            else mainCtrl.setPlayer(server.addPlayer(thisplayer));
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);

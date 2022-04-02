@@ -87,7 +87,7 @@ class QuestionAnswerSelectorTest {
         Question q = sut.getMoreEnergyQuestion(0,0);
         int ans = Integer.parseInt(q.getCorrectAnswer()) - 1;
         for(int j=0;j<3;j++){
-            assertTrue(q.getAnswers().get(ans).compareTo(q.getAnswers().get(j))<=0);
+            assertTrue(q.getAnswers().get(ans).compareTo(q.getAnswers().get(j))>=0);
         }
     }
 

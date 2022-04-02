@@ -125,7 +125,7 @@ public class GameController {
         boolean ans = true;
         for(Player player: game.getPlayers()){
             System.out.println(player);
-            if(player.getStatus()!= Player.statusType.READY)ans = false;
+            if(player.getStatus()!= Player.StatusType.READY)ans = false;
         }
         System.out.println(ans);
         return ans;

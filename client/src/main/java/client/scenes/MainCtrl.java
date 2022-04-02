@@ -456,7 +456,7 @@ public class MainCtrl {
 
     private void resetPlayerState() {
         if(!isSingleMode){
-            player.setStatus(Player.statusType.NOT_READY);
+            player.setStatus(Player.StatusType.NOT_READY);
             ServerUtils.updatePlayer(game.getId(),player);
         }
     }

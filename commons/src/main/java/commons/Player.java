@@ -1,13 +1,11 @@
 package commons;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 
-import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
 public class Player implements Serializable,Reachable {
@@ -20,20 +18,20 @@ public class Player implements Serializable,Reachable {
     private int place;          //place in the leaderboard
     private boolean multi;
 
-    public statusType getStatus() {
+    public StatusType getStatus() {
         return status;
     }
 
-    public void setStatus(statusType status) {
+    public void setStatus(StatusType status) {
         this.status = status;
     }
 
-    public enum statusType {
+    public enum StatusType {
         READY,
         NOT_READY,
         ABORTED
     }
-    private statusType status;
+    private StatusType status;
     public Player() {
     }
 
@@ -42,7 +40,7 @@ public class Player implements Serializable,Reachable {
         this.points = 0;
         this.place = 0;
         this.multi = false;
-        this.status = statusType.NOT_READY;
+        this.status = StatusType.NOT_READY;
     }
 
     public boolean isMulti() {

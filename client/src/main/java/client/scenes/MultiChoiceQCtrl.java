@@ -106,7 +106,7 @@ public class MultiChoiceQCtrl {
     public void markAsChosen(){
         isSelected = true;
         if(!mainCtrl.isSingleMode()){
-            mainCtrl.getPlayer().setStatus(Player.statusType.READY);
+            mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
             server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
         }
     }
@@ -129,7 +129,8 @@ public class MultiChoiceQCtrl {
                     counter++;
                     if ((isSelected == true && mainCtrl.isSingleMode())
                             || progressBar.getProgress() <= 0.01 ||
-                            (!mainCtrl.isSingleMode() && server.readyForNextRound(mainCtrl.getGame().getId()))) {
+                            (!mainCtrl.isSingleMode() &&
+                                    server.readyForNextRound(mainCtrl.getGame().getId()))) {
                         if (readyForNext == true) {
                             if (progressBar.getProgress() <= 0.01) {
                                 countdown.cancel();
