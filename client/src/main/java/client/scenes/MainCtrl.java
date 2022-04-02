@@ -427,7 +427,7 @@ public class MainCtrl {
      */
     public void setUpRound() {
         resetPlayerState();
-        if(currentRoundNumber == 3) {
+        if(currentRoundNumber == 5) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
             if(isSingleMode)showLeadearboard();
@@ -461,9 +461,14 @@ public class MainCtrl {
         }
     }
 
+    /**
+     * if the player has chosen on answer in the previous round, mark as
+     * unchosen for a new round to start
+     */
     private void resetPlayerState() {
         if(!isSingleMode){
-            player.setStatus(Player.StatusType.NOT_READY);
+            if(player.getStatus()== Player.StatusType.READY)
+                player.setStatus(Player.StatusType.NOT_READY);
             ServerUtils.updatePlayer(game.getId(),player);
         }
     }

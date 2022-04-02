@@ -30,6 +30,7 @@ public class Player implements Serializable,Reachable {
         READY,
         NOT_READY,
         ABORTED,
+        NO_ANSWER,
     }
     private StatusType status;
     public Player() {

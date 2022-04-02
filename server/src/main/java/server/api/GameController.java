@@ -123,10 +123,10 @@ public class GameController {
     public Boolean readyForNextRound(@PathVariable long id){
         Game game = repo.getById(id);
         boolean ans = true;
+        //System.out.println(game);
         for(Player player: game.getPlayers()){
             if(player.getStatus()== Player.StatusType.NOT_READY)ans = false;
         }
-        System.out.println(ans);
         return ans;
     }
 
@@ -169,6 +169,4 @@ public class GameController {
     public void setCurrentStatus(@RequestBody boolean s){
         currentStatus = s;
     }
-
-
 }

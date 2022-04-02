@@ -123,7 +123,6 @@ public class MultiChoiceQCtrl {
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
             Boolean readyForNext = false;
-            @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
                     counter++;
@@ -138,6 +137,16 @@ public class MultiChoiceQCtrl {
                                 mainCtrl.setUpRound();
                             }
                         } else {
+                            if(!isSelected&&!mainCtrl.isSingleMode()){
+                                if(mainCtrl.getPlayer().getStatus() == Player.StatusType.NO_ANSWER){
+                                    leaveTheGame();
+                                }
+                                else {
+                                    mainCtrl.getPlayer().setStatus(Player.StatusType.NO_ANSWER);
+                                    server.updatePlayer(mainCtrl.getGame().getId()
+                                            ,mainCtrl.getPlayer());
+                                }
+                            }
                             if (isCorrect) {
                                 mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showCorrect();
@@ -159,7 +168,6 @@ public class MultiChoiceQCtrl {
                 });
             }
         };
-
         countdown.schedule(timerTask, 0, 100);
     }
 
