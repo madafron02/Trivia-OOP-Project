@@ -177,11 +177,11 @@ public class QuestionAnswerSelector {
         q.setType(Question.QuestionType.MORE_ENERGY);
         q.setImgPaths(finalList.stream().map(p->p.getImgPath()).collect(Collectors.toList()));
         q.setAnswers(finalList.stream().map(p->p.getTitle()).collect(Collectors.toList()));
-        if(finalList.get(0).getConsumption()<finalList.get(1).getConsumption()
-                && finalList.get(0).getConsumption()<finalList.get(2).getConsumption())
+        if(finalList.get(0).getConsumption()>finalList.get(1).getConsumption()
+                && finalList.get(0).getConsumption()>finalList.get(2).getConsumption())
             q.setCorrectAnswer(String.valueOf(1));
-        else if(finalList.get(1).getConsumption()<finalList.get(0).getConsumption()
-                && finalList.get(1).getConsumption()<finalList.get(2).getConsumption())
+        else if(finalList.get(1).getConsumption()>finalList.get(0).getConsumption()
+                && finalList.get(1).getConsumption()>finalList.get(2).getConsumption())
             q.setCorrectAnswer(String.valueOf(2));
         else q.setCorrectAnswer(String.valueOf(3));
         return q;

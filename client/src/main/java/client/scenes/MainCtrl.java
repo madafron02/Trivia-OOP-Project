@@ -314,6 +314,7 @@ public class MainCtrl {
      */
     public void showLobby() {
         primaryStage.setTitle("Waiting room");
+        lobbyCtrl.setLobby();
         primaryStage.setScene(lobby);
     }
 
@@ -371,6 +372,7 @@ public class MainCtrl {
      */
     public void showWinners() {
         primaryStage.setTitle("Winners");
+        winnersCtrl.setUp();
         primaryStage.setScene(winners);
     }
 
@@ -418,9 +420,14 @@ public class MainCtrl {
      * the setup method for that specific scene;
      */
     public void setUpRound() {
-        if(currentRoundNumber == 20) {
+        resetPlayerState();
+        if(currentRoundNumber == 3) {
             ServerUtils.addPlayer(player);
-            showLeadearboard();
+            currentRoundNumber = 0;
+            if(isSingleMode)showLeadearboard();
+            else{
+                showWinners();
+            }
             return;
         }
         question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
@@ -444,6 +451,13 @@ public class MainCtrl {
                 break;
             }
             default -> {}
+        }
+    }
+
+    private void resetPlayerState() {
+        if(!isSingleMode){
+            player.setStatus(Player.StatusType.NOT_READY);
+            ServerUtils.updatePlayer(game.getId(),player);
         }
     }
 }
