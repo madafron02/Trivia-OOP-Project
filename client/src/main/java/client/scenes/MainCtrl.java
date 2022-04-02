@@ -479,16 +479,22 @@ public class MainCtrl {
      */
     private void resetPlayerState() {
         if(!isSingleMode){
-            //System.out.println(player);
             if(player.getStatus()== Player.StatusType.READY)
                 player.setStatus(Player.StatusType.NOT_READY);
             ServerUtils.updatePlayer(game.getId(),player);
         }
     }
 
+    /**
+     * if the player doesn't choose answer, mark this in the noMove variable
+     */
     public void setNoMove() {
         this.noMove++;
     }
+
+    /**
+     * if the player makes his choice, reset the noMove variable
+     */
     public void resetNoMove(){
         this.noMove = 0;
     }
