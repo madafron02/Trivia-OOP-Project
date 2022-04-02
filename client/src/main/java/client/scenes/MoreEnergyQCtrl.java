@@ -422,6 +422,9 @@ public class MoreEnergyQCtrl {
     public void leaveTheGame() {
         countdown.cancel();
         countdown.purge();
+        mainCtrl.setUp();
+        mainCtrl.getPlayer().setStatus(Player.StatusType.ABORTED);
+        server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
         mainCtrl.showSplash();
     }
 }

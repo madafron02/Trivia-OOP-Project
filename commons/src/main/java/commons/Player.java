@@ -29,7 +29,7 @@ public class Player implements Serializable,Reachable {
     public enum StatusType {
         READY,
         NOT_READY,
-        ABORTED
+        ABORTED,
     }
     private StatusType status;
     public Player() {
