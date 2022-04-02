@@ -32,14 +32,14 @@ public class LobbyCtrl {
     public LobbyCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
         this.server = server;
-        timer = new Timer();
     }
 
     /**
      * request for the new status per second
      * refresh the list page and travel to the game page if a player clicks the start button
      */
-    public void initialize(){
+    public void setLobby(){
+        timer = new Timer();
         TimerTask refreshTask = new TimerTask() {
             @Override
             public void run() {

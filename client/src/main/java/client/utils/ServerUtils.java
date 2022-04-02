@@ -105,7 +105,17 @@ public class ServerUtils {
                 .accept(APPLICATION_JSON) //
                 .get(Game.class);
     }
-
+    /**
+     * require a game from the server according to its id
+     * @return the current game instance
+     */
+    public Game requireGame(long id) {
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/"+id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Game.class);
+    }
     /**
      * add a player to the current game (only called in mutiplayer mode)
      * @param player the player that needs to be added

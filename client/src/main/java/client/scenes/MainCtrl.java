@@ -314,6 +314,7 @@ public class MainCtrl {
      */
     public void showLobby() {
         primaryStage.setTitle("Waiting room");
+        lobbyCtrl.setLobby();
         primaryStage.setScene(lobby);
     }
 
@@ -371,6 +372,7 @@ public class MainCtrl {
      */
     public void showWinners() {
         primaryStage.setTitle("Winners");
+        winnersCtrl.setUp();
         primaryStage.setScene(winners);
     }
 
@@ -419,7 +421,7 @@ public class MainCtrl {
      */
     public void setUpRound() {
         resetPlayerState();
-        if(currentRoundNumber == 20) {
+        if(currentRoundNumber == 3) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
             if(isSingleMode)showLeadearboard();

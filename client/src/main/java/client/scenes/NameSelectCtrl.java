@@ -87,8 +87,6 @@ public class NameSelectCtrl {
                         mainCtrl.setPlayer(player);
                     }
                 }
-                System.out.println(mainCtrl.getPlayer());
-                System.out.println(mainCtrl.getGame());
             }
             else mainCtrl.setPlayer(server.addPlayer(thisplayer));//if it's singleplayer, store the player in the repo
         } catch (WebApplicationException e) {
@@ -117,9 +115,7 @@ public class NameSelectCtrl {
         nameInput.setText("");
         //for the single player we also require a new game but it's only for setting questions
         if(mainCtrl.isSingleMode()){
-            Game game = new Game();
-            game.setPlayers(List.of(mainCtrl.getPlayer()));
-            game = server.addGame(game);
+            Game game = server.addGame(new Game());
             server.setQuestion(game.getId());
             mainCtrl.setGame(game);
             mainCtrl.setUpRound();

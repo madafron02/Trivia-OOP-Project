@@ -23,7 +23,8 @@ public class MoreEnergyQCtrl {
     private Boolean isSelected;
     private Boolean isCorrect;
     private Timer countdown;
-    private final double diff = 1.0 / 15.0;
+    private double counter;
+    private final double diff = 1.0 / 150.0;
     private String imagePath = FileSystems.getDefault()
             .getPath("client/src/main/resources/Images")
             .normalize()
@@ -104,7 +105,7 @@ public class MoreEnergyQCtrl {
         isCorrect = false;
         countdown = new Timer();
         roundNumber.setText("Question: " + mainCtrl.getCurrentRoundNumber());
-
+        this.counter = 0;
         //Change the text and the image according to the data from the json file
 
         choice1.setText(mainCtrl.getQuestion().getAnswers().get(0));
@@ -149,17 +150,19 @@ public class MoreEnergyQCtrl {
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
             Boolean readyForNext = false;
-
             @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
+                    counter++;
                     if((isSelected == true&& mainCtrl.isSingleMode())
-                            || progressBar.getProgress() <= 0.1||
+                            || progressBar.getProgress() <= 0.01||
                             (!mainCtrl.isSingleMode()&&server.readyForNextRound(mainCtrl.getGame().getId()))) {
                         if(readyForNext == true) {
-                            countdown.cancel();
-                            isSelected = false;
-                            mainCtrl.setUpRound();
+                            if(progressBar.getProgress() <= 0.01){
+                                countdown.cancel();
+                                isSelected = false;
+                                mainCtrl.setUpRound();
+                            }
                         } else {
                             if(isCorrect) {
                                 mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
@@ -172,14 +175,13 @@ public class MoreEnergyQCtrl {
                                 mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
-                            progressLabel.setText("5");
-                            progressBar.setProgress(0.3);
+                            counter = 120;
                             readyForNext = true;
                         }
                     }
-                    progressLabel.setText(String.valueOf(Integer
-                            .parseInt(progressLabel.getText()) - 1));
-                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
+                    int passed = (int) ((counter * 100)/1000);
+                    progressLabel.setText(String.valueOf(15-passed));
+                    progressBar.setProgress((150-counter) * diff);
                 });
             }
         };
