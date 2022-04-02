@@ -84,7 +84,6 @@ public class MoreEnergyQCtrl {
     public MoreEnergyQCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
         this.server = server;
-        this.isSelected = false;
     }
 
     /**
@@ -99,7 +98,7 @@ public class MoreEnergyQCtrl {
      */
     public void setUpMoreEnergy() {
         setQuestion();
-
+        this.isSelected = false;
         progressLabel.setText("16");
         progressBar.setProgress(1);
         isCorrect = false;
