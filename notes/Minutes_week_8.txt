@@ -1,0 +1,33 @@
+Q backlog
+-Admin interface
+A- put the new activities only in the database file
+
+-I want to connect to the server to play with other people
+A- if you want multiple instances of the same server then the client needs to choose which server to use
+-- Do not hard code the server in the client
+
+Q merge requests
+-Too much time for approval
+A- use the judge system to provide feedback
+
+-Check and fix pipeline in main
+A- before you merge the issue branch you should merge main into your branch and run all the tests
+--Merge regularly
+
+Q tests
+-Tests for common is not urgent so we could add tests later, but we should test everything in backend immediatelly
+A- you should not test something that interacts with fxml stuff but you should put all the logic methods not in the controller class,
+ but in a seperate class that you should later test
+
+----
+Draft schedule presentation date - Thursday morning
+Draft presentation next week 
+Real presentation - recorded
+Course website has resources for presentation
+----
+Feedback:
+- add more difficulty properties to the issue
+- give new milestone to issues leftover
+- format javadoc better (capital letters, better punctuation)
+- fix pipeline
+- update Readme file with how to run our system
