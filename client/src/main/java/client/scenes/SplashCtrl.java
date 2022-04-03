@@ -26,6 +26,7 @@ public class SplashCtrl {
     @FXML
     private ImageView imageView;
     public void goToSingle() {
+        mainCtrl.setSingleMode(true);
         mainCtrl.showNameSelect();
     }
 
@@ -33,8 +34,6 @@ public class SplashCtrl {
         mainCtrl.setSingleMode(false);
         mainCtrl.showNameSelect();
     }
-
-    public void goToNameSelect(){mainCtrl.showNameSelect();}
 
     public void goToLeader() {
         mainCtrl.showLeadearboard();

@@ -32,7 +32,7 @@ public class PlayerController {
     @PostMapping("/add")
     public ResponseEntity<Player> addPlayer(@RequestBody Player player){
         Player saved = repo.save(player);
-        System.out.println(player);
+        //System.out.println(player);
         return ResponseEntity.ok(saved);
     }
 
