@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="900.0" prefWidth="1440.0" style="-fx-background-color: #011826;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.WinnersCtrl">
@@ -35,51 +34,51 @@
             </ImageView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Player_2" textFill="WHITE">
+                        <Label fx:id="secondName" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0" textFill="WHITE">
                            <font>
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="41.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Label fx:id="secondPoints" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0" textFill="WHITE">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="270.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Player_1" textFill="WHITE">
+                        <Label fx:id="firstName" alignment="CENTER" contentDisplay="CENTER" textFill="WHITE">
                            <font>
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Label fx:id="firstPoints" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="251.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                        <Label fx:id="firstPoints" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="251.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="40.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Player_3" textFill="WHITE">
+                        <Label fx:id="thirdName" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0" textFill="WHITE">
                            <font>
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="41.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                        <Label fx:id="thirdPoints" alignment="CENTER" contentDisplay="CENTER" prefWidth="200.0" textFill="WHITE">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="You finished first!" textFill="WHITE">
-                     <font>
-                        <Font size="46.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" />
             <Button fx:id="backToMenu" mnemonicParsing="false" onAction="#goToSplash" prefHeight="105.0" prefWidth="257.0" text="Back to menu">
                <font>
                   <Font size="30.0" />

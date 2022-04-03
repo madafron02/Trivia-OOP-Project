@@ -43,7 +43,7 @@ public class Main extends Application {
          */
 
         // Add your own path here because there are conflicts between mac/windows :(
-        File file = new File("src/main/resources/Halloween Lobby Music.wav");
+        File file = new File("client/src/main/resources/Halloween Lobby Music.wav");
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioInputStream);
