@@ -2,6 +2,7 @@ package client.scenes;
 
 import client.utils.ServerUtils;
 import javafx.animation.ScaleTransition;
+import commons.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -105,6 +106,8 @@ public class MultiChoiceQCtrl {
         countdown = new Timer();
         roundNumber.setText("Question: " + mainCtrl.getCurrentRoundNumber());
         activity1.setText(mainCtrl.getQuestion().getDescription());
+        this.counter = 0;
+        this.isSelected = false;
 
         //Change the text and the image according to the data from the json file
 

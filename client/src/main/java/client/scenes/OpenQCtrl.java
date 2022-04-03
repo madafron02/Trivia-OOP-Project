@@ -2,6 +2,7 @@ package client.scenes;
 
 import client.utils.ServerUtils;
 import javafx.animation.ScaleTransition;
+import commons.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
