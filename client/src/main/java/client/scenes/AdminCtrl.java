@@ -5,9 +5,7 @@ import commons.Activity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.inject.Inject;
@@ -28,6 +26,10 @@ public class AdminCtrl {
     private TableColumn<Activity, Long> activConsum;
     @FXML
     private Button backBTN;
+    @FXML
+    private TextField deleteId;
+    @FXML
+    private Label errorM;
 
     @Inject
     public AdminCtrl(ActivityUtil activityUtil, MainCtrl mainCtrl){
@@ -42,6 +44,24 @@ public class AdminCtrl {
         ObservableList<Activity> observableList =
                 FXCollections.observableList(activityUtil.getAll());
         table.setItems(observableList);
+    }
+
+    public void goToAddActivity(){
+        mainCtrl.showAddActivity();
+    }
+
+    public void deleteActivity(){
+        var success = false;
+        while (!success){
+            try{
+                activityUtil.deleteByID(Long.parseLong(deleteId.getText()));
+                success = true;
+                errorM.setVisible(false);
+                initialize();
+            }catch (Exception e){
+                errorM.setVisible(true);
+            }
+        }
     }
 
     public void goBack(){
