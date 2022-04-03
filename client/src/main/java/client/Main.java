@@ -77,9 +77,10 @@ public class Main extends Application {
         nameSelect.getValue().getStylesheets().add("Images/selectName.css");
 
         var adminPanel = FXML.load(AdminCtrl.class, "client", "scenes", "AdminInterface.fxml");
+        var activAdd = FXML.load(AdminAddActivCtrl.class, "client", "scenes", "AdminAddActiv.fxml");
 
         mainCtrl.initializeNew(primaryStage, splash, nameSelect, lobby,
                 help, igLeaderboard, leaderboard, correct, wrong, winners,
-                multiChoice, moreEnergy, openQ, adminPanel);
+                multiChoice, moreEnergy, openQ, adminPanel, activAdd);
     }
 }

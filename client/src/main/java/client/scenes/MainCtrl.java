@@ -75,6 +75,8 @@ public class MainCtrl {
     private AdminCtrl adminCtrl;
     private Scene adminPanel;
 
+    private AdminAddActivCtrl activAddCtrl;
+    private Scene activAddScene;
     /**
      * Initializes the primary stage, all the controllers and
      * all the scenes used in this game
@@ -105,8 +107,8 @@ public class MainCtrl {
                               Pair<MultiChoiceQCtrl, Parent> multiChoice,
                               Pair<MoreEnergyQCtrl, Parent> moreEnergy,
                               Pair<OpenQCtrl, Parent> openQ,
-                              Pair<MoreEnergyQCtrl, Parent> moreEnergy,
-                              Pair<AdminCtrl, Parent> adminPanel) {
+                              Pair<AdminCtrl, Parent> adminPanel,
+                              Pair<AdminAddActivCtrl, Parent> addActiv) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -134,6 +136,8 @@ public class MainCtrl {
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
         this.adminPanel = new Scene(adminPanel.getValue());
         this.adminCtrl = adminPanel.getKey();
+        this.activAddCtrl = addActiv.getKey();
+        this.activAddScene = new Scene(addActiv.getValue());
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -175,6 +179,11 @@ public class MainCtrl {
     public void showAdminPanel(){
         primaryStage.setTitle("AdminPanel");
         primaryStage.setScene(adminPanel);
+    }
+
+    public void showAddActivity(){
+        primaryStage.setTitle("Add Activity");
+        primaryStage.setScene(activAddScene);
     }
 
     /**
