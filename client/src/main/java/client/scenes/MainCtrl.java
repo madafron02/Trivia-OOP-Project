@@ -15,12 +15,17 @@
  */
 package client.scenes;
 
+import client.utils.ServerUtils;
 import commons.Game;
 import commons.Player;
+import commons.Question;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 
 public class MainCtrl {
@@ -28,6 +33,8 @@ public class MainCtrl {
     private Player player;
     private Game game;
     private Stage primaryStage;
+    private int currentRoundNumber = 0;
+    private Question question;
 
     private SplashCtrl splashCtrl;
     private Scene opening;
@@ -56,7 +63,7 @@ public class MainCtrl {
     private WrongCtrl wrongCtrl;
     private Scene wrong;
 
-    private  IngameLeaderboardCtrl igLeaderboardCtrl;
+    private IngameLeaderboardCtrl igLeaderboardCtrl;
     private Scene igLeaderboard;
 
     private AllTimeLeaderboardCtrl leaderboardCtrl;
@@ -97,6 +104,8 @@ public class MainCtrl {
                               Pair<WinnersCtrl, Parent> winnersPair,
                               Pair<MultiChoiceQCtrl, Parent> multiChoice,
                               Pair<MoreEnergyQCtrl, Parent> moreEnergy,
+                              Pair<OpenQCtrl, Parent> openQ,
+                              Pair<MoreEnergyQCtrl, Parent> moreEnergy,
                               Pair<AdminCtrl, Parent> adminPanel) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
@@ -119,40 +128,46 @@ public class MainCtrl {
         this.moreECtrl = moreEnergy.getKey();
         this.multiCtrl = multiChoice.getKey();
         this.multiChoice = new Scene(multiChoice.getValue(), Color.web("#011826"));
+        this.openQ = new Scene(openQ.getValue());
+        this.openQCtrl = openQ.getKey();
         this.nameSelect = new Scene(nameSelectCtrlParentPair.getValue(), Color.web("#011826"));
         this.nameSelectCtrl = nameSelectCtrlParentPair.getKey();
         this.adminPanel = new Scene(adminPanel.getValue());
         this.adminCtrl = adminPanel.getKey();
+
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent t) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
 
         showSplash();
         primaryStage.show();
         this.isSingleMode = true;
     }
 
-    public MultiChoiceQCtrl getMultiCtrl() {
-        return multiCtrl;
-    }
-
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    public void setPrimaryStageTitle(String newTitle) {
-        primaryStage.setTitle(newTitle);
-    }
-
-    public void primarySetSceneOnly() {
-        primaryStage.setScene(moreEnergy);
-    }
-
+    /**
+     * Gets the controller for the "Wrong answer" scene
+     * @return the controller
+     */
     public WrongCtrl getWrong() {
         return wrongCtrl;
     }
 
+    /**
+     * Gets the controller for the "Correct answer" scene
+     * @return the controller
+     */
     public CorrectCtrl getCorrect() {
         return correctCtrl;
     }
 
+    /**
+     * Gets the controller for the "Winners" scene
+     * @return the controller
+     */
     public WinnersCtrl getWinners() {
         return winnersCtrl;
     }
@@ -163,52 +178,56 @@ public class MainCtrl {
     }
 
     /**
-     * Shows the splash screen
+     * Gets the controller for the "Multiple choice question" scene
+     * @return the controller
      */
-    public void showSplash() {
-        primaryStage.setTitle("Quizzzz!");
-        primaryStage.setScene(opening);
-        primaryStage.setMinHeight(900);
-        primaryStage.setMinWidth(1440);
+    public MultiChoiceQCtrl getMultiCtrl() {
+        return multiCtrl;
     }
 
     /**
-     * Shows the multiple choice question type screen
-     * @param player
+     * Gets the controller for the "More energy question" scene
+     * @return the controller
      */
-    public void showMultiChoiceQ(Player player) {
-        primaryStage.setTitle("Questions");
-        primaryStage.setScene(multiChoice);
-        multiCtrl.setPlayer(player);
-        multiCtrl.setQuestion();
-        multiCtrl.setCurrentRoundNumber(0);
+    public MoreEnergyQCtrl getMoreECtrl() {
+        return moreECtrl;
     }
 
     /**
-     * Shows the "Which takes more energy?" question type screen
-     * @param player
+     * Gets the controller for the "Open question" scene
+     * @return the controller
      */
-    public void showMoreEnergyQ(Player player) {
-        primaryStage.setTitle("Questions");
-        primaryStage.setScene(moreEnergy);
-        moreECtrl.setPlayer(player);
-        moreECtrl.setQuestion();
-        // moreECtrl.setCurrentRoundNumber(0);
+    public OpenQCtrl getOpenQCtrl() {
+        return openQCtrl;
     }
 
     /**
-     * Shows the energy estimation type screen
-     * @param openQPair
+     * Gets the "Multiple choice question" scene
+     * @return the scene
      */
-    public void showEnergyQ(Pair<OpenQCtrl, Parent> openQPair) {
-        this.openQ = new Scene(openQPair.getValue(), Color.web("#011826"));
-        primaryStage.setTitle("Question");
-        primaryStage.setScene(openQ);
+    public Scene getMultiChoice() {
+        return multiChoice;
+    }
+
+    /**
+     * Gets the "More energy question" scene
+     * @return the scene
+     */
+    public Scene getMoreEnergy() {
+        return moreEnergy;
+    }
+
+    /**
+     * Gets the "Open question" scene
+     * @return the scene
+     */
+    public Scene getOpenQ() {
+        return openQ;
     }
 
     /**
      * Shows if the game type is singleplayer
-     * @return
+     * @return true if it is in singleplayer mode
      */
     public boolean isSingleMode() {
         return isSingleMode;
@@ -216,10 +235,84 @@ public class MainCtrl {
 
     /**
      * Sets the game type to singleplayer
-     * @param type
+     * @param type describes the game type (true = singleplayer, false = multiplayer)
      */
     public void setSingleMode(boolean type) {
         isSingleMode = type;
+    }
+
+    /**
+     * Gets the player that is in the current singleplayer game
+     * @return the player
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Sets the player inside the current singleplayer game
+     * @param player the player that needs to be added
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
+     * Sets the current game
+     * @param game the game that needs to be set
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    /**
+     * Gets the game currently connected to the main controller
+     * @return the current game
+     */
+    public Game getGame(){
+        return this.game;
+    }
+
+    /**
+     * Gets the current round number
+     * @return an int describing the round number
+     */
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
+    }
+
+    /**
+     * Sets the current round number
+     * @param currentRoundNumber number to be changed
+     */
+    public void setCurrentRoundNumber(int currentRoundNumber) {
+        this.currentRoundNumber = currentRoundNumber;
+    }
+
+    /**
+     * Gets the question that is currently showed to the player
+     * @return the current question
+     */
+    public Question getQuestion() {
+        return question;
+    }
+
+    /**
+     * Sets the question that the player has to see
+     * @param question the question to be shown
+     */
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
+    /**
+     * Shows the splash screen
+     */
+    public void showSplash() {
+        primaryStage.setTitle("Quizzzz!");
+        primaryStage.setScene(opening);
+        primaryStage.setMinHeight(900);
+        primaryStage.setMinWidth(1440);
     }
 
     /**
@@ -235,9 +328,14 @@ public class MainCtrl {
      */
     public void showLobby() {
         primaryStage.setTitle("Waiting room");
+        lobbyCtrl.setLobby();
         primaryStage.setScene(lobby);
     }
 
+    /**
+     * Gets the controller for the lobby
+     * @return
+     */
     public LobbyCtrl getLobby() {
         return lobbyCtrl;
     }
@@ -278,6 +376,7 @@ public class MainCtrl {
      * Shows all-time leaderboard
      */
     public void showLeadearboard() {
+        leaderboardCtrl.initialize();
         primaryStage.setTitle("All-time leaderboard");
         primaryStage.setScene(leaderboard);
     }
@@ -287,21 +386,92 @@ public class MainCtrl {
      */
     public void showWinners() {
         primaryStage.setTitle("Winners");
+        winnersCtrl.setUp();
         primaryStage.setScene(winners);
     }
 
-    public Player getPlayer() {
-        return player;
+    /**
+     * Shows the multiple choice question type screen
+     *
+     */
+    public void showMultiChoiceQ() {
+        primaryStage.setTitle("Questions");
+        primaryStage.setScene(multiChoice);
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    /**
+     * Shows the "Which takes more energy?" question type screen
+     */
+    public void showMoreEnergyQ() {
+        primaryStage.setTitle("Questions");
+        primaryStage.setScene(moreEnergy);
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    /**
+     * Shows the energy estimation type screen
+     *
+     */
+    public void showOpenQ() {
+        primaryStage.setTitle("Questions");
+        primaryStage.setScene(openQ);
     }
-    public Game getGame(){
-        return this.game;
+
+    /**
+     * Fetches the correct answer for a specific question
+     * @return the right answer for that question
+     */
+    public String selectRightAnswer(Question question) {
+        String answer = question.getCorrectAnswer();
+        return answer;
+    }
+
+    /**
+     * Sets the round details:
+     * -> the next question generated by the "requiresQuestion" from ServerUtils
+     * for this specific game + round;
+     * -> increases the round number;
+     * -> gets the current question type, shows the corresponding scene and calls
+     * the setup method for that specific scene;
+     */
+    public void setUpRound() {
+        resetPlayerState();
+        if(currentRoundNumber == 3) {
+            ServerUtils.addPlayer(player);
+            currentRoundNumber = 0;
+            if(isSingleMode)showLeadearboard();
+            else{
+                showWinners();
+            }
+            return;
+        }
+        question = ServerUtils.requireQuestion(game.getId(), currentRoundNumber);
+        currentRoundNumber++;
+
+        Question.QuestionType type = question.getType();
+        switch(type) {
+            case OPEN -> {
+                showOpenQ();
+                openQCtrl.setUpOpen();
+                break;
+            }
+            case COMPARISON, MORE_ENERGY -> {
+                showMoreEnergyQ();
+                moreECtrl.setUpMoreEnergy();
+                break;
+            }
+            case ENERGY_GUESS -> {
+                showMultiChoiceQ();
+                multiCtrl.setUpEnergyGuess();
+                break;
+            }
+            default -> {}
+        }
+    }
+
+    private void resetPlayerState() {
+        if(!isSingleMode){
+            player.setStatus(Player.StatusType.NOT_READY);
+            ServerUtils.updatePlayer(game.getId(),player);
+        }
     }
 }

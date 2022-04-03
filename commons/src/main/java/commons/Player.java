@@ -1,25 +1,37 @@
 package commons;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 
-import static org.apache.commons.lang3.builder.ToStringStyle.MULTI_LINE_STYLE;
 
 @Entity
 public class Player implements Serializable,Reachable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     private String name;
     private int points;
-
     private int place;          //place in the leaderboard
+    private boolean multi;
 
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusType status) {
+        this.status = status;
+    }
+
+    public enum StatusType {
+        READY,
+        NOT_READY,
+        ABORTED
+    }
+    private StatusType status;
     public Player() {
     }
 
@@ -27,7 +39,18 @@ public class Player implements Serializable,Reachable {
         this.name = name;
         this.points = 0;
         this.place = 0;
+        this.multi = false;
+        this.status = StatusType.NOT_READY;
     }
+
+    public boolean isMulti() {
+        return multi;
+    }
+
+    public void setMulti(boolean multi) {
+        this.multi = multi;
+    }
+
 
     public int getPlace() {
         return place;
@@ -66,7 +89,14 @@ public class Player implements Serializable,Reachable {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, MULTI_LINE_STYLE);
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", points=" + points +
+                ", place=" + place +
+                ", multi=" + multi +
+                ", status=" + status +
+                '}';
     }
 
     @Override

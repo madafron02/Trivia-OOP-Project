@@ -9,8 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 
-import java.util.List;
-
 public class NameSelectCtrl {
 
     private final ServerUtils server;
@@ -80,10 +78,15 @@ public class NameSelectCtrl {
                     nameCheck.setText("this name is already taken");
                     return;
                 }
-                server.addPlayerToCurrentGame(thisplayer);
+                thisplayer.setMulti(true);
+                mainCtrl.setGame(server.addPlayerToCurrentGame(thisplayer));
+                for(Player player: mainCtrl.getGame().getPlayers()){
+                    if(player.getName().equals(thisplayer.getName())){
+                        mainCtrl.setPlayer(player);
+                    }
+                }
             }
-            mainCtrl.setPlayer(thisplayer);
-            server.addPlayer(thisplayer);
+            else mainCtrl.setPlayer(server.addPlayer(thisplayer));
         } catch (WebApplicationException e) {
             var alert = new Alert(Alert.AlertType.ERROR);
             alert.initModality(Modality.APPLICATION_MODAL);
@@ -105,14 +108,15 @@ public class NameSelectCtrl {
             nameCheck.setText("Please check your name before you start");
             return;
         }
+        checked = false;
+        nameCheck.setText("");
+        nameInput.setText("");
+        //for the single player we also require a new game but it's only for setting questions
         if(mainCtrl.isSingleMode()){
-            Game game = new Game();
-            game.setPlayers(List.of(mainCtrl.getPlayer()));
+            Game game = server.addGame(new Game());
             server.setQuestion(game.getId());
-
             mainCtrl.setGame(game);
-            mainCtrl.getLobby().start();
-            mainCtrl.getLobby().startRounds();
+            mainCtrl.setUpRound();
         }
         else mainCtrl.showLobby();
     }
@@ -129,5 +133,9 @@ public class NameSelectCtrl {
      */
     public void goBack() {
         mainCtrl.showSplash();
+    }
+
+    public ServerUtils getServer() {
+        return server;
     }
 }
