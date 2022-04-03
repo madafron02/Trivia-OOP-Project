@@ -46,6 +46,18 @@ public class ServerUtils {
     }
 
     /**
+     * save a game in the game repository (only for single player)
+     * @param game the game thqt needs to be saved
+     * @return the saved game
+     */
+    public Game addGame(Game game){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/add") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(game, APPLICATION_JSON), Game.class);
+    }
+    /**
      * get all players in the repository
      * @return all players in the repository
      */
@@ -93,17 +105,27 @@ public class ServerUtils {
                 .accept(APPLICATION_JSON) //
                 .get(Game.class);
     }
-
+    /**
+     * require a game from the server according to its id
+     * @return the current game instance
+     */
+    public Game requireGame(long id) {
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/"+id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Game.class);
+    }
     /**
      * add a player to the current game (only called in mutiplayer mode)
      * @param player the player that needs to be added
      */
-    public void addPlayerToCurrentGame(Player player) {
-        ClientBuilder.newClient(new ClientConfig()) //
+    public Game addPlayerToCurrentGame(Player player) {
+        return ClientBuilder.newClient(new ClientConfig()) //
             .target(SERVER).path("api/games/addToCurrentGame") //
             .request(APPLICATION_JSON) //
             .accept(APPLICATION_JSON) //
-            .post(Entity.entity(player, APPLICATION_JSON), Player.class);
+            .post(Entity.entity(player, APPLICATION_JSON), Game.class);
     }
 
     /**
@@ -128,5 +150,30 @@ public class ServerUtils {
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
                 .get(Boolean.class);
+    }
+
+    /**
+     * ask the server if its ready for the next round
+     * @param id the game id
+     * @return true if it's ready for the next round
+     */
+    public Boolean readyForNextRound(long id){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/checkStatus/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(Boolean.class);
+    }
+
+    /**
+     * use the newest player to replace the old player in the current game
+     * @return the game contains the newest infomation
+     */
+    public static Game updatePlayer(long gameId,Player player){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("api/games/setPlayer/" + gameId) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .post(Entity.entity(player, APPLICATION_JSON), Game.class);
     }
 }

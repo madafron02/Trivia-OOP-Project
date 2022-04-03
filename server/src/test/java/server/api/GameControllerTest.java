@@ -3,6 +3,8 @@ import commons.Game;
 import commons.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import server.database.ActivityRepository;
+import server.services.QuestionAnswerSelector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +17,13 @@ class GameControllerTest {
     @BeforeEach
     public void init(){
         GameTestRepository repo = new GameTestRepository();
+        ActivityRepository activityRepository = new ActivityTestRepository();
         List<Player>players = new ArrayList<>();
         players.add(new Player("t1"));
         players.add(new Player("t2"));
         test = new Game(players);
         repo.save(test);
-        sut = new GameController(repo);
+        sut = new GameController(repo,new QuestionAnswerSelector(activityRepository));
     }
     @Test
     void getAll() {

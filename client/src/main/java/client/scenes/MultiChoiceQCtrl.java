@@ -16,10 +16,11 @@ import java.util.TimerTask;
 public class MultiChoiceQCtrl {
     private final MainCtrl mainCtrl;
     private final ServerUtils server;
-
+    private Boolean isSelected;
     private Boolean isCorrect;
     private Timer countdown;
-    private final double diff = 1.0 / 15.0;
+    private double counter;
+    private final double diff = 1.0 / 150.0;
 
     private String imagePath = FileSystems.getDefault()
             .getPath("client/src/main/resources/Images")
@@ -134,7 +135,17 @@ public class MultiChoiceQCtrl {
             choice2.setStyle("-fx-text-fill: black;");
             choice3.setStyle("-fx-text-fill: black;");
     }
-
+    /**
+     * if mark the current round as selected
+     * if it is mutiplayer mode, also update the status to server
+     */
+    public void markAsChosen(){
+        isSelected = true;
+        if(!mainCtrl.isSingleMode()){
+            mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
+            server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
+        }
+    }
     /**
      * Starts the timer for each round helped by a timer task with a 1 second period
      * after which the progress bar and the label update.
@@ -148,16 +159,22 @@ public class MultiChoiceQCtrl {
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
             Boolean readyForNext = false;
-
             @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
-                    if(progressBar.getProgress() <= 0.1) {
-                        if(readyForNext == true) {
-                            countdown.cancel();
-                            mainCtrl.setUpRound();
+                    counter++;
+                    if ((isSelected == true && mainCtrl.isSingleMode())
+                            || progressBar.getProgress() <= 0.01 ||
+                            (!mainCtrl.isSingleMode() &&
+                                    server.readyForNextRound(mainCtrl.getGame().getId()))) {
+                        if (readyForNext == true) {
+                            if (progressBar.getProgress() <= 0.01) {
+                                countdown.cancel();
+                                isSelected = false;
+                                mainCtrl.setUpRound();
+                            }
                         } else {
-                            if(isCorrect) {
+                            if (isCorrect) {
                                 mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showCorrect();
                             } else {
@@ -168,19 +185,18 @@ public class MultiChoiceQCtrl {
                                 mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
-                            progressLabel.setText("5");
-                            progressBar.setProgress(0.3);
+                            counter = 120;
                             readyForNext = true;
                         }
                     }
-                    progressLabel.setText(String.valueOf(Integer
-                            .parseInt(progressLabel.getText()) - 1));
-                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
+                    int passed = (int) ((counter * 100) / 1000);
+                    progressLabel.setText(String.valueOf(15 - passed));
+                    progressBar.setProgress((150 - counter) * diff);
                 });
             }
         };
 
-        countdown.schedule(timerTask, 0, 1000);
+        countdown.schedule(timerTask, 0, 100);
     }
 
     /**
@@ -200,6 +216,7 @@ public class MultiChoiceQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        markAsChosen();
     }
 
     /**
@@ -219,6 +236,7 @@ public class MultiChoiceQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        markAsChosen();
     }
 
     /**
@@ -238,6 +256,7 @@ public class MultiChoiceQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+        markAsChosen();
     }
 
     public void setScale(ScaleTransition scale) {

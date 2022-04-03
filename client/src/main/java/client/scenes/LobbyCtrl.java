@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 import java.util.stream.Collectors;
 
 public class LobbyCtrl {
@@ -31,36 +32,25 @@ public class LobbyCtrl {
     public LobbyCtrl(ServerUtils server, MainCtrl mainCtrl) {
         this.mainCtrl = mainCtrl;
         this.server = server;
-        timer = new Timer();
     }
 
     /**
      * request for the new status per second
      * refresh the list page and travel to the game page if a player clicks the start button
      */
-
-    /*
-    public void initialize(){
+    public void setLobby(){
+        timer = new Timer();
         TimerTask refreshTask = new TimerTask() {
             @Override
             public void run() {
                 javafx.application.Platform.runLater(()->{
                     refresh();
-                });
-            }
-        };
-        TimerTask startTask = new TimerTask() {
-            @Override
-            public void run() {
-                javafx.application.Platform.runLater(()->{
                     startRounds();
                 });
             }
         };
         timer.schedule(refreshTask,0,1000);
-        timer.schedule(startTask,0,1000);
     }
-    */
 
     /**
      * Sends the signal to the server, which indicates that a new game is going to start.
@@ -85,6 +75,7 @@ public class LobbyCtrl {
     public void startRounds() {
         if(server.getStatus()){
             timer.cancel();
+            server.setQuestion(mainCtrl.getGame().getId());
             mainCtrl.setUpRound();
         }
     }

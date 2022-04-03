@@ -20,7 +20,9 @@ public class OpenQCtrl {
 
     private Boolean isCorrect;
     private Timer countdown;
-    private final double diff = 1.0 / 15.0;
+    private double counter;
+    private boolean isSelected;
+    private final double diff = 1.0 / 150.0;
 
     private String imagePath = FileSystems.getDefault()
             .getPath("client/src/main/resources/Images")
@@ -94,7 +96,8 @@ public class OpenQCtrl {
      */
     public void setUpOpen() {
         setQuestion();
-
+        this.counter = 0;
+        this.isSelected = false;
         progressLabel.setText("16");
         progressBar.setProgress(1);
         isCorrect = false;
@@ -136,10 +139,17 @@ public class OpenQCtrl {
             @Override
             public void run() {
                 javafx.application.Platform.runLater(() -> {
-                    if(progressBar.getProgress() <= 0.1) {
+                    counter++;
+                    if((isSelected == true&& mainCtrl.isSingleMode())
+                            || progressBar.getProgress() <= 0.01||
+                            (!mainCtrl.isSingleMode()&&
+                                    server.readyForNextRound(mainCtrl.getGame().getId()))) {
                         if(readyForNext == true) {
-                            countdown.cancel();
-                            mainCtrl.setUpRound();
+                            if(progressBar.getProgress() <= 0.01){
+                                countdown.cancel();
+                                isSelected = false;
+                                mainCtrl.setUpRound();
+                            }
                         } else {
                             if(isCorrect) {
                                 mainCtrl.getCorrect().setScore(mainCtrl.getPlayer().getPoints());
@@ -150,21 +160,30 @@ public class OpenQCtrl {
                                 mainCtrl.getWrong().setScore(mainCtrl.getPlayer().getPoints());
                                 mainCtrl.showWrong();
                             }
-                            progressLabel.setText("5");
-                            progressBar.setProgress(0.3);
+                            counter = 120;
                             readyForNext = true;
                         }
                     }
-                    progressLabel.setText(String.valueOf(Integer
-                            .parseInt(progressLabel.getText()) - 1));
-                    progressBar.setProgress(Double.parseDouble(progressLabel.getText()) * diff);
+                    int passed = (int) ((counter * 100)/1000);
+                    progressLabel.setText(String.valueOf(15-passed));
+                    progressBar.setProgress((150-counter) * diff);
                 });
             }
         };
 
-        countdown.schedule(timerTask, 0, 1000);
+        countdown.schedule(timerTask, 0, 100);
     }
-
+    /**
+     * if mark the current round as selected
+     * if it is mutiplayer mode, also update the status to server
+     */
+    public void markAsChosen(){
+        isSelected = true;
+        if(!mainCtrl.isSingleMode()){
+            mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
+            server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
+        }
+    }
     /**
      * Settings for the animation, makes it last for 1 second
      * and go back (2 seconds in total) by scaling it 1.3 times
@@ -205,6 +224,7 @@ public class OpenQCtrl {
         } catch(NumberFormatException e) {
             System.out.println("The player did not choose a number :(");
         }
+        markAsChosen();
     }
 
     /**
