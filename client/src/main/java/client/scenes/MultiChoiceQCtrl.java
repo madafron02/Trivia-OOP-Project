@@ -1,13 +1,15 @@
 package client.scenes;
 
 import client.utils.ServerUtils;
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import javax.inject.Inject;
+import java.nio.file.FileSystems;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,6 +20,21 @@ public class MultiChoiceQCtrl {
     private Boolean isCorrect;
     private Timer countdown;
     private final double diff = 1.0 / 15.0;
+
+    private String imagePath = FileSystems.getDefault()
+            .getPath("client/src/main/resources/Images")
+            .normalize()
+            .toAbsolutePath()
+            .toString();
+
+    private final Image starImage =
+            new Image("file:" + imagePath + "/starEmoji.png");
+    private final Image heartImage =
+            new Image("file:" + imagePath + "/heartEmoji.png");
+    private final Image hundredImage =
+            new Image("file:" + imagePath + "/100emoji.png");
+    private final Image dizzyImage =
+            new Image("file:" + imagePath + "/dizzyEmoji.png");
 
     @FXML
     private Button choice1;
@@ -38,7 +55,28 @@ public class MultiChoiceQCtrl {
     @FXML
     private Label progressLabel;
     @FXML
-    private Label activity;
+    private Label activity1;
+
+    @FXML
+    private Button starButton;
+    @FXML
+    private Button dizzyButton;
+    @FXML
+    private Button heartButton;
+    @FXML
+    private Button hundredButton;
+    @FXML
+    private ImageView starEmoji;
+    @FXML
+    private ImageView dizzyEmoji;
+    @FXML
+    private ImageView hundredEmoji;
+    @FXML
+    private ImageView heartEmoji;
+    @FXML
+    private Button leaveTheGame;
+    @FXML
+    private ListView<String> emojiChat = new ListView<>();
 
 
     @Inject
@@ -65,7 +103,7 @@ public class MultiChoiceQCtrl {
         isCorrect = false;
         countdown = new Timer();
         roundNumber.setText("Question: " + mainCtrl.getCurrentRoundNumber());
-        activity.setText(mainCtrl.getQuestion().getDescription());
+        activity1.setText(mainCtrl.getQuestion().getDescription());
 
         //Change the text and the image according to the data from the json file
 
@@ -150,7 +188,7 @@ public class MultiChoiceQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
-    public void checkFirst() {
+    public void checkFirstM() {
         choice1.setDisable(true);
         choice2.setDisable(true);
         choice3.setDisable(true);
@@ -169,7 +207,7 @@ public class MultiChoiceQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
-    public void checkSecond() {
+    public void checkSecondM() {
         choice1.setDisable(true);
         choice2.setDisable(true);
         choice3.setDisable(true);
@@ -188,7 +226,7 @@ public class MultiChoiceQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
-    public void checkThird() {
+    public void checkThirdM() {
         choice1.setDisable(true);
         choice2.setDisable(true);
         choice3.setDisable(true);
@@ -200,6 +238,161 @@ public class MultiChoiceQCtrl {
             isCorrect = true;
             mainCtrl.getPlayer().setPoints(100);
         }
+    }
+
+    public void setScale(ScaleTransition scale) {
+        scale.setDuration(Duration.millis(1000));
+        scale.setToX(1.3);
+        scale.setToY(1.3);
+        scale.setCycleCount(2);
+        scale.setAutoReverse(true);
+    }
+
+
+
+    /**
+     * Creates the animation object and depending on the emoji
+     * which was pressed enables this emoji once again only when animation
+     * is finished.
+     * This way animation will go without any unexpected behaviors
+     * and will prevent spamming.
+     * @param emojiType String identifying which emoji was pressed.
+     */
+    public void emojiHandler(String emojiType) {
+        ScaleTransition scale = new ScaleTransition();
+        setScale(scale);
+        Timer timer = new Timer();
+        switch (emojiType) {
+            case "star":
+                scale.setNode(starEmoji);
+                TimerTask taskStar = new TimerTask() {
+                    @Override
+                    public void run() {
+                        starButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskStar, 2001);
+                break;
+            case "heart":
+                scale.setNode(heartEmoji);
+                TimerTask taskHeart = new TimerTask() {
+                    @Override
+                    public void run() {
+                        heartButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskHeart, 2001);
+                break;
+            case "hundred":
+                scale.setNode(hundredEmoji);
+                TimerTask taskHundred = new TimerTask() {
+                    @Override
+                    public void run() {
+                        hundredButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskHundred, 2001);
+                break;
+            case "dizzy":
+                scale.setNode(dizzyEmoji);
+                TimerTask taskDizzy = new TimerTask() {
+                    @Override
+                    public void run() {
+                        dizzyButton.setDisable(false);
+                    }
+                };
+                timer.schedule(taskDizzy, 2001);
+                break;
+            default:
+                break;
+        }
+        scale.play();
+    }
+
+    /**
+     * Changes in-build to the listview method updateItem so that besides
+     * the text it also inserts the image when making changes to it.
+     */
+    public void setEmojiInsertion() {
+        this.emojiChat.setCellFactory(listView -> new ListCell<String>() {
+            private final ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(String text, boolean empty) {
+                super.updateItem(text, empty);
+                if (empty) {
+                    setGraphic(null);
+                    setText(null);
+                }
+                else {
+                    ImageView imageView = new ImageView();
+                    if (text.contains("heart")) {
+                        imageView.setImage(heartImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else if (text.contains("hundred")) {
+                        imageView.setImage(hundredImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else if (text.contains("dizzy")) {
+                        imageView.setImage(dizzyImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    } else {
+                        imageView.setImage(starImage);
+                        imageView.setFitHeight(40);
+                        imageView.setFitWidth(40);
+                    }
+                    String[] split = text.split(" - ");
+                    text = split[0];
+                    setText(text);
+                    setGraphic(imageView);
+                }
+            }
+        });
+    }
+
+    /**
+     * Calls emojiHandler method passing the string depending
+     * on the emoji pressed and disables this emoji until
+     * the animation specified in emojiHandler ends. Also puts the focus to the
+     * end of the listView so that the player can always see updated reactions.
+     */
+    public void heartOnClick() {
+        setEmojiInsertion();
+        emojiChat.getItems().add("Player " +
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - heart");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
+        this.heartButton.setDisable(true);
+        emojiHandler("heart");
+
+    }
+    public void starOnClick() {
+        setEmojiInsertion();
+        emojiChat.getItems().add("Player " +
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - star");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
+        this.starButton.setDisable(true);
+        emojiHandler("star");
+    }
+    public void hundredOnClick() {
+        setEmojiInsertion();
+        emojiChat.getItems().add("Player " +
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - hundred");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
+        this.hundredButton.setDisable(true);
+        emojiHandler("hundred");
+    }
+    public void dizzyOnClick() {
+        setEmojiInsertion();
+        emojiChat.getItems().add("Player " +
+                mainCtrl.getPlayer().getName() + " on round " +
+                mainCtrl.getCurrentRoundNumber() + " - dizzy");
+        emojiChat.scrollTo(emojiChat.getItems().size() - 1);
+        this.dizzyButton.setDisable(true);
+        emojiHandler("dizzy");
     }
 
     /**
