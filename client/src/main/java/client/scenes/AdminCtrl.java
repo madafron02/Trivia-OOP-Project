@@ -53,6 +53,7 @@ public class AdminCtrl {
     public void deleteActivity(){
             try{
                 activityUtil.deleteByID(Long.parseLong(deleteId.getText()));
+                deleteId.clear();
                 errorM.setVisible(false);
                 initialize();
             }catch (Exception e) {

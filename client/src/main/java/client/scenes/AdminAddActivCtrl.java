@@ -28,6 +28,7 @@ public class AdminAddActivCtrl {
 
     private MainCtrl mainCtrl;
     private final ActivityUtil activityUtil;
+    private AdminCtrl adminCtrl;
 
     @Inject
     public AdminAddActivCtrl(ActivityUtil activityUtil, MainCtrl mainCtrl){
@@ -40,6 +41,11 @@ public class AdminAddActivCtrl {
                 Activity temp = new Activity(pathId.getText(), imagePath.getText()
                         , title.getText(), Long.parseLong(consumption.getText()));
                 activityUtil.addActivity(temp);
+                adminCtrl.initialize();;
+                pathId.clear();
+                imagePath.clear();
+                title.clear();
+                consumption.clear();
                 errorM.setVisible(false);
             }catch(Exception e){
                 errorM.setVisible(true);
