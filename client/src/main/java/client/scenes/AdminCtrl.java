@@ -51,17 +51,13 @@ public class AdminCtrl {
     }
 
     public void deleteActivity(){
-        var success = false;
-        while (!success){
             try{
                 activityUtil.deleteByID(Long.parseLong(deleteId.getText()));
-                success = true;
                 errorM.setVisible(false);
                 initialize();
-            }catch (Exception e){
+            }catch (Exception e) {
                 errorM.setVisible(true);
             }
-        }
     }
 
     public void goBack(){

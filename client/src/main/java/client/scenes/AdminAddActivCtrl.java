@@ -36,18 +36,15 @@ public class AdminAddActivCtrl {
     }
 
     public void addActiv(){
-        boolean success = false;
-        while (!success){
             try {
                 Activity temp = new Activity(pathId.getText(), imagePath.getText()
                         , title.getText(), Long.parseLong(consumption.getText()));
                 activityUtil.addActivity(temp);
-                success = true;
                 errorM.setVisible(false);
             }catch(Exception e){
                 errorM.setVisible(true);
+                System.out.println(e);
             }
-        }
     }
 
     public void goBack(){
