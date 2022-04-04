@@ -44,8 +44,7 @@ public class QuestionController {
     @GetMapping("/getQ/{gameId}/{roundNumber}")
     public ResponseEntity<Question> getQuestion(@PathVariable("gameId") long gameId,
                                                 @PathVariable("roundNumber") int roundNumber) {
-        var res = questionAnswerSelector.getQuestion(gameId,roundNumber);
-        if(res == null)return ResponseEntity.badRequest().build();
+        Question res = questionAnswerSelector.getQuestion(gameId,roundNumber);
         return ResponseEntity.ok(res);
     }
 

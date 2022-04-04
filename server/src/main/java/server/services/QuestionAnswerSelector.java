@@ -144,11 +144,13 @@ public class QuestionAnswerSelector {
      */
     public void setGameQuestions(Long gameId){
         if(gameQuestions.containsKey(gameId))return;
+        gameQuestions.put(gameId,new ArrayList<>());
         setGameAnswers(gameId);
         List<Question>currentQuestions = new ArrayList<>();
         for(int round = 0;round<20;round++){
             Question.QuestionType type = Question.QuestionType.values()[random.nextInt(4)];
             //Question.QuestionType type = Question.QuestionType.MORE_ENERGY;
+
             switch (type){
                 case OPEN -> currentQuestions.add(getOpenQuestion(gameId,round));
                 case COMPARISON -> currentQuestions.add(getComparisonQuestion(gameId,round));
@@ -156,6 +158,7 @@ public class QuestionAnswerSelector {
                 case MORE_ENERGY -> currentQuestions.add(getMoreEnergyQuestion(gameId,round));
                 default -> {}
             }
+            //System.out.println(currentQuestions.get(round));
         }
         gameQuestions.put(gameId,currentQuestions);
     }
@@ -280,7 +283,10 @@ public class QuestionAnswerSelector {
      * @return the question that the round is supposed to have
      */
     public Question getQuestion(long gameId,int roundNumber){
-        if(!gameQuestions.containsKey(gameId))return null;
+        List<Question>questionList = gameQuestions.get(gameId);
+        if(questionList.size()<=roundNumber)return null;
+        //System.out.println(gameId + " " + roundNumber);
+        //System.out.println(gameQuestions.get(gameId).get(roundNumber));
         return gameQuestions.get(gameId).get(roundNumber);
     }
 }

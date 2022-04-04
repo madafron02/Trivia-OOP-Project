@@ -33,11 +33,20 @@ public class WinnersCtrl {
     @FXML
     private Label thirdName;
 
+    /**
+     * create a new winner controller
+     * @param mainCtrl the main controller
+     * @param server the server service
+     */
     @Inject
     public WinnersCtrl(MainCtrl mainCtrl, ServerUtils server) {
         this.mainCtrl = mainCtrl;
         this.server = server;
     }
+
+    /**
+     * grab the top 3 players and display them on the winner screen
+     */
     public void setUp(){
         Color blue = Color.web("8FD1D9");
         secondPoints.setBackground(new Background(new BackgroundFill(blue,null,null)));
@@ -63,6 +72,10 @@ public class WinnersCtrl {
             thirdPoints.setText(String.valueOf(playerList.get(2).getPoints()));
         }
     }
+
+    /**
+     * go back to the splash page
+     */
     public void goToSplash() {
         mainCtrl.showSplash();
     }

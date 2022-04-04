@@ -193,6 +193,7 @@ public class MoreEnergyQCtrl {
      */
     public void markAsChosen(){
         isSelected = true;
+        mainCtrl.resetNoMove();
         if(!mainCtrl.isSingleMode()){
             mainCtrl.getPlayer().setStatus(Player.StatusType.READY);
             server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
@@ -422,6 +423,9 @@ public class MoreEnergyQCtrl {
     public void leaveTheGame() {
         countdown.cancel();
         countdown.purge();
+        mainCtrl.setUp();
+        mainCtrl.getPlayer().setStatus(Player.StatusType.ABORTED);
+        server.updatePlayer(mainCtrl.getGame().getId(),mainCtrl.getPlayer());
         mainCtrl.showSplash();
     }
 }
