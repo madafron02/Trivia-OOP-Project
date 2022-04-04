@@ -96,6 +96,7 @@ public class MoreEnergyQCtrl {
      * the most energy consuming one);
      * -> starts the new timer for this round by calling the setTimer method;
      */
+
     public void setUpMoreEnergy() {
         setQuestion();
         this.isSelected = false;
@@ -108,16 +109,16 @@ public class MoreEnergyQCtrl {
         //Change the text and the image according to the data from the json file
 
         choice1.setText(mainCtrl.getQuestion().getAnswers().get(0));
-        //Image img1 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(0));
-        //image1.setImage(img1);
+        Image img1 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(0));
+        image1.setImage(img1);
 
         choice2.setText(mainCtrl.getQuestion().getAnswers().get(1));
-        //Image img2 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(1));
-        //image2.setImage(img2);
+        Image img2 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(1));
+        image2.setImage(img2);
 
         choice3.setText(mainCtrl.getQuestion().getAnswers().get(2));
-        //Image img3 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(2));
-        //image3.setImage(img3);
+        Image img3 = new Image("activity-bank/" + mainCtrl.getQuestion().getImgPaths().get(2));
+        image3.setImage(img3);
 
         setTimer();
     }
@@ -126,6 +127,7 @@ public class MoreEnergyQCtrl {
      * If the player has reached the last round, it shows the all-time leaderboard, otherwise
      * it enables back the buttons for the next round and resets the text colour of the choices.
      */
+
     public void setQuestion() {
             choice1.setDisable(false);
             choice2.setDisable(false);
@@ -146,6 +148,7 @@ public class MoreEnergyQCtrl {
      * the score, shows the corresponding screen (correct/wrong) for 5 seconds
      * and raises a flag to indicate that the next round must be set up;
      */
+
     public void setTimer(){
         TimerTask timerTask = new TimerTask() {
             Boolean readyForNext = false;
@@ -204,6 +207,7 @@ public class MoreEnergyQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
+
     public void checkFirst() {
         choice1.setDisable(true);
         choice2.setDisable(true);
@@ -225,6 +229,7 @@ public class MoreEnergyQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
+
     public void checkSecond() {
         choice1.setDisable(true);
         choice2.setDisable(true);
@@ -243,6 +248,7 @@ public class MoreEnergyQCtrl {
      * it checks if that represents the right answer, raises a flag for that,
      * adds points and disables all buttons until the end of the round.
      */
+
     public void checkThird() {
         choice1.setDisable(true);
         choice2.setDisable(true);
@@ -264,6 +270,7 @@ public class MoreEnergyQCtrl {
      * relative to X and Y axis.
      * @param scale Scaling animation.
      */
+
     public void setScale(ScaleTransition scale) {
         scale.setDuration(Duration.millis(1000));
         scale.setToX(1.3);
@@ -280,6 +287,7 @@ public class MoreEnergyQCtrl {
      * and will prevent spamming.
      * @param emojiType String identifying which emoji was pressed.
      */
+
     public void emojiHandler(String emojiType) {
         ScaleTransition scale = new ScaleTransition();
         setScale(scale);
@@ -335,6 +343,7 @@ public class MoreEnergyQCtrl {
      * Changes in-build to the listview method updateItem so that besides
      * the text it also inserts the image when making changes to it.
      */
+
     public void setEmojiInsertion() {
         this.emojiChat.setCellFactory(listView -> new ListCell<String>() {
             private final ImageView imageView = new ImageView();
@@ -379,6 +388,7 @@ public class MoreEnergyQCtrl {
      * the animation specified in emojiHandler ends. Also puts the focus to the
      * end of the listView so that the player can always see updated reactions.
      */
+
     public void heartOnClick() {
         setEmojiInsertion();
         emojiChat.getItems().add("Player " +
@@ -420,6 +430,7 @@ public class MoreEnergyQCtrl {
     /**
      * Adds "leave the game" button to the question screen
      */
+
     public void leaveTheGame() {
         countdown.cancel();
         countdown.purge();
