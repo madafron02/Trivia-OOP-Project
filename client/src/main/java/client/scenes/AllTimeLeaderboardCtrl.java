@@ -53,7 +53,7 @@ public class AllTimeLeaderboardCtrl {
      * setCellValueFactory uses the getters from the Player class to automatically fill in all
      * of the columns after passing the list of players to the tableView.
      */
-    public void initialize() {
+    public void setup() {
         List<Player> players = this.server.getPlayers();
         players.sort((o1, o2) -> o2.getPoints() - o1.getPoints());
         for (Player player : players) {

@@ -9,30 +9,30 @@
 
 <AnchorPane prefHeight="900.0" prefWidth="1440.0" styleClass="background" stylesheets="/Images/selectName.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.NameSelectCtrl">
    <children>
-      <Button fx:id="toLobby" contentDisplay="CENTER" layoutX="508.0" layoutY="669.0" mnemonicParsing="false" onAction="#goToLobby" prefHeight="184.0" prefWidth="440.0" styleClass="play" text="PLAY" textFill="#8fd1d9">
+      <Button fx:id="toLobby" contentDisplay="CENTER" layoutX="579.0" layoutY="708.0" mnemonicParsing="false" onAction="#goToLobby" prefHeight="0.0" prefWidth="302.0" styleClass="play" text="PLAY" textFill="#8fd1d9">
          <font>
             <Font size="80.0" />
          </font>
       </Button>
-      <Button fx:id="checkButton" alignment="CENTER" layoutX="1070.0" layoutY="205.0" mnemonicParsing="false" onAction="#checkName" prefHeight="119.0" prefWidth="307.0" styleClass="check" text="CHECK" textFill="#8fd1d9" AnchorPane.bottomAnchor="575.8" AnchorPane.leftAnchor="1070.0" AnchorPane.rightAnchor="62.799999999999955" AnchorPane.topAnchor="205.0">
+      <Button fx:id="checkButton" alignment="CENTER" layoutX="1104.0" layoutY="132.0" mnemonicParsing="false" onAction="#checkName" prefHeight="128.0" prefWidth="267.0" styleClass="check" text="CHECK" textFill="#8fd1d9" AnchorPane.bottomAnchor="649.0" AnchorPane.leftAnchor="1104.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="132.0">
          <font>
             <Font size="60.0" />
          </font>
       </Button>
-      <Button fx:id="toHelp" alignment="CENTER" layoutX="523.0" layoutY="469.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="107.0" prefWidth="404.0" styleClass="how_to_play" text="HOW TO PLAY" textFill="#011826">
+      <Button fx:id="toHelp" alignment="CENTER" layoutX="522.0" layoutY="542.0" mnemonicParsing="false" onAction="#goToHelp" prefHeight="107.0" prefWidth="404.0" styleClass="how_to_play" text="HOW TO PLAY" textFill="#011826">
          <font>
             <Font size="40.0" />
          </font></Button>
-      <Label fx:id="nameCheck" layoutX="290.0" layoutY="344.0" prefHeight="58.0" prefWidth="1138.0" style="-fx-text-fill: #ab2b2b;">
+      <Label fx:id="nameCheck" layoutX="303.0" layoutY="272.0" prefHeight="58.0" prefWidth="1138.0" style="-fx-text-fill: #ab2b2b;">
          <font>
             <Font size="36.0" />
          </font></Label>
-      <Text fill="#8fd1d9" layoutX="93.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAY">
+      <Text fill="#8fd1d9" layoutX="77.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PLAY">
          <font>
             <Font size="70.0" />
          </font>
       </Text>
-      <TextField fx:id="nameInput" layoutX="289.0" layoutY="192.0" prefHeight="150.0" prefWidth="727.0" promptText="ENTER NAME HERE">
+      <TextField fx:id="nameInput" layoutX="302.0" layoutY="119.0" prefHeight="150.0" prefWidth="750.0" promptText="ENTER NAME HERE">
          <font>
             <Font size="70.0" />
          </font>
@@ -42,5 +42,15 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Text fill="#8fd1d9" layoutX="40.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SERVER">
+         <font>
+            <Font size="70.0" />
+         </font>
+      </Text>
+      <TextField fx:id="URL" layoutX="300.0" layoutY="335.0" prefHeight="150.0" prefWidth="751.0" text="http://localhost:8080/">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

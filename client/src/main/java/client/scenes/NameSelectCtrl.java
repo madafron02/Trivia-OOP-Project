@@ -16,7 +16,8 @@ public class NameSelectCtrl {
 
     @FXML
     private TextField nameInput;
-
+    @FXML
+    private TextField URL;
     @FXML
     private Label nameCheck;
 
@@ -64,6 +65,10 @@ public class NameSelectCtrl {
             return;
         }
         try {
+            if(!server.setServer(URL.getText())){
+                nameCheck.setText("Please enter a valid url");
+                return;
+            }
             Player thisplayer = new Player(nameInput.getText());
             if(!mainCtrl.isSingleMode()){
                 Game currentGame = server.getGame();
