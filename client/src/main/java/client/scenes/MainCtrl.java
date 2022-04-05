@@ -362,7 +362,7 @@ public class MainCtrl {
      * Shows all-time leaderboard
      */
     public void showLeadearboard() {
-        leaderboardCtrl.initialize();
+        leaderboardCtrl.setup();
         primaryStage.setTitle("All-time leaderboard");
         primaryStage.setScene(leaderboard);
     }
