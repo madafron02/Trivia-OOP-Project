@@ -51,7 +51,6 @@
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#aeaca6" height="56.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="270.0">
@@ -61,7 +60,11 @@
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8ee34" height="69.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
+                        <Label fx:id="firstPoints" alignment="CENTER" contentDisplay="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -76,7 +79,6 @@
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#83641b" height="42.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
                      </children>
                   </VBox>
                </children>
