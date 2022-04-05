@@ -3,20 +3,23 @@ package server.api;
 import commons.Activity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import server.database.ActivityRepository;
 
 import java.util.List;
 
 @RestController
 
-@RequestMapping("/activity")
+@RequestMapping("/api/activity")
 
 public class ActivityController {
 
     private ActivityService activityService;
+    private ActivityRepository repo;
 
 
-    public ActivityController(ActivityService activityService) {
+    public ActivityController(ActivityService activityService, ActivityRepository repo) {
         this.activityService = activityService;
+        this.repo = repo;
     }
 
     @GetMapping(path = {"", "/"})
@@ -24,9 +27,22 @@ public class ActivityController {
         return activityService.listAllActivities();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Activity> getActivity(@PathVariable long id) {
+        return ResponseEntity.ok(repo.findById(id).get());
+    }
+
     @PostMapping("/post")
     public ResponseEntity<Activity> save(@RequestBody Activity newActivity) {
         return activityService.addActivity(newActivity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Activity> deleteActivity(@PathVariable long id) {
+        if (id < 0) return ResponseEntity.badRequest().build();
+        Activity deleted = repo.findById(id).get();
+        repo.deleteById(id);
+        return ResponseEntity.ok(deleted);
     }
 
     /*
