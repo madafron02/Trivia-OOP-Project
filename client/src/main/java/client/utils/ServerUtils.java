@@ -30,7 +30,15 @@ import jakarta.ws.rs.client.Entity;
 
 public class ServerUtils {
 
-    private static final String SERVER = "http://localhost:8080/";
+    private static String SERVER = "";
+
+    /**
+     * set the server url by the client's input
+     * @param url the input url
+     */
+    public static void setServer(String url){
+        SERVER = url;
+    }
 
     /**
      * save a player in the player repository
