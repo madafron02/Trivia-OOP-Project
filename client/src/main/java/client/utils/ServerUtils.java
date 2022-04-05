@@ -16,11 +16,13 @@
 package client.utils;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
+
 import java.util.List;
 
 import commons.Game;
 import commons.Player;
 import commons.Question;
+import jakarta.ws.rs.ProcessingException;
 import jakarta.ws.rs.core.GenericType;
 import org.glassfish.jersey.client.ClientConfig;
 
@@ -36,8 +38,20 @@ public class ServerUtils {
      * set the server url by the client's input
      * @param url the input url
      */
-    public static void setServer(String url){
+    public static boolean setServer(String url){
         SERVER = url;
+        try{
+            ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get();
+        } catch (IllegalArgumentException e2){
+            return false;
+        } catch (ProcessingException e2){
+            return false;
+        }
+        return true;
     }
 
     /**
