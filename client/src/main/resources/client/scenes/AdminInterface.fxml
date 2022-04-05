@@ -19,7 +19,7 @@
       </TableView>
       <Button fx:id="addBTN" layoutX="36.0" layoutY="61.0" mnemonicParsing="false" onAction="#goToAddActivity" prefHeight="42.0" prefWidth="80.0" text="Add Activity" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="deleteBTN" layoutX="36.0" layoutY="296.0" mnemonicParsing="false" onAction="#deleteActivity" prefHeight="42.0" prefWidth="80.0" text="Delete Activity" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="updateBTN" layoutX="36.0" layoutY="178.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="80.0" text="Update Activity" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="updateBTN" layoutX="36.0" layoutY="178.0" mnemonicParsing="false" onAction="#goToUpdateActivity" prefHeight="42.0" prefWidth="80.0" text="Update Activity" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="backBTN" layoutX="319.0" layoutY="343.0" mnemonicParsing="false" onAction="#goBack" prefHeight="42.0" prefWidth="80.0" text="Back" />
       <TextField fx:id="deleteId" alignment="CENTER" layoutX="36.0" layoutY="351.0" prefHeight="26.0" prefWidth="80.0" promptText="id" />
       <Label fx:id="errorM" alignment="CENTER" layoutX="132.0" layoutY="351.0" prefHeight="26.0" prefWidth="94.0" text="Enter Valid id" textAlignment="CENTER" textFill="RED" visible="false">
