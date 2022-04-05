@@ -45,6 +45,23 @@ public class ActivityController {
         return ResponseEntity.ok(deleted);
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Activity> updateTitle(@RequestBody Activity activity
+            , @PathVariable long id){
+        if (id < 0) return ResponseEntity.badRequest().build();
+        return repo.findById(id)
+                .map(oldA -> {
+                    oldA.setActivityName(activity.getActivityName());
+                    oldA.setTitle(activity.getTitle());
+                    oldA.setConsumption(activity.getConsumption());
+                    oldA.setImgPath(activity.getImgPath());
+                    return ResponseEntity.ok(repo.save(oldA));
+                })
+                .orElseGet(() -> {
+                    return ResponseEntity.ok(repo.save(activity));
+                });
+    }
+
     /*
     private final ActivityRepository repo;
     private final QuestionAnswerSelector answers;
