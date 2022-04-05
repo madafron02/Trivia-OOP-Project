@@ -10,82 +10,86 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #00080d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.HelpCtrl">
    <children>
-      <Pane layoutX="15.0" layoutY="29.0" prefHeight="305.0" prefWidth="569.0" style="-fx-background-color: #ffffff;">
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/Images/nicholas-doherty-pONBhDyOFoM-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="15.0" layoutY="29.0" prefHeight="305.0" prefWidth="569.0" style="-fx-background-color: rgba(0,0,0,0.5);">
          <children>
-            <Pane layoutX="26.0" layoutY="22.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: #0B3559;">
+            <Pane layoutX="26.0" layoutY="22.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="185.0" layoutY="10.0" text="Label" />
-                  <Label layoutX="38.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Answer 20 questions about energy consumption" textFill="WHITE">
+                  <Label layoutX="38.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Answer 20 questions about energy consumption">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="33.0" fitWidth="35.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/bulb.png" />
+                        <Image url="/Images/bulb.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="26.0" layoutY="74.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: #0B3559;">
+            <Pane layoutX="26.0" layoutY="74.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="35.0" layoutY="6.0" prefHeight="26.0" prefWidth="476.0" text="Choose/enter the right answer in a given amount of time!" textFill="WHITE">
+                  <Label layoutX="35.0" layoutY="6.0" prefHeight="26.0" prefWidth="476.0" text="Choose/enter the right answer in a given amount of time!">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/click.png" />
+                        <Image url="/Images/click.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="25.0" layoutY="127.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: #0B3559;">
+            <Pane layoutX="25.0" layoutY="127.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: white">
                <children>
-                  <Label layoutX="37.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Complete for the best on the leaderboard" textFill="WHITE">
+                  <Label layoutX="37.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Complete for the best on the leaderboard">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="33.0" fitWidth="30.0" layoutX="3.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/pedestal.png" />
+                        <Image url="/Images/pedestal.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="26.0" layoutY="179.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: #0B3559;">
+            <Pane layoutX="26.0" layoutY="179.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: white">
                <children>
-                  <Label layoutX="36.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Use 3 jokers to weaken your opponents" textFill="WHITE">
+                  <Label layoutX="36.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Use 3 jokers to weaken your opponents">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/power.png" />
+                        <Image url="/Images/power.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="25.0" layoutY="232.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: #0B3559;">
+            <Pane layoutX="25.0" layoutY="232.0" prefHeight="37.0" prefWidth="519.0" style="-fx-background-color: white">
                <children>
-                  <Label layoutX="36.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Send emojis to react to the questions" textFill="WHITE">
+                  <Label layoutX="36.0" layoutY="6.0" prefHeight="26.0" prefWidth="460.0" text="Send emojis to react to the questions">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/send_reactions_image.png" />
+                        <Image url="/Images/send_reactions_image.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
          </children>
       </Pane>
-      <Button fx:id="goBackFromHelp" layoutX="249.0" layoutY="349.0" mnemonicParsing="false" onAction="#goBackFromHelp" prefHeight="37.0" prefWidth="103.0" text="Got it!">
+      <Button fx:id="goBackFromHelp" layoutX="249.0" layoutY="325.0" mnemonicParsing="false" onAction="#goBackFromHelp" prefHeight="37.0" prefWidth="103.0" text="Got it!">
          <font>
             <Font size="15.0" />
          </font>
