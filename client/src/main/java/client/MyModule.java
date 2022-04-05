@@ -38,5 +38,6 @@ public class MyModule implements Module {
         binder.bind(MoreEnergyQCtrl.class).in(Scopes.SINGLETON);
         binder.bind(AdminCtrl.class).in(Scopes.SINGLETON);
         binder.bind(AdminAddActivCtrl.class).in(Scopes.SINGLETON);
+        binder.bind(AdminUpdateActivCtrl.class).in(Scopes.SINGLETON);
     }
 }

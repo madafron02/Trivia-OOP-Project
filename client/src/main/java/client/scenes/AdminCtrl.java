@@ -49,6 +49,9 @@ public class AdminCtrl {
     public void goToAddActivity(){
         mainCtrl.showAddActivity();
     }
+    public void goToUpdateActivity(){
+        mainCtrl.showAdminUpdate();
+    }
 
     public void deleteActivity(){
             try{
@@ -58,6 +61,7 @@ public class AdminCtrl {
                 initialize();
             }catch (Exception e) {
                 errorM.setVisible(true);
+                System.out.println("Entered ID is invalid!");
             }
     }
 

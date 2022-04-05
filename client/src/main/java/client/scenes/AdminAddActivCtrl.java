@@ -31,9 +31,11 @@ public class AdminAddActivCtrl {
     private AdminCtrl adminCtrl;
 
     @Inject
-    public AdminAddActivCtrl(ActivityUtil activityUtil, MainCtrl mainCtrl){
+    public AdminAddActivCtrl(ActivityUtil activityUtil
+            , MainCtrl mainCtrl, AdminCtrl adminCtrl){
         this.activityUtil = activityUtil;
         this.mainCtrl = mainCtrl;
+        this.adminCtrl = adminCtrl;
     }
 
     public void addActiv(){
@@ -49,7 +51,7 @@ public class AdminAddActivCtrl {
                 errorM.setVisible(false);
             }catch(Exception e){
                 errorM.setVisible(true);
-                System.out.println(e);
+                System.out.println("Fields not filled out properly!");
             }
     }
 

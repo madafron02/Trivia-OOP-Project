@@ -77,6 +77,9 @@ public class MainCtrl {
 
     private AdminAddActivCtrl activAddCtrl;
     private Scene activAddScene;
+
+    private AdminUpdateActivCtrl adminUpdateCtrl;
+    private Scene adminUpdateScene;
     /**
      * Initializes the primary stage, all the controllers and
      * all the scenes used in this game
@@ -93,7 +96,8 @@ public class MainCtrl {
      * @param multiChoice
      * @param moreEnergy
      * @param adminPanel
-     *
+     * @param addActiv
+     * @param adminUpdate
      */
     public void initializeNew(Stage primaryStage, Pair<SplashCtrl, Parent> opening,
                               Pair<NameSelectCtrl, Parent> nameSelectCtrlParentPair,
@@ -108,7 +112,8 @@ public class MainCtrl {
                               Pair<MoreEnergyQCtrl, Parent> moreEnergy,
                               Pair<OpenQCtrl, Parent> openQ,
                               Pair<AdminCtrl, Parent> adminPanel,
-                              Pair<AdminAddActivCtrl, Parent> addActiv) {
+                              Pair<AdminAddActivCtrl, Parent> addActiv,
+                              Pair<AdminUpdateActivCtrl, Parent> adminUpdate) {
         this.primaryStage = primaryStage;
         this.splashCtrl = opening.getKey();
         this.opening = new Scene(opening.getValue());
@@ -138,6 +143,8 @@ public class MainCtrl {
         this.adminCtrl = adminPanel.getKey();
         this.activAddCtrl = addActiv.getKey();
         this.activAddScene = new Scene(addActiv.getValue());
+        this.adminUpdateCtrl = adminUpdate.getKey();
+        this.adminUpdateScene = new Scene(adminUpdate.getValue());
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
@@ -184,6 +191,11 @@ public class MainCtrl {
     public void showAddActivity(){
         primaryStage.setTitle("Add Activity");
         primaryStage.setScene(activAddScene);
+    }
+
+    public void showAdminUpdate(){
+        primaryStage.setTitle("Update an Activity");
+        primaryStage.setScene(adminUpdateScene);
     }
 
     /**
