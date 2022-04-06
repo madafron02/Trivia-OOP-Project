@@ -102,7 +102,7 @@ public class Activity implements Reachable{
      * @return consumption of the activity
      */
 
-    public double getConsumption() {
+    public long getConsumption() {
         return consumption;
     }
 

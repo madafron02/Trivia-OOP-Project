@@ -18,7 +18,6 @@ public class ActivityUtil {
      * the List of activities in client might be useful for single player,
      * but for now we can just send requests to server
      */
-    //private List<Activity> activities;
 
     /** TODO make it so you can choose how many answers you want
      *  retrieves answers from the server
@@ -29,7 +28,8 @@ public class ActivityUtil {
                 .target(SERVER).path("/api/activity/answers/" + gameId) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
-                .get(new GenericType<List<Activity>>() {});
+                .get(new GenericType<>() {
+                });
     }
 
     /**
@@ -39,7 +39,6 @@ public class ActivityUtil {
      */
     public Activity addActivity(Activity activity){
         activity.setPowerLevel();
-        //activities.add(activity);
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("/api/activity/post") //
                 .request(APPLICATION_JSON) //
@@ -47,13 +46,10 @@ public class ActivityUtil {
                 .post(Entity.entity(activity, APPLICATION_JSON), Activity.class);
     }
 
-    /*public Optional<Activity> getByID(long id){
-        return activities.stream().filter(x -> x.getId() == id).findFirst();
-    }*/
 
     /**
-     *  retrieves an activity from the repository, not the List
-     * @param id
+     *  retrieves an activity from the repository
+     * @param id id of the activity
      * @return an activity from the Repository matching the ID
      */
     public Activity getByIDRepo(long id){
@@ -61,21 +57,99 @@ public class ActivityUtil {
                 .target(SERVER).path("/api/activity/" + id) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
-                .get(new GenericType<Activity>() {});
+                .get(new GenericType<>() {
+                });
+    }
+
+    /**
+     *  retrieves all activities from the repository
+     * @return a List of Activity
+     */
+    public List<Activity> getAll(){
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/") //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .get(new GenericType<>() {
+                });
     }
 
     /**
      * Deletes an Activity from the repository and the List
-     * @param id
+     * @param id id of the updated activity
      * @return the deleted Activity
      */
     public Activity deleteByID(long id){
-        //activities = activities.stream().filter(x -> x.getId() != id)
-        //        .collect(Collectors.toList());
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("/api/activity/delete/" + id) //
                 .request(APPLICATION_JSON) //
                 .accept(APPLICATION_JSON) //
-                .delete(new GenericType<Activity>() {});
+                .delete(new GenericType<>() {
+                });
+    }
+
+    /**
+     * used to update the consumption of an Activity
+     * @param id id of the updated activity
+     * @param fileP new value
+     * @return true if successful
+     */
+    public Activity updateFileP(long id, String fileP){
+        var newA = getByIDRepo(id);
+        newA.setActivityName(fileP);
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/update/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .put(Entity.entity(newA, APPLICATION_JSON), new GenericType<>() {
+                });
+    }
+    /**
+     * used to update the consumption of an Activity
+     * @param id id of the updated activity
+     * @param imageP new value
+     * @return true if successful
+     */
+    public Activity updateImageP(long id, String imageP){
+        var newA = getByIDRepo(id);
+        newA.setImgPath(imageP);
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/update/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .put(Entity.entity(newA, APPLICATION_JSON), new GenericType<>() {
+                });
+    }
+    /**
+     * used to update the consumption of an Activity
+     * @param id id of the updated activity
+     * @param title new value
+     * @return true if successful
+     */
+    public Activity updateTitle(long id, String title){
+        var newA = getByIDRepo(id);
+        newA.setTitle(title);
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/update/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .put(Entity.entity(newA, APPLICATION_JSON), new GenericType<>() {
+                });
+    }
+    /**
+     * used to update the consumption of an Activity
+     * @param id id of the updated activity
+     * @param consum new value
+     * @return true if successful
+     */
+    public Activity updateConsum(long id, long consum){
+        var newA = getByIDRepo(id);
+        newA.setConsumption(consum);
+        return ClientBuilder.newClient(new ClientConfig()) //
+                .target(SERVER).path("/api/activity/update/" + id) //
+                .request(APPLICATION_JSON) //
+                .accept(APPLICATION_JSON) //
+                .put(Entity.entity(newA, APPLICATION_JSON), new GenericType<>() {
+                });
     }
 }

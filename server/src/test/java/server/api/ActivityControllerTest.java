@@ -20,7 +20,7 @@ class ActivityControllerTest {
         t.add(t1);
         repo.save(t1);
         ActivityService service= new ActivityService(repo);
-        sut = new ActivityController(service);
+        sut = new ActivityController(service, repo);
     }
     @Test
     void testConstructor(){
