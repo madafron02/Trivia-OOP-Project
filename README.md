@@ -29,6 +29,9 @@ prerequisite: java environment with jdk version above 16
 - use command "gradlew bootRun" to start the server
 - use command "gradlew run" to start the client
 
+## Preventing and handling errors
+If there are no players in the database, you can not open the all-time leaderboard
+
 ## Copyright / License (opt.)
 Copyright 2021 Delft University of Technology \
 \
