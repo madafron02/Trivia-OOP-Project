@@ -97,7 +97,6 @@ public class ServerUtils {
      * @return roundId indicates the round number
      */
     public static Question requireQuestion(long gameId,int roundId) {
-        System.out.println("api/question/getQ" + gameId + "/" + roundId);
         return ClientBuilder.newClient(new ClientConfig()) //
                 .target(SERVER).path("api/question/getQ/" + gameId + "/" + roundId) //
                 .request(APPLICATION_JSON) //
