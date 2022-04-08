@@ -27,7 +27,7 @@
             </Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/crown.gif" />
+                  <Image url="/Images/crown.gif" />
                </image>
                <effect>
                   <InnerShadow choke="0.54" height="245.6" radius="105.21000000000001" width="177.24">
