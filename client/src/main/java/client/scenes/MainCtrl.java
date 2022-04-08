@@ -473,7 +473,7 @@ public class MainCtrl {
             }
             setNoMove();
         }
-        if(currentRoundNumber == 5) {
+        if(currentRoundNumber == 20) {
             ServerUtils.addPlayer(player);
             currentRoundNumber = 0;
             if(isSingleMode)showLeadearboard();
