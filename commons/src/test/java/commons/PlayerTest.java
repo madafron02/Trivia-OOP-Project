@@ -68,4 +68,51 @@ class PlayerTest {
     }
 
 
+    @Test
+    void getStatus() {
+        Player p = new Player("p");
+        assertEquals(p.getStatus(), Player.StatusType.NOT_READY);
+    }
+
+    @Test
+    void setStatus() {
+        Player p = new Player("p");
+        p.setStatus(Player.StatusType.READY);
+        assertEquals(p.getStatus(), Player.StatusType.READY);
+    }
+
+
+    @Test
+    void getPlace() {
+        Player p = new Player("p");
+        assertEquals(p.getPlace(),0);
+
+    }
+
+    @Test
+    void setPlace() {
+        Player p = new Player("p");
+        p.setPlace(1);
+        assertEquals(p.getPlace(),1);
+    }
+
+    @Test
+    void testToString() {
+        Player p = new Player("p");
+        assertEquals(p.toString(),
+                "Player{id=0, name='p', points=0, place=0, multi=false, status=NOT_READY}");
+    }
+
+    @Test
+    void getId() {
+        Player p = new Player("p");
+        assertEquals(p.getId(),0);
+    }
+
+    @Test
+    void setId() {
+        Player p = new Player("p");
+        p.setId(1);
+        assertEquals(p.getId(),1);
+    }
 }

@@ -113,4 +113,89 @@ class QuestionTest {
         Question question1 = new Question("Desc1",strings2);
         assertNotEquals(question.hashCode(),question1.hashCode());
     }
+
+
+    @Test
+    void getId() {
+        Question q = new Question();
+        assertEquals(q.getId(),0);
+    }
+
+    @Test
+    void setId() {
+        Question q = new Question();
+        q.setId(1);
+        assertEquals(q.getId(),1);
+    }
+
+
+    @Test
+    void getDescriptionImagePath() {
+        Question q = new Question();
+        q.setDescriptionImagePath("00/shower.png");
+        assertEquals(q.getDescriptionImagePath(),"00/shower.png");
+    }
+
+    @Test
+    void setDescriptionImagePath() {
+        Question q = new Question();
+        q.setDescriptionImagePath("01/shower.png");
+        assertNotNull(q.getDescriptionImagePath());
+    }
+
+    @Test
+    void getCorrectAnswer() {
+        Question q = new Question();
+        q.setCorrectAnswer("112");
+        assertEquals(q.getCorrectAnswer(),"112");
+    }
+
+    @Test
+    void setCorrectAnswer() {
+        Question q = new Question();
+        q.setCorrectAnswer("112");
+        assertNotNull(q.getCorrectAnswer());
+    }
+
+    @Test
+    void getImgPaths() {
+        List<String>path = new ArrayList<>();
+        path.add("path1");
+        Question q = new Question();
+        q.setImgPaths(path);
+        assertEquals(q.getImgPaths(),path);
+    }
+
+    @Test
+    void setImgPaths() {
+        List<String>path = new ArrayList<>();
+        path.add("path2");
+        Question q = new Question();
+        q.setImgPaths(path);
+        assertNotNull(q.getImgPaths());
+    }
+
+
+    @Test
+    void getType() {
+        Question q = new Question();
+        q.setType(Question.QuestionType.MORE_ENERGY);
+        assertEquals(q.getType(), Question.QuestionType.MORE_ENERGY);
+    }
+
+    @Test
+    void setType() {
+        Question q = new Question();
+        q.setType(Question.QuestionType.MORE_ENERGY);
+        assertNotNull(q.getType());
+    }
+
+
+    @Test
+    void testToString() {
+        Question q = new Question();
+        assertEquals(q.toString(),
+                "Question{id=0, description='null', descriptionImagePath='null', " +
+                        "correctAnswer='null', imgPaths=null, answers=null, type=null}");
+    }
 }

@@ -95,6 +95,42 @@ class ActivityTest {
     }
 
 
+    @Test
+    void setPowerLevel() {
+        Activity activity1 = new Activity("Activity1","Activity1.png","Path",224242);
+        activity1.setPowerLevel();
+        assertEquals(activity1.getPowerLevel(),"deyum");
+    }
 
 
+    @Test
+    void getPowerLevel() {
+        Activity a = new Activity("a","a","a",1);
+        a.setPowerLevel();
+        assertEquals(a.getPowerLevel(),"low");
+    }
+
+    @Test
+    void setId() {
+        Activity a = new Activity("a","a","a",1);
+        a.setId(1);
+        assertNotNull(a.getId());
+    }
+
+    @Test
+    void testToString() {
+        Activity a = new Activity("a","a","a",1);
+        assertEquals(a.toString(),"id= 0\n" +
+                "imgPath= a\n" +
+                "title= a\n" +
+                "consumption= 1\n" +
+                "powerLevel=low\n");
+    }
+
+    @Test
+    void getId() {
+        Activity a = new Activity("a","a","a",1);
+        a.setId(1);
+        assertEquals(1,a.getId());
+    }
 }
