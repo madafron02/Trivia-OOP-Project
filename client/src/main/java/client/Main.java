@@ -65,6 +65,7 @@ public class Main extends Application {
                 "client", "scenes", "IngameLeaderboard.fxml");
         var leaderboard = FXML.load(AllTimeLeaderboardCtrl.class,
                 "client", "scenes", "AllTimeLeaderboard.fxml");
+        leaderboard.getValue().getStylesheets().add("Images/leaderboard_allTime.css");
         var winners = FXML.load(WinnersCtrl.class, "client", "scenes", "Winners.fxml");
         var multiChoice =
                 FXML.load(MultiChoiceQCtrl.class, "client", "scenes", "MultiChoiceQ.fxml");
