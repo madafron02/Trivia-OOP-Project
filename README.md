@@ -32,6 +32,8 @@ prerequisite: java environment with jdk version above 16
 ## Preventing and handling errors
 If there are no players in the database, you can not open the all-time leaderboard
 
+The image path is different for all the images, depending on your machine. So if you are using WINDOWS you should let them as they are, but if you are using, for example, macOS add "@../../path" at the beginning of the image file path.
+
 ## Copyright / License (opt.)
 Copyright 2021 Delft University of Technology \
 \
