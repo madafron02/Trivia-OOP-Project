@@ -1,0 +1,13 @@
+- The workflow will remain the same, we will directly merge to main.
+
+- We do not need at this moment a development branch.
+
+- We need to be more active and merge the branches more quickly.
+
+- Add checkboxes if is possible for the issues.
+
+- Comment the issue so the other people will have a better idea over what you have done or what you have to do.
+
+- Gitignore!
+
+- Focus on tests!
